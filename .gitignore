@@ -1,0 +1,9 @@
+node_modules/
+web/node_modules/
+web/.astro/
+web/dist/
+markdown/
+pdfs/
+web/public/assets/
+web/public/data/
+.DS_Store

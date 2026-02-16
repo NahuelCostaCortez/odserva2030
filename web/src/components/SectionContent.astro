@@ -1,0 +1,114 @@
+---
+const { section } = Astro.props;
+---
+<section id={section.slug} class="section-block" data-section-block={section.id}>
+  <div class="section-heading">
+    <h2>{section.title}</h2>
+  </div>
+  <div class="section-content" data-section-content></div>
+  <div class="section-tables" data-section-tables></div>
+  <div class="section-figures" data-section-figures></div>
+</section>
+
+<style>
+  .section-block {
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: #fff;
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.05);
+  }
+  .section-heading h2 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  .section-content {
+    line-height: 1.6;
+    color: #1f2937;
+    margin-top: 1rem;
+  }
+  .section-content p {
+    margin-bottom: 0.9rem;
+  }
+  .section-tables,
+  .section-figures {
+    margin-top: 1.5rem;
+  }
+  .table-block {
+    margin-top: 1rem;
+    border-radius: 1rem;
+    border: 1px solid #dbeafe;
+    background: linear-gradient(180deg, #f8fbff, #fff);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+  }
+  .table-label {
+    font-weight: 600;
+    margin: 0;
+    padding: 1rem 1.25rem 0 1.25rem;
+    color: #0f172a;
+  }
+  .table-wrapper {
+    overflow-x: auto;
+    padding: 1rem 1.25rem 1.25rem 1.25rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 400px;
+    font-size: 0.95rem;
+  }
+  th,
+  td {
+    padding: 0.75rem 0.85rem;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+    vertical-align: top;
+  }
+  thead th {
+    background: #eff6ff;
+    font-weight: 600;
+    color: #0f172a;
+    border-bottom: 2px solid #bfdbfe;
+  }
+  tbody tr:nth-child(odd) {
+    background: rgba(15, 23, 42, 0.02);
+  }
+  tbody tr:hover {
+    background: rgba(59, 130, 246, 0.08);
+  }
+  .figure-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  figure {
+    margin: 0;
+    background: #0f172a;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  figure img {
+    width: 100%;
+    border-radius: 0.5rem;
+    background: #fff;
+  }
+  figcaption {
+    color: #f8fafc;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .page-chip {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+  }
+</style>

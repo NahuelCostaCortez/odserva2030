@@ -1,0 +1,121 @@
+{
+  "code": "O9",
+  "slug": "o9",
+  "title": "Buenas prácticas investigación y transferencia",
+  "summary": "La **Actividad 3.3** consiste en la Identificación de buenas prácticas y propuestas de futuro en la implementación de la Agenda 2030 en el ámbito de la transferencia universitaria. Con esta actividad se pretende obtener un informe detallado de buenas prácticas y propuestas para la implementación de los Objetivos…",
+  "updatedAt": "2026-02-16T08:23:24.554Z",
+  "sourcePath": "markdown/O9. Buenas prácticas investigación y transferencia/O9. Buenas prácticas investigación y transferencia.md",
+  "counts": {
+    "sections": 15,
+    "tables": 1,
+    "figures": 3
+  },
+  "sectionsIndex": [
+    {
+      "id": "o9-buenas-practicas-investigacion-y-transferencia",
+      "slug": "o9-buenas-practicas-investigacion-y-transferencia",
+      "title": "Buenas prácticas investigación y transferencia",
+      "level": 1,
+      "order": 0
+    },
+    {
+      "id": "o9-indice",
+      "slug": "o9-indice",
+      "title": "Índice",
+      "level": 1,
+      "order": 1
+    },
+    {
+      "id": "o9-resumen",
+      "slug": "o9-resumen",
+      "title": "Resumen",
+      "level": 1,
+      "order": 2
+    },
+    {
+      "id": "o9-objetivos",
+      "slug": "o9-objetivos",
+      "title": "Objetivos",
+      "level": 1,
+      "order": 3
+    },
+    {
+      "id": "o9-metodologia",
+      "slug": "o9-metodologia",
+      "title": "Metodología",
+      "level": 1,
+      "order": 4
+    },
+    {
+      "id": "o9-resultados",
+      "slug": "o9-resultados",
+      "title": "Resultados",
+      "level": 1,
+      "order": 5
+    },
+    {
+      "id": "o9-conclusiones",
+      "slug": "o9-conclusiones",
+      "title": "Conclusiones",
+      "level": 1,
+      "order": 6
+    },
+    {
+      "id": "o9-anexos",
+      "slug": "o9-anexos",
+      "title": "Anexos",
+      "level": 1,
+      "order": 7
+    },
+    {
+      "id": "o9-buenrs-practicrs-implementrcion-rgendr-2030",
+      "slug": "o9-buenrs-practicrs-implementrcion-rgendr-2030",
+      "title": "BUENRS PRÁCTICRS IMPLEMENTRCIÓN RGENDR 2030",
+      "level": 3,
+      "order": 8
+    },
+    {
+      "id": "o9-programas-de-apoyo-a-colectivos-vulnerables-en-la-comunidad-universitaria",
+      "slug": "o9-programas-de-apoyo-a-colectivos-vulnerables-en-la-comunidad-universitaria",
+      "title": "PROGRAMAS DE APOYO A COLECTIVOS VULNERABLES EN LA COMUNIDAD UNIVERSITARIA",
+      "level": 3,
+      "order": 9
+    },
+    {
+      "id": "o9-iniciativas-de-economia-circular-y-reduccion-de-residuos",
+      "slug": "o9-iniciativas-de-economia-circular-y-reduccion-de-residuos",
+      "title": "INICIATIVAS DE ECONOMÍA CIRCULAR Y REDUCCIÓN DE RESIDUOS",
+      "level": 3,
+      "order": 10
+    },
+    {
+      "id": "o9-creciente-apuesta-por-proyectos-de-descarbonizacion-y-adaptacion-climatica",
+      "slug": "o9-creciente-apuesta-por-proyectos-de-descarbonizacion-y-adaptacion-climatica",
+      "title": "CRECIENTE APUESTA POR PROYECTOS DE DESCARBONIZACIÓN Y ADAPTACIÓN CLIMÁTICA",
+      "level": 3,
+      "order": 11
+    },
+    {
+      "id": "o9-ejemplos-buenrs-practicrs-implementrcion-rgendr-2030",
+      "slug": "o9-ejemplos-buenrs-practicrs-implementrcion-rgendr-2030",
+      "title": "EJEMPLOS BUENRS PRÁCTICRS IMPLEMENTRCIÓN RGENDR 2030",
+      "level": 1,
+      "order": 12
+    },
+    {
+      "id": "o9-iniciativas-de-economia-circular-y-reduccion-de-residuos",
+      "slug": "o9-iniciativas-de-economia-circular-y-reduccion-de-residuos",
+      "title": "INICIATIVAS DE ECONOMÍA CIRCULAR Y REDUCCIÓN DE RESIDUOS",
+      "level": 3,
+      "order": 13
+    },
+    {
+      "id": "o9-creciente-apuesta-por-proyectos-de-descarbonizacion-y-adaptacion-climatica",
+      "slug": "o9-creciente-apuesta-por-proyectos-de-descarbonizacion-y-adaptacion-climatica",
+      "title": "CRECIENTE APUESTA POR PROYECTOS DE DESCARBONIZACIÓN Y ADAPTACIÓN CLIMÁTICA",
+      "level": 3,
+      "order": 14
+    }
+  ],
+  "dataPath": "/data/o9.json"
+}

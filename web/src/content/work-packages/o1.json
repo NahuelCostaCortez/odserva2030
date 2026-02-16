@@ -1,0 +1,254 @@
+{
+  "code": "O1",
+  "slug": "o1",
+  "title": "Informe comparativo de avances y necesidades en la implementación de la Agenda 2030 (O1)",
+  "summary": "Como es sabido, la Agenda 2030, aprobada por la Asamblea General de las Naciones Unidas en 2015, planteó un marco global que requiere de la participación de todos los agentes sociales, entre los cuales las instituciones universitarias ocupan un lugar estratégico (Asamblea General de las Naciones Unidas, 2015).…",
+  "updatedAt": "2026-02-16T08:23:24.302Z",
+  "sourcePath": "markdown/O1. Informe comparativo avances y necesidades/O1. Informe comparativo avances y necesidades.md",
+  "counts": {
+    "sections": 34,
+    "tables": 10,
+    "figures": 66
+  },
+  "sectionsIndex": [
+    {
+      "id": "o1-informe-comparativo-de-avances-y-necesidades-en-la-implementacion-de-la-agenda-2030-o1",
+      "slug": "o1-informe-comparativo-de-avances-y-necesidades-en-la-implementacion-de-la-agenda-2030-o1",
+      "title": "Informe comparativo de avances y necesidades en la implementación de la Agenda 2030 (O1)",
+      "level": 1,
+      "order": 0
+    },
+    {
+      "id": "o1-indice",
+      "slug": "o1-indice",
+      "title": "Índice",
+      "level": 1,
+      "order": 1
+    },
+    {
+      "id": "o1-introduccion",
+      "slug": "o1-introduccion",
+      "title": "Introducción",
+      "level": 1,
+      "order": 2
+    },
+    {
+      "id": "o1-avances-y-necesidades-en-la-implementacion-de-la-agenda-2030-en-la-normativa-universitaria",
+      "slug": "o1-avances-y-necesidades-en-la-implementacion-de-la-agenda-2030-en-la-normativa-universitaria",
+      "title": "Avances y necesidades en la implementacion de la agenda 2030 en la normativa universitaria",
+      "level": 1,
+      "order": 3
+    },
+    {
+      "id": "o1-contextualizacion",
+      "slug": "o1-contextualizacion",
+      "title": "CONTEXTUALIZACIÓN",
+      "level": 2,
+      "order": 4
+    },
+    {
+      "id": "o1-diseno-del-estudio",
+      "slug": "o1-diseno-del-estudio",
+      "title": "DISEÑO DEL ESTUDIO",
+      "level": 2,
+      "order": 5
+    },
+    {
+      "id": "o1-resultados",
+      "slug": "o1-resultados",
+      "title": "RESULTADOS",
+      "level": 2,
+      "order": 6
+    },
+    {
+      "id": "o1-nivel-estatal",
+      "slug": "o1-nivel-estatal",
+      "title": "Nivel estatal",
+      "level": 3,
+      "order": 7
+    },
+    {
+      "id": "o1-nivel-autonomico",
+      "slug": "o1-nivel-autonomico",
+      "title": "Nivel autonómico",
+      "level": 3,
+      "order": 8
+    },
+    {
+      "id": "o1-nivel-estatutario",
+      "slug": "o1-nivel-estatutario",
+      "title": "Nivel estatutario",
+      "level": 3,
+      "order": 9
+    },
+    {
+      "id": "o1-discusion",
+      "slug": "o1-discusion",
+      "title": "DISCUSIÓN",
+      "level": 2,
+      "order": 10
+    },
+    {
+      "id": "o1-principales-tendencias-identificadas",
+      "slug": "o1-principales-tendencias-identificadas",
+      "title": "Principales tendencias identificadas",
+      "level": 3,
+      "order": 11
+    },
+    {
+      "id": "o1-analisis-de-las-metas-mas-frecuentes",
+      "slug": "o1-analisis-de-las-metas-mas-frecuentes",
+      "title": "Análisis de las metas más frecuentes",
+      "level": 3,
+      "order": 12
+    },
+    {
+      "id": "o1-diferencias-interuniversitarias",
+      "slug": "o1-diferencias-interuniversitarias",
+      "title": "Diferencias interuniversitarias",
+      "level": 3,
+      "order": 13
+    },
+    {
+      "id": "o1-interpretacion-general",
+      "slug": "o1-interpretacion-general",
+      "title": "Interpretación general",
+      "level": 3,
+      "order": 14
+    },
+    {
+      "id": "o1-avances-y-necesidades-en-la-implementacion-de-la-agenda-2030-en-los-organos-de-gobierno-de-las-universidaes-espanolas",
+      "slug": "o1-avances-y-necesidades-en-la-implementacion-de-la-agenda-2030-en-los-organos-de-gobierno-de-las-universidaes-espanolas",
+      "title": "Avances y necesidades en la implementacion de la Agenda 2030 en los órganos de gobierno de las universidaes españolas",
+      "level": 1,
+      "order": 15
+    },
+    {
+      "id": "o1-contextualizacion",
+      "slug": "o1-contextualizacion",
+      "title": "CONTEXTUALIZACIÓN",
+      "level": 2,
+      "order": 16
+    },
+    {
+      "id": "o1-diseno-del-estudio",
+      "slug": "o1-diseno-del-estudio",
+      "title": "DISEÑO DEL ESTUDIO",
+      "level": 2,
+      "order": 17
+    },
+    {
+      "id": "o1-resultados",
+      "slug": "o1-resultados",
+      "title": "RESULTADOS",
+      "level": 2,
+      "order": 18
+    },
+    {
+      "id": "o1-diversidad-de-genero-en-los-organos-de-gobierno",
+      "slug": "o1-diversidad-de-genero-en-los-organos-de-gobierno",
+      "title": "Diversidad de género en los órganos de gobierno",
+      "level": 3,
+      "order": 19
+    },
+    {
+      "id": "o1-tamano-de-los-organos-de-gobierno",
+      "slug": "o1-tamano-de-los-organos-de-gobierno",
+      "title": "Tamaño de los órganos de gobierno",
+      "level": 3,
+      "order": 20
+    },
+    {
+      "id": "o1-vicerrectorado-direccion-de-area-y-comision-de-sostenibilidad",
+      "slug": "o1-vicerrectorado-direccion-de-area-y-comision-de-sostenibilidad",
+      "title": "Vicerrectorado, dirección de área y comisión de sostenibilidad",
+      "level": 3,
+      "order": 21
+    },
+    {
+      "id": "o1-discusion",
+      "slug": "o1-discusion",
+      "title": "DISCUSIÓN",
+      "level": 2,
+      "order": 22
+    },
+    {
+      "id": "o1-conclusiones",
+      "slug": "o1-conclusiones",
+      "title": "Conclusiones",
+      "level": 1,
+      "order": 23
+    },
+    {
+      "id": "o1-referencias",
+      "slug": "o1-referencias",
+      "title": "Referencias",
+      "level": 1,
+      "order": 24
+    },
+    {
+      "id": "o1-fuentes-normativas",
+      "slug": "o1-fuentes-normativas",
+      "title": "FUENTES NORMATIVAS",
+      "level": 2,
+      "order": 25
+    },
+    {
+      "id": "o1-marco-estatal",
+      "slug": "o1-marco-estatal",
+      "title": "MARCO ESTATAL",
+      "level": 3,
+      "order": 26
+    },
+    {
+      "id": "o1-marco-internacional",
+      "slug": "o1-marco-internacional",
+      "title": "MARCO INTERNACIONAL",
+      "level": 3,
+      "order": 27
+    },
+    {
+      "id": "o1-documentos-estrategicos-y-politicas-publicas",
+      "slug": "o1-documentos-estrategicos-y-politicas-publicas",
+      "title": "DOCUMENTOS ESTRATÉGICOS Y POLÍTICAS PÚBLICAS",
+      "level": 2,
+      "order": 28
+    },
+    {
+      "id": "o1-ambito-estatal",
+      "slug": "o1-ambito-estatal",
+      "title": "ÁMBITO ESTATAL",
+      "level": 3,
+      "order": 29
+    },
+    {
+      "id": "o1-ambito-internacional",
+      "slug": "o1-ambito-internacional",
+      "title": "ÁMBITO INTERNACIONAL",
+      "level": 3,
+      "order": 30
+    },
+    {
+      "id": "o1-informes-y-estudios",
+      "slug": "o1-informes-y-estudios",
+      "title": "INFORMES Y ESTUDIOS",
+      "level": 2,
+      "order": 31
+    },
+    {
+      "id": "o1-fuentes-bibliograficas",
+      "slug": "o1-fuentes-bibliograficas",
+      "title": "FUENTES BIBLIOGRÁFICAS",
+      "level": 2,
+      "order": 32
+    },
+    {
+      "id": "o1-anexo",
+      "slug": "o1-anexo",
+      "title": "Anexo",
+      "level": 1,
+      "order": 33
+    }
+  ],
+  "dataPath": "/data/o1.json"
+}

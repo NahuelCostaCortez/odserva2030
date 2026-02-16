@@ -1,0 +1,137 @@
+---
+import Layout from '../components/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const packages = (await getCollection('work-packages')).sort((a, b) =>
+  a.data.code.localeCompare(b.data.code, 'es', { numeric: true })
+);
+---
+<Layout title="ODServa2030 · Observatorio Agenda 2030">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">ODServa2030</p>
+      <h1>Inteligencia accionable sobre la Agenda 2030 en el sistema universitario español</h1>
+      <p class="lead">
+        Explora los paquetes de trabajo y consulta sus textos, tablas y figuras tal y como fueron
+        publicados en los informes originales.
+      </p>
+    </div>
+  </section>
+
+  <section class="toolbar">
+    <label>
+      <span>Buscar paquetes</span>
+      <input type="search" id="package-search" placeholder="Filtra por código, título o temática..." />
+    </label>
+  </section>
+
+  <section class="package-grid" id="package-grid">
+    {packages.map((pkg) => (
+      <article data-code={pkg.data.code} data-title={pkg.data.title.toLowerCase()}>
+        <p class="package-code">{pkg.data.code}</p>
+        <h2>{pkg.data.title}</h2>
+        {pkg.data.summary && <p class="package-summary">{pkg.data.summary}</p>}
+        <div class="package-meta">
+          <p><strong>Secciones:</strong> {pkg.data.counts.sections}</p>
+          <p><strong>Tablas:</strong> {pkg.data.counts.tables}</p>
+          <p><strong>Figuras:</strong> {pkg.data.counts.figures}</p>
+        </div>
+        <a href={`/paquetes/${pkg.data.slug}/`} aria-label={`Abrir ${pkg.data.title}`}>
+          Ver contenido →
+        </a>
+      </article>
+    ))}
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    background: linear-gradient(135deg, #0f172a, #1d4ed8);
+    color: white;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  h1 {
+    margin-top: 0.5rem;
+    line-height: 1.2;
+    font-size: clamp(1.8rem, 5vw, 2.9rem);
+  }
+  .lead {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .package-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  article {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    box-shadow: 0 12px 20px rgba(15, 23, 42, 0.05);
+  }
+  .package-code {
+    font-weight: 600;
+    color: #1d4ed8;
+    margin: 0;
+  }
+  .package-summary {
+    color: #475569;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .package-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: #475569;
+  }
+  article a {
+    margin-top: auto;
+    font-weight: 600;
+  }
+  .toolbar {
+    margin-bottom: 1.5rem;
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-weight: 600;
+    color: #1f2933;
+  }
+  input[type='search'] {
+    border-radius: 999px;
+    border: 1px solid #cbd5f5;
+    padding: 0.65rem 1rem;
+    font-size: 1rem;
+  }
+</style>
+
+<script type="module">
+  const input = document.querySelector('#package-search');
+  const cards = Array.from(document.querySelectorAll('#package-grid article'));
+  if (input && cards.length) {
+    input.addEventListener('input', () => {
+      const query = input.value.toLowerCase().trim();
+      cards.forEach((card) => {
+        const haystack = `${card.dataset.code} ${card.dataset.title}`.toLowerCase();
+        const matches = !query || haystack.includes(query);
+        card.style.display = matches ? 'flex' : 'none';
+      });
+    });
+  }
+</script>

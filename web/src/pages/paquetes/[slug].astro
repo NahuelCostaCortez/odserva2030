@@ -1,0 +1,151 @@
+---
+import Layout from '../../components/Layout.astro';
+import SectionContent from '../../components/SectionContent.astro';
+import { getCollection } from 'astro:content';
+import viewerScriptUrl from '../../scripts/package-viewer.ts?url';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('work-packages');
+  return entries.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { pkg: entry }
+  }));
+}
+
+const { pkg } = Astro.props;
+const dataPath = pkg.data.dataPath;
+const contentSections = pkg.data.sectionsIndex.filter(
+  (section, index) =>
+    index !== 0 && section.title.toLowerCase() !== 'índice'
+);
+---
+<Layout title={`ODServa2030 · ${pkg.data.title}`}>
+  <a class="back-link" href="/">← Volver al listado</a>
+  <div class="package-shell">
+    <aside class="package-nav">
+      <p class="code-chip">{pkg.data.code}</p>
+      <h1>{pkg.data.title}</h1>
+      <div class="package-stats">
+        <span>{contentSections.length} secciones</span>
+        <span>{pkg.data.counts.tables} tablas</span>
+        <span>{pkg.data.counts.figures} figuras</span>
+      </div>
+      <div class="toc">
+        <p class="toc-title">Índice</p>
+        <nav aria-label="Índice del paquete">
+          <ul>
+            {contentSections.map((section) => (
+              <li class={`level-${Math.min(section.level, 3)}`}>
+                <a href={`#${section.slug}`}>{section.title}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </aside>
+    <div class="package-content">
+      <div id="package-sections" data-package-path={dataPath}>
+        {contentSections.map((section) => (
+          <SectionContent section={section} />
+        ))}
+      </div>
+    </div>
+  </div>
+  <script type="module" src={viewerScriptUrl} defer></script>
+</Layout>
+
+<style>
+  .back-link {
+    color: #475569;
+    font-size: 0.9rem;
+  }
+  .package-shell {
+    display: grid;
+    grid-template-columns: minmax(220px, 280px) 1fr;
+    gap: 2rem;
+  }
+  .package-nav {
+    position: sticky;
+    top: 1.5rem;
+    align-self: start;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    background: #fff;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+  .package-content {
+    min-width: 0;
+  }
+  .code-chip {
+    align-self: flex-start;
+    padding: 0.2rem 0.75rem;
+    border-radius: 999px;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  .package-nav h1 {
+    font-size: 1.3rem;
+    margin: 0;
+  }
+  .package-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+    color: #475569;
+  }
+  .toc {
+    margin-top: 1rem;
+  }
+  .toc-title {
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+  }
+  .toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc li a {
+    display: block;
+    padding: 0.35rem 0.5rem;
+    border-radius: 0.5rem;
+    color: #0f172a;
+    text-decoration: none;
+    font-size: 0.92rem;
+  }
+  .toc li.level-2 a {
+    padding-left: 1.25rem;
+    font-size: 0.9rem;
+    color: #1d4ed8;
+  }
+  .toc li.level-3 a {
+    padding-left: 2rem;
+    font-size: 0.85rem;
+    color: #5b21b6;
+  }
+  .toc li a:hover {
+    background: rgba(59, 130, 246, 0.12);
+  }
+  @media (max-width: 960px) {
+    .package-shell {
+      grid-template-columns: 1fr;
+    }
+    .package-nav {
+      position: static;
+    }
+  }
+</style>

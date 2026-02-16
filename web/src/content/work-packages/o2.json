@@ -1,0 +1,79 @@
+{
+  "code": "O2",
+  "slug": "o2",
+  "title": "Guía de propuestas, recomendaciones y buenas prácticas para la implementación de la Agenda 2030 en la normativa y órganos de gobierno de las universidades españolas (O2)",
+  "summary": "Observatorio de implementación de la Agenda 2030 en el Sistema Universitario Español",
+  "updatedAt": "2026-02-16T08:23:24.334Z",
+  "sourcePath": "markdown/O2. Guía de propuestas normativa y órganos de gobierno/O2. Guía de propuestas normativa y órganos de gobierno.md",
+  "counts": {
+    "sections": 9,
+    "tables": 4,
+    "figures": 1
+  },
+  "sectionsIndex": [
+    {
+      "id": "o2-guia-de-propuestas-recomendaciones-y-buenas-practicas-para-la-implementacion-de-la-agenda-2030-en-la-normativa-y-organos-de-gobierno-de-las-universidades-espanolas-o2",
+      "slug": "o2-guia-de-propuestas-recomendaciones-y-buenas-practicas-para-la-implementacion-de-la-agenda-2030-en-la-normativa-y-organos-de-gobierno-de-las-universidades-espanolas-o2",
+      "title": "Guía de propuestas, recomendaciones y buenas prácticas para la implementación de la Agenda 2030 en la normativa y órganos de gobierno de las universidades españolas (O2)",
+      "level": 1,
+      "order": 0
+    },
+    {
+      "id": "o2-odserva2030",
+      "slug": "o2-odserva2030",
+      "title": "ODServa2030",
+      "level": 3,
+      "order": 1
+    },
+    {
+      "id": "o2-indice",
+      "slug": "o2-indice",
+      "title": "Índice",
+      "level": 1,
+      "order": 2
+    },
+    {
+      "id": "o2-introduccion",
+      "slug": "o2-introduccion",
+      "title": "INTRODUCCIÓN",
+      "level": 1,
+      "order": 3
+    },
+    {
+      "id": "o2-propuestas-y-recomendaciones-para-la-implementacion-de-la-agenda-2030",
+      "slug": "o2-propuestas-y-recomendaciones-para-la-implementacion-de-la-agenda-2030",
+      "title": "Propuestas y recomendaciones para la implementación de la Agenda 2030",
+      "level": 1,
+      "order": 4
+    },
+    {
+      "id": "o2-buenas-practicas-identificadas-en-la-implementacion-de-la-agenda-2030",
+      "slug": "o2-buenas-practicas-identificadas-en-la-implementacion-de-la-agenda-2030",
+      "title": "Buenas prácticas identificadas en la implementación de la Agenda 2030",
+      "level": 1,
+      "order": 5
+    },
+    {
+      "id": "o2-conclusiones",
+      "slug": "o2-conclusiones",
+      "title": "Conclusiones",
+      "level": 2,
+      "order": 6
+    },
+    {
+      "id": "o2-referencias",
+      "slug": "o2-referencias",
+      "title": "Referencias",
+      "level": 2,
+      "order": 7
+    },
+    {
+      "id": "o2-anexo",
+      "slug": "o2-anexo",
+      "title": "Anexo",
+      "level": 2,
+      "order": 8
+    }
+  ],
+  "dataPath": "/data/o2.json"
+}
