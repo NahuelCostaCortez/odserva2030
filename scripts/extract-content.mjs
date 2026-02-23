@@ -158,8 +158,9 @@ function parseMarkdown(raw, dirContext) {
       const { headers, rows } = tableToRows(block);
       if (headers.length || rows.length) {
         tableCount += 1;
+        const tableId = `${dirContext.slug}-table-${tableCount}`;
         tables.push({
-          id: `${dirContext.slug}-table-${tableCount}`,
+          id: tableId,
           sectionId: currentSection.id,
           label: detectLabel(lines, tableStartIndex - 1) ?? undefined,
           markdown: block.join('\n'),
@@ -167,6 +168,8 @@ function parseMarkdown(raw, dirContext) {
           rows,
           page: null
         });
+        // Insert placeholder in content
+        currentSection.content += (currentSection.content ? '\n\n' : '') + `{{TABLE:${tableId}}}`;
       }
       continue;
     }
@@ -175,17 +178,20 @@ function parseMarkdown(raw, dirContext) {
       const figure = extractFigures(line, dirContext);
       if (figure) {
         figureCount += 1;
+        const figureId = `${dirContext.slug}-figure-${figureCount}`;
         figures.push({
-          id: `${dirContext.slug}-figure-${figureCount}`,
+          id: figureId,
           sectionId: currentSection.id,
           page: figure.page,
           label: figure.label,
           absolutePath: figure.absolutePath,
           filename: figure.filename
         });
+        // Insert placeholder in content
+        currentSection.content += (currentSection.content ? '\n\n' : '') + `{{FIGURE:${figureId}}}`;
         continue;
       }
-      continue;
+      // If not a figure we track, add the line as normal content
     }
 
     if (line.trim().length === 0 && currentSection.content.endsWith('\n\n')) {

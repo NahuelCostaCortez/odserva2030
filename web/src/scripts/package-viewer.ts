@@ -29,96 +29,113 @@ type PackageData = {
 
 marked.setOptions({ breaks: true });
 
-function groupBySection<T extends { sectionId: string }>(items: T[]): Map<string, T[]> {
-  const map = new Map<string, T[]>();
-  for (const item of items) {
-    if (!map.has(item.sectionId)) {
-      map.set(item.sectionId, []);
-    }
-    map.get(item.sectionId)?.push(item);
+function createTableHTML(table: Table): string {
+  const block = document.createElement('div');
+  block.className = 'table-block';
+  
+  if (table.label) {
+    const label = document.createElement('p');
+    label.className = 'table-label';
+    label.textContent = table.label;
+    block.appendChild(label);
   }
-  return map;
-}
-
-function renderTables(container: Element, tables: Table[]) {
-  container.innerHTML = '';
-  tables.forEach((table) => {
-    const block = document.createElement('div');
-    block.className = 'table-block';
-    if (table.label) {
-      const label = document.createElement('p');
-      label.className = 'table-label';
-      label.textContent = table.label;
-      block.appendChild(label);
-    }
-    const wrapper = document.createElement('div');
-    wrapper.className = 'table-wrapper';
-    const tableEl = document.createElement('table');
-    if (table.headers.length) {
-      const thead = document.createElement('thead');
-      const tr = document.createElement('tr');
-      table.headers.forEach((header) => {
-        const th = document.createElement('th');
-        th.innerHTML = header.replace(/\n/g, '<br/>');
-        tr.appendChild(th);
-      });
-      thead.appendChild(tr);
-      tableEl.appendChild(thead);
-    }
-    const tbody = document.createElement('tbody');
-    table.rows.forEach((row) => {
-      const tr = document.createElement('tr');
-      row.forEach((cell) => {
-        const td = document.createElement('td');
-        td.innerHTML = cell.replace(/\n/g, '<br/>');
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
+  
+  const wrapper = document.createElement('div');
+  wrapper.className = 'table-wrapper';
+  
+  const tableEl = document.createElement('table');
+  
+  if (table.headers.length) {
+    const thead = document.createElement('thead');
+    const tr = document.createElement('tr');
+    table.headers.forEach((header) => {
+      const th = document.createElement('th');
+      th.innerHTML = header.replace(/\n/g, '<br/>');
+      tr.appendChild(th);
     });
-    tableEl.appendChild(tbody);
-    wrapper.appendChild(tableEl);
-    block.appendChild(wrapper);
-    container.appendChild(block);
+    thead.appendChild(tr);
+    tableEl.appendChild(thead);
+  }
+  
+  const tbody = document.createElement('tbody');
+  table.rows.forEach((row) => {
+    const tr = document.createElement('tr');
+    row.forEach((cell) => {
+      const td = document.createElement('td');
+      td.innerHTML = cell.replace(/\n/g, '<br/>');
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
   });
+  tableEl.appendChild(tbody);
+  
+  wrapper.appendChild(tableEl);
+  block.appendChild(wrapper);
+  
+  return block.outerHTML;
 }
 
-function renderFigures(container: Element, figures: Figure[]) {
-  container.innerHTML = '';
-  if (!figures.length) return;
-  const grid = document.createElement('div');
-  grid.className = 'figure-grid';
-  figures.forEach((figure) => {
-    const fig = document.createElement('figure');
-    const img = document.createElement('img');
-    img.src = figure.src;
-    img.alt = figure.caption || 'Figura del informe';
-    img.loading = 'lazy';
-    fig.appendChild(img);
-    if (figure.caption || figure.page !== null) {
-      const caption = document.createElement('figcaption');
-      if (figure.caption) {
-        const span = document.createElement('span');
-        span.textContent = figure.caption;
-        caption.appendChild(span);
-      }
-      if (figure.page !== null) {
-        const pageChip = document.createElement('span');
-        pageChip.className = 'page-chip';
-        pageChip.textContent = `Pág. ${figure.page}`;
-        caption.appendChild(pageChip);
-      }
-      fig.appendChild(caption);
+function createFigureHTML(figure: Figure): string {
+  const fig = document.createElement('figure');
+  
+  const img = document.createElement('img');
+  img.src = figure.src;
+  img.alt = figure.caption || 'Figura del informe';
+  img.loading = 'lazy';
+  fig.appendChild(img);
+  
+  if (figure.caption || figure.page !== null) {
+    const caption = document.createElement('figcaption');
+    if (figure.caption) {
+      const span = document.createElement('span');
+      span.textContent = figure.caption;
+      caption.appendChild(span);
     }
-    grid.appendChild(fig);
+    if (figure.page !== null) {
+      const pageChip = document.createElement('span');
+      pageChip.className = 'page-chip';
+      pageChip.textContent = `Pág. ${figure.page}`;
+      caption.appendChild(pageChip);
+    }
+    fig.appendChild(caption);
+  }
+  
+  return fig.outerHTML;
+}
+
+function processContentPlaceholders(
+  content: string,
+  tablesById: Map<string, Table>,
+  figuresById: Map<string, Figure>
+): string {
+  // Replace table placeholders
+  let processed = content.replace(/\{\{TABLE:([^}]+)\}\}/g, (match, tableId) => {
+    const table = tablesById.get(tableId);
+    if (table) {
+      return createTableHTML(table);
+    }
+    return '';
   });
-  container.appendChild(grid);
+  
+  // Replace figure placeholders
+  processed = processed.replace(/\{\{FIGURE:([^}]+)\}\}/g, (match, figureId) => {
+    const figure = figuresById.get(figureId);
+    if (figure) {
+      return createFigureHTML(figure);
+    }
+    return '';
+  });
+  
+  return processed;
 }
 
 export default async function initPackageViewer(container: Element | null, dataPath?: string) {
   if (!container || !dataPath) return;
+  
   const loading = document.createElement('p');
   loading.textContent = 'Cargando contenido...';
   container.prepend(loading);
+  
   try {
     const response = await fetch(dataPath);
     if (!response.ok) {
@@ -126,27 +143,40 @@ export default async function initPackageViewer(container: Element | null, dataP
     }
     const data = (await response.json()) as PackageData;
     loading.remove();
-    const tablesBySection = groupBySection(data.tables);
-    const figuresBySection = groupBySection(data.figures);
+    
+    // Create lookup maps
+    const tablesById = new Map<string, Table>();
+    data.tables.forEach((table) => tablesById.set(table.id, table));
+    
+    const figuresById = new Map<string, Figure>();
+    data.figures.forEach((figure) => figuresById.set(figure.id, figure));
+    
+    // Process each section
     const sectionBlocks = container.querySelectorAll<HTMLElement>('[data-section-block]');
     sectionBlocks.forEach((block) => {
       const sectionId = block.dataset.sectionBlock;
       if (!sectionId) return;
+      
       const sectionData = data.sections.find((section) => section.id === sectionId);
       const contentEl = block.querySelector<HTMLElement>('[data-section-content]');
+      
       if (contentEl && sectionData?.content) {
-        contentEl.innerHTML = marked.parse(sectionData.content);
+        // Process placeholders and convert markdown
+        const processedContent = processContentPlaceholders(
+          sectionData.content,
+          tablesById,
+          figuresById
+        );
+        // Convert remaining markdown to HTML
+        contentEl.innerHTML = marked.parse(processedContent) as string;
       }
+      
+      // Clear the separate tables and figures containers since they're now inline
       const tablesEl = block.querySelector<HTMLElement>('[data-section-tables]');
-      if (tablesEl) {
-        const tables = tablesBySection.get(sectionId) ?? [];
-        renderTables(tablesEl, tables);
-      }
+      if (tablesEl) tablesEl.innerHTML = '';
+      
       const figuresEl = block.querySelector<HTMLElement>('[data-section-figures]');
-      if (figuresEl) {
-        const figures = figuresBySection.get(sectionId) ?? [];
-        renderFigures(figuresEl, figures);
-      }
+      if (figuresEl) figuresEl.innerHTML = '';
     });
   } catch (error) {
     console.error(error);

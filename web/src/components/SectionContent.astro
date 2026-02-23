@@ -35,49 +35,6 @@ const { section } = Astro.props;
   .section-figures {
     margin-top: 1.5rem;
   }
-  .table-block {
-    margin-top: 1rem;
-    border-radius: 1rem;
-    border: 1px solid #dbeafe;
-    background: linear-gradient(180deg, #f8fbff, #fff);
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
-    overflow: hidden;
-  }
-  .table-label {
-    font-weight: 600;
-    margin: 0;
-    padding: 1rem 1.25rem 0 1.25rem;
-    color: #0f172a;
-  }
-  .table-wrapper {
-    overflow-x: auto;
-    padding: 1rem 1.25rem 1.25rem 1.25rem;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 400px;
-    font-size: 0.95rem;
-  }
-  th,
-  td {
-    padding: 0.75rem 0.85rem;
-    border-bottom: 1px solid #e2e8f0;
-    text-align: left;
-    vertical-align: top;
-  }
-  thead th {
-    background: #eff6ff;
-    font-weight: 600;
-    color: #0f172a;
-    border-bottom: 2px solid #bfdbfe;
-  }
-  tbody tr:nth-child(odd) {
-    background: rgba(15, 23, 42, 0.02);
-  }
-  tbody tr:hover {
-    background: rgba(59, 130, 246, 0.08);
-  }
   .figure-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -110,5 +67,51 @@ const { section } = Astro.props;
     background: rgba(255, 255, 255, 0.12);
     padding: 0.15rem 0.45rem;
     border-radius: 999px;
+  }
+</style>
+
+<style is:global>
+  .table-block {
+    margin-top: 1rem;
+    border-radius: 1rem;
+    border: 1px solid #dbeafe;
+    background: linear-gradient(180deg, #f8fbff, #fff);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+  }
+  .table-label {
+    font-weight: 600;
+    margin: 0;
+    padding: 1rem 1.25rem 0 1.25rem;
+    color: #0f172a;
+  }
+  .table-wrapper {
+    overflow-x: auto;
+    padding: 1rem 1.25rem 1.25rem 1.25rem;
+  }
+  .table-block table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 400px;
+    font-size: 0.95rem;
+  }
+  .table-block th,
+  .table-block td {
+    padding: 0.75rem 0.85rem;
+    border: 1px solid #cbd5e1;
+    text-align: left;
+    vertical-align: top;
+  }
+  .table-block thead th {
+    background: #eff6ff;
+    font-weight: 600;
+    color: #0f172a;
+    border: 2px solid #94a3b8;
+  }
+  .table-block tbody tr:nth-child(odd) {
+    background: rgba(15, 23, 42, 0.02);
+  }
+  .table-block tbody tr:hover {
+    background: rgba(59, 130, 246, 0.08);
   }
 </style>
