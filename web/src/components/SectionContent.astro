@@ -1,7 +1,8 @@
 ---
 const { section } = Astro.props;
+const levelClass = `level-${section.level}`;
 ---
-<section id={section.slug} class="section-block" data-section-block={section.id}>
+<section id={section.slug} class={`section-block ${levelClass}`} data-section-block={section.id} data-level={section.level}>
   <div class="section-heading">
     <h2>{section.title}</h2>
   </div>
@@ -11,17 +12,73 @@ const { section } = Astro.props;
 </section>
 
 <style>
+  /* Estilo base común */
   .section-block {
+    margin-bottom: 1.5rem;
+    background: #fff;
+  }
+  
+  /* Nivel 1 (h1) - Títulos principales de capítulo: sin tarjeta, solo separador */
+  .section-block.level-1 {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    box-shadow: none;
+    background: transparent;
+  }
+  .section-block.level-1 .section-heading h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0f172a;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 1rem;
+  }
+  .section-block.level-1 .section-content {
+    margin-top: 0;
+  }
+  
+  /* Nivel 2 (h2) - Secciones principales: estilo sutil */
+  .section-block.level-2 {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin-top: 2rem;
+    box-shadow: none;
+    background: transparent;
+  }
+  .section-block.level-2 .section-heading h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #1e40af;
+    margin-bottom: 0.75rem;
+    padding-left: 0.75rem;
+    border-left: 3px solid #3b82f6;
+  }
+  .section-block.level-2 .section-content {
+    margin-top: 0.5rem;
+    padding-left: 0.75rem;
+  }
+  
+  /* Nivel 3 (h3) - Subsecciones: mantener estilo de tarjeta */
+  .section-block.level-3 {
     border: 1px solid #e2e8f0;
     border-radius: 1rem;
     padding: 1.5rem;
-    margin-bottom: 1.5rem;
     background: #fff;
     box-shadow: 0 8px 16px rgba(15, 23, 42, 0.05);
   }
+  .section-block.level-3 .section-heading h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #5b21b6;
+  }
+  
+  /* Estilos generales para el heading */
   .section-heading h2 {
     margin: 0;
-    font-size: 1.2rem;
   }
   .section-content {
     line-height: 1.6;
