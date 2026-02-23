@@ -84,21 +84,7 @@ function createFigureHTML(figure: Figure): string {
   img.loading = 'lazy';
   fig.appendChild(img);
   
-  if (figure.caption || figure.page !== null) {
-    const caption = document.createElement('figcaption');
-    if (figure.caption) {
-      const span = document.createElement('span');
-      span.textContent = figure.caption;
-      caption.appendChild(span);
-    }
-    if (figure.page !== null) {
-      const pageChip = document.createElement('span');
-      pageChip.className = 'page-chip';
-      pageChip.textContent = `Pág. ${figure.page}`;
-      caption.appendChild(pageChip);
-    }
-    fig.appendChild(caption);
-  }
+  // No añadimos caption automático - las imágenes ya tienen su pie en el markdown original
   
   return fig.outerHTML;
 }
