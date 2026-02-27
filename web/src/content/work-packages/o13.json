@@ -1,0 +1,93 @@
+{
+  "code": "O13",
+  "slug": "o13",
+  "title": "Guía para potenciar la implicación y el interés de los** *stakeholders* **del sistema universitario español en la implementación de la Agenda 2030 (O13)",
+  "summary": "{{FIGURE:o13-figure-1}} Observatorio de implementación de la Agenda 2030 en el Sistema Universitario Español ![](_page_0_Picture_3.jpeg) {{FIGURE:o13-figure-2}}",
+  "updatedAt": "2026-02-27T15:43:42.861Z",
+  "sourcePath": "markdown/O13. Guía stakeholders/O13. Guía stakeholders.md",
+  "counts": {
+    "sections": 11,
+    "tables": 2,
+    "figures": 2
+  },
+  "sectionsIndex": [
+    {
+      "id": "o13-guia-para-potenciar-la-implicacion-y-el-interes-de-los-stakeholders-del-sistema-universitario-espanol-en-la-implementacion-de-la-agenda-2030-o13",
+      "slug": "o13-guia-para-potenciar-la-implicacion-y-el-interes-de-los-stakeholders-del-sistema-universitario-espanol-en-la-implementacion-de-la-agenda-2030-o13",
+      "title": "Guía para potenciar la implicación y el interés de los** *stakeholders* **del sistema universitario español en la implementación de la Agenda 2030 (O13)",
+      "level": 1,
+      "order": 0
+    },
+    {
+      "id": "o13-indice",
+      "slug": "o13-indice",
+      "title": "Índice",
+      "level": 1,
+      "order": 1
+    },
+    {
+      "id": "o13-introduccion",
+      "slug": "o13-introduccion",
+      "title": "Introducción",
+      "level": 1,
+      "order": 2
+    },
+    {
+      "id": "o13-metodologia-empleada",
+      "slug": "o13-metodologia-empleada",
+      "title": "Metodología empleada",
+      "level": 1,
+      "order": 3
+    },
+    {
+      "id": "o13-principales-hallazgos-del-analisis-dafo",
+      "slug": "o13-principales-hallazgos-del-analisis-dafo",
+      "title": "Principales hallazgos del análisis DAFO",
+      "level": 1,
+      "order": 4
+    },
+    {
+      "id": "o13-estrategias-derivadas-del-analisis-came",
+      "slug": "o13-estrategias-derivadas-del-analisis-came",
+      "title": "Estrategias derivadas del análisis CAME",
+      "level": 1,
+      "order": 5
+    },
+    {
+      "id": "o13-corregir-debilidades",
+      "slug": "o13-corregir-debilidades",
+      "title": "Corregir (Debilidades):",
+      "level": 3,
+      "order": 6
+    },
+    {
+      "id": "o13-afrontar-amenazas",
+      "slug": "o13-afrontar-amenazas",
+      "title": "Afrontar (Amenazas):",
+      "level": 3,
+      "order": 7
+    },
+    {
+      "id": "o13-mantener-fortalezas",
+      "slug": "o13-mantener-fortalezas",
+      "title": "MANTENER (FORTALEZAS):",
+      "level": 3,
+      "order": 8
+    },
+    {
+      "id": "o13-explotar-oportunidades",
+      "slug": "o13-explotar-oportunidades",
+      "title": "EXPLOTAR (OPORTUNIDADES):",
+      "level": 3,
+      "order": 9
+    },
+    {
+      "id": "o13-conclusiones",
+      "slug": "o13-conclusiones",
+      "title": "Conclusiones",
+      "level": 2,
+      "order": 10
+    }
+  ],
+  "dataPath": "/data/o13.json"
+}

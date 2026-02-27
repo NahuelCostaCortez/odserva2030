@@ -1,0 +1,86 @@
+{
+  "code": "O11",
+  "slug": "o11",
+  "title": "Informe de transparencia informativa",
+  "summary": "{{FIGURE:o11-figure-1}} {{FIGURE:o11-figure-2}}",
+  "updatedAt": "2026-02-27T15:43:42.859Z",
+  "sourcePath": "markdown/O11. Informe de transparencia informativa/O11. Informe de transparencia informativa.md",
+  "counts": {
+    "sections": 10,
+    "tables": 2,
+    "figures": 8
+  },
+  "sectionsIndex": [
+    {
+      "id": "o11-informe-de-transparencia-informativa",
+      "slug": "o11-informe-de-transparencia-informativa",
+      "title": "Informe de transparencia informativa",
+      "level": 1,
+      "order": 0
+    },
+    {
+      "id": "o11-entidad-promotora",
+      "slug": "o11-entidad-promotora",
+      "title": "Entidad promotora",
+      "level": 3,
+      "order": 1
+    },
+    {
+      "id": "o11-direccion-del-proyecto",
+      "slug": "o11-direccion-del-proyecto",
+      "title": "Dirección del proyecto",
+      "level": 3,
+      "order": 2
+    },
+    {
+      "id": "o11-equipo-de-investigacion-y-redaccion",
+      "slug": "o11-equipo-de-investigacion-y-redaccion",
+      "title": "Equipo de investigación y redacción",
+      "level": 3,
+      "order": 3
+    },
+    {
+      "id": "o11-diseno-y-maquetacion",
+      "slug": "o11-diseno-y-maquetacion",
+      "title": "Diseño y maquetación",
+      "level": 3,
+      "order": 4
+    },
+    {
+      "id": "o11-indice",
+      "slug": "o11-indice",
+      "title": "Índice",
+      "level": 1,
+      "order": 5
+    },
+    {
+      "id": "o11-objetivos",
+      "slug": "o11-objetivos",
+      "title": "Objetivos",
+      "level": 2,
+      "order": 6
+    },
+    {
+      "id": "o11-referencias",
+      "slug": "o11-referencias",
+      "title": "Referencias",
+      "level": 2,
+      "order": 7
+    },
+    {
+      "id": "o11-anexos",
+      "slug": "o11-anexos",
+      "title": "Anexos",
+      "level": 2,
+      "order": 8
+    },
+    {
+      "id": "o11-anexo-i",
+      "slug": "o11-anexo-i",
+      "title": "Anexo I",
+      "level": 3,
+      "order": 9
+    }
+  ],
+  "dataPath": "/data/o11.json"
+}
