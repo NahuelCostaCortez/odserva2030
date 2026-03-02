@@ -267,6 +267,26 @@ const levelClass = `level-${section.level}`;
     display: block;
   }
 
+  .interactive-chart-wrapper {
+    width: 100%;
+    min-height: 500px;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .interactive-chart-wrapper canvas {
+    width: 100% !important;
+    height: 460px !important;
+    display: block;
+  }
+
+  .interactive-chart-status {
+    margin: 0 0 0.8rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+
   figcaption {
     padding: 0.8rem 1.2rem;
     font-family: 'DM Sans', sans-serif;

@@ -4,6 +4,7 @@ web/.astro/
 web/dist/
 markdown/
 pdfs/
+csvs/
 web/public/assets/
 web/public/data/
 .DS_Store
