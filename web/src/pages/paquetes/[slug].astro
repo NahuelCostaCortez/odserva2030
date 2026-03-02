@@ -20,132 +20,238 @@ const contentSections = pkg.data.sectionsIndex.filter(
 );
 ---
 <Layout title={`ODServa2030 · ${pkg.data.title}`}>
-  <a class="back-link" href="/">← Volver al listado</a>
-  <div class="package-shell">
-    <aside class="package-nav">
-      <p class="code-chip">{pkg.data.code}</p>
-      <h1>{pkg.data.title}</h1>
-      <div class="package-stats">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-badge">{pkg.data.code} · Informe</div>
+      <div class="sidebar-title">{pkg.data.title}</div>
+      <div class="sidebar-meta">
         <span>{contentSections.length} secciones</span>
         <span>{pkg.data.counts.tables} tablas</span>
         <span>{pkg.data.counts.figures} figuras</span>
       </div>
-      <div class="toc">
-        <p class="toc-title">Índice</p>
-        <nav aria-label="Índice del paquete">
-          <ul>
-            {contentSections.map((section) => (
-              <li class={`level-${Math.min(section.level, 3)}`}>
-                <a href={`#${section.slug}`}>{section.title}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-    </aside>
-    <div class="package-content">
-      <div id="package-sections" data-package-path={dataPath}>
-        {contentSections.map((section) => (
-          <SectionContent section={section} />
-        ))}
-      </div>
     </div>
-  </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Índice</div>
+      {contentSections.map((section) => (
+        <a 
+          href={`#${section.slug}`} 
+          class={`nav-item level-${Math.min(section.level, 3)}`}
+        >
+          {section.title}
+        </a>
+      ))}
+      <div class="nav-divider"></div>
+      <a href="/" class="nav-item back-nav">← Volver al inicio</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <div class="doc-header">
+      <div class="doc-kicker">Normativa Universitaria Española · 2024</div>
+      <h1 class="doc-title">
+        {pkg.data.title}
+      </h1>
+    </div>
+
+    <div id="package-sections" data-package-path={dataPath}>
+      {contentSections.map((section) => (
+        <SectionContent section={section} />
+      ))}
+    </div>
+  </main>
+  
   <script type="module" src={viewerScriptUrl} defer></script>
 </Layout>
 
 <style>
-  .back-link {
-    color: #475569;
-    font-size: 0.9rem;
-  }
-  .package-shell {
-    display: grid;
-    grid-template-columns: minmax(220px, 280px) 1fr;
-    gap: 2rem;
-  }
-  .package-nav {
+  /* SIDEBAR */
+  .sidebar {
+    width: var(--sidebar-w);
+    background: var(--green-deep);
+    color: #e8f5ee;
     position: sticky;
-    top: 1.5rem;
-    align-self: start;
-    border: 1px solid #e2e8f0;
-    border-radius: 1.25rem;
-    padding: 1.5rem;
-    background: #fff;
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    max-height: calc(100vh - 2rem);
+    top: 0;
+    height: 100vh;
     overflow-y: auto;
+    flex-shrink: 0;
+    z-index: 100;
   }
-  .package-content {
-    min-width: 0;
+
+  .sidebar-header {
+    padding: 2rem 1.5rem 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background: linear-gradient(160deg, #0f2820 0%, #1a3a2e 100%);
   }
-  .code-chip {
-    align-self: flex-start;
-    padding: 0.2rem 0.75rem;
-    border-radius: 999px;
-    background: #dbeafe;
-    color: #1d4ed8;
+
+  .sidebar-badge {
+    display: inline-flex;
+    background: var(--gold);
+    color: var(--green-deep);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+    margin-bottom: 0.8rem;
+  }
+
+  .sidebar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
     font-weight: 600;
-    font-size: 0.9rem;
-    margin: 0;
+    line-height: 1.4;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
   }
-  .package-nav h1 {
-    font-size: 1.3rem;
-    margin: 0;
-  }
-  .package-stats {
+
+  .sidebar-meta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    font-size: 0.9rem;
-    color: #475569;
+    gap: 0.2rem;
   }
-  .toc {
-    margin-top: 1rem;
+
+  .sidebar-meta span::before {
+    content: '— ';
+    color: var(--green-light);
+    opacity: 0.5;
   }
-  .toc-title {
-    font-weight: 600;
-    color: #0f172a;
-    margin-bottom: 0.5rem;
+
+  /* SIDEBAR NAV */
+  .sidebar-nav {
+    padding-bottom: 2rem;
   }
-  .toc ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
+
+  .nav-section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    padding: 1.2rem 1.5rem 0.4rem;
   }
-  .toc li a {
+
+  .nav-item {
     display: block;
-    padding: 0.35rem 0.5rem;
-    border-radius: 0.5rem;
-    color: #0f172a;
+    font-family: 'DM Sans', sans-serif;
+    padding: 0.6rem 1.5rem;
+    transition: all 0.15s;
+    border-left: 2px solid transparent;
+    line-height: 1.4;
     text-decoration: none;
-    font-size: 0.92rem;
+    color: inherit;
   }
-  .toc li.level-2 a {
-    padding-left: 1.25rem;
-    font-size: 0.9rem;
-    color: #1d4ed8;
+
+  .nav-item.level-1 {
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
   }
-  .toc li.level-3 a {
-    padding-left: 2rem;
-    font-size: 0.85rem;
-    color: #5b21b6;
+
+  .nav-item.level-2 {
+    padding-left: 2.2rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.65);
   }
-  .toc li a:hover {
-    background: rgba(59, 130, 246, 0.12);
+
+  .nav-item.level-3 {
+    padding-left: 3rem;
+    font-size: 0.73rem;
+    color: rgba(255,255,255,0.45);
   }
-  @media (max-width: 960px) {
-    .package-shell {
-      grid-template-columns: 1fr;
-    }
-    .package-nav {
-      position: static;
+
+  .nav-item:hover {
+    color: #ffffff;
+    background: rgba(255,255,255,0.05);
+    border-left: 2px solid var(--green-light);
+  }
+
+  .nav-item.back-nav {
+    margin-top: 0.5rem;
+    color: var(--green-light);
+    opacity: 0.7;
+    font-size: 0.75rem;
+  }
+
+  .nav-item.back-nav:hover {
+    opacity: 1;
+    background: transparent;
+    border-left-color: transparent;
+    text-decoration: underline;
+  }
+
+  .nav-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+    margin: 0.8rem 1.5rem;
+  }
+
+  /* Custom scrollbar for sidebar */
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.15);
+    border-radius: 2px;
+  }
+
+  /* MAIN CONTENT HEADER */
+  .doc-header {
+    padding-bottom: 2.5rem;
+    margin-bottom: 3.5rem;
+    border-bottom: 2px solid var(--green-deep);
+    position: relative;
+  }
+
+  .doc-header::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .doc-kicker {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-accent);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .doc-kicker::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--green-accent);
+  }
+
+  .doc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--green-deep);
+    max-width: 650px;
+    margin: 0;
+  }
+
+  @media (max-width: 800px) {
+    .sidebar {
+      display: none;
     }
   }
 </style>

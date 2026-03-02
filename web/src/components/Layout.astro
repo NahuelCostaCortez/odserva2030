@@ -10,55 +10,107 @@ const { title = 'ODServa2030', description = 'Observatorio de implementación de
     <meta name="description" content={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&display=swap" rel="stylesheet">
+    <style is:global>
       :root {
-        color-scheme: light;
-        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        background: #f5f5fb;
-        color: #1f2933;
+        /* ── COLORES VERDES ── */
+        --green-deep:         #1a3a2e;
+        --green-mid:          #2d6a4f;
+        --green-accent:       #40916c;
+        --green-light:        #74c69d;
+        --green-pale:         #d8f3dc;
+
+        /* ── COLORES DORADOS ── */
+        --gold:               #c9a84c;
+        --gold-light:         #f0dfa0;
+
+        /* ── FONDOS ── */
+        --cream:              #faf8f3;   /* Fondo principal */
+        --paper:              #f5f1e8;   /* Fondo secundario / bloques */
+
+        /* ── TEXTO ── */
+        --ink:                #1c1c1c;   /* Texto de máximo énfasis */
+        --ink-mid:            #3d3d3d;   /* Texto de cuerpo estándar */
+        --ink-soft:           #6b6b6b;   /* Texto secundario y metadatos */
+
+        /* ── BORDES ── */
+        --border:             #d5cfc0;   /* Separadores y bordes de componentes */
+
+        /* ── LAYOUT ── */
+        --sidebar-w:          270px;
       }
+
       *, *::before, *::after {
         box-sizing: border-box;
       }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
         min-height: 100vh;
-        background: var(--surface, #f5f5fb);
+        background: var(--cream);
+        color: var(--ink-mid);
+        font-family: 'Source Serif 4', serif;
+        font-weight: 300;
+        display: flex;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
+
       a {
-        color: #1d4ed8;
+        color: var(--green-accent);
         text-decoration: none;
+        transition: color 0.2s ease;
       }
+
+      a:hover {
+        color: var(--green-mid);
+      }
+
+      /* Estilo para el contenedor principal que envuelve sidebar y contenido */
+      .app-layout {
+        display: flex;
+        width: 100%;
+        min-height: 100vh;
+      }
+
       main {
-        width: 100%;
-        padding: 2.5rem 4vw 4rem;
+        flex: 1;
+        min-width: 0;
+        max-width: 860px;
+        padding: 3rem 4rem;
+        margin-right: auto;
       }
-      header.site-header {
-        padding: 1.5rem 4vw 0;
-        width: 100%;
+
+      /* Animación de carga */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
-      .site-title {
-        font-weight: 600;
-        font-size: 1.6rem;
-        margin-bottom: 0.25rem;
+
+      .section {
+        animation: fadeUp 0.5s ease forwards;
       }
-      .site-subtitle {
-        color: #4b5563;
-        font-size: 0.95rem;
+
+      /* Focus visible para accesibilidad */
+      :focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 2px;
       }
     </style>
   </head>
   <body>
-    <header class="site-header">
-      <div class="site-title">Observatorio Agenda 2030</div>
-      <div class="site-subtitle">Sistema Universitario Español · ODServa2030</div>
-    </header>
-    <main>
+    <div class="app-layout">
       <slot />
-    </main>
+    </div>
   </body>
 </html>

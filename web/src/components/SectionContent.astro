@@ -2,173 +2,286 @@
 const { section } = Astro.props;
 const levelClass = `level-${section.level}`;
 ---
-<section id={section.slug} class={`section-block ${levelClass}`} data-section-block={section.id} data-level={section.level}>
-  <div class="section-heading">
-    <h2>{section.title}</h2>
-  </div>
+<section id={section.slug} class={`section ${levelClass}`} data-section-block={section.id} data-level={section.level}>
+  {section.level === 2 && (
+    <div class="section-heading">
+      <div class="section-heading-bar"></div>
+      <h2 class="section-title">{section.title}</h2>
+    </div>
+  )}
+
+  {section.level === 3 && (
+    <h3 class="subsection-title">{section.title}</h3>
+  )}
+
+  {section.level === 1 && (
+    <h2 class="section-level-1-title">{section.title}</h2>
+  )}
+
   <div class="section-content" data-section-content></div>
   <div class="section-tables" data-section-tables></div>
   <div class="section-figures" data-section-figures></div>
 </section>
 
 <style>
-  /* Estilo base común */
-  .section-block {
+  .section {
+    margin-bottom: 3.5rem;
+    max-width: 860px;
+  }
+
+  /* H2 - Section Heading (Kicker) */
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
     margin-bottom: 1.5rem;
-    background: #fff;
   }
-  
-  /* Nivel 1 (h1) - Títulos principales de capítulo: sin tarjeta, solo separador */
-  .section-block.level-1 {
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    box-shadow: none;
-    background: transparent;
+
+  .section-heading-bar {
+    width: 4px;
+    height: 1.6rem;
+    background: linear-gradient(to bottom, var(--green-accent), var(--green-light));
+    border-radius: 2px;
+    flex-shrink: 0;
   }
-  .section-block.level-1 .section-heading h2 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #0f172a;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #e2e8f0;
-    margin-bottom: 1rem;
+
+  .section-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green-accent);
+    margin: 0;
   }
-  .section-block.level-1 .section-content {
-    margin-top: 0;
-  }
-  
-  /* Nivel 2 (h2) - Secciones principales: estilo sutil */
-  .section-block.level-2 {
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    margin-top: 2rem;
-    box-shadow: none;
-    background: transparent;
-  }
-  .section-block.level-2 .section-heading h2 {
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: #1e40af;
-    margin-bottom: 0.75rem;
-    padding-left: 0.75rem;
-    border-left: 3px solid #3b82f6;
-  }
-  .section-block.level-2 .section-content {
-    margin-top: 0.5rem;
-    padding-left: 0.75rem;
-  }
-  
-  /* Nivel 3 (h3) - Subsecciones: mantener estilo de tarjeta */
-  .section-block.level-3 {
-    border: 1px solid #e2e8f0;
-    border-radius: 1rem;
-    padding: 1.5rem;
-    background: #fff;
-    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.05);
-  }
-  .section-block.level-3 .section-heading h2 {
+
+  /* H3 - Subsection Title */
+  .subsection-title {
+    font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
     font-weight: 600;
-    color: #5b21b6;
+    color: var(--green-deep);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
   }
-  
-  /* Estilos generales para el heading */
-  .section-heading h2 {
-    margin: 0;
+
+  /* Level 1 fallback title */
+  .section-level-1-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--green-deep);
+    margin-bottom: 2rem;
   }
+
+  /* Content typography */
   .section-content {
-    line-height: 1.6;
-    color: #1f2937;
-    margin-top: 1rem;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--ink-mid);
+    font-weight: 300;
   }
-  .section-content p {
-    margin-bottom: 0.9rem;
+
+  .section-content :global(p) {
+    margin-bottom: 1.2rem;
   }
-  .section-tables,
-  .section-figures {
-    margin-top: 1.5rem;
+
+  .section-content :global(strong) {
+    font-weight: 600;
+    color: var(--ink);
   }
-  .figure-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1rem;
-  }
-  figure {
-    margin: 0;
-    background: #0f172a;
-    border-radius: 0.75rem;
-    padding: 0.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  figure img {
-    width: 100%;
-    border-radius: 0.5rem;
-    background: #fff;
-  }
-  figcaption {
-    color: #f8fafc;
-    font-size: 0.85rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .page-chip {
-    background: rgba(255, 255, 255, 0.12);
-    padding: 0.15rem 0.45rem;
-    border-radius: 999px;
-  }
+
+  /* Animation delays */
+  .section:nth-child(2) { animation-delay: 0.05s; }
+  .section:nth-child(3) { animation-delay: 0.10s; }
+  .section:nth-child(4) { animation-delay: 0.15s; }
+  .section:nth-child(n+5) { animation-delay: 0.20s; }
 </style>
 
 <style is:global>
+  /* PULL QUOTE (standard blockquote) */
+  blockquote {
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    background: var(--paper);
+    border-radius: 0 4px 4px 0;
+  }
+
+  blockquote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--green-deep) !important;
+    margin: 0 !important;
+    line-height: 1.6 !important;
+  }
+
+  /* ODS TAGS */
+  .ods-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1.5rem 0;
+  }
+
+  .ods-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    border: 1px solid;
+    display: inline-block;
+  }
+
+  .ods-tag.t1 { background: #fff3e0; color: #e65100; border-color: #ffcc80; }
+  .ods-tag.t2 { background: #e8f5e green; color: #2e7d32; border-color: #a5d6a7; }
+  .ods-tag.t3 { background: #e3f2fd; color: #1565c0; border-color: #90caf9; }
+  .ods-tag.t4 { background: #fce4ec; color: #ad1457; border-color: #f48fb1; }
+
+  /* NIVEL CARDS */
+  .nivel-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .nivel-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1.1rem 1.3rem;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    border-left: 4px solid var(--green-accent);
+    transition: box-shadow 0.2s;
+  }
+
+  .nivel-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+
+  .nivel-card:nth-child(2) { border-left-color: var(--gold); }
+  .nivel-card:nth-child(3) { border-left-color: var(--green-mid); }
+
+  .nivel-icon {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: var(--green-accent);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    height: fit-content;
+    margin-top: 0.1rem;
+    white-space: nowrap;
+  }
+
+  .nivel-card:nth-child(2) .nivel-icon {
+    background: var(--gold);
+    color: var(--green-deep);
+  }
+
+  .nivel-content h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 0.3rem 0;
+  }
+
+  .nivel-content p {
+    font-size: 0.83rem !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+    color: var(--ink-soft) !important;
+  }
+
+  /* TABLES */
   .table-block {
-    margin-top: 1rem;
-    border-radius: 1rem;
-    border: 1px solid #dbeafe;
-    background: linear-gradient(180deg, #f8fbff, #fff);
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    margin: 2rem 0;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
     overflow: hidden;
   }
+
   .table-label {
-    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    padding: 0.8rem 1.2rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--border);
     margin: 0;
-    padding: 1rem 1.25rem 0 1.25rem;
-    color: #0f172a;
   }
+
   .table-wrapper {
     overflow-x: auto;
-    padding: 1rem 1.25rem 1.25rem 1.25rem;
   }
-  .table-block table {
+
+  table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 400px;
-    font-size: 0.95rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
   }
-  .table-block th,
-  .table-block td {
-    padding: 0.75rem 0.85rem;
-    border: 1px solid #cbd5e1;
+
+  th, td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
     text-align: left;
-    vertical-align: top;
   }
-  .table-block thead th {
-    background: #eff6ff;
-    font-weight: 600;
-    color: #0f172a;
-    border: 2px solid #94a3b8;
+
+  th {
+    background: #fafafa;
+    font-weight: 500;
+    color: var(--ink);
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
   }
-  .table-block tbody tr:nth-child(odd) {
-    background: rgba(15, 23, 42, 0.02);
+
+  tbody tr:last-child td {
+    border-bottom: none;
   }
-  .table-block tbody tr:hover {
-    background: rgba(59, 130, 246, 0.08);
+
+  /* FIGURES */
+  figure {
+    margin: 2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  figure img {
+    width: 100%;
+    display: block;
+  }
+
+  figcaption {
+    padding: 0.8rem 1.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.73rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .page-chip {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--green-accent);
   }
 </style>
