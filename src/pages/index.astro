@@ -1,0 +1,592 @@
+---
+import Layout from '../components/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const packages = (await getCollection('work-packages')).sort((a, b) =>
+  a.data.code.localeCompare(b.data.code, 'es', { numeric: true })
+);
+
+const packageCopy: Record<string, {
+  label: string;
+  description: string;
+  image: string;
+  accent: string;
+}> = {
+  o1: {
+    label: 'Dashboard interactivo',
+    description: 'Comparativa visual sobre ODS, normativa universitaria, estatutos, metas especificas y gobernanza institucional.',
+    image: '/assets/o1/_page_28_Figure_2.jpeg',
+    accent: '#40916c'
+  },
+  o10: {
+    label: 'Memorias de sostenibilidad',
+    description: 'Lectura organizada sobre transparencia informativa en memorias de sostenibilidad de universidades espanolas.',
+    image: '/assets/o10/_page_0_Figure_0.jpeg',
+    accent: '#c77d3c'
+  },
+  o11: {
+    label: 'Webs universitarias',
+    description: 'Analisis de transparencia informativa en portales web universitarios y materiales institucionales publicados.',
+    image: '/assets/o11/_page_0_Figure_0.jpeg',
+    accent: '#2f7ea8'
+  }
+};
+
+const totalTables = packages.reduce((sum, pkg) => sum + pkg.data.counts.tables, 0);
+const totalFigures = packages.reduce((sum, pkg) => sum + pkg.data.counts.figures, 0);
+const featured = packages.find((pkg) => pkg.data.slug === 'o1') ?? packages[0];
+---
+<Layout title="ODServa2030 · Observatorio Agenda 2030">
+  <main class="home-main">
+    <section class="home-hero" aria-labelledby="home-title">
+      <div class="home-kicker">Normativa Universitaria Espanola · 2024</div>
+      <div class="home-hero-grid">
+        <div>
+          <h1 id="home-title">Inteligencia accionable sobre la Agenda 2030 en el sistema universitario español</h1>
+          <p class="home-lead">
+            Explora los informes transformados en una experiencia de consulta clara: dashboard interactivo, textos estructurados, tablas y figuras.
+          </p>
+        </div>
+        <dl class="home-stats" aria-label="Resumen del observatorio">
+          <div>
+            <dt>{packages.length}</dt>
+            <dd>Informes</dd>
+          </div>
+          <div>
+            <dt>{totalTables}</dt>
+            <dd>Tablas</dd>
+          </div>
+          <div>
+            <dt>{totalFigures}</dt>
+            <dd>Figuras</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    {featured && (
+      <section class="featured-package" aria-labelledby="featured-title">
+        <div class="featured-copy">
+          <p class="section-label">Entrada recomendada</p>
+          <h2 id="featured-title">{featured.data.title}</h2>
+          <p>
+            {packageCopy[featured.data.slug]?.description}
+          </p>
+          <div class="featured-actions">
+            <a class="primary-link" href={`/paquetes/${featured.data.slug}/`}>
+              Abrir dashboard
+            </a>
+            <a class="secondary-link" href="#catalogo">
+              Ver catálogo
+            </a>
+          </div>
+        </div>
+        <a class="featured-visual" href={`/paquetes/${featured.data.slug}/`} aria-label={`Abrir ${featured.data.title}`}>
+          <img src={packageCopy[featured.data.slug]?.image} alt="" loading="eager" />
+        </a>
+      </section>
+    )}
+
+    <section class="catalogue" id="catalogo" aria-labelledby="catalogue-title">
+      <div class="catalogue-header">
+        <div>
+          <p class="section-label">Catálogo</p>
+          <h2 id="catalogue-title">Paquetes disponibles</h2>
+        </div>
+        <label class="search-field">
+          <span>Buscar</span>
+          <input type="search" id="package-search" placeholder="Código, título o temática" />
+        </label>
+      </div>
+
+      <div class="package-grid" id="package-grid">
+        {packages.map((pkg) => {
+          const copy = packageCopy[pkg.data.slug] ?? {
+            label: 'Informe',
+            description: 'Consulta el contenido estructurado del paquete de trabajo.',
+            image: '/assets/o1/_page_22_Figure_2.jpeg',
+            accent: '#40916c'
+          };
+
+          return (
+            <article
+              id={pkg.data.slug}
+              class="package-card"
+              data-code={pkg.data.code}
+              data-title={pkg.data.title.toLowerCase()}
+              data-description={copy.description.toLowerCase()}
+              style={`--card-accent:${copy.accent}`}
+            >
+              <a class="package-image" href={`/paquetes/${pkg.data.slug}/`} aria-label={`Abrir ${pkg.data.title}`}>
+                <img src={copy.image} alt="" loading="lazy" />
+              </a>
+              <div class="package-body">
+                <div class="package-topline">
+                  <span class="package-code">{pkg.data.code}</span>
+                  <span>{copy.label}</span>
+                </div>
+                <h3>{pkg.data.title}</h3>
+                <p>{copy.description}</p>
+                <dl class="package-meta">
+                  <div>
+                    <dt>Secciones</dt>
+                    <dd>{pkg.data.counts.sections}</dd>
+                  </div>
+                  <div>
+                    <dt>Tablas</dt>
+                    <dd>{pkg.data.counts.tables}</dd>
+                  </div>
+                  <div>
+                    <dt>Figuras</dt>
+                    <dd>{pkg.data.counts.figures}</dd>
+                  </div>
+                </dl>
+                <a class="package-link" href={`/paquetes/${pkg.data.slug}/`} aria-label={`Abrir ${pkg.data.title}`}>
+                  Ver contenido →
+                </a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <p class="empty-state" id="empty-state" hidden>No hay paquetes que coincidan con la búsqueda.</p>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  :global(body) {
+    overflow-x: hidden;
+  }
+
+  :global(main.home-main) {
+    max-width: none;
+  }
+
+  .home-main {
+    flex: 1;
+    min-width: 0;
+    padding: 3rem 4rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background:
+      linear-gradient(90deg, rgba(255,255,255,0.46), rgba(255,255,255,0)),
+      var(--cream);
+  }
+
+  .home-hero {
+    width: 100%;
+    max-width: 1180px;
+    padding-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--green-deep);
+    position: relative;
+  }
+
+  .home-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .home-kicker,
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--green-accent);
+    margin: 0 0 0.8rem;
+  }
+
+  .home-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+    gap: 2rem;
+    align-items: end;
+    max-width: 1180px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--green-deep);
+    margin: 0;
+  }
+
+  h1 {
+    font-size: clamp(2.15rem, 5vw, 4.6rem);
+    font-weight: 700;
+    line-height: 1.05;
+    max-width: 940px;
+  }
+
+  .home-lead {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 1.25rem 0 0;
+  }
+
+  .home-stats,
+  .package-meta {
+    margin: 0;
+  }
+
+  .home-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    background: #ffffff;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .home-stats div {
+    padding: 1rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .home-stats div:last-child {
+    border-right: 0;
+  }
+
+  .home-stats dt {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    line-height: 1;
+    color: var(--green-deep);
+    font-weight: 700;
+  }
+
+  .home-stats dd {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    margin: 0.45rem 0 0;
+  }
+
+  .featured-package {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.82fr) minmax(360px, 1fr);
+    gap: 0;
+    max-width: 1180px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+  }
+
+  .featured-copy {
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 360px;
+  }
+
+  .featured-copy h2,
+  .catalogue-header h2 {
+    font-size: clamp(1.65rem, 3vw, 2.4rem);
+    line-height: 1.15;
+  }
+
+  .featured-copy p:not(.section-label) {
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin: 1rem 0 0;
+    max-width: 560px;
+  }
+
+  .featured-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .primary-link {
+    color: #ffffff;
+    background: var(--green-deep);
+    border: 1px solid var(--green-deep);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+  }
+
+  .primary-link:hover {
+    color: #ffffff;
+    background: var(--green-mid);
+    border-color: var(--green-mid);
+  }
+
+  .secondary-link {
+    color: var(--green-deep);
+  }
+
+  .featured-visual {
+    display: block;
+    min-height: 360px;
+    background: var(--paper);
+    border-left: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .featured-visual img {
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.02);
+  }
+
+  .catalogue {
+    max-width: 1180px;
+  }
+
+  .catalogue-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .search-field {
+    width: min(100%, 330px);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    color: var(--green-deep);
+    font-size: 0.75rem;
+  }
+
+  .search-field span {
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  input[type='search'] {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    padding: 0.75rem 0.9rem;
+    background: #ffffff;
+    color: var(--ink-mid);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+  }
+
+  input[type='search']:focus {
+    border-color: var(--green-accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(64, 145, 108, 0.16);
+  }
+
+  .package-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .package-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    box-shadow: 0 12px 26px rgba(26, 58, 46, 0.06);
+  }
+
+  .package-image {
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--paper);
+    border-bottom: 3px solid var(--card-accent);
+  }
+
+  .package-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.28s ease;
+  }
+
+  .package-card:hover .package-image img {
+    transform: scale(1.035);
+  }
+
+  .package-body {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .package-topline {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.9rem;
+  }
+
+  .package-code {
+    color: var(--card-accent);
+    font-weight: 600;
+  }
+
+  .package-card h3 {
+    font-size: 1.18rem;
+    line-height: 1.25;
+  }
+
+  .package-card p {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    line-height: 1.58;
+    margin: 0.85rem 0 1rem;
+  }
+
+  .package-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-top: auto;
+  }
+
+  .package-meta div {
+    padding: 0.75rem 0.5rem 0.75rem 0;
+  }
+
+  .package-meta dt {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.2rem;
+  }
+
+  .package-meta dd {
+    margin: 0;
+    color: var(--green-deep);
+    font-weight: 600;
+  }
+
+  .package-link {
+    margin-top: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--green-accent);
+  }
+
+  .empty-state {
+    margin: 1rem 0 0;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  @media (max-width: 1100px) {
+    .home-main {
+      padding: 2.5rem;
+    }
+
+    .home-hero-grid,
+    .featured-package {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-visual {
+      border-left: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .package-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 800px) {
+    .home-main {
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    .catalogue-header {
+      display: block;
+    }
+
+    .search-field {
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .home-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .home-stats div {
+      border-right: 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .home-stats div:last-child {
+      border-bottom: 0;
+    }
+
+    .featured-copy,
+    .featured-visual,
+    .featured-visual img {
+      min-height: 0;
+    }
+
+    .package-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script type="module">
+  const input = document.querySelector('#package-search');
+  const cards = Array.from(document.querySelectorAll('#package-grid article'));
+  const emptyState = document.querySelector('#empty-state');
+
+  if (input && cards.length) {
+    input.addEventListener('input', () => {
+      const query = input.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const haystack = `${card.dataset.code} ${card.dataset.title} ${card.dataset.description}`.toLowerCase();
+        const matches = !query || haystack.includes(query);
+        card.hidden = !matches;
+        if (matches) visibleCount += 1;
+      });
+
+      if (emptyState) emptyState.hidden = visibleCount > 0;
+    });
+  }
+</script>
