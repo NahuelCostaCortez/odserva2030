@@ -2,8 +2,6 @@
 import Layout from '../../components/Layout.astro';
 import SectionContent from '../../components/SectionContent.astro';
 import { getCollection } from 'astro:content';
-import viewerScriptUrl from '../../scripts/package-viewer.ts?url';
-import dashboardScriptUrl from '../../scripts/o1-dashboard.ts?url';
 
 export async function getStaticPaths() {
   const entries = await getCollection('work-packages');
@@ -237,11 +235,12 @@ const o1NavSections = [
     )}
   </main>
 
-  {isO1 ? (
-    <script type="module" src={dashboardScriptUrl} defer></script>
-  ) : (
-    <script type="module" src={viewerScriptUrl} defer></script>
-  )}
+  <script>
+    import '../../scripts/o1-dashboard.ts';
+  </script>
+  <script>
+    import '../../scripts/package-viewer.ts';
+  </script>
 </Layout>
 
 <style>
