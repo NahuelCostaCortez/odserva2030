@@ -31,7 +31,7 @@ type ChartConfig = {
 
 // ─── Constants ─────────────────────────────────────────────
 const odsColorMap: Record<string, string> = {
-  'AGENDA 2030': '#00BCD4',
+  'AGENDA 2030': '#6EC1E4',
   ODS1: '#e03e4c', ODS2: '#d3a029', ODS3: '#4c9f38', ODS4: '#c43c44',
   ODS5: '#ff6b4a', ODS6: '#2a9fd6', ODS7: '#fcc30b', ODS8: '#b04364',
   ODS9: '#ff8c4a', ODS10: '#e3337e', ODS11: '#f6a53a', ODS12: '#bf8b2e',
@@ -40,7 +40,7 @@ const odsColorMap: Record<string, string> = {
 };
 
 const lineSeriesStyles: Record<string, { color: string; dash: number[] }> = {
-  'Universidad Publica': { color: '#70C1E0', dash: [6, 3] },
+  'Universidad Publica': { color: '#6EC1E4', dash: [6, 3] },
   'Universidad Privada': { color: '#4472C4', dash: [6, 3] },
   'Total': { color: '#2E4A7A', dash: [] }
 };
@@ -80,6 +80,9 @@ Chart.register(
   BarController, LineController, CategoryScale, LinearScale,
   BarElement, LineElement, PointElement, Title, Tooltip, Legend, zoomPlugin
 );
+
+Chart.defaults.font.family = "'Roboto Slab', serif";
+Chart.defaults.color = '#000000';
 
 // ─── CSV cache ─────────────────────────────────────────────
 const csvCache = new Map<string, CsvRow[]>();
@@ -501,7 +504,7 @@ async function initExtremosCharts() {
       chartType: 'bar', csvPath: 'csvs/o1/_page_56_Figure_2.csv',
       title: 'Universidades con mayor mencion de ODS', xKey: 'Universidad',
       yKey: 'Numero de palabras', yMax: 140, xAxisLabel: 'Universidad',
-      yAxisLabel: 'Numero de palabras', barColor: '#5B9BD5', datasetLabel: 'Numero de palabras', showLegend: false
+      yAxisLabel: 'Numero de palabras', barColor: '#6EC1E4', datasetLabel: 'Numero de palabras', showLegend: false
     }),
     buildChart('chart-extremos-menos', {
       chartType: 'bar', csvPath: 'csvs/o1/_page_57_Figure_2.csv',
@@ -537,13 +540,13 @@ async function initGeneroComplementarios() {
       chartType: 'bar', csvPath: 'csvs/o1/_page_74_Figure_4.csv',
       title: 'Tipo de universidad y presencia femenina en rectorado',
       xKey: 'Tipo', yKey: 'Porcentaje de universidades', yMax: 75,
-      groupKey: 'Tipo', colorMap: { 'Publica': '#7DCEDF', 'Privada': '#5B8FD6', 'Total': '#3A3F9E' }
+      groupKey: 'Tipo', colorMap: { 'Publica': '#6EC1E4', 'Privada': '#5B8FD6', 'Total': '#3A3F9E' }
     }),
     buildChart('chart-gen-hist', {
       chartType: 'bar', csvPath: 'csvs/o1/_page_77_Figure_4.csv',
       title: 'Distribucion % mujeres en Consejos Rectorales 2025',
       xKey: 'Rango de mujeres en Consejo Rectoral', yKey: 'Porcentaje de universidades',
-      yMax: 50, barColor: '#5B9BD5', datasetLabel: 'Porcentaje de universidades', showLegend: false
+      yMax: 50, barColor: '#6EC1E4', datasetLabel: 'Porcentaje de universidades', showLegend: false
     })
   ]);
 }
@@ -552,9 +555,9 @@ async function initGeneroComplementarios() {
 const ccaaInited = new Set<string>();
 async function initCcaaTabs() {
   const configs: Record<string, { id: string; cfg: ChartConfig }> = {
-    'ccaa-rectora': { id: 'chart-ccaa-1', cfg: { chartType: 'bar', csvPath: 'csvs/o1/_page_75_Figure_2.csv', title: 'CCAA que nunca han tenido mujer rectora', xKey: 'CCAA', yKey: 'Porcentaje de universidades', yMax: 100, indexAxis: 'y', barColor: '#5B9BD5' } },
-    'ccaa-cr': { id: 'chart-ccaa-2', cfg: { chartType: 'bar', csvPath: 'csvs/o1/_page_78_Figure_4.csv', title: 'Representacion femenina en CR por CCAA', xKey: 'CCAA', yKey: 'Porcentaje de mujeres en Consejo Rectoral', yMax: 75, indexAxis: 'y', barColor: '#5B9BD5' } },
-    'ccaa-tamano': { id: 'chart-ccaa-3', cfg: { chartType: 'bar', csvPath: 'csvs/o1/_page_81_Figure_2.csv', title: 'Miembros CR por 1000 alumnos, por CCAA', xKey: 'CCAA', yKey: 'Miembros en Consejo Rectoral por cada 1000 alumnos', yMax: 1.2, indexAxis: 'y', barColor: '#5B9BD5' } }
+    'ccaa-rectora': { id: 'chart-ccaa-1', cfg: { chartType: 'bar', csvPath: 'csvs/o1/_page_75_Figure_2.csv', title: 'CCAA que nunca han tenido mujer rectora', xKey: 'CCAA', yKey: 'Porcentaje de universidades', yMax: 100, indexAxis: 'y', barColor: '#6EC1E4' } },
+    'ccaa-cr': { id: 'chart-ccaa-2', cfg: { chartType: 'bar', csvPath: 'csvs/o1/_page_78_Figure_4.csv', title: 'Representacion femenina en CR por CCAA', xKey: 'CCAA', yKey: 'Porcentaje de mujeres en Consejo Rectoral', yMax: 75, indexAxis: 'y', barColor: '#6EC1E4' } },
+    'ccaa-tamano': { id: 'chart-ccaa-3', cfg: { chartType: 'bar', csvPath: 'csvs/o1/_page_81_Figure_2.csv', title: 'Miembros CR por 1000 alumnos, por CCAA', xKey: 'CCAA', yKey: 'Miembros en Consejo Rectoral por cada 1000 alumnos', yMax: 1.2, indexAxis: 'y', barColor: '#6EC1E4' } }
   };
 
   async function activateTab(key: string) {

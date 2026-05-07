@@ -68,7 +68,7 @@ type InteractiveFigureConfig = {
 type CsvRow = Record<string, string | number | null | undefined>;
 
 const odsColorMap: Record<string, string> = {
-  'AGENDA 2030': '#00BCD4',
+  'AGENDA 2030': '#6EC1E4',
   ODS1: '#e03e4c',
   ODS2: '#d3a029',
   ODS3: '#4c9f38',
@@ -90,7 +90,7 @@ const odsColorMap: Record<string, string> = {
 
 // Estilos fijos por nombre de serie para gráficos de líneas
 const lineSeriesStyles: Record<string, { color: string; dash: number[] }> = {
-  'Universidad Publica': { color: '#70C1E0', dash: [6, 3] },
+  'Universidad Publica': { color: '#6EC1E4', dash: [6, 3] },
   'Universidad Privada': { color: '#4472C4', dash: [6, 3] },
   'Total':               { color: '#2E4A7A', dash: [] }
 };
@@ -593,7 +593,7 @@ const interactiveFigureConfigs: Record<string, InteractiveFigureConfig> = {
     yMax: 140,
     xAxisLabel: 'Universidad',
     yAxisLabel: 'Número de palabras',
-    barColor: '#5B9BD5',
+    barColor: '#6EC1E4',
     datasetLabel: 'Número de palabras',
     showLegend: true
   },
@@ -606,7 +606,7 @@ const interactiveFigureConfigs: Record<string, InteractiveFigureConfig> = {
     yMax: 10,
     xAxisLabel: 'Universidad',
     yAxisLabel: 'Número de palabras',
-    barColor: '#5B9BD5',
+    barColor: '#6EC1E4',
     datasetLabel: 'Número de palabras',
     showLegend: true
   },
@@ -732,7 +732,7 @@ const interactiveFigureConfigs: Record<string, InteractiveFigureConfig> = {
     xAxisLabel: '',
     yAxisLabel: 'Porcentaje de universidades',
     groupKey: 'Tipo',
-    colorMap: { 'Publica': '#7DCEDF', 'Privada': '#5B8FD6', 'Total': '#3A3F9E' }
+    colorMap: { 'Publica': '#6EC1E4', 'Privada': '#5B8FD6', 'Total': '#3A3F9E' }
   },
   // === Histograma / distribución ===
   '_page_77_Figure_4': {
@@ -744,7 +744,7 @@ const interactiveFigureConfigs: Record<string, InteractiveFigureConfig> = {
     yMax: 50,
     xAxisLabel: 'Porcentaje de mujeres en el Consejo Rectoral',
     yAxisLabel: 'Porcentaje de universidades',
-    barColor: '#5B9BD5',
+    barColor: '#6EC1E4',
     datasetLabel: 'Porcentaje de universidades',
     showLegend: true
   },
@@ -759,7 +759,7 @@ const interactiveFigureConfigs: Record<string, InteractiveFigureConfig> = {
     indexAxis: 'y',
     xAxisLabel: 'Porcentaje de universidades',
     yAxisLabel: 'CCAA',
-    barColor: '#5B9BD5'
+    barColor: '#6EC1E4'
   },
   '_page_78_Figure_4': {
     chartType: 'bar',
@@ -771,7 +771,7 @@ const interactiveFigureConfigs: Record<string, InteractiveFigureConfig> = {
     indexAxis: 'y',
     xAxisLabel: 'Porcentaje de mujeres en Consejo Rectoral',
     yAxisLabel: 'CCAA',
-    barColor: '#5B9BD5'
+    barColor: '#6EC1E4'
   },
   '_page_81_Figure_2': {
     chartType: 'bar',
@@ -783,7 +783,7 @@ const interactiveFigureConfigs: Record<string, InteractiveFigureConfig> = {
     indexAxis: 'y',
     xAxisLabel: 'Miembros / 1000 alumnos',
     yAxisLabel: 'CCAA',
-    barColor: '#5B9BD5'
+    barColor: '#6EC1E4'
   },
   // === Barras horizontales por ODS (multicolor) ===
   '_page_84_Figure_2': {
@@ -815,6 +815,9 @@ Chart.register(
   Legend,
   zoomPlugin
 );
+
+Chart.defaults.font.family = "'Roboto Slab', serif";
+Chart.defaults.color = '#000000';
 
 function getCommonChartOptions(config: InteractiveFigureConfig) {
   return {

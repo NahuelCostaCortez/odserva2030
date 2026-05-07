@@ -40,13 +40,13 @@ const levelClass = `level-${section.level}`;
   .section-heading-bar {
     width: 4px;
     height: 1.6rem;
-    background: linear-gradient(to bottom, var(--green-accent), var(--green-light));
+    background: var(--brand);
     border-radius: 2px;
     flex-shrink: 0;
   }
 
   .section-title {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-base);
     font-size: 0.72rem;
     font-weight: 500;
     letter-spacing: 0.18em;
@@ -57,10 +57,10 @@ const levelClass = `level-${section.level}`;
 
   /* H3 - Subsection Title */
   .subsection-title {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-base);
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--green-deep);
+    color: var(--ink);
     margin: 2.5rem 0 1rem;
     padding-bottom: 0.4rem;
     border-bottom: 1px solid var(--border);
@@ -68,20 +68,20 @@ const levelClass = `level-${section.level}`;
 
   /* Level 1 fallback title */
   .section-level-1-title {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-base);
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--green-deep);
+    color: var(--brand);
     margin-bottom: 2rem;
   }
 
   /* Content typography */
   .section-content {
-    font-family: 'Source Serif 4', serif;
+    font-family: var(--font-base);
     font-size: 0.95rem;
     line-height: 1.85;
-    color: var(--ink-mid);
-    font-weight: 300;
+    color: var(--ink);
+    font-weight: 400;
   }
 
   .section-content :global(p) {
@@ -89,8 +89,8 @@ const levelClass = `level-${section.level}`;
   }
 
   .section-content :global(strong) {
-    font-weight: 600;
-    color: var(--ink);
+    font-weight: 700;
+    color: var(--brand);
   }
 
   /* Animation delays */
@@ -111,10 +111,10 @@ const levelClass = `level-${section.level}`;
   }
 
   blockquote p {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-base);
     font-style: italic;
     font-size: 1.05rem;
-    color: var(--green-deep) !important;
+    color: var(--ink) !important;
     margin: 0 !important;
     line-height: 1.6 !important;
   }
@@ -128,7 +128,7 @@ const levelClass = `level-${section.level}`;
   }
 
   .ods-tag {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-base);
     font-size: 0.65rem;
     font-weight: 500;
     padding: 0.2rem 0.6rem;
@@ -169,7 +169,7 @@ const levelClass = `level-${section.level}`;
   .nivel-card:nth-child(3) { border-left-color: var(--green-mid); }
 
   .nivel-icon {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-base);
     font-size: 0.62rem;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -184,15 +184,15 @@ const levelClass = `level-${section.level}`;
   }
 
   .nivel-card:nth-child(2) .nivel-icon {
-    background: var(--gold);
-    color: var(--green-deep);
+    background: var(--brand);
+    color: #ffffff;
   }
 
   .nivel-content h4 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-base);
     font-size: 0.85rem;
     font-weight: 500;
-    color: var(--ink);
+    color: var(--brand);
     margin: 0 0 0.3rem 0;
   }
 
@@ -200,7 +200,7 @@ const levelClass = `level-${section.level}`;
     font-size: 0.83rem !important;
     line-height: 1.6 !important;
     margin: 0 !important;
-    color: var(--ink-soft) !important;
+    color: var(--ink) !important;
   }
 
   /* TABLES */
@@ -213,10 +213,10 @@ const levelClass = `level-${section.level}`;
   }
 
   .table-label {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-base);
     font-size: 0.75rem;
     font-weight: 500;
-    color: var(--ink-soft);
+    color: var(--ink);
     padding: 0.8rem 1.2rem;
     background: var(--paper);
     border-bottom: 1px solid var(--border);
@@ -230,7 +230,7 @@ const levelClass = `level-${section.level}`;
   table {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-base);
     font-size: 0.8rem;
   }
 
@@ -243,7 +243,7 @@ const levelClass = `level-${section.level}`;
   th {
     background: #fafafa;
     font-weight: 500;
-    color: var(--ink);
+    color: var(--brand);
     text-transform: uppercase;
     font-size: 0.65rem;
     letter-spacing: 0.05em;
@@ -282,16 +282,16 @@ const levelClass = `level-${section.level}`;
 
   .interactive-chart-status {
     margin: 0 0 0.8rem;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-base);
     font-size: 0.8rem;
-    color: var(--ink-soft);
+    color: var(--ink);
   }
 
   figcaption {
     padding: 0.8rem 1.2rem;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-base);
     font-size: 0.73rem;
-    color: var(--ink-soft);
+    color: var(--ink);
     font-style: italic;
     border-top: 1px solid var(--border);
     display: flex;
