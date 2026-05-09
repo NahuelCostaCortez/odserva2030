@@ -1,0 +1,640 @@
+---
+const { pkg } = Astro.props;
+---
+
+<div id="o2-dashboard">
+
+  <!-- Hero -->
+  <section id="o2-hero" class="dash-section dash-hero">
+    <div class="doc-kicker">Guía de propuestas · Agenda 2030 en universidades españolas · 2025</div>
+    <h1 class="doc-title">{pkg.data.title}</h1>
+    <p class="dash-context">Propuestas, recomendaciones y buenas prácticas para la integración de la Agenda 2030 en la normativa y los órganos de gobierno del sistema universitario español.</p>
+  </section>
+
+  <!-- Introducción -->
+  <section id="o2-intro" class="dash-section">
+    <h2 class="dash-title">Introducción</h2>
+    <div class="o2-text-block">
+      <p>El análisis del sistema universitario español respecto a la integración de la Agenda 2030 en la normativa y las estructuras de gobierno permite identificar buenas prácticas y formular propuestas orientadas a fomentar el avance hacia una gestión y gobernanza alineadas con los Objetivos de Desarrollo Sostenible (ODS).</p>
+      <p>En lo que respecta a la normativa universitaria, el presente documento se configura como una guía práctica dirigida a las autoridades estatales, los legisladores autonómicos y las instituciones académicas, con el propósito de facilitar la incorporación efectiva de los ODS en los marcos normativos universitarios, estructurada en tres niveles basados en el análisis de la LOSU, las leyes autonómicas y los estatutos de 93 universidades españolas.</p>
+      <p>En cuanto a las estructuras de gobierno, se plantean propuestas en torno a la diversidad de género, la composición de los órganos de gobierno y la institucionalización de la sostenibilidad. Se formulan orientaciones estratégicas que contribuyen a fortalecer el compromiso de las universidades con la igualdad de género, la promoción de instituciones sólidas y el abordaje transversal de la Agenda 2030.</p>
+    </div>
+  </section>
+
+  <!-- Propuestas: Normativa -->
+  <section id="o2-normativa" class="dash-section">
+    <h2 class="dash-title">Propuestas: Normativa universitaria</h2>
+    <p class="dash-context">La LOSU ha incorporado 12 de los 17 ODS, con predominio del ODS 4 (31,4 % de las menciones). A nivel autonómico, la mayoría de leyes universitarias son anteriores a la Agenda 2030. A nivel estatutario, existe gran variabilidad entre universidades.</p>
+
+    <div class="o2-level-tabs" id="o2-level-tabs">
+      <button class="o2-level-tab active" data-level="estatal">Nivel estatal</button>
+      <button class="o2-level-tab" data-level="autonomico">Nivel autonómico</button>
+      <button class="o2-level-tab" data-level="estatutario">Nivel estatutario</button>
+    </div>
+
+    <div class="o2-level-panels">
+      <div class="o2-level-panel active" data-panel="estatal">
+        <ul class="o2-proposal-list">
+          <li>Establecer un marco normativo mínimo común que incorpore los ODS mediante una modificación de la LOSU, garantizando coherencia normativa y orientación estratégica unificada en todo el territorio nacional.</li>
+          <li>Reforzar explícitamente los ODS ambientales y de alianzas (ODS 12–15 y ODS 17) en futuras reformas de la LOSU.</li>
+          <li>Elaborar una guía técnica oficial con cláusulas modelo de alineación con los ODS, destinada a servir de referencia para la actualización normativa de universidades y comunidades autónomas.</li>
+        </ul>
+      </div>
+      <div class="o2-level-panel" data-panel="autonomico">
+        <ul class="o2-proposal-list">
+          <li>Actualizar las leyes universitarias aprobadas antes de 2015 para incorporar referencias explícitas a la Agenda 2030.</li>
+          <li>Establecer un marco normativo común en materia de ODS dentro de la legislación universitaria autonómica, que complete y refuerce el marco establecido por el Estado.</li>
+          <li>Integrar informes de impacto relativos a los ODS en los procesos legislativos vinculados al ámbito universitario, garantizando su coherencia con la implementación territorial de la Agenda 2030.</li>
+        </ul>
+      </div>
+      <div class="o2-level-panel" data-panel="estatutario">
+        <ul class="o2-proposal-list">
+          <li>Garantizar una cobertura equilibrada de los ODS en los estatutos, incluyendo no solo los vinculados a la misión social y formativa, sino también los relativos a sostenibilidad ambiental y gobernanza democrática.</li>
+          <li>Sustituir redacciones genéricas por cláusulas con carácter vinculante y, en los casos en que aún no se hayan incorporado, integrarlas expresamente en los estatutos universitarios.</li>
+          <li>Establecer mecanismos de revisión y seguimiento periódicos, utilizando herramientas estandarizadas como el SDG Mapper, que garanticen el cumplimiento efectivo de los ODS.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ODS Clause Explorer -->
+    <h3 class="dash-subtitle">Explorador de cláusulas modelo</h3>
+    <p class="dash-context">Selecciona un ODS para ver la cláusula modelo sugerida para su incorporación en estatutos y leyes universitarias.</p>
+    <div class="o2-ods-grid" id="o2-ods-grid"></div>
+    <div class="o2-clause-panel" id="o2-clause-panel"></div>
+  </section>
+
+  <!-- Propuestas: Órganos de gobierno -->
+  <section id="o2-gobierno" class="dash-section">
+    <h2 class="dash-title">Propuestas: Órganos de gobierno</h2>
+    <p class="dash-context">Recomendaciones estructuradas en tres dimensiones para la implementación efectiva de la Agenda 2030 en las estructuras de gobierno universitarias.</p>
+
+    <div class="o2-gov-grid">
+      <div class="o2-gov-card">
+        <div class="o2-gov-card-header" style="background:#ff3a21">
+          <span class="o2-gov-ods-badge">ODS 5</span>
+          <span class="o2-gov-dim">Igualdad de género</span>
+        </div>
+        <ul class="o2-proposal-list">
+          <li>Promover alternancia entre hombres y mujeres en los principales cargos de responsabilidad: rectorado, gerencia y vicerrectorados estratégicos.</li>
+          <li>Garantizar una composición equilibrada (40 %–60 %) entre hombres y mujeres en los órganos de gobierno universitario.</li>
+        </ul>
+      </div>
+
+      <div class="o2-gov-card">
+        <div class="o2-gov-card-header" style="background:#00689d">
+          <span class="o2-gov-ods-badge">ODS 16</span>
+          <span class="o2-gov-dim">Instituciones sólidas</span>
+        </div>
+        <ul class="o2-proposal-list">
+          <li>Dimensionar los órganos de gobierno de forma proporcional al tamaño y complejidad de la universidad, asegurando representación adecuada sin comprometer la eficiencia.</li>
+          <li>Garantizar una representación plural y equilibrada de áreas de conocimiento en los órganos de gobierno, a través de procedimientos formales y replicables como el Proceso Analítico Jerárquico (AHP).</li>
+        </ul>
+      </div>
+
+      <div class="o2-gov-card">
+        <div class="o2-gov-card-header" style="background:#3f7e44">
+          <span class="o2-gov-ods-badge">Agenda 2030</span>
+          <span class="o2-gov-dim">Sostenibilidad institucional</span>
+        </div>
+        <ul class="o2-proposal-list">
+          <li>Crear vicerrectorados y comisiones de sostenibilidad con recursos económicos y humanos específicos para coordinar, supervisar y evaluar las acciones de la Agenda 2030.</li>
+          <li>Abordar la Agenda 2030 desde una perspectiva integral: no solo dimensión ambiental, sino también social, económica, de gobernanza y de cooperación internacional.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buenas prácticas -->
+  <section id="o2-practicas" class="dash-section">
+    <h2 class="dash-title">Buenas prácticas identificadas</h2>
+
+    <h3 class="dash-subtitle">Top 10: Universidades con mayor integración normativa de los ODS</h3>
+    <p class="dash-context">Universidades españolas con mayor número de menciones a los ODS en sus estatutos universitarios. Pulsa una barra para ver el detalle. Los valores aproximados aparecen en azul más claro.</p>
+    <div class="chart-box chart-tall"><canvas id="chart-o2-top10"></canvas></div>
+    <div class="o2-uni-detail" id="o2-uni-detail"></div>
+
+    <h3 class="dash-subtitle">Buenas prácticas en gobernanza (2015–2025)</h3>
+    <div class="o2-kpi-grid">
+      <div class="o2-kpi">
+        <div class="o2-kpi-val">33</div>
+        <div class="o2-kpi-lbl">universidades con alternancia<br>hombre/mujer en el rectorado</div>
+      </div>
+      <div class="o2-kpi">
+        <div class="o2-kpi-val">30</div>
+        <div class="o2-kpi-lbl">universidades con alternancia<br>hombre/mujer en la gerencia</div>
+      </div>
+      <div class="o2-kpi">
+        <div class="o2-kpi-val">24</div>
+        <div class="o2-kpi-lbl">universidades con paridad<br>(40–60 %) en el consejo rectoral</div>
+      </div>
+      <div class="o2-kpi">
+        <div class="o2-kpi-val">17</div>
+        <div class="o2-kpi-lbl">universidades con vicerrectorado<br>y Agenda 2030 transversal</div>
+      </div>
+      <div class="o2-kpi">
+        <div class="o2-kpi-val">22</div>
+        <div class="o2-kpi-lbl">universidades con comisión<br>de sostenibilidad</div>
+      </div>
+    </div>
+
+    <h3 class="dash-subtitle">Universidades de referencia</h3>
+    <div class="o2-ref-grid">
+      <div class="o2-ref-card">
+        <div class="o2-ref-label" style="color:#ff3a21">ODS 5 · Igualdad de género</div>
+        <ul class="o2-uni-list">
+          <li>Universidad de Granada</li>
+          <li>Universidad de La Laguna</li>
+          <li>Universidad de Las Palmas de Gran Canaria</li>
+        </ul>
+        <p class="o2-ref-note">Alternancia sostenida en rectorado y gerencia + paridad en consejo rectoral desde 2015.</p>
+      </div>
+      <div class="o2-ref-card">
+        <div class="o2-ref-label" style="color:#00689d">ODS 16 · Tamaño del consejo rectoral</div>
+        <ul class="o2-uni-list">
+          <li>U. Abat Oliba CEU</li>
+          <li>U. de Extremadura</li>
+          <li>U. de Lleida</li>
+          <li>U. Pablo Olavide</li>
+          <li>U. Politécnica de Cataluña</li>
+          <li>U. Politécnica de Valencia</li>
+          <li>U. Pontificia Comillas</li>
+        </ul>
+        <p class="o2-ref-note">Han ajustado el tamaño del consejo rectoral ante variaciones significativas en el número de estudiantes.</p>
+      </div>
+      <div class="o2-ref-card">
+        <div class="o2-ref-label" style="color:#3f7e44">Agenda 2030 · Sostenibilidad institucional</div>
+        <ul class="o2-uni-list">
+          <li>Universidad de Barcelona</li>
+          <li>Universidad de Cádiz</li>
+          <li>U. Politécnica de Cartagena</li>
+          <li>Universidad Rey Juan Carlos</li>
+          <li>Universidad Loyola Andalucía</li>
+          <li>U. Internacional de Cataluña</li>
+        </ul>
+        <p class="o2-ref-note">Disponen de vicerrectorado de sostenibilidad con enfoque transversal en la Agenda 2030 y comisión de sostenibilidad activa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conclusiones -->
+  <section id="o2-conclusiones" class="dash-section">
+    <h2 class="dash-title">Conclusiones</h2>
+    <div class="o2-text-block">
+      <p>El sistema universitario español avanza, aunque de manera desigual, hacia una mayor alineación con los principios de la Agenda 2030 y los ODS. Si bien se han identificado buenas prácticas, estas permanecen concentradas en un número limitado de universidades, lo que revela la necesidad de profundizar en la transformación estructural de la normativa y la gobernanza universitaria.</p>
+      <p>Esta guía se concibe como una herramienta de apoyo tanto para las instituciones académicas como para las autoridades gubernamentales y legislativas, al proporcionar criterios y modelos normativos susceptibles de ser incorporados en futuras reformas estatutarias o disposiciones regulatorias, favoreciendo así una gobernanza universitaria más integrada, transparente y orientada al desarrollo sostenible.</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  import '../../scripts/o2-dashboard.ts';
+</script>
+
+<style is:global>
+  /* ── Shared dashboard base (replicate from O1 for O2 page) ── */
+  #o2-dashboard { max-width: 1100px; }
+
+  #o2-dashboard .dash-section {
+    margin-bottom: 3.5rem;
+    scroll-margin-top: 2rem;
+  }
+
+  #o2-dashboard .dash-hero {
+    padding-bottom: 2.5rem;
+    margin-bottom: 3rem;
+    border-bottom: 2px solid var(--green-deep);
+    position: relative;
+  }
+
+  #o2-dashboard .dash-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  #o2-dashboard .dash-title {
+    font-family: var(--font-base);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--brand);
+    margin: 0 0 0.6rem 0;
+  }
+
+  #o2-dashboard .dash-subtitle {
+    font-family: var(--font-base);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  #o2-dashboard .dash-context {
+    font-family: var(--font-base);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin: 0 0 1.5rem 0;
+    max-width: 720px;
+  }
+
+  #o2-dashboard .chart-box {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem;
+    min-height: 450px;
+    position: relative;
+  }
+
+  #o2-dashboard .chart-box canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+  }
+
+  #o2-dashboard .chart-tall { min-height: 380px; }
+
+  /* ── Text blocks ── */
+  .o2-text-block p {
+    font-family: var(--font-base);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--ink);
+    margin: 0 0 1rem 0;
+    max-width: 760px;
+  }
+
+  /* ── Level tabs ── */
+  .o2-level-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .o2-level-tab {
+    font-family: var(--font-base);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.5rem 1.2rem;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    background: var(--paper);
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .o2-level-tab:hover { border-color: var(--brand); color: var(--brand); }
+
+  .o2-level-tab.active {
+    background: var(--brand);
+    color: #fff;
+    border-color: var(--brand);
+  }
+
+  .o2-level-panels { margin-bottom: 2.5rem; }
+
+  .o2-level-panel { display: none; }
+  .o2-level-panel.active { display: block; }
+
+  .o2-proposal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .o2-proposal-list li {
+    font-family: var(--font-base);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--ink);
+    padding: 0.8rem 1rem 0.8rem 1.2rem;
+    border-left: 3px solid var(--brand);
+    background: var(--paper);
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* ── ODS Explorer ── */
+  .o2-ods-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 700px) {
+    .o2-ods-grid { grid-template-columns: repeat(6, 1fr); }
+  }
+
+  .o2-ods-btn {
+    height: 2.6rem;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    background: var(--ods-color);
+    color: #fff;
+    font-family: var(--font-base);
+    font-size: 0.65rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    opacity: 0.72;
+  }
+
+  .o2-ods-btn:hover { opacity: 1; transform: scale(1.08); }
+
+  .o2-ods-btn.active {
+    opacity: 1;
+    border-color: var(--ink);
+    transform: scale(1.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  .o2-clause-panel {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.4rem;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.25s, max-height 0.3s;
+    margin-bottom: 1rem;
+  }
+
+  .o2-clause-panel.visible {
+    opacity: 1;
+    max-height: 300px;
+  }
+
+  .o2-clause-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .o2-clause-badge {
+    color: #fff;
+    font-family: var(--font-base);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .o2-clause-name {
+    font-family: var(--font-base);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--brand);
+  }
+
+  .o2-clause-targets {
+    font-family: var(--font-base);
+    font-size: 0.78rem;
+    color: var(--ink);
+    opacity: 0.7;
+    margin-left: auto;
+  }
+
+  .o2-clause-text {
+    font-family: var(--font-base);
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--ink);
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* ── Gov proposals grid ── */
+  .o2-gov-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .o2-gov-grid { grid-template-columns: 1fr; }
+  }
+
+  .o2-gov-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .o2-gov-card-header {
+    padding: 0.9rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .o2-gov-ods-badge {
+    color: #fff;
+    font-family: var(--font-base);
+    font-size: 0.7rem;
+    font-weight: 700;
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .o2-gov-dim {
+    color: #fff;
+    font-family: var(--font-base);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .o2-gov-card .o2-proposal-list {
+    padding: 1rem;
+    gap: 0.6rem;
+  }
+
+  .o2-gov-card .o2-proposal-list li {
+    font-size: 0.875rem;
+    border-left-color: var(--border);
+    background: var(--cream);
+  }
+
+  /* ── KPI grid ── */
+  .o2-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .o2-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .o2-kpi {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem 1rem;
+    text-align: center;
+  }
+
+  .o2-kpi-val {
+    font-family: var(--font-base);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--brand);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .o2-kpi-lbl {
+    font-family: var(--font-base);
+    font-size: 0.72rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* ── Reference cards ── */
+  .o2-ref-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .o2-ref-grid { grid-template-columns: 1fr; }
+  }
+
+  .o2-ref-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem;
+  }
+
+  .o2-ref-label {
+    font-family: var(--font-base);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 0.6rem;
+  }
+
+  .o2-ref-card p {
+    font-family: var(--font-base);
+    font-size: 0.85rem;
+    color: var(--ink);
+    line-height: 1.6;
+    margin: 0 0 0.5rem 0;
+    font-weight: 500;
+  }
+
+  .o2-ref-note {
+    font-size: 0.78rem !important;
+    color: var(--ink) !important;
+    opacity: 0.7;
+    font-weight: 400 !important;
+    font-style: italic;
+  }
+
+  .o2-ref-card .o2-uni-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .o2-ref-card .o2-uni-list li {
+    font-family: var(--font-base);
+    font-size: 0.78rem;
+    color: var(--ink);
+    font-weight: 500;
+    padding: 0.15rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .o2-ref-card .o2-uni-list li:last-child { border-bottom: none; }
+
+  /* ── University detail panel ── */
+  .o2-uni-detail {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-top: 1rem;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.25s, max-height 0.3s;
+  }
+
+  .o2-uni-detail.visible {
+    opacity: 1;
+    max-height: 200px;
+  }
+
+  .o2-uni-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .o2-uni-name {
+    font-family: var(--font-base);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--brand);
+  }
+
+  .o2-uni-count {
+    font-family: var(--font-base);
+    font-size: 0.8rem;
+    color: var(--ink);
+    opacity: 0.7;
+  }
+
+  .o2-uni-aprox {
+    font-style: italic;
+    margin-left: 0.3rem;
+  }
+
+  .o2-uni-desc {
+    font-family: var(--font-base);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin: 0 0 0.6rem 0;
+  }
+
+  .o2-uni-ods {
+    font-family: var(--font-base);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--brand);
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+</style>
