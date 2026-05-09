@@ -3,6 +3,7 @@ import Layout from '../../components/Layout.astro';
 import SectionContent from '../../components/SectionContent.astro';
 import O1Dashboard from '../../components/dashboards/O1Dashboard.astro';
 import O2Dashboard from '../../components/dashboards/O2Dashboard.astro';
+import O4Dashboard from '../../components/dashboards/O4Dashboard.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -23,6 +24,16 @@ const contentSections = pkg.data.sectionsIndex.filter(
 );
 
 const dashboardNavs: Record<string, { slug: string; title: string; level: number }[]> = {
+  o4: [
+    { slug: 'o4-hero',        title: 'Introducción',        level: 1 },
+    { slug: 'o4-marco',       title: 'Marco teórico',       level: 1 },
+    { slug: 'o4-crisis',      title: 'Crisis global',       level: 1 },
+    { slug: 'o4-agenda',      title: 'Agenda 2030',         level: 1 },
+    { slug: 'o4-propuesta',   title: 'Propuesta formativa', level: 1 },
+    { slug: 'o4-evaluacion',  title: 'Evaluación',          level: 1 },
+    { slug: 'o4-programa',    title: 'Programa 9 ECTS',     level: 1 },
+    { slug: 'o4-implantacion',title: 'Implantación',        level: 1 },
+  ],
   o2: [
     { slug: 'o2-hero',        title: 'Introducción',           level: 1 },
     { slug: 'o2-normativa',   title: 'Propuestas: Normativa',  level: 1 },
@@ -92,6 +103,8 @@ const navSections = isDashboard ? dashboardNavs[slug] : null;
       <O1Dashboard pkg={pkg} />
     ) : slug === 'o2' ? (
       <O2Dashboard pkg={pkg} />
+    ) : slug === 'o4' ? (
+      <O4Dashboard pkg={pkg} />
     ) : (
       <>
         <div class="doc-header">

@@ -1,0 +1,1821 @@
+---
+interface Props {
+  pkg: any;
+}
+const { pkg } = Astro.props;
+---
+
+<div id="o4-dashboard">
+
+  <!-- ─── HERO ─────────────────────────────────────────────────────── -->
+  <section id="o4-hero" class="o4-section o4-hero">
+    <div class="o4-hero-kicker">Propuesta formativa · Agenda 2030 · Diciembre 2025</div>
+    <h1 class="o4-hero-title">Propuesta formativa universitaria<br>en Agenda 2030</h1>
+    <p class="o4-hero-subtitle">
+      Una asignatura transversal para toda la comunidad universitaria —alumnado, PDI y PTGAS—
+      orientada a desarrollar competencias de sostenibilidad, pensamiento crítico y acción transformadora
+      alineadas con los 17 ODS.
+    </p>
+    <div class="o4-ambitos-grid">
+      <div class="o4-ambito-card o4-ambito-general">
+        <div class="o4-ambito-pct">40–50 %</div>
+        <div class="o4-ambito-label">General</div>
+        <div class="o4-ambito-desc">Fundamentos teóricos, crisis global, Agenda 2030 y ODS</div>
+      </div>
+      <div class="o4-ambito-card o4-ambito-territorial">
+        <div class="o4-ambito-pct">25–30 %</div>
+        <div class="o4-ambito-label">Territorial y sociocultural</div>
+        <div class="o4-ambito-desc">Análisis local, conexión con el territorio y acción glocal</div>
+      </div>
+      <div class="o4-ambito-card o4-ambito-disciplinar">
+        <div class="o4-ambito-pct">25–30 %</div>
+        <div class="o4-ambito-label">Disciplinar y profesional</div>
+        <div class="o4-ambito-desc">Adaptación por disciplina y colectivo (Alumnado, PDI, PTGAS)</div>
+      </div>
+    </div>
+    <div class="o4-hero-meta">
+      <span>9 ECTS</span>
+      <span>17 ODS</span>
+      <span>3 ámbitos formativos</span>
+      <span>GreenComp</span>
+      <span>Agency in the Anthropocene</span>
+    </div>
+  </section>
+
+  <!-- ─── MARCO TEÓRICO ─────────────────────────────────────────────── -->
+  <section id="o4-marco" class="o4-section">
+    <div class="o4-section-header">
+      <span class="o4-section-label">01</span>
+      <h2 class="o4-section-title">Marco conceptual</h2>
+      <p class="o4-section-intro">
+        La sostenibilidad integra cuatro dimensiones interdependientes que la Agenda 2030 articula en un marco
+        político, ético y educativo de alcance universal. Entenderlas requiere superar la lógica sectorial
+        del conocimiento y avanzar hacia una visión transdisciplinar.
+      </p>
+    </div>
+
+    <h3 class="o4-subsection-title">Dimensiones de la sostenibilidad</h3>
+    <div class="o4-dim-grid">
+      <button class="o4-dim-btn active" data-dim="ambiental" style="--dim-color:#27ae60">
+        <span class="o4-dim-icon">🌿</span>
+        <span class="o4-dim-name">Ambiental</span>
+      </button>
+      <button class="o4-dim-btn" data-dim="social" style="--dim-color:#e74c3c">
+        <span class="o4-dim-icon">👥</span>
+        <span class="o4-dim-name">Social</span>
+      </button>
+      <button class="o4-dim-btn" data-dim="economica" style="--dim-color:#f39c12">
+        <span class="o4-dim-icon">⚖️</span>
+        <span class="o4-dim-name">Económica</span>
+      </button>
+      <button class="o4-dim-btn" data-dim="cultural" style="--dim-color:#9b59b6">
+        <span class="o4-dim-icon">🧭</span>
+        <span class="o4-dim-name">Cultural y ética</span>
+      </button>
+    </div>
+    <div id="o4-dim-panel" class="o4-dim-panel"></div>
+
+    <h3 class="o4-subsection-title">Marco GreenComp — Competencias europeas de sostenibilidad</h3>
+    <div class="o4-greencomp-grid">
+      <div class="o4-gc-card">
+        <div class="o4-gc-num">Área 1</div>
+        <div class="o4-gc-title">Incorporar valores de sostenibilidad</div>
+        <div class="o4-gc-desc">Reflexión ética y cultural sobre el bienestar y las relaciones con el planeta</div>
+      </div>
+      <div class="o4-gc-card">
+        <div class="o4-gc-num">Área 2</div>
+        <div class="o4-gc-title">Abordar la complejidad</div>
+        <div class="o4-gc-desc">Comprensión de las relaciones dinámicas entre sistemas sociales y naturales</div>
+      </div>
+      <div class="o4-gc-card">
+        <div class="o4-gc-num">Área 3</div>
+        <div class="o4-gc-title">Imaginar futuros sostenibles</div>
+        <div class="o4-gc-desc">Anticipación, creatividad y pensamiento prospectivo orientado al cambio</div>
+      </div>
+      <div class="o4-gc-card">
+        <div class="o4-gc-num">Área 4</div>
+        <div class="o4-gc-title">Actuar por la sostenibilidad</div>
+        <div class="o4-gc-desc">Responsabilidad compartida y compromiso cívico con la acción transformadora</div>
+      </div>
+    </div>
+
+    <h3 class="o4-subsection-title">Principios didácticos de la educación para la sostenibilidad</h3>
+    <div class="o4-principios-grid">
+      <div class="o4-principio-card">
+        <span class="o4-principio-num">1</span>
+        <strong>Pensamiento crítico y reflexivo</strong>
+        <p>Cuestionar estructuras que generan desigualdad y degradación ambiental</p>
+      </div>
+      <div class="o4-principio-card">
+        <span class="o4-principio-num">2</span>
+        <strong>Interdisciplinariedad</strong>
+        <p>Integrar saberes científicos, técnicos, humanísticos y artísticos</p>
+      </div>
+      <div class="o4-principio-card">
+        <span class="o4-principio-num">3</span>
+        <strong>Aprendizaje experiencial</strong>
+        <p>Conectar conocimiento con práctica, comunidad y territorio</p>
+      </div>
+      <div class="o4-principio-card">
+        <span class="o4-principio-num">4</span>
+        <strong>Participación y corresponsabilidad</strong>
+        <p>Promover toma de decisiones compartidas y acción colectiva</p>
+      </div>
+      <div class="o4-principio-card">
+        <span class="o4-principio-num">5</span>
+        <strong>Creatividad y visión de futuro</strong>
+        <p>Imaginar alternativas sostenibles, no solo diagnosticar problemas</p>
+      </div>
+      <div class="o4-principio-card">
+        <span class="o4-principio-num">6</span>
+        <strong>Empoderamiento</strong>
+        <p>Fortalecer la capacidad de acción individual y colectiva</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CRISIS GLOBAL ─────────────────────────────────────────────── -->
+  <section id="o4-crisis" class="o4-section">
+    <div class="o4-section-header">
+      <span class="o4-section-label">02</span>
+      <h2 class="o4-section-title">Diagnóstico de la crisis socioambiental</h2>
+      <p class="o4-section-intro">
+        La humanidad ha sobrepasado varios límites planetarios. La crisis no es solo ambiental: es civilizatoria,
+        e interpela los fundamentos éticos, culturales y económicos de nuestras sociedades.
+        Pulsa cada área para leer el diagnóstico.
+      </p>
+    </div>
+    <div class="o4-crisis-grid">
+      <div class="o4-crisis-card" style="--crisis-color:#e67e22">
+        <div class="o4-crisis-head">
+          <span class="o4-crisis-icon">🌡️</span>
+          <span class="o4-crisis-title">Cambio climático</span>
+          <span class="o4-crisis-toggle">+</span>
+        </div>
+        <div class="o4-crisis-body">
+          <p>El IPCC (2023) confirma un aumento de 1,2 °C sobre niveles preindustriales, con fenómenos extremos, acidificación oceánica y pérdida de ecosistemas. La <strong>justicia climática</strong> subraya que los menos responsables de las emisiones son los más vulnerables a sus efectos.</p>
+          <p>La universidad debe capacitar para comprender estos sistemas y actuar con esperanza y responsabilidad ante esta crisis civilizatoria.</p>
+          <div class="o4-crisis-ods">ODS 13 · ODS 7 · ODS 11</div>
+        </div>
+      </div>
+      <div class="o4-crisis-card" style="--crisis-color:#27ae60">
+        <div class="o4-crisis-head">
+          <span class="o4-crisis-icon">🌿</span>
+          <span class="o4-crisis-title">Pérdida de biodiversidad</span>
+          <span class="o4-crisis-toggle">+</span>
+        </div>
+        <div class="o4-crisis-body">
+          <p>Según el IPBES (2019), <strong>un millón de especies</strong> animales y vegetales están en peligro de extinción. La pérdida no es solo ecológica: implica la desaparición de conocimiento ecológico tradicional y servicios ecosistémicos valorados en billones de euros.</p>
+          <p>Incorporar la perspectiva biocéntrica en la educación es clave para desarrollar empatía planetaria (GreenComp, Comisión Europea, 2022).</p>
+          <div class="o4-crisis-ods">ODS 14 · ODS 15 · ODS 6</div>
+        </div>
+      </div>
+      <div class="o4-crisis-card" style="--crisis-color:#8e44ad">
+        <div class="o4-crisis-head">
+          <span class="o4-crisis-icon">⚖️</span>
+          <span class="o4-crisis-title">Desigualdad social y económica</span>
+          <span class="o4-crisis-toggle">+</span>
+        </div>
+        <div class="o4-crisis-body">
+          <p>El 10 % más rico emite más del 50 % del CO₂ global; el 1 % más rico posee más del 45 % de la riqueza mundial (Piketty, 2020). Crisis ecológica y social son inseparables.</p>
+          <p>La educación superior debe formar para comprender las interrelaciones entre desigualdad, medioambiente y desarrollo, favoreciendo la cooperación y la solidaridad como fundamentos de la agencia transformadora.</p>
+          <div class="o4-crisis-ods">ODS 1 · ODS 10 · ODS 5 · ODS 8</div>
+        </div>
+      </div>
+      <div class="o4-crisis-card" style="--crisis-color:#2980b9">
+        <div class="o4-crisis-head">
+          <span class="o4-crisis-icon">💧</span>
+          <span class="o4-crisis-title">Suelos, agua y contaminación</span>
+          <span class="o4-crisis-toggle">+</span>
+        </div>
+        <div class="o4-crisis-body">
+          <p>La degradación afecta al 30 % de la superficie terrestre. Más de 2.200 millones de personas carecen de acceso seguro al agua potable (ONU-Agua, 2022). La contaminación atmosférica causa 7 millones de muertes prematuras anuales (OMS, 2021).</p>
+          <p>El enfoque <strong>«One Health»</strong> de la OMS propone integrar las políticas sanitarias, ambientales y animales como un sistema interdependiente.</p>
+          <div class="o4-crisis-ods">ODS 6 · ODS 3 · ODS 2 · ODS 15</div>
+        </div>
+      </div>
+      <div class="o4-crisis-card" style="--crisis-color:#f39c12">
+        <div class="o4-crisis-head">
+          <span class="o4-crisis-icon">⚡</span>
+          <span class="o4-crisis-title">Crisis energética</span>
+          <span class="o4-crisis-toggle">+</span>
+        </div>
+        <div class="o4-crisis-body">
+          <p>El 80 % de la energía primaria mundial procede de combustibles fósiles (AIE, 2022). La transición energética no puede limitarse a sustituir fuentes: debe implicar una reducción del consumo y una reorganización de los modos de vida (Latouche, 2009).</p>
+          <p>La universidad puede impulsar investigación aplicada, innovación tecnológica y alfabetización energética ciudadana.</p>
+          <div class="o4-crisis-ods">ODS 7 · ODS 9 · ODS 12 · ODS 13</div>
+        </div>
+      </div>
+      <div class="o4-crisis-card" style="--crisis-color:#1abc9c">
+        <div class="o4-crisis-head">
+          <span class="o4-crisis-icon">🌐</span>
+          <span class="o4-crisis-title">Dimensión cultural y ética</span>
+          <span class="o4-crisis-toggle">+</span>
+        </div>
+        <div class="o4-crisis-body">
+          <p>La crisis también es una <strong>crisis de sentido y de valores</strong>. La hiperespecialización del conocimiento ha debilitado la conciencia de interdependencia (Morin, 1999). Recuperar una visión ecológica implica cultivar humildad, empatía y cooperación.</p>
+          <p>Desde el marco «Agency in the Anthropocene» (OCDE, 2023), la sostenibilidad es una tarea ética, política y cultural que interpela a la condición humana.</p>
+          <div class="o4-crisis-ods">ODS 16 · ODS 4 · ODS 17</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── AGENDA 2030 ───────────────────────────────────────────────── -->
+  <section id="o4-agenda" class="o4-section">
+    <div class="o4-section-header">
+      <span class="o4-section-label">03</span>
+      <h2 class="o4-section-title">La Agenda 2030</h2>
+      <p class="o4-section-intro">
+        Marco político y ético aprobado por unanimidad por la ONU en 2015. Los 17 ODS y sus 169 metas
+        ofrecen una hoja de ruta integral para las universidades, vinculando docencia, investigación y
+        transferencia con los desafíos globales.
+      </p>
+    </div>
+
+    <h3 class="o4-subsection-title">Las 5 Ps de la Agenda 2030</h3>
+    <div class="o4-5ps-grid">
+      <div class="o4-p-card" style="--p-color:#e74c3c">
+        <div class="o4-p-letter">P</div>
+        <div class="o4-p-name">Personas</div>
+        <div class="o4-p-desc">Erradicar la pobreza y el hambre; garantizar la dignidad y la igualdad</div>
+        <div class="o4-p-ods">ODS 1, 2, 3, 4, 5</div>
+      </div>
+      <div class="o4-p-card" style="--p-color:#27ae60">
+        <div class="o4-p-letter">P</div>
+        <div class="o4-p-name">Planeta</div>
+        <div class="o4-p-desc">Proteger los recursos naturales y luchar contra el cambio climático</div>
+        <div class="o4-p-ods">ODS 6, 12, 13, 14, 15</div>
+      </div>
+      <div class="o4-p-card" style="--p-color:#f39c12">
+        <div class="o4-p-letter">P</div>
+        <div class="o4-p-name">Prosperidad</div>
+        <div class="o4-p-desc">Asegurar vidas prósperas y satisfactorias en armonía con la naturaleza</div>
+        <div class="o4-p-ods">ODS 7, 8, 9, 10, 11</div>
+      </div>
+      <div class="o4-p-card" style="--p-color:#3498db">
+        <div class="o4-p-letter">P</div>
+        <div class="o4-p-name">Paz</div>
+        <div class="o4-p-desc">Fomentar sociedades pacíficas, justas e inclusivas</div>
+        <div class="o4-p-ods">ODS 16</div>
+      </div>
+      <div class="o4-p-card" style="--p-color:#9b59b6">
+        <div class="o4-p-letter">P</div>
+        <div class="o4-p-name">Partenariados</div>
+        <div class="o4-p-desc">Fortalecer la solidaridad global y la cooperación internacional</div>
+        <div class="o4-p-ods">ODS 17</div>
+      </div>
+    </div>
+
+    <h3 class="o4-subsection-title">Principios rectores</h3>
+    <div class="o4-principios-row">
+      <div class="o4-principio-pill">
+        <strong>Universalidad</strong>
+        <span>Los ODS conciernen a todos los países sin distinción entre norte y sur</span>
+      </div>
+      <div class="o4-principio-pill">
+        <strong>Indivisibilidad</strong>
+        <span>Los objetivos están interconectados; progresar en uno requiere avanzar en los demás</span>
+      </div>
+      <div class="o4-principio-pill">
+        <strong>Participación</strong>
+        <span>La implementación requiere la implicación de gobiernos, empresas, universidades y ciudadanía</span>
+      </div>
+    </div>
+
+    <h3 class="o4-subsection-title">Tensiones y retos de la Agenda</h3>
+    <div class="o4-criticas-grid">
+      <div class="o4-critica-item">
+        <span class="o4-critica-icon">⚠</span>
+        <span>Falta de mecanismos vinculantes: los ODS dependen de la voluntad política de los Estados</span>
+      </div>
+      <div class="o4-critica-item">
+        <span class="o4-critica-icon">⚠</span>
+        <span>Riesgo de superficialidad: la retórica puede derivar en discursos simbólicos sin impacto real</span>
+      </div>
+      <div class="o4-critica-item">
+        <span class="o4-critica-icon">⚠</span>
+        <span>Desigualdad en la implementación: el sur global carece de recursos suficientes para cumplir las metas</span>
+      </div>
+      <div class="o4-critica-item">
+        <span class="o4-critica-icon">⚠</span>
+        <span>Predominio del paradigma económico: algunas metas continúan orientadas al crecimiento sin cuestionarlo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROPUESTA FORMATIVA ───────────────────────────────────────── -->
+  <section id="o4-propuesta" class="o4-section">
+    <div class="o4-section-header">
+      <span class="o4-section-label">04</span>
+      <h2 class="o4-section-title">Propuesta formativa</h2>
+      <p class="o4-section-intro">
+        La asignatura «Sostenibilidad y Agenda 2030» se concibe como un espacio de aprendizaje interdisciplinar
+        y participativo. El eje central es la <strong>capacidad de agencia</strong> —individual y colectiva—
+        como motor de la sostenibilidad universitaria.
+      </p>
+    </div>
+
+    <h3 class="o4-subsection-title">9 objetivos específicos</h3>
+    <div class="o4-objetivos-grid">
+      <div class="o4-obj-item">
+        <span class="o4-obj-num">1</span>
+        <span>Comprender las causas históricas, estructurales y culturales de la crisis socioambiental global y sus implicaciones locales</span>
+      </div>
+      <div class="o4-obj-item">
+        <span class="o4-obj-num">2</span>
+        <span>Conocer los fundamentos teóricos de la sostenibilidad, la Agenda 2030 y los marcos GreenComp y UNESCO–EDS 2030</span>
+      </div>
+      <div class="o4-obj-item">
+        <span class="o4-obj-num">3</span>
+        <span>Identificar las interdependencias entre sistemas naturales, sociales, económicos y culturales aplicando el pensamiento complejo</span>
+      </div>
+      <div class="o4-obj-item">
+        <span class="o4-obj-num">4</span>
+        <span>Aplicar el pensamiento sistémico y anticipatorio al análisis de problemas globales y a la formulación de respuestas locales</span>
+      </div>
+      <div class="o4-obj-item">
+        <span class="o4-obj-num">5</span>
+        <span>Reconocer la relevancia de los ODS en los distintos ámbitos profesionales y disciplinarios, y su contribución al desarrollo humano sostenible</span>
+      </div>
+      <div class="o4-obj-item">
+        <span class="o4-obj-num">6</span>
+        <span>Desarrollar actitudes de corresponsabilidad, empatía, cooperación y cuidado hacia las personas y los ecosistemas</span>
+      </div>
+      <div class="o4-obj-item">
+        <span class="o4-obj-num">7</span>
+        <span>Diseñar y ejecutar proyectos de innovación socioambiental en el entorno universitario o comunitario</span>
+      </div>
+      <div class="o4-obj-item">
+        <span class="o4-obj-num">8</span>
+        <span>Integrar principios de justicia social, equidad de género, diversidad cultural y responsabilidad planetaria en la práctica profesional</span>
+      </div>
+      <div class="o4-obj-item">
+        <span class="o4-obj-num">9</span>
+        <span>Fortalecer la esperanza activa y la capacidad de actuar colectivamente ante los desafíos del Antropoceno (OCDE, 2023)</span>
+      </div>
+    </div>
+
+    <h3 class="o4-subsection-title">Competencias</h3>
+    <div class="o4-comp-tabs">
+      <button class="o4-comp-tab active" data-comp="transversales">A · Transversales</button>
+      <button class="o4-comp-tab" data-comp="especificas">B · Específicas</button>
+      <button class="o4-comp-tab" data-comp="instrumentales">C · Instrumentales</button>
+    </div>
+    <div class="o4-comp-panels">
+      <div class="o4-comp-panel active" data-comp="transversales">
+        <ul class="o4-comp-list">
+          <li>Pensamiento crítico y reflexivo: analizar, cuestionar y reformular supuestos y prácticas insostenibles</li>
+          <li>Trabajo cooperativo y comunicación asertiva: dialogar, construir acuerdos y generar conocimiento colectivo en entornos diversos</li>
+          <li>Responsabilidad ética y social: conciencia de las consecuencias de las decisiones propias sobre el bienestar humano y planetario</li>
+          <li>Compromiso con la equidad, la diversidad y la justicia global: reconocimiento de la interdependencia entre pueblos, culturas y ecosistemas</li>
+          <li>Autoeficacia y esperanza activa: confianza en la capacidad de influir positivamente y participar en procesos de transformación social</li>
+        </ul>
+      </div>
+      <div class="o4-comp-panel" data-comp="especificas">
+        <ul class="o4-comp-list">
+          <li>Comprensión sistémica de la relación sociedad–naturaleza: integración de conocimientos científicos, éticos y culturales</li>
+          <li>Aplicación de los ODS y marcos de sostenibilidad (GreenComp, CRUE, EDS 2030) a contextos profesionales y territoriales concretos</li>
+          <li>Identificación de oportunidades de innovación sostenible en distintos ámbitos disciplinares</li>
+          <li>Diseño, implementación y evaluación de proyectos socioambientales y de acción comunitaria</li>
+          <li>Anticipación y prospectiva: imaginar escenarios alternativos y formular estrategias adaptativas ante la incertidumbre</li>
+          <li>Integración de la ética del cuidado y la responsabilidad intergeneracional en la práctica académica y profesional</li>
+        </ul>
+      </div>
+      <div class="o4-comp-panel" data-comp="instrumentales">
+        <ul class="o4-comp-list">
+          <li>Búsqueda, análisis y gestión crítica de información científica multidisciplinar y perspectivas globales</li>
+          <li>Elaboración de informes, presentaciones y proyectos de sostenibilidad con rigor académico y proyección social</li>
+          <li>Uso de herramientas digitales colaborativas para la gestión de proyectos y la difusión de buenas prácticas</li>
+          <li>Gestión de datos e indicadores de sostenibilidad, aplicando metodologías de seguimiento y evaluación de impacto</li>
+          <li>Competencia comunicativa intercultural: transmitir ideas complejas de forma comprensible a públicos diversos</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="o4-subsection-title">6 pilares metodológicos</h3>
+    <div class="o4-pilares-grid">
+      <div class="o4-pilar-card">
+        <div class="o4-pilar-num">1</div>
+        <div class="o4-pilar-title">Aprendizaje experiencial</div>
+        <div class="o4-pilar-desc">El conocimiento surge de la experiencia directa, la observación y la reflexión crítica. Incluye estudios de caso, salidas de campo y proyectos aplicados (Kolb, 2014).</div>
+      </div>
+      <div class="o4-pilar-card">
+        <div class="o4-pilar-num">2</div>
+        <div class="o4-pilar-title">Aprendizaje-servicio (ApS)</div>
+        <div class="o4-pilar-desc">Combina competencias académicas con proyectos reales de mejora socioambiental, fortaleciendo el vínculo entre universidad y territorio.</div>
+      </div>
+      <div class="o4-pilar-card">
+        <div class="o4-pilar-num">3</div>
+        <div class="o4-pilar-title">Aprendizaje cooperativo e interdisciplinar</div>
+        <div class="o4-pilar-desc">Fomenta el trabajo en equipo, la escucha activa y la integración de perspectivas diversas entre disciplinas.</div>
+      </div>
+      <div class="o4-pilar-card">
+        <div class="o4-pilar-num">4</div>
+        <div class="o4-pilar-title">Aprendizaje basado en problemas (ABP)</div>
+        <div class="o4-pilar-desc">Promueve el análisis crítico y la búsqueda colectiva de soluciones a problemas complejos y reales.</div>
+      </div>
+      <div class="o4-pilar-card">
+        <div class="o4-pilar-num">5</div>
+        <div class="o4-pilar-title">Aprendizaje dialógico y deliberativo</div>
+        <div class="o4-pilar-desc">Propicia espacios de debate ético y argumentativo sobre dilemas de sostenibilidad, justicia social y futuro común.</div>
+      </div>
+      <div class="o4-pilar-card">
+        <div class="o4-pilar-num">6</div>
+        <div class="o4-pilar-title">Aprendizaje creativo y prospectivo</div>
+        <div class="o4-pilar-desc">Incentiva la imaginación de escenarios alternativos. Alineado con «Imaginar futuros sostenibles» del GreenComp (Comisión Europea, 2022).</div>
+      </div>
+    </div>
+
+    <h3 class="o4-subsection-title">Contextualización por campos de conocimiento</h3>
+    <div class="o4-campos-tabs">
+      <button class="o4-campo-tab active" data-campo="social">Cs. Sociales y Jurídicas</button>
+      <button class="o4-campo-tab" data-campo="educacion">Educación y Humanidades</button>
+      <button class="o4-campo-tab" data-campo="ciencias">Ciencias y Salud</button>
+      <button class="o4-campo-tab" data-campo="ingenieria">Ingenierías y Arquitectura</button>
+      <button class="o4-campo-tab" data-campo="arte">Arte y Comunicación</button>
+    </div>
+    <div class="o4-campo-panels">
+      <div class="o4-campo-panel active" data-campo="social">
+        <p class="o4-campo-desc">Comprensión de las estructuras sociales, económicas y políticas que condicionan la sostenibilidad. Gobernanza ambiental, derechos humanos, justicia climática, políticas públicas y economía social.</p>
+        <div class="o4-campo-detail">
+          <div class="o4-campo-col">
+            <strong>Objetivos específicos</strong>
+            <ul>
+              <li>Analizar los marcos normativos e institucionales de la sostenibilidad</li>
+              <li>Evaluar políticas públicas desde criterios de equidad y participación</li>
+              <li>Comprender mecanismos de desigualdad y su relación con la crisis ambiental</li>
+              <li>Desarrollar competencias en mediación para conflictos socioambientales</li>
+            </ul>
+          </div>
+          <div class="o4-campo-col">
+            <strong>Metodologías recomendadas</strong>
+            <ul>
+              <li>Aprendizaje basado en proyectos y estudios de caso</li>
+              <li>Simulaciones de procesos deliberativos (COP, parlamentos climáticos)</li>
+              <li>Colaboración con administraciones, ONG y entidades locales</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="o4-campo-panel" data-campo="educacion">
+        <p class="o4-campo-desc">La sostenibilidad como dimensión cultural, ética y pedagógica. Nueva visión del ser humano en relación con la naturaleza, la comunidad y el patrimonio cultural.</p>
+        <div class="o4-campo-detail">
+          <div class="o4-campo-col">
+            <strong>Objetivos específicos</strong>
+            <ul>
+              <li>Integrar la sostenibilidad como eje transversal del currículo educativo</li>
+              <li>Desarrollar pensamiento crítico, ecológico y decolonial</li>
+              <li>Incorporar narrativas culturales que promuevan respeto y cooperación</li>
+              <li>Fomentar la alfabetización ecológica y emocional</li>
+            </ul>
+          </div>
+          <div class="o4-campo-col">
+            <strong>Metodologías recomendadas</strong>
+            <ul>
+              <li>Aprendizaje dialógico, narrativo y colaborativo</li>
+              <li>Creación de materiales didácticos y recursos educativos abiertos</li>
+              <li>Programas intergeneracionales: Nau Gran, Unisocietat</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="o4-campo-panel" data-campo="ciencias">
+        <p class="o4-campo-desc">Relación entre sostenibilidad y salud. Conexión entre ecosistemas, salud pública y bienestar individual, en coherencia con el enfoque «One Health» (OMS/FAO).</p>
+        <div class="o4-campo-detail">
+          <div class="o4-campo-col">
+            <strong>Objetivos específicos</strong>
+            <ul>
+              <li>Comprender las interdependencias entre salud humana, animal y ambiental</li>
+              <li>Promover estilos de vida sostenibles y saludables</li>
+              <li>Incorporar evaluación del impacto ambiental en la práctica científica</li>
+              <li>Fomentar investigación sobre contaminación, alimentación y cambio climático</li>
+            </ul>
+          </div>
+          <div class="o4-campo-col">
+            <strong>Metodologías recomendadas</strong>
+            <ul>
+              <li>Aprendizaje-servicio en proyectos de salud comunitaria</li>
+              <li>Estudios de impacto ambiental y social en contextos locales</li>
+              <li>Trabajo interdisciplinar entre ciencias médicas, biológicas y sociales</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="o4-campo-panel" data-campo="ingenieria">
+        <p class="o4-campo-desc">Innovación tecnológica, eficiencia energética, diseño circular y planificación territorial responsable. Ingeniería ambiental, energías renovables y urbanismo sostenible.</p>
+        <div class="o4-campo-detail">
+          <div class="o4-campo-col">
+            <strong>Objetivos específicos</strong>
+            <ul>
+              <li>Aplicar criterios de sostenibilidad en diseño y mantenimiento de infraestructuras</li>
+              <li>Desarrollar tecnologías limpias y soluciones basadas en la naturaleza</li>
+              <li>Evaluar el ciclo de vida de productos y procesos</li>
+              <li>Promover la movilidad sostenible y la planificación urbana inclusiva</li>
+            </ul>
+          </div>
+          <div class="o4-campo-col">
+            <strong>Metodologías recomendadas</strong>
+            <ul>
+              <li>Aprendizaje basado en retos (Challenge-Based Learning)</li>
+              <li>Proyectos de innovación y transferencia tecnológica</li>
+              <li>Colaboraciones con empresas, instituciones y comunidades locales</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="o4-campo-panel" data-campo="arte">
+        <p class="o4-campo-desc">Construcción de imaginarios sostenibles y sensibilización social. El arte actúa como laboratorio de emociones, narrativas y visiones alternativas del futuro.</p>
+        <div class="o4-campo-detail">
+          <div class="o4-campo-col">
+            <strong>Objetivos específicos</strong>
+            <ul>
+              <li>Explorar el potencial del arte y los medios para inspirar cambio social</li>
+              <li>Diseñar estrategias comunicativas éticas y movilizadoras en torno a los ODS</li>
+              <li>Desarrollar proyectos creativos que integren estética y participación ciudadana</li>
+              <li>Fomentar la alfabetización mediática para contrarrestar la desinformación ambiental</li>
+            </ul>
+          </div>
+          <div class="o4-campo-col">
+            <strong>Metodologías recomendadas</strong>
+            <ul>
+              <li>Creación artística colaborativa, exposiciones y campañas multimedia</li>
+              <li>Storytelling, performance y comunicación visual crítica</li>
+              <li>Cooperación con museos, centros culturales y medios responsables</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EVALUACIÓN ─────────────────────────────────────────────────── -->
+  <section id="o4-evaluacion" class="o4-section">
+    <div class="o4-section-header">
+      <span class="o4-section-label">05</span>
+      <h2 class="o4-section-title">Sistema de evaluación</h2>
+      <p class="o4-section-intro">
+        La evaluación es continua, formativa y participativa. No se limita a medir conocimientos,
+        sino que valora el desarrollo integral de competencias cognitivas, éticas y sociales
+        en tres momentos, mediante tres tipos de evaluación y tres agentes.
+      </p>
+    </div>
+
+    <div class="o4-eval-grid">
+      <div class="o4-eval-col">
+        <div class="o4-eval-header">Momentos</div>
+        <div class="o4-eval-item">
+          <span class="o4-eval-icon">⏮</span>
+          <strong>Inicial</strong>
+          <span>Antes de la formación</span>
+          <div class="o4-eval-tag">Diagnóstica</div>
+        </div>
+        <div class="o4-eval-item">
+          <span class="o4-eval-icon">⏸</span>
+          <strong>Procesual</strong>
+          <span>Durante el desarrollo</span>
+          <div class="o4-eval-tag">Formativa</div>
+        </div>
+        <div class="o4-eval-item">
+          <span class="o4-eval-icon">⏭</span>
+          <strong>Final</strong>
+          <span>Al cierre del proceso</span>
+          <div class="o4-eval-tag">Sumativa</div>
+        </div>
+      </div>
+      <div class="o4-eval-col">
+        <div class="o4-eval-header">Agentes</div>
+        <div class="o4-eval-item">
+          <span class="o4-eval-icon">👩‍🏫</span>
+          <strong>Heteroevaluación</strong>
+          <span>Valoración docente del aprendizaje con base en criterios preestablecidos</span>
+        </div>
+        <div class="o4-eval-item">
+          <span class="o4-eval-icon">🪞</span>
+          <strong>Autoevaluación</strong>
+          <span>El estudiantado analiza su propio aprendizaje y grado de logro alcanzado</span>
+        </div>
+        <div class="o4-eval-item">
+          <span class="o4-eval-icon">🤝</span>
+          <strong>Coevaluación</strong>
+          <span>El estudiantado valora conjuntamente el trabajo e implicación de sus pares</span>
+        </div>
+      </div>
+      <div class="o4-eval-col">
+        <div class="o4-eval-header">Instrumentos</div>
+        <div class="o4-eval-instrument">
+          <span class="o4-eval-badge">1</span>
+          <span>Portafolio reflexivo — evidencias de aprendizaje y evolución competencial</span>
+        </div>
+        <div class="o4-eval-instrument">
+          <span class="o4-eval-badge">2</span>
+          <span>Rúbricas — valoración de productos finales y competencias aplicadas</span>
+        </div>
+        <div class="o4-eval-instrument">
+          <span class="o4-eval-badge">3</span>
+          <span>Listas de cotejo — participación y cooperación en actividades dinámicas</span>
+        </div>
+        <div class="o4-eval-instrument">
+          <span class="o4-eval-badge">4</span>
+          <span>Cuestionarios de auto/coevaluación — autocrítica y percepción del trabajo en equipo</span>
+        </div>
+        <div class="o4-eval-instrument">
+          <span class="o4-eval-badge">5</span>
+          <span>Informe de impacto — resultados cualitativos y cuantitativos del proyecto en el contexto local</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="o4-subsection-title">Pesos de evaluación · Guía docente tipo</h3>
+    <div class="o4-weights-grid">
+      <div class="o4-weight-row">
+        <div class="o4-weight-label">Participación y foros de debate</div>
+        <div class="o4-weight-bar-wrap">
+          <div class="o4-weight-bar" style="width:20%"></div>
+        </div>
+        <div class="o4-weight-pct">20 %</div>
+      </div>
+      <div class="o4-weight-row">
+        <div class="o4-weight-label">Trabajos individuales y grupales</div>
+        <div class="o4-weight-bar-wrap">
+          <div class="o4-weight-bar" style="width:20%"></div>
+        </div>
+        <div class="o4-weight-pct">20 %</div>
+      </div>
+      <div class="o4-weight-row">
+        <div class="o4-weight-label">Proyecto aplicado por grado</div>
+        <div class="o4-weight-bar-wrap">
+          <div class="o4-weight-bar" style="width:40%"></div>
+        </div>
+        <div class="o4-weight-pct">40 %</div>
+      </div>
+      <div class="o4-weight-row">
+        <div class="o4-weight-label">Portafolio reflexivo final</div>
+        <div class="o4-weight-bar-wrap">
+          <div class="o4-weight-bar" style="width:20%"></div>
+        </div>
+        <div class="o4-weight-pct">20 %</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROGRAMA 9 ECTS ───────────────────────────────────────────── -->
+  <section id="o4-programa" class="o4-section">
+    <div class="o4-section-header">
+      <span class="o4-section-label">06</span>
+      <h2 class="o4-section-title">Programa 9 ECTS</h2>
+      <p class="o4-section-intro">
+        19 unidades distribuidas en tres ámbitos formativos complementarios. El ámbito general es común
+        a toda la comunidad universitaria. El disciplinar se adapta al colectivo destinatario.
+      </p>
+    </div>
+
+    <div class="o4-ects-bars">
+      <div class="o4-ects-row">
+        <div class="o4-ects-label">General</div>
+        <div class="o4-ects-bar-wrap">
+          <div class="o4-ects-fill o4-ects-general" style="width:45%">
+            <span>~4 ECTS (40–50 %)</span>
+          </div>
+        </div>
+      </div>
+      <div class="o4-ects-row">
+        <div class="o4-ects-label">Territorial</div>
+        <div class="o4-ects-bar-wrap">
+          <div class="o4-ects-fill o4-ects-territorial" style="width:27.5%">
+            <span>~2,5 ECTS (25–30 %)</span>
+          </div>
+        </div>
+      </div>
+      <div class="o4-ects-row">
+        <div class="o4-ects-label">Disciplinar</div>
+        <div class="o4-ects-bar-wrap">
+          <div class="o4-ects-fill o4-ects-disciplinar" style="width:27.5%">
+            <span>~2,5 ECTS (25–30 %)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="o4-ambito-block">
+      <h3 class="o4-ambito-block-title o4-color-general">
+        Ámbito General
+        <small>— Fundamentos teóricos · Toda la comunidad universitaria</small>
+      </h3>
+      <p class="o4-ambito-block-obj">Construir una base común de comprensión crítica, ética y sistémica de la sostenibilidad.</p>
+      <div class="o4-units-grid">
+        <div class="o4-unit"><span class="o4-unit-n">1</span> Introducción y marco de trabajo: la universidad ante la crisis global</div>
+        <div class="o4-unit"><span class="o4-unit-n">2</span> Crisis socioambiental y límites planetarios</div>
+        <div class="o4-unit"><span class="o4-unit-n">3</span> Pensamiento holístico y sistémico</div>
+        <div class="o4-unit"><span class="o4-unit-n">4</span> Historia de la sostenibilidad</div>
+        <div class="o4-unit"><span class="o4-unit-n">5</span> Agenda 2030 y ODS: marco global y retos universitarios</div>
+        <div class="o4-unit"><span class="o4-unit-n">6</span> Valores, agencia y ciudadanía planetaria</div>
+      </div>
+    </div>
+
+    <div class="o4-ambito-block">
+      <h3 class="o4-ambito-block-title o4-color-territorial">
+        Ámbito Territorial y sociocultural
+        <small>— Conexión con el territorio · Acción glocal</small>
+      </h3>
+      <p class="o4-ambito-block-obj">Contextualizar los ODS en el entorno cercano, articulando sostenibilidad y transformación social.</p>
+      <div class="o4-units-grid">
+        <div class="o4-unit"><span class="o4-unit-n">7</span> Diagnóstico territorial y socioambiental</div>
+        <div class="o4-unit"><span class="o4-unit-n">8</span> Gobernanza, políticas y participación ciudadana</div>
+        <div class="o4-unit"><span class="o4-unit-n">9</span> Cultura, identidad y comunicación para la sostenibilidad</div>
+        <div class="o4-unit"><span class="o4-unit-n">10</span> Proyectos de acción local y aprendizaje-servicio</div>
+      </div>
+    </div>
+
+    <div class="o4-ambito-block">
+      <h3 class="o4-ambito-block-title o4-color-disciplinar">
+        Ámbito Disciplinar y profesional
+        <small>— Adaptación por colectivo</small>
+      </h3>
+      <div class="o4-audience-tabs">
+        <button class="o4-audience-tab active" data-audience="alumnado">Alumnado (Grado/Máster/Doctorado)</button>
+        <button class="o4-audience-tab" data-audience="pdi">PDI</button>
+        <button class="o4-audience-tab" data-audience="ptgas">PTGAS</button>
+      </div>
+      <div class="o4-audience-panels">
+        <div class="o4-audience-panel active" data-audience="alumnado">
+          <p class="o4-audience-obj">Integrar la sostenibilidad en la práctica académica y el futuro ejercicio profesional.</p>
+          <div class="o4-units-grid">
+            <div class="o4-unit"><span class="o4-unit-n">11</span> Aplicación profesional de los ODS al propio ámbito académico</div>
+            <div class="o4-unit"><span class="o4-unit-n">12</span> Proyecto aplicado interdisciplinar I: diseño y desarrollo</div>
+            <div class="o4-unit"><span class="o4-unit-n">13</span> Proyecto aplicado interdisciplinar II: presentación y evaluación</div>
+          </div>
+        </div>
+        <div class="o4-audience-panel" data-audience="pdi">
+          <p class="o4-audience-obj">Incorporar la sostenibilidad en la práctica docente, investigadora y de transferencia del conocimiento.</p>
+          <div class="o4-units-grid">
+            <div class="o4-unit"><span class="o4-unit-n">14</span> Innovación docente y curricular para la sostenibilidad</div>
+            <div class="o4-unit"><span class="o4-unit-n">15</span> Investigación aplicada y transferencia sostenible</div>
+            <div class="o4-unit"><span class="o4-unit-n">16</span> Proyecto docente o investigador y evaluación</div>
+          </div>
+        </div>
+        <div class="o4-audience-panel" data-audience="ptgas">
+          <p class="o4-audience-obj">Aplicar criterios de sostenibilidad en la gestión universitaria y la cultura organizacional.</p>
+          <div class="o4-units-grid">
+            <div class="o4-unit"><span class="o4-unit-n">17</span> Gestión universitaria sostenible</div>
+            <div class="o4-unit"><span class="o4-unit-n">18</span> Cultura organizacional, igualdad y ecoeficiencia</div>
+            <div class="o4-unit"><span class="o4-unit-n">19</span> Proyecto de mejora en el puesto de trabajo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="o4-subsection-title">Modalidades de integración</h3>
+    <div class="o4-modalidades-grid">
+      <div class="o4-modalidad-card">
+        <div class="o4-modalidad-icon">🎓</div>
+        <strong>Microcredenciales modulares</strong>
+        <p>Cada ámbito puede certificarse de forma independiente y acumulativa, en línea con la estrategia europea de competencias verdes</p>
+      </div>
+      <div class="o4-modalidad-card">
+        <div class="o4-modalidad-icon">🔗</div>
+        <strong>Proyectos intersectoriales</strong>
+        <p>Actividades conjuntas entre alumnado, PDI y PTGAS para fortalecer la cultura universitaria colaborativa</p>
+      </div>
+      <div class="o4-modalidad-card">
+        <div class="o4-modalidad-icon">📋</div>
+        <strong>Evaluación continua</strong>
+        <p>Portafolio, proyecto aplicado y reflexión crítica como instrumentos comunes a todos los colectivos</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── IMPLANTACIÓN ──────────────────────────────────────────────── -->
+  <section id="o4-implantacion" class="o4-section">
+    <div class="o4-section-header">
+      <span class="o4-section-label">07</span>
+      <h2 class="o4-section-title">Estrategia de implantación</h2>
+      <p class="o4-section-intro">
+        La incorporación efectiva de la sostenibilidad requiere una estrategia institucional integrada
+        que articule docencia, investigación, gestión y extensión universitaria de forma coherente y sostenida.
+      </p>
+    </div>
+
+    <div class="o4-impl-grid">
+      <div class="o4-impl-card">
+        <div class="o4-impl-num">10.1</div>
+        <div class="o4-impl-title">Gobernanza y compromiso institucional</div>
+        <ul class="o4-impl-list">
+          <li>Vicerrectorado o Comisión de Sostenibilidad con coordinación transversal</li>
+          <li>Alineación con el Plan Estratégico universitario</li>
+          <li>Comité Intersectorial con representación de alumnado, PDI, PTGAS y territorio</li>
+          <li>Supervisión de formación docente, comunicación y evaluación de impacto</li>
+          <li>Coordinación de políticas ambientales, sociales y de gobernanza (ESG)</li>
+        </ul>
+      </div>
+      <div class="o4-impl-card">
+        <div class="o4-impl-num">10.2</div>
+        <div class="o4-impl-title">Red Interfacultativa de Coordinación (RICS)</div>
+        <ul class="o4-impl-list">
+          <li>Coherencia horizontal: todos los grados y másteres incluyen sostenibilidad</li>
+          <li>Coherencia vertical: las competencias progresan a lo largo de la formación</li>
+          <li>Representantes de cada facultad o escuela asegurando coherencia de programas</li>
+          <li>Figura de «coordinador/a de sostenibilidad» por centro</li>
+          <li>Adaptación disciplinar del GreenComp a lenguajes propios de cada área</li>
+        </ul>
+      </div>
+      <div class="o4-impl-card">
+        <div class="o4-impl-num">10.3</div>
+        <div class="o4-impl-title">Formación del PDI y PTGAS</div>
+        <ul class="o4-impl-list">
+          <li>Programas en colaboración con el ICE u organismos equivalentes</li>
+          <li>Centrados en metodologías activas, evaluación competencial y educación transformadora</li>
+          <li>Microcredenciales orientadas a competencias GreenComp y agencia (OCDE)</li>
+          <li>Comunidades de práctica docente e investigación-acción entre pares</li>
+        </ul>
+      </div>
+      <div class="o4-impl-card">
+        <div class="o4-impl-num">10.4</div>
+        <div class="o4-impl-title">Extensión universitaria y educación continua</div>
+        <ul class="o4-impl-list">
+          <li>Microcredenciales para alumnado: sostenibilidad, cambio climático, transición energética</li>
+          <li>Microcredenciales para PDI/PTGAS: gestión sostenible e innovación educativa</li>
+          <li>Cursos abiertos para ciudadanía: alfabetización ecológica y cultura de paz</li>
+          <li>Programas intergeneracionales (Nau Gran, Unisocietat): inclusión de colectivos diversos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  import '../../scripts/o4-dashboard.ts';
+</script>
+
+<style is:global>
+/* ─── O4 DASHBOARD ─────────────────────────────────────────────────── */
+#o4-dashboard {
+  font-family: var(--font-base);
+  color: var(--ink);
+  max-width: 900px;
+}
+
+#o4-dashboard .o4-section {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+/* SECTION HEADER */
+#o4-dashboard .o4-section-header { margin-bottom: 2.5rem; }
+
+#o4-dashboard .o4-section-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brand);
+  background: var(--brand-soft);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  margin-bottom: 0.6rem;
+}
+
+#o4-dashboard .o4-section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0.4rem 0 0.8rem;
+}
+
+#o4-dashboard .o4-section-intro {
+  color: var(--ink);
+  opacity: 0.75;
+  max-width: 680px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+#o4-dashboard .o4-subsection-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* HERO */
+#o4-dashboard .o4-hero {
+  padding-top: 0;
+  border-bottom: 2px solid var(--green-deep);
+}
+
+#o4-dashboard .o4-hero-kicker {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-accent);
+  margin-bottom: 0.8rem;
+}
+
+#o4-dashboard .o4-hero-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+
+#o4-dashboard .o4-hero-subtitle {
+  color: var(--ink);
+  opacity: 0.8;
+  max-width: 650px;
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+
+#o4-dashboard .o4-ambitos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+#o4-dashboard .o4-ambito-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.2rem;
+  background: var(--paper);
+}
+
+#o4-dashboard .o4-ambito-general  { border-top: 3px solid var(--brand); }
+#o4-dashboard .o4-ambito-territorial { border-top: 3px solid #c9973a; }
+#o4-dashboard .o4-ambito-disciplinar { border-top: 3px solid #8e44ad; }
+
+#o4-dashboard .o4-ambito-pct {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--brand);
+  margin-bottom: 0.3rem;
+}
+
+#o4-dashboard .o4-ambito-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--ink);
+}
+
+#o4-dashboard .o4-ambito-desc {
+  font-size: 0.78rem;
+  color: var(--ink);
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+#o4-dashboard .o4-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+#o4-dashboard .o4-hero-meta span {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--brand);
+  background: var(--brand-soft);
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+}
+
+/* DIMENSIONES */
+#o4-dashboard .o4-dim-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+#o4-dashboard .o4-dim-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1rem 0.5rem;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  background: var(--paper);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font-base);
+}
+
+#o4-dashboard .o4-dim-btn:hover,
+#o4-dashboard .o4-dim-btn.active {
+  border-color: var(--dim-color);
+  background: color-mix(in srgb, var(--dim-color) 8%, white);
+}
+
+#o4-dashboard .o4-dim-icon { font-size: 1.4rem; }
+#o4-dashboard .o4-dim-name { font-size: 0.78rem; font-weight: 600; }
+
+#o4-dashboard .o4-dim-panel {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  min-height: 80px;
+}
+
+#o4-dashboard .o4-dim-panel-content strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+#o4-dashboard .o4-dim-panel-content p {
+  color: var(--ink);
+  opacity: 0.8;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/* GREENCOMP */
+#o4-dashboard .o4-greencomp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+#o4-dashboard .o4-gc-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+}
+
+#o4-dashboard .o4-gc-num {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3rem;
+}
+
+#o4-dashboard .o4-gc-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+#o4-dashboard .o4-gc-desc {
+  font-size: 0.78rem;
+  color: var(--ink);
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+/* PRINCIPIOS */
+#o4-dashboard .o4-principios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+#o4-dashboard .o4-principio-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+#o4-dashboard .o4-principio-num {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--brand);
+  opacity: 0.2;
+  line-height: 1;
+}
+
+#o4-dashboard .o4-principio-card strong { font-size: 0.83rem; font-weight: 600; }
+
+#o4-dashboard .o4-principio-card p {
+  font-size: 0.76rem;
+  color: var(--ink);
+  opacity: 0.7;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* CRISIS GRID */
+#o4-dashboard .o4-crisis-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+}
+
+#o4-dashboard .o4-crisis-card {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--crisis-color);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+#o4-dashboard .o4-crisis-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+#o4-dashboard .o4-crisis-head:hover {
+  background: color-mix(in srgb, var(--crisis-color) 5%, white);
+}
+
+#o4-dashboard .o4-crisis-icon { font-size: 1.1rem; }
+
+#o4-dashboard .o4-crisis-title {
+  flex: 1;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+#o4-dashboard .o4-crisis-toggle {
+  font-size: 1.2rem;
+  color: var(--crisis-color);
+  font-weight: 700;
+  transition: transform 0.2s;
+  line-height: 1;
+}
+
+#o4-dashboard .o4-crisis-card.open .o4-crisis-toggle { transform: rotate(45deg); }
+
+#o4-dashboard .o4-crisis-body {
+  display: none;
+  padding: 0.2rem 1rem 1rem;
+  border-top: 1px solid var(--border);
+}
+
+#o4-dashboard .o4-crisis-card.open .o4-crisis-body { display: block; }
+
+#o4-dashboard .o4-crisis-body p {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0.6rem 0;
+}
+
+#o4-dashboard .o4-crisis-ods {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--brand);
+  background: var(--brand-soft);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  margin-top: 0.3rem;
+}
+
+/* 5Ps */
+#o4-dashboard .o4-5ps-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.7rem;
+  margin-bottom: 1.5rem;
+}
+
+#o4-dashboard .o4-p-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--p-color);
+  border-radius: 6px;
+  padding: 0.9rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+#o4-dashboard .o4-p-letter {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--p-color);
+  line-height: 1;
+}
+
+#o4-dashboard .o4-p-name { font-size: 0.82rem; font-weight: 700; }
+
+#o4-dashboard .o4-p-desc {
+  font-size: 0.7rem;
+  color: var(--ink);
+  opacity: 0.7;
+  line-height: 1.35;
+}
+
+#o4-dashboard .o4-p-ods {
+  font-size: 0.65rem;
+  color: var(--p-color);
+  font-weight: 600;
+  margin-top: auto;
+}
+
+/* PRINCIPIOS RECTORES */
+#o4-dashboard .o4-principios-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+#o4-dashboard .o4-principio-pill {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+#o4-dashboard .o4-principio-pill strong {
+  font-size: 0.85rem;
+  color: var(--brand);
+}
+
+#o4-dashboard .o4-principio-pill span {
+  font-size: 0.76rem;
+  color: var(--ink);
+  opacity: 0.75;
+  line-height: 1.4;
+}
+
+/* CRÍTICAS */
+#o4-dashboard .o4-criticas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+}
+
+#o4-dashboard .o4-critica-item {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  background: #fff9f0;
+  border: 1px solid #f0dbb7;
+  border-radius: 5px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+#o4-dashboard .o4-critica-icon { color: #c0882a; flex-shrink: 0; }
+
+/* OBJETIVOS */
+#o4-dashboard .o4-objetivos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+#o4-dashboard .o4-obj-item {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.8rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+#o4-dashboard .o4-obj-num {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background: var(--brand);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* COMPETENCIAS TABS */
+#o4-dashboard .o4-comp-tabs {
+  display: flex;
+  gap: 0.3rem;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 0;
+}
+
+#o4-dashboard .o4-comp-tab {
+  padding: 0.6rem 1.1rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-family: var(--font-base);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  margin-bottom: -2px;
+  transition: all 0.15s;
+}
+
+#o4-dashboard .o4-comp-tab.active,
+#o4-dashboard .o4-comp-tab:hover {
+  color: var(--brand);
+  border-bottom-color: var(--brand);
+}
+
+#o4-dashboard .o4-comp-panels { margin-bottom: 1.5rem; }
+
+#o4-dashboard .o4-comp-panel {
+  display: none;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  padding: 1.2rem 1.5rem;
+}
+
+#o4-dashboard .o4-comp-panel.active { display: block; }
+
+#o4-dashboard .o4-comp-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#o4-dashboard .o4-comp-list li {
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* PILARES */
+#o4-dashboard .o4-pilares-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+#o4-dashboard .o4-pilar-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+#o4-dashboard .o4-pilar-num {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--brand);
+  opacity: 0.12;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+#o4-dashboard .o4-pilar-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+#o4-dashboard .o4-pilar-desc {
+  font-size: 0.76rem;
+  color: var(--ink);
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+/* CAMPOS TABS */
+#o4-dashboard .o4-campos-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 0;
+}
+
+#o4-dashboard .o4-campo-tab {
+  padding: 0.5rem 0.85rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-family: var(--font-base);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  margin-bottom: -2px;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+#o4-dashboard .o4-campo-tab.active,
+#o4-dashboard .o4-campo-tab:hover {
+  color: var(--brand);
+  border-bottom-color: var(--brand);
+}
+
+#o4-dashboard .o4-campo-panels { margin-bottom: 1.5rem; }
+
+#o4-dashboard .o4-campo-panel {
+  display: none;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  padding: 1.2rem 1.5rem;
+}
+
+#o4-dashboard .o4-campo-panel.active { display: block; }
+
+#o4-dashboard .o4-campo-desc {
+  font-size: 0.83rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+#o4-dashboard .o4-campo-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+#o4-dashboard .o4-campo-col strong {
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+#o4-dashboard .o4-campo-col ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+#o4-dashboard .o4-campo-col li {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+/* EVALUACIÓN */
+#o4-dashboard .o4-eval-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+#o4-dashboard .o4-eval-col { display: flex; flex-direction: column; gap: 0.6rem; }
+
+#o4-dashboard .o4-eval-header {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--brand);
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--brand);
+}
+
+#o4-dashboard .o4-eval-item {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+}
+
+#o4-dashboard .o4-eval-item strong { font-size: 0.83rem; }
+#o4-dashboard .o4-eval-item span { font-size: 0.75rem; color: var(--ink); opacity: 0.7; line-height: 1.35; }
+#o4-dashboard .o4-eval-icon { font-size: 1.1rem; }
+
+#o4-dashboard .o4-eval-tag {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--brand);
+  background: var(--brand-soft);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  margin-top: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+#o4-dashboard .o4-eval-instrument {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.55rem 0.8rem;
+}
+
+#o4-dashboard .o4-eval-badge {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--brand);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#o4-dashboard .o4-eval-instrument span:last-child { font-size: 0.76rem; line-height: 1.4; }
+
+/* WEIGHT BARS */
+#o4-dashboard .o4-weights-grid { display: flex; flex-direction: column; gap: 0.7rem; }
+
+#o4-dashboard .o4-weight-row {
+  display: grid;
+  grid-template-columns: 230px 1fr 50px;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+#o4-dashboard .o4-weight-label { font-size: 0.82rem; color: var(--ink); }
+
+#o4-dashboard .o4-weight-bar-wrap {
+  height: 10px;
+  background: #e8e8e8;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#o4-dashboard .o4-weight-bar {
+  height: 100%;
+  background: var(--brand);
+  border-radius: 5px;
+}
+
+#o4-dashboard .o4-weight-pct { font-size: 0.82rem; font-weight: 700; color: var(--brand); text-align: right; }
+
+/* PROGRAMA ECTS */
+#o4-dashboard .o4-ects-bars { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem; }
+
+#o4-dashboard .o4-ects-row { display: grid; grid-template-columns: 80px 1fr; gap: 0.8rem; align-items: center; }
+
+#o4-dashboard .o4-ects-label { font-size: 0.72rem; font-weight: 600; color: var(--ink); text-align: right; }
+
+#o4-dashboard .o4-ects-bar-wrap {
+  height: 34px;
+  background: #e8e8e8;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#o4-dashboard .o4-ects-fill {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 0.8rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: white;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+#o4-dashboard .o4-ects-general    { background: var(--brand); }
+#o4-dashboard .o4-ects-territorial { background: #c9973a; }
+#o4-dashboard .o4-ects-disciplinar { background: #8e44ad; }
+
+#o4-dashboard .o4-ambito-block { margin-bottom: 2rem; }
+
+#o4-dashboard .o4-ambito-block-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+#o4-dashboard .o4-ambito-block-title small {
+  font-size: 0.73rem;
+  font-weight: 400;
+  opacity: 0.65;
+}
+
+#o4-dashboard .o4-color-general    { color: var(--brand); }
+#o4-dashboard .o4-color-territorial { color: #c9973a; }
+#o4-dashboard .o4-color-disciplinar { color: #8e44ad; }
+
+#o4-dashboard .o4-ambito-block-obj {
+  font-size: 0.8rem;
+  color: var(--ink);
+  opacity: 0.75;
+  font-style: italic;
+  margin-bottom: 0.8rem;
+}
+
+#o4-dashboard .o4-units-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+#o4-dashboard .o4-unit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.55rem 0.8rem;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+#o4-dashboard .o4-unit-n {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* AUDIENCE TABS */
+#o4-dashboard .o4-audience-tabs {
+  display: flex;
+  gap: 0.3rem;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 0;
+}
+
+#o4-dashboard .o4-audience-tab {
+  padding: 0.5rem 1.1rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-family: var(--font-base);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  margin-bottom: -2px;
+  transition: all 0.15s;
+}
+
+#o4-dashboard .o4-audience-tab.active,
+#o4-dashboard .o4-audience-tab:hover {
+  color: #8e44ad;
+  border-bottom-color: #8e44ad;
+}
+
+#o4-dashboard .o4-audience-panels { margin-bottom: 1rem; }
+
+#o4-dashboard .o4-audience-panel {
+  display: none;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  padding: 1.1rem 1.2rem;
+}
+
+#o4-dashboard .o4-audience-panel.active { display: block; }
+
+#o4-dashboard .o4-audience-obj {
+  font-size: 0.8rem;
+  color: var(--ink);
+  opacity: 0.75;
+  font-style: italic;
+  margin-bottom: 0.8rem;
+}
+
+/* MODALIDADES */
+#o4-dashboard .o4-modalidades-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+#o4-dashboard .o4-modalidad-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#o4-dashboard .o4-modalidad-icon { font-size: 1.4rem; }
+#o4-dashboard .o4-modalidad-card strong { font-size: 0.85rem; font-weight: 600; }
+#o4-dashboard .o4-modalidad-card p { font-size: 0.76rem; color: var(--ink); opacity: 0.7; line-height: 1.4; margin: 0; }
+
+/* IMPLANTACIÓN */
+#o4-dashboard .o4-impl-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+#o4-dashboard .o4-impl-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.2rem;
+}
+
+#o4-dashboard .o4-impl-num {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--brand);
+  margin-bottom: 0.4rem;
+}
+
+#o4-dashboard .o4-impl-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: var(--ink);
+}
+
+#o4-dashboard .o4-impl-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+#o4-dashboard .o4-impl-list li {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ink);
+  opacity: 0.82;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  #o4-dashboard .o4-ambitos-grid,
+  #o4-dashboard .o4-impl-grid,
+  #o4-dashboard .o4-modalidades-grid { grid-template-columns: 1fr; }
+  #o4-dashboard .o4-dim-grid { grid-template-columns: repeat(2, 1fr); }
+  #o4-dashboard .o4-greencomp-grid,
+  #o4-dashboard .o4-campo-detail,
+  #o4-dashboard .o4-eval-grid { grid-template-columns: 1fr; }
+  #o4-dashboard .o4-principios-grid,
+  #o4-dashboard .o4-units-grid,
+  #o4-dashboard .o4-objetivos-grid,
+  #o4-dashboard .o4-pilares-grid { grid-template-columns: 1fr; }
+  #o4-dashboard .o4-5ps-grid { grid-template-columns: repeat(3, 1fr); }
+  #o4-dashboard .o4-principios-row,
+  #o4-dashboard .o4-criticas-grid { grid-template-columns: 1fr; }
+  #o4-dashboard .o4-weight-row { grid-template-columns: 150px 1fr 45px; }
+  #o4-dashboard .o4-ects-row { grid-template-columns: 70px 1fr; }
+}
+</style>
