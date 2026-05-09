@@ -1,6 +1,7 @@
 ---
 import Layout from '../../components/Layout.astro';
 import SectionContent from '../../components/SectionContent.astro';
+import O1Dashboard from '../../components/dashboards/O1Dashboard.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -13,24 +14,30 @@ export async function getStaticPaths() {
 
 const { pkg } = Astro.props;
 const dataPath = pkg.data.dataPath;
-const isO1 = pkg.data.slug === 'o1';
+const slug = pkg.data.slug;
+
 const contentSections = pkg.data.sectionsIndex.filter(
   (section, index) =>
     index !== 0 && section.title.toLowerCase() !== 'índice'
 );
 
-const o1NavSections = [
-  { slug: 'o1-hero', title: 'Resumen', level: 1 },
-  { slug: 'o1-losu', title: 'La LOSU y los ODS', level: 1 },
-  { slug: 'o1-hub', title: 'Universidades y ODS', level: 1 },
-  { slug: 'o1-cobertura', title: 'Cobertura en estatutos', level: 2 },
-  { slug: 'o1-targets', title: 'Metas y targets', level: 2 },
-  { slug: 'o1-extremos', title: 'Ranking extremos', level: 2 },
-  { slug: 'o1-genero', title: 'Gobernanza: Genero', level: 1 },
-  { slug: 'o1-tamano', title: 'Tamaño organos gobierno', level: 2 },
-  { slug: 'o1-sostenibilidad', title: 'Sostenibilidad institucional', level: 1 },
-  { slug: 'o1-conclusiones', title: 'Conclusiones', level: 1 },
-];
+const dashboardNavs: Record<string, { slug: string; title: string; level: number }[]> = {
+  o1: [
+    { slug: 'o1-hero',          title: 'Resumen',                  level: 1 },
+    { slug: 'o1-losu',          title: 'La LOSU y los ODS',        level: 1 },
+    { slug: 'o1-hub',           title: 'Universidades y ODS',      level: 1 },
+    { slug: 'o1-cobertura',     title: 'Cobertura en estatutos',   level: 2 },
+    { slug: 'o1-targets',       title: 'Metas y targets',          level: 2 },
+    { slug: 'o1-extremos',      title: 'Ranking extremos',         level: 2 },
+    { slug: 'o1-genero',        title: 'Gobernanza: Genero',       level: 1 },
+    { slug: 'o1-tamano',        title: 'Tamaño organos gobierno',  level: 2 },
+    { slug: 'o1-sostenibilidad',title: 'Sostenibilidad institucional', level: 1 },
+    { slug: 'o1-conclusiones',  title: 'Conclusiones',             level: 1 },
+  ],
+};
+
+const isDashboard = slug in dashboardNavs;
+const navSections = isDashboard ? dashboardNavs[slug] : null;
 ---
 <Layout title={`ODServa2030 · ${pkg.data.title}`}>
   <aside class="sidebar">
@@ -38,7 +45,7 @@ const o1NavSections = [
       <div class="sidebar-badge">{pkg.data.code} · Informe</div>
       <div class="sidebar-title">{pkg.data.title}</div>
       <div class="sidebar-meta">
-        {isO1 ? (
+        {isDashboard ? (
           <span>Dashboard interactivo</span>
         ) : (
           <>
@@ -51,8 +58,8 @@ const o1NavSections = [
     </div>
     <nav class="sidebar-nav">
       <div class="nav-section-label">Indice</div>
-      {isO1 ? (
-        o1NavSections.map((section) => (
+      {isDashboard ? (
+        navSections!.map((section) => (
           <a href={`#${section.slug}`} class={`nav-item level-${section.level}`}>
             {section.title}
           </a>
@@ -73,154 +80,9 @@ const o1NavSections = [
   </aside>
 
   <main class="main-content">
-    {isO1 ? (
-      <!-- O1 DASHBOARD -->
-      <div id="o1-dashboard">
-        <!-- Hero -->
-        <section id="o1-hero" class="dash-section dash-hero">
-          <div class="doc-kicker">Normativa Universitaria Espanola · 2024</div>
-          <h1 class="doc-title">{pkg.data.title}</h1>
-          <p class="dash-context">Analisis interactivo de la implementacion de la Agenda 2030 en las universidades espanolas: normativa, estatutos y gobernanza.</p>
-        </section>
-
-        <!-- LOSU -->
-        <section id="o1-losu" class="dash-section">
-          <h2 class="dash-title">La LOSU y los ODS</h2>
-          <p class="dash-context">Peso relativo de cada ODS en la Ley Organica del Sistema Universitario (LOSU, 2023).</p>
-          <div class="chart-box"><canvas id="chart-losu"></canvas></div>
-        </section>
-
-        <!-- Hub Central -->
-        <section id="o1-hub" class="dash-section">
-          <h2 class="dash-title">Panorama: Universidades y ODS</h2>
-          <p class="dash-context">Selecciona un ODS en el panel inferior o haz click en las barras del grafico para explorar los datos en detalle.</p>
-
-          <div class="chart-box chart-tall"><canvas id="chart-master"></canvas></div>
-
-          <div class="hub-controls">
-            <div class="ods-grid" id="ods-grid"></div>
-            <div class="ods-detail" id="ods-detail"></div>
-          </div>
-
-          <h3 class="dash-subtitle">Top 10 Universidades por ODS</h3>
-          <div class="metric-tabs" id="metric-tabs">
-            <button class="metric-tab active" data-metric="pct">% Cumplimiento</button>
-            <button class="metric-tab" data-metric="mentions">N.o Menciones</button>
-          </div>
-          <div class="chart-box"><canvas id="chart-top10"></canvas></div>
-        </section>
-
-        <!-- Cobertura -->
-        <section id="o1-cobertura" class="dash-section">
-          <h2 class="dash-title">Cobertura ODS en estatutos</h2>
-          <p class="dash-context">Vision general del grado de integracion de los ODS en los estatutos universitarios.</p>
-          <div class="chart-tabs" id="cobertura-tabs">
-            <button class="chart-tab active" data-tab="media">Media por ODS</button>
-            <button class="chart-tab" data-tab="absoluta">Menciones absolutas</button>
-            <button class="chart-tab" data-tab="relativa">Cobertura relativa %</button>
-          </div>
-          <div class="tab-container">
-            <div class="tab-panel active" data-panel="media"><div class="chart-box"><canvas id="chart-cob-media"></canvas></div></div>
-            <div class="tab-panel" data-panel="absoluta"><div class="chart-box"><canvas id="chart-cob-abs"></canvas></div></div>
-            <div class="tab-panel" data-panel="relativa"><div class="chart-box"><canvas id="chart-cob-rel"></canvas></div></div>
-          </div>
-        </section>
-
-        <!-- Targets -->
-        <section id="o1-targets" class="dash-section">
-          <h2 class="dash-title">Analisis de metas (targets)</h2>
-          <p class="dash-context">Navega entre las tres vistas: frecuencia por ODS, ordenados y top 10.</p>
-          <div id="targets-stepper" class="stepper">
-            <div class="stepper-controls">
-              <button class="step-btn" id="step-prev" disabled>&larr;</button>
-              <span class="step-indicator" id="step-indicator">1 / 3</span>
-              <button class="step-btn" id="step-next">&rarr;</button>
-            </div>
-            <div class="stepper-track">
-              <div class="step-panel active" data-step="0"><div class="chart-box"><canvas id="chart-targets-1"></canvas></div></div>
-              <div class="step-panel" data-step="1"><div class="chart-box"><canvas id="chart-targets-2"></canvas></div></div>
-              <div class="step-panel" data-step="2"><div class="chart-box"><canvas id="chart-targets-3"></canvas></div></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Extremos -->
-        <section id="o1-extremos" class="dash-section">
-          <h2 class="dash-title">Universidades: mas y menos mencion</h2>
-          <div class="side-by-side">
-            <div class="chart-box"><canvas id="chart-extremos-mas"></canvas></div>
-            <div class="chart-box"><canvas id="chart-extremos-menos"></canvas></div>
-          </div>
-        </section>
-
-        <!-- Genero -->
-        <section id="o1-genero" class="dash-section">
-          <h2 class="dash-title">Gobernanza: diversidad de genero</h2>
-          <p class="dash-context">Evolucion temporal de la representacion femenina en organos de gobierno universitarios.</p>
-
-          <div class="chart-tabs" id="genero-tabs">
-            <button class="chart-tab active" data-tab="rectora">Mujer rectora</button>
-            <button class="chart-tab" data-tab="gerente">Mujer gerente</button>
-            <button class="chart-tab" data-tab="cr-mujeres">Mujeres en CR</button>
-            <button class="chart-tab" data-tab="cr-paridad">Paridad CR</button>
-          </div>
-          <div class="tab-container">
-            <div class="tab-panel active" data-panel="rectora"><div class="chart-box"><canvas id="chart-gen-rectora"></canvas></div></div>
-            <div class="tab-panel" data-panel="gerente"><div class="chart-box"><canvas id="chart-gen-gerente"></canvas></div></div>
-            <div class="tab-panel" data-panel="cr-mujeres"><div class="chart-box"><canvas id="chart-gen-cr"></canvas></div></div>
-            <div class="tab-panel" data-panel="cr-paridad"><div class="chart-box"><canvas id="chart-gen-paridad"></canvas></div></div>
-          </div>
-
-          <div class="side-by-side" style="margin-top:2rem">
-            <div class="chart-box"><canvas id="chart-gen-tipo"></canvas></div>
-            <div class="chart-box"><canvas id="chart-gen-hist"></canvas></div>
-          </div>
-
-          <h3 class="dash-subtitle">Datos por Comunidad Autonoma</h3>
-          <div class="chart-tabs" id="ccaa-tabs">
-            <button class="chart-tab active" data-tab="ccaa-rectora">Sin mujer rectora</button>
-            <button class="chart-tab" data-tab="ccaa-cr">% mujeres en CR</button>
-            <button class="chart-tab" data-tab="ccaa-tamano">Tamano CR / 1000 alumnos</button>
-          </div>
-          <div class="tab-container">
-            <div class="tab-panel active" data-panel="ccaa-rectora"><div class="chart-box chart-tall"><canvas id="chart-ccaa-1"></canvas></div></div>
-            <div class="tab-panel" data-panel="ccaa-cr"><div class="chart-box chart-tall"><canvas id="chart-ccaa-2"></canvas></div></div>
-            <div class="tab-panel" data-panel="ccaa-tamano"><div class="chart-box chart-tall"><canvas id="chart-ccaa-3"></canvas></div></div>
-          </div>
-        </section>
-
-        <!-- Tamano -->
-        <section id="o1-tamano" class="dash-section">
-          <h2 class="dash-title">Tamaño de los organos de gobierno</h2>
-          <div class="side-by-side">
-            <div class="chart-box"><canvas id="chart-tam-prom"></canvas></div>
-            <div class="chart-box"><canvas id="chart-tam-1000"></canvas></div>
-          </div>
-        </section>
-
-        <!-- Sostenibilidad -->
-        <section id="o1-sostenibilidad" class="dash-section">
-          <h2 class="dash-title">Sostenibilidad institucional</h2>
-          <p class="dash-context">Presencia de vicerrectorados, direcciones de area y comisiones dedicadas a sostenibilidad.</p>
-          <div class="side-by-side">
-            <div class="chart-box"><canvas id="chart-sost-vice"></canvas></div>
-            <div class="chart-box"><canvas id="chart-sost-tamano"></canvas></div>
-          </div>
-          <div class="chart-box" style="margin-top:1.5rem"><canvas id="chart-sost-ods"></canvas></div>
-          <div class="side-by-side" style="margin-top:1.5rem">
-            <div class="chart-box"><canvas id="chart-sost-dir"></canvas></div>
-            <div class="chart-box"><canvas id="chart-sost-comision"></canvas></div>
-          </div>
-        </section>
-
-        <!-- Conclusiones -->
-        <section id="o1-conclusiones" class="dash-section">
-          <h2 class="dash-title">Conclusiones clave</h2>
-          <div id="conclusions"></div>
-        </section>
-      </div>
+    {slug === 'o1' ? (
+      <O1Dashboard pkg={pkg} />
     ) : (
-      <!-- STANDARD VIEWER -->
       <>
         <div class="doc-header">
           <div class="doc-kicker">Normativa Universitaria Espanola · 2024</div>
@@ -235,9 +97,6 @@ const o1NavSections = [
     )}
   </main>
 
-  <script>
-    import '../../scripts/o1-dashboard.ts';
-  </script>
   <script>
     import '../../scripts/package-viewer.ts';
   </script>
@@ -428,366 +287,5 @@ const o1NavSections = [
 
   @media (max-width: 800px) {
     .sidebar { display: none; }
-  }
-</style>
-
-<!-- O1 DASHBOARD STYLES -->
-<style is:global>
-  /* ─── Dashboard layout ─────────────────────────── */
-  #o1-dashboard {
-    max-width: 1100px;
-  }
-
-  .dash-section {
-    margin-bottom: 3.5rem;
-    scroll-margin-top: 2rem;
-  }
-
-  .dash-hero {
-    padding-bottom: 2.5rem;
-    margin-bottom: 3rem;
-    border-bottom: 2px solid var(--green-deep);
-    position: relative;
-  }
-
-  .dash-hero::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 80px;
-    height: 2px;
-    background: var(--gold);
-  }
-
-  .dash-hero .doc-title {
-    max-width: 800px;
-  }
-
-  .dash-title {
-    font-family: var(--font-base);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--brand);
-    margin: 0 0 0.6rem 0;
-  }
-
-  .dash-subtitle {
-    font-family: var(--font-base);
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin: 2.5rem 0 1rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .dash-context {
-    font-family: var(--font-base);
-    font-size: 0.92rem;
-    line-height: 1.7;
-    color: var(--ink);
-    margin: 0 0 1.5rem 0;
-    max-width: 700px;
-  }
-
-  /* ─── Chart box ────────────────────────────────── */
-  .chart-box {
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 1rem;
-    min-height: 450px;
-    position: relative;
-  }
-
-  .chart-box canvas {
-    width: 100% !important;
-    height: 100% !important;
-    display: block;
-  }
-
-  .chart-tall {
-    min-height: 700px;
-  }
-
-  /* ─── Side by side ─────────────────────────────── */
-  .side-by-side {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-
-  @media (max-width: 900px) {
-    .side-by-side {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* ─── Tabs ─────────────────────────────────────── */
-  .chart-tabs, .metric-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-bottom: 1rem;
-  }
-
-  .chart-tab, .metric-tab {
-    font-family: var(--font-base);
-    font-size: 0.78rem;
-    font-weight: 500;
-    padding: 0.45rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    background: var(--cream);
-    color: var(--brand);
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-
-  .chart-tab:hover, .metric-tab:hover {
-    background: var(--brand-soft);
-    color: var(--brand);
-    border-color: var(--brand);
-  }
-
-  .chart-tab.active, .metric-tab.active {
-    background: var(--brand);
-    color: #ffffff;
-    border-color: var(--brand);
-  }
-
-  .tab-container {
-    position: relative;
-  }
-
-  .tab-panel {
-    display: none;
-  }
-
-  .tab-panel.active {
-    display: block;
-  }
-
-  /* ─── Stepper ──────────────────────────────────── */
-  .stepper-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .step-btn {
-    font-family: var(--font-base);
-    font-size: 1rem;
-    width: 2.2rem;
-    height: 2.2rem;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    background: #ffffff;
-    color: var(--brand);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.15s;
-  }
-
-  .step-btn:hover:not(:disabled) {
-    background: var(--brand);
-    color: #ffffff;
-    border-color: var(--brand);
-  }
-
-  .step-btn:disabled {
-    opacity: 0.3;
-    cursor: default;
-  }
-
-  .step-indicator {
-    font-family: var(--font-base);
-    font-size: 0.8rem;
-    color: var(--ink);
-    min-width: 3rem;
-    text-align: center;
-  }
-
-  .stepper-track {
-    position: relative;
-  }
-
-  .step-panel {
-    display: none;
-  }
-
-  .step-panel.active {
-    display: block;
-  }
-
-  /* ─── ODS Grid (selector) ──────────────────────── */
-  .hub-controls {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.5rem;
-    margin: 1.5rem 0;
-    align-items: start;
-  }
-
-  @media (max-width: 700px) {
-    .hub-controls {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .ods-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 0.4rem;
-  }
-
-  .ods-btn {
-    width: 2.6rem;
-    height: 2.6rem;
-    border-radius: 6px;
-    border: 2px solid transparent;
-    background: var(--ods-color);
-    color: #ffffff;
-    font-family: var(--font-base);
-    font-size: 0.72rem;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.15s;
-    opacity: 0.7;
-  }
-
-  .ods-btn:hover {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-
-  .ods-btn.active {
-    opacity: 1;
-    border-color: var(--brand);
-    transform: scale(1.1);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  }
-
-  /* ─── ODS Detail panel ─────────────────────────── */
-  .ods-detail {
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.2rem;
-    opacity: 0;
-    transition: opacity 0.3s;
-    min-height: 140px;
-  }
-
-  .ods-detail.visible {
-    opacity: 1;
-  }
-
-  .detail-header {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .detail-ods-badge {
-    display: inline-block;
-    color: #ffffff;
-    font-family: var(--font-base);
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 0.25rem 0.6rem;
-    border-radius: 4px;
-    letter-spacing: 0.05em;
-  }
-
-  .detail-ods-name {
-    font-family: var(--font-base);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--brand);
-  }
-
-  .detail-stats {
-    display: flex;
-    gap: 1.2rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .detail-stat {
-    text-align: center;
-    flex: 1;
-  }
-
-  .detail-stat-val {
-    font-family: var(--font-base);
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--brand);
-  }
-
-  .detail-stat-lbl {
-    font-family: var(--font-base);
-    font-size: 0.65rem;
-    color: var(--ink);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .detail-metas {
-    border-top: 1px solid var(--border);
-    padding-top: 0.6rem;
-  }
-
-  .detail-metas-title {
-    font-family: var(--font-base);
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 0.3rem;
-  }
-
-  .detail-metas ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .detail-metas li {
-    font-family: var(--font-base);
-    font-size: 0.78rem;
-    color: var(--ink);
-    padding: 0.2rem 0;
-  }
-
-  .meta-freq {
-    color: var(--ink);
-    font-size: 0.7rem;
-  }
-
-  /* ─── Conclusions ──────────────────────────────── */
-  #conclusions blockquote {
-    border-left: 3px solid var(--gold);
-    padding: 0.8rem 1.2rem;
-    margin: 1rem 0;
-    background: var(--paper);
-    border-radius: 0 4px 4px 0;
-  }
-
-  #conclusions blockquote p {
-    font-family: var(--font-base);
-    font-size: 0.92rem;
-    color: var(--ink);
-    margin: 0;
-    line-height: 1.7;
-    font-style: normal;
   }
 </style>

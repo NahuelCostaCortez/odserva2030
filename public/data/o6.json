@@ -6,7 +6,7 @@
       "title": "Informe de inventario de proyectos de transferencia de conocimiento. Estudios de caso detallados e informe del análisis cuantitativo del impacto (O6)",
       "level": 1,
       "order": 0,
-      "content": "{{FIGURE:o6-figure-1}}\n\nObservatorio de implementación de la Agenda 2030 en el Sistema Universitario Español\n\n![](_page_0_Picture_3.jpeg)\n\n![](_page_0_Picture_4.jpeg)\n\n![](_page_0_Picture_5.jpeg)\n\nDIRECCIÓN GENERAL\n\n![](_page_0_Picture_6.jpeg)\n\n\n{{FIGURE:o6-figure-2}}"
+      "content": "{{FIGURE:o6-figure-1}}\n\nObservatorio de implementación de la Agenda 2030 en el Sistema Universitario Español\n\nDIRECCIÓN GENERAL\n\n{{FIGURE:o6-figure-2}}"
     },
     {
       "id": "o6-indice",
@@ -14,7 +14,7 @@
       "title": "Índice",
       "level": 1,
       "order": 1,
-      "content": "{{TABLE:o6-table-1}}\n\n![](_page_2_Picture_3.jpeg)\n\n![](_page_3_Picture_0.jpeg)"
+      "content": "{{TABLE:o6-table-1}}"
     },
     {
       "id": "o6-resumen",
@@ -22,7 +22,7 @@
       "title": "Resumen",
       "level": 2,
       "order": 2,
-      "content": "Elaboración de un inventario de actividades de transferencia financiadas en convocatorias públicas competitivas en las universidades españolas. Con esta actividad se pretende obtener un análisis detallado de dará de las actividades de transferencia en las universidades españolas, tanto en convocatorias nacionales como europeas.\n\nEl inventario incluye los proyectos de transferencia financiados en las convocatorias de Pruebas de Concepto, a nivel nacional, y la convocatoria LIFE, a nivel europeo.\n\nEl periodo estudiado comprende los años 2016 a 2023, habiéndose analizado más de 700 proyectos nacionales y europeos.\n\n![](_page_4_Picture_5.jpeg)\n\n![](_page_5_Picture_0.jpeg)"
+      "content": "Elaboración de un inventario de actividades de transferencia financiadas en convocatorias públicas competitivas en las universidades españolas. Con esta actividad se pretende obtener un análisis detallado de dará de las actividades de transferencia en las universidades españolas, tanto en convocatorias nacionales como europeas.\n\nEl inventario incluye los proyectos de transferencia financiados en las convocatorias de Pruebas de Concepto, a nivel nacional, y la convocatoria LIFE, a nivel europeo.\n\nEl periodo estudiado comprende los años 2016 a 2023, habiéndose analizado más de 700 proyectos nacionales y europeos."
     },
     {
       "id": "o6-objetivos",
@@ -30,7 +30,7 @@
       "title": "Objetivos",
       "level": 1,
       "order": 3,
-      "content": "El objetivo general de esta actividad es elaborar un inventario que estudiar la implementación de la Agenda 2030 en las convocatorias de los organismos nacionales y europeos de transferencia.\n\nA este fin, los objetivos específicos son:\n\n- Elaborar un inventario detallado de los proyectos financiados a nivel nacional, tales como los financiados en la convocatoria de Pruebas de Concepto.\n- Elaborar un inventario detallado de los proyectos financiados a nivel europeo, tales como los financiados en la convocatoria LIFE.\n\n![](_page_6_Picture_6.jpeg)\n\n![](_page_7_Picture_0.jpeg)"
+      "content": "El objetivo general de esta actividad es elaborar un inventario que estudiar la implementación de la Agenda 2030 en las convocatorias de los organismos nacionales y europeos de transferencia.\n\nA este fin, los objetivos específicos son:\n\n- Elaborar un inventario detallado de los proyectos financiados a nivel nacional, tales como los financiados en la convocatoria de Pruebas de Concepto.\n- Elaborar un inventario detallado de los proyectos financiados a nivel europeo, tales como los financiados en la convocatoria LIFE."
     },
     {
       "id": "o6-metodologia",
@@ -38,7 +38,7 @@
       "title": "Metodología",
       "level": 1,
       "order": 4,
-      "content": "Se ha elaborado un inventario detallado de proyectos de las actividades de transferencia en las universidades españolas. Para ello se ha empleado la información de la **convocatoria proyectos de \"Pruebas de Concepto\"** publicada por la **Agencia Estatal de Investigación (AEI)** de los años 2021, 2022 y 2023, debido a que son las únicas resoluciones disponibles en la AEI.\n\nEn el inventario de proyectos de transferencia se incluye información relativa a: la referencia del proyecto, el subárea de conocimiento, el beneficiario (Universidad), el centro al que se adscribe el proyecto, la Comunidad Autónoma, la duración del proyecto, la cuantía, y si el proyecto está alineado con los Objetivos de Desarrollo Sostenible (ODS).\n\nNo se analizan en este inventario proyectos de transferencia financiados en convocatorias autonómicas por exceder el alcance de este proyecto.\n\nPara llevar a cabo la asignación de los ODS a los proyectos se han utilizado herramientas de inteligencia artificial basadas en modelos de lenguaje generativos. Téngase en cuenta que en estas convocatorias no tenemos disponible información sobre el título del proyecto, por lo que la asignación de los ODS solo se ha podido llevar a cabo teniendo en cuenta el subárea de conocimiento del proyecto en cuestión. Con el fin de facilitar este proceso automatizado, se ha preparado un documento de texto (Anexo) en el que se recogen de forma estructurada todas las metas de los 17 ODS, así como la clasificación por áreas y subáreas científicas de los proyectos.\n\n![](_page_8_Picture_6.jpeg)\n\nTabla 1. Clasificación temática de áreas y subáreas científicas.\n\n\n{{TABLE:o6-table-2}}\n\n![](_page_9_Picture_4.jpeg)\n\n\n{{TABLE:o6-table-3}}\n\nA nivel europeo, se han examinado los proyectos de investigación de las universidades españolas de la **convocatoria LIFE** durante el periodo 2016-2023.\n\nEn el inventario de proyectos se incluye información relativa a: la referencia del proyecto, el título, la universidad beneficiaria, la Comunidad Autónoma, las fechas de inicio y fin, el presupuesto total del proyecto, la contribución de la Unión Europea al proyecto, y si el proyecto está alineado con los Objetivos de Desarrollo Sostenible (ODS).\n\nLa asignación de los ODS se ha llevado a cabo utilizando únicamente al título del proyecto, debido a que no se dispone de información sobre el área o subárea de conocimiento.\n\n![](_page_10_Picture_6.jpeg)\n\n![](_page_11_Picture_0.jpeg)"
+      "content": "Se ha elaborado un inventario detallado de proyectos de las actividades de transferencia en las universidades españolas. Para ello se ha empleado la información de la **convocatoria proyectos de \"Pruebas de Concepto\"** publicada por la **Agencia Estatal de Investigación (AEI)** de los años 2021, 2022 y 2023, debido a que son las únicas resoluciones disponibles en la AEI.\n\nEn el inventario de proyectos de transferencia se incluye información relativa a: la referencia del proyecto, el subárea de conocimiento, el beneficiario (Universidad), el centro al que se adscribe el proyecto, la Comunidad Autónoma, la duración del proyecto, la cuantía, y si el proyecto está alineado con los Objetivos de Desarrollo Sostenible (ODS).\n\nNo se analizan en este inventario proyectos de transferencia financiados en convocatorias autonómicas por exceder el alcance de este proyecto.\n\nPara llevar a cabo la asignación de los ODS a los proyectos se han utilizado herramientas de inteligencia artificial basadas en modelos de lenguaje generativos. Téngase en cuenta que en estas convocatorias no tenemos disponible información sobre el título del proyecto, por lo que la asignación de los ODS solo se ha podido llevar a cabo teniendo en cuenta el subárea de conocimiento del proyecto en cuestión. Con el fin de facilitar este proceso automatizado, se ha preparado un documento de texto (Anexo) en el que se recogen de forma estructurada todas las metas de los 17 ODS, así como la clasificación por áreas y subáreas científicas de los proyectos.\n\nTabla 1. Clasificación temática de áreas y subáreas científicas.\n\n{{TABLE:o6-table-2}}\n\n{{TABLE:o6-table-3}}\n\nA nivel europeo, se han examinado los proyectos de investigación de las universidades españolas de la **convocatoria LIFE** durante el periodo 2016-2023.\n\nEn el inventario de proyectos se incluye información relativa a: la referencia del proyecto, el título, la universidad beneficiaria, la Comunidad Autónoma, las fechas de inicio y fin, el presupuesto total del proyecto, la contribución de la Unión Europea al proyecto, y si el proyecto está alineado con los Objetivos de Desarrollo Sostenible (ODS).\n\nLa asignación de los ODS se ha llevado a cabo utilizando únicamente al título del proyecto, debido a que no se dispone de información sobre el área o subárea de conocimiento."
     },
     {
       "id": "o6-resultados",
@@ -46,7 +46,7 @@
       "title": "Resultados",
       "level": 2,
       "order": 5,
-      "content": "A continuación, se recoge el inventario elaborado de los proyectos de transferencia de las universidades españolas para los años 2021, 2022 y 2023 (Tablas 2 a 4).\n\nSeguidamente, se recoge el inventario elaborado de los proyectos de investigación de las universidades españolas financiados en las convocatorias europeas de LIFE (Tablas 5 a 12).\n\n![](_page_12_Picture_4.jpeg)"
+      "content": "A continuación, se recoge el inventario elaborado de los proyectos de transferencia de las universidades españolas para los años 2021, 2022 y 2023 (Tablas 2 a 4).\n\nSeguidamente, se recoge el inventario elaborado de los proyectos de investigación de las universidades españolas financiados en las convocatorias europeas de LIFE (Tablas 5 a 12)."
     },
     {
       "id": "o6-tabla-5-proyectos-life-ano-2016",
@@ -54,7 +54,7 @@
       "title": "Tabla 5. Proyectos LIFE año 2016",
       "level": 3,
       "order": 6,
-      "content": "{{TABLE:o6-table-4}}\n\n![](_page_37_Picture_4.jpeg)\n\n\n{{TABLE:o6-table-5}}\n\n![](_page_38_Picture_3.jpeg)\n\n\n{{TABLE:o6-table-6}}\n\n![](_page_39_Picture_4.jpeg)\n\n\n{{TABLE:o6-table-7}}\n\n![](_page_40_Picture_3.jpeg)\n\n\n{{TABLE:o6-table-8}}\n\n![](_page_41_Picture_4.jpeg)\n\n\n{{TABLE:o6-table-9}}\n\n![](_page_42_Picture_3.jpeg)\n\n\n{{TABLE:o6-table-10}}\n\n![](_page_43_Picture_3.jpeg)\n\n\n{{TABLE:o6-table-11}}\n\n![](_page_44_Picture_3.jpeg)\n\n\n{{TABLE:o6-table-12}}\n\n![](_page_45_Picture_4.jpeg)\n\n\n{{TABLE:o6-table-13}}\n\n![](_page_46_Picture_4.jpeg)\n\n![](_page_47_Picture_0.jpeg)"
+      "content": "{{TABLE:o6-table-4}}\n\n{{TABLE:o6-table-5}}\n\n{{TABLE:o6-table-6}}\n\n{{TABLE:o6-table-7}}\n\n{{TABLE:o6-table-8}}\n\n{{TABLE:o6-table-9}}\n\n{{TABLE:o6-table-10}}\n\n{{TABLE:o6-table-11}}\n\n{{TABLE:o6-table-12}}\n\n{{TABLE:o6-table-13}}"
     },
     {
       "id": "o6-conclusiones",
@@ -62,7 +62,7 @@
       "title": "Conclusiones",
       "level": 1,
       "order": 7,
-      "content": "En esta actividad se ha elaborado un inventario detallado de los proyectos de transferencia de las universidades españolas financiados en las convocatorias de Pruebas de Concepto y LIFE durante el periodo 2016-2023.\n\nLa transferencia del conocimiento constituye un eje estratégico para garantizar la aplicación práctica de los resultados de la investigación y su contribución efectiva al desarrollo sostenible y a la competitividad del sistema universitario. Sin embargo, el análisis realizado ha puesto de manifiesto una falta significativa de transparencia, accesibilidad y homogeneidad en los datos disponibles en las convocatorias nacionales y europeas, lo que limita la fiabilidad del inventario y condiciona el alcance analítico del resto de actividades vinculadas a este paquete de trabajo.\n\nEn el caso de las convocatorias nacionales de \"Pruebas de Concepto\" gestionadas por la Agencia Estatal de Investigación (AEI), la información facilitada en las resoluciones públicas resulta parcial e insuficiente. La ausencia de datos clave, como los títulos de los proyectos, impide conocer con precisión la orientación hacia los Objetivos de Desarrollo Sostenible (ODS) de los proyectos incluidos en el inventario. De forma similar, en las convocatorias europeas LIFE se observa una ausencia de sistematización y estandarización en los datos publicados, lo que dificulta la comparación y el seguimiento del impacto de los proyectos financiados.\n\nPor ello, resulta esencial promover mecanismos institucionales de transparencia que garanticen la publicación estandarizada, accesible y completa de los datos relativos a las convocatorias de transferencia.\n\n![](_page_48_Picture_6.jpeg)\n\n![](_page_49_Picture_0.jpeg)"
+      "content": "En esta actividad se ha elaborado un inventario detallado de los proyectos de transferencia de las universidades españolas financiados en las convocatorias de Pruebas de Concepto y LIFE durante el periodo 2016-2023.\n\nLa transferencia del conocimiento constituye un eje estratégico para garantizar la aplicación práctica de los resultados de la investigación y su contribución efectiva al desarrollo sostenible y a la competitividad del sistema universitario. Sin embargo, el análisis realizado ha puesto de manifiesto una falta significativa de transparencia, accesibilidad y homogeneidad en los datos disponibles en las convocatorias nacionales y europeas, lo que limita la fiabilidad del inventario y condiciona el alcance analítico del resto de actividades vinculadas a este paquete de trabajo.\n\nEn el caso de las convocatorias nacionales de \"Pruebas de Concepto\" gestionadas por la Agencia Estatal de Investigación (AEI), la información facilitada en las resoluciones públicas resulta parcial e insuficiente. La ausencia de datos clave, como los títulos de los proyectos, impide conocer con precisión la orientación hacia los Objetivos de Desarrollo Sostenible (ODS) de los proyectos incluidos en el inventario. De forma similar, en las convocatorias europeas LIFE se observa una ausencia de sistematización y estandarización en los datos publicados, lo que dificulta la comparación y el seguimiento del impacto de los proyectos financiados.\n\nPor ello, resulta esencial promover mecanismos institucionales de transparencia que garanticen la publicación estandarizada, accesible y completa de los datos relativos a las convocatorias de transferencia."
     }
   ],
   "tables": [
