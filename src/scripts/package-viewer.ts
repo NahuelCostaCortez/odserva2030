@@ -3,11 +3,17 @@ import {
   Chart,
   BarController,
   LineController,
+  PolarAreaController,
+  RadarController,
+  PieController,
+  DoughnutController,
   CategoryScale,
   LinearScale,
+  RadialLinearScale,
   BarElement,
   LineElement,
   PointElement,
+  ArcElement,
   Title,
   Tooltip,
   Legend
@@ -44,9 +50,9 @@ type PackageData = {
 };
 
 type InteractiveFigureConfig = {
-  chartType: 'bar' | 'line';
+  chartType: 'bar' | 'line' | 'polarArea' | 'radar' | 'radialStem' | 'funnelBlocks' | 'phaseFlow' | 'pie' | 'doughnut';
   csvPath: string;
-  title: string;
+  title: string | string[];
   xKey: string;
   yKey?: string;
   yKeys?: string[];
@@ -61,6 +67,10 @@ type InteractiveFigureConfig = {
   yAxisLabel?: string;
   datasetLabel?: string;
   showLegend?: boolean;
+  showDataLabels?: boolean;
+  dataLabelSuffix?: string;
+  valueFormat?: 'number' | 'percent';
+  percentageKey?: string;
   colorMap?: Record<string, string>;
   zoomable?: boolean;
 };
@@ -95,9 +105,246 @@ const lineSeriesStyles: Record<string, { color: string; dash: number[] }> = {
   'Total':               { color: '#2E4A7A', dash: [] }
 };
 
+const datasetLabelMap: Record<string, string> = {
+  n_publicas: 'Nº públicas',
+  n_privadas: 'Nº privadas',
+  total: 'Total',
+  publica: 'Pública',
+  privada: 'Privada',
+  si: 'SI',
+  no: 'NO',
+  '% medibles': '% medibles',
+  '% avances': '% avances',
+  Alianzas: 'Alianzas',
+  'Formación': 'Formación',
+  'Buenas prácticas': 'Buenas prácticas'
+};
+
+const chartColorPalette = [
+  '#2a9fd6',
+  '#6EC1E4',
+  '#4472C4',
+  '#4c9f38',
+  '#fcc30b',
+  '#f6a53a',
+  '#e3337e',
+  '#1b4f72'
+];
+
 const getResponsiveFontSize = (context: any) => ({
   size: (context.scale.max - context.scale.min) > 40 ? 9 : 12
 });
+
+function wrapCanvasText(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string[] {
+  const words = text.split(/\s+/);
+  const lines: string[] = [];
+  let currentLine = '';
+
+  words.forEach((word) => {
+    const nextLine = currentLine ? `${currentLine} ${word}` : word;
+    if (ctx.measureText(nextLine).width <= maxWidth || !currentLine) {
+      currentLine = nextLine;
+      return;
+    }
+
+    lines.push(currentLine);
+    currentLine = word;
+  });
+
+  if (currentLine) lines.push(currentLine);
+  return lines;
+}
+
+function clampCanvasValue(value: number, min: number, max: number): number {
+  return Math.min(Math.max(value, min), max);
+}
+
+const radialStemPlugin = {
+  id: 'radialStemPlugin',
+  beforeDatasetsDraw(chart: any) {
+    const scale = chart.scales?.r;
+    const dataset = chart.data?.datasets?.[0];
+    if (!scale || !dataset?.data?.length) return;
+
+    const colors = dataset.pointBackgroundColor;
+    const ctx = chart.ctx;
+    ctx.save();
+    ctx.lineWidth = 3;
+    ctx.lineCap = 'round';
+
+    dataset.data.forEach((rawValue: unknown, index: number) => {
+      const value = Number(rawValue);
+      if (!Number.isFinite(value)) return;
+
+      const point = scale.getPointPositionForValue(index, value);
+      ctx.beginPath();
+      ctx.moveTo(scale.xCenter, scale.yCenter);
+      ctx.lineTo(point.x, point.y);
+      ctx.strokeStyle = Array.isArray(colors) ? colors[index] : '#2a9fd6';
+      ctx.stroke();
+    });
+
+    ctx.restore();
+  },
+  afterDraw(chart: any) {
+    const scale = chart.scales?.r;
+    const dataset = chart.data?.datasets?.[0];
+    const labels = dataset?.customLabels ?? chart.data?.labels;
+    if (!scale || !labels?.length) return;
+
+    const ctx = chart.ctx;
+    const lineHeight = 17;
+
+    ctx.save();
+    ctx.fillStyle = '#222222';
+    ctx.font = '14px "Roboto Slab", serif';
+
+    labels.forEach((label: string, index: number) => {
+      const value = Number(dataset.data[index]);
+      if (!Number.isFinite(value)) return;
+
+      const point = scale.getPointPositionForValue(index, value);
+      const edge = scale.getPointPositionForValue(index, scale.max);
+      const dx = edge.x - scale.xCenter;
+      const dy = edge.y - scale.yCenter;
+      const distance = Math.hypot(dx, dy) || 1;
+      const unitX = dx / distance;
+      const unitY = dy / distance;
+      const isSideLabel = Math.abs(unitX) > 0.35;
+      const labelMaxWidth = isSideLabel ? 245 : 300;
+      const lines = wrapCanvasText(ctx, label, labelMaxWidth);
+      const blockHeight = lines.length * lineHeight;
+
+      let x = point.x + unitX * 18;
+      let y = point.y + unitY * 18 - blockHeight / 2;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+
+      if (unitX > 0.35) {
+        ctx.textAlign = 'left';
+        x = clampCanvasValue(x, 8, chart.width - labelMaxWidth - 8);
+      } else if (unitX < -0.35) {
+        ctx.textAlign = 'right';
+        x = clampCanvasValue(x, labelMaxWidth + 8, chart.width - 8);
+      } else {
+        x = clampCanvasValue(x, labelMaxWidth / 2 + 8, chart.width - labelMaxWidth / 2 - 8);
+      }
+      y = clampCanvasValue(y, 8, chart.height - blockHeight - 8);
+
+      lines.forEach((line, lineIndex) => {
+        ctx.fillText(line, x, y + lineIndex * lineHeight);
+      });
+    });
+
+    ctx.restore();
+  }
+};
+
+const largeRadarLabelPlugin = {
+  id: 'largeRadarLabelPlugin',
+  afterDraw(chart: any) {
+    const scale = chart.scales?.r;
+    const labels = chart.data?.labels;
+    if (!scale || !labels?.length) return;
+
+    const ctx = chart.ctx;
+    const radius = scale.drawingArea;
+    const lineHeight = 22;
+
+    ctx.save();
+    ctx.fillStyle = '#222222';
+    ctx.font = '20px "Roboto Slab", serif';
+    ctx.textBaseline = 'middle';
+
+    labels.forEach((label: string, index: number) => {
+      const edge = scale.getPointPositionForValue(index, scale.max);
+      const dx = edge.x - scale.xCenter;
+      const dy = edge.y - scale.yCenter;
+      const distance = Math.hypot(dx, dy) || 1;
+      const unitX = dx / distance;
+      const unitY = dy / distance;
+      const labelMaxWidth = Math.abs(unitX) > 0.45 ? 240 : 300;
+      const lines = wrapCanvasText(ctx, label, labelMaxWidth);
+      const blockHeight = lines.length * lineHeight;
+
+      let x = scale.xCenter + unitX * (radius - 16);
+      let y = scale.yCenter + unitY * (radius - 16) - blockHeight / 2;
+      ctx.textAlign = 'center';
+
+      if (unitX > 0.45) {
+        ctx.textAlign = 'right';
+        x -= 8;
+      } else if (unitX < -0.45) {
+        ctx.textAlign = 'left';
+        x += 8;
+      }
+
+      const minX = ctx.textAlign === 'right' ? labelMaxWidth + 8 : labelMaxWidth / 2 + 8;
+      const maxX = ctx.textAlign === 'left' ? chart.width - labelMaxWidth - 8 : chart.width - labelMaxWidth / 2 - 8;
+      x = clampCanvasValue(x, minX, maxX);
+      y = clampCanvasValue(y, 92, chart.height - blockHeight - 12);
+
+      lines.forEach((line, lineIndex) => {
+        ctx.fillText(line, x, y + lineIndex * lineHeight);
+      });
+    });
+
+    ctx.restore();
+  }
+};
+
+const barValueLabelPlugin = {
+  id: 'barValueLabelPlugin',
+  afterDatasetsDraw(chart: any) {
+    const ctx = chart.ctx;
+    ctx.save();
+    ctx.fillStyle = '#111111';
+    ctx.font = '12px "Roboto Slab", serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+
+    chart.data.datasets.forEach((dataset: any, datasetIndex: number) => {
+      const meta = chart.getDatasetMeta(datasetIndex);
+      meta.data.forEach((bar: any, index: number) => {
+        const value = dataset.data[index];
+        if (value === null || value === undefined || Number.isNaN(Number(value))) return;
+        const suffix = chart.options.plugins?.valueLabels?.suffix ?? '';
+        const formatted = suffix ? `${Number(value).toFixed(1)}${suffix}` : String(value);
+        ctx.fillText(formatted, bar.x, bar.y - 4);
+      });
+    });
+
+    ctx.restore();
+  }
+};
+
+const pieValueLabelPlugin = {
+  id: 'pieValueLabelPlugin',
+  afterDatasetsDraw(chart: any) {
+    const dataset = chart.data?.datasets?.[0];
+    const meta = chart.getDatasetMeta(0);
+    if (!dataset || !meta?.data?.length) return;
+
+    const ctx = chart.ctx;
+    ctx.save();
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '28px "Roboto Slab", serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    meta.data.forEach((arc: any, index: number) => {
+      const value = dataset.data[index];
+      const percentage = dataset.percentages?.[index];
+      const position = arc.tooltipPosition();
+      ctx.fillText(String(value), position.x, position.y - 16);
+      if (percentage !== undefined) {
+        ctx.fillText(`(${Number(percentage).toFixed(1)}%)`, position.x, position.y + 18);
+      }
+    });
+
+    ctx.restore();
+  }
+};
 
 const interactiveFigureConfigs: Record<string, InteractiveFigureConfig> = {
   // --- Peso relativo de cada ODS en la LOSU ---
@@ -798,6 +1045,327 @@ const interactiveFigureConfigs: Record<string, InteractiveFigureConfig> = {
     xAxisLabel: 'Porcentaje de vicerrectorados',
     yAxisLabel: 'Objetivos de Desarrollo Sostenible',
     colorMap: odsColorMap
+  },
+  // === O3: Informe oferta formativa ===
+  'o3-figure-2': {
+    chartType: 'radialStem',
+    csvPath: 'csvs/o3/_page_18_Figure_5.csv',
+    title: 'Contextos formativos sobre ODS en universidades españolas',
+    xKey: 'categoria',
+    yKey: 'porcentaje',
+    yMax: 100,
+    yAxisLabel: 'Porcentaje de universidades',
+    datasetLabel: 'Porcentaje',
+    showLegend: false,
+    zoomable: false
+  },
+  'o3-figure-3': {
+    chartType: 'funnelBlocks',
+    csvPath: 'csvs/o3/_page_20_Figure_5.csv',
+    title: 'Embudo de formación docente sobre la Agenda 2030',
+    xKey: 'etapa',
+    yKey: 'porcentaje',
+    yMax: 100,
+    xAxisLabel: 'Porcentaje de universidades',
+    yAxisLabel: 'Etapa',
+    datasetLabel: 'Porcentaje',
+    zoomable: false
+  },
+  'o3-figure-4': {
+    chartType: 'radar',
+    csvPath: 'csvs/o3/_page_33_Figure_2.csv',
+    title: ['Perfil de buenas prácticas (0-3) por universidad', '(págs. 30-40)'],
+    xKey: 'categoria',
+    yKey: 'puntuacion',
+    yMax: 3,
+    yAxisLabel: 'Puntuación',
+    datasetLabel: 'Puntuación media',
+    barColor: '#62b9c8',
+    showLegend: false,
+    zoomable: false
+  },
+  // === O10: Informe de transparencia ===
+  'o10-figure-3': {
+    chartType: 'phaseFlow',
+    csvPath: 'csvs/o10/_page_5_Figure_3.csv',
+    title: 'Fases de la metodología elegida',
+    xKey: 'fase',
+    yKey: 'descripcion',
+    datasetLabel: 'Fases',
+    zoomable: false
+  },
+  'o10-figure-5': {
+    chartType: 'bar',
+    csvPath: 'csvs/o10/_page_8_Figure_4.csv',
+    title: 'Distribución por CCAA',
+    xKey: 'ccaa',
+    yKeys: ['n_publicas', 'n_privadas', 'total'],
+    yMax: 23,
+    xAxisLabel: 'CCAA',
+    yAxisLabel: 'Valores',
+    showLegend: true,
+    colorMap: {
+      n_publicas: '#3397c5',
+      n_privadas: '#f39a32',
+      total: '#bfbfbf'
+    },
+    zoomable: false
+  },
+  'o10-figure-6': {
+    chartType: 'bar',
+    csvPath: 'csvs/o10/_page_9_Figure_2.csv',
+    title: 'Publicaciones IS/MS/MRC',
+    xKey: 'anio',
+    yKeys: ['si', 'no'],
+    yMax: 82,
+    xAxisLabel: 'Año',
+    yAxisLabel: 'Valores',
+    showLegend: true,
+    showDataLabels: true,
+    colorMap: {
+      si: '#3397c5',
+      no: '#f39a32'
+    },
+    zoomable: false
+  },
+  'o10-figure-7': {
+    chartType: 'bar',
+    csvPath: 'csvs/o10/_page_11_Figure_2.csv',
+    title: 'Evolución del compromiso con la Agenda 2030',
+    xKey: 'anio',
+    groupKey: 'serie',
+    yKey: 'porcentaje',
+    yMax: 105,
+    xAxisLabel: '',
+    yAxisLabel: '',
+    showLegend: true,
+    showDataLabels: true,
+    dataLabelSuffix: '%',
+    valueFormat: 'percent',
+    colorMap: {
+      '% compromiso Agenda 2030': '#0070c0',
+      '% compromiso explícito': '#d00000',
+      '% carta compromiso': '#548235',
+      '% ODS prioritarios': '#ff6600'
+    },
+    zoomable: false
+  },
+  'o10-figure-8': {
+    chartType: 'bar',
+    csvPath: 'csvs/o10/_page_12_Figure_3.csv',
+    title: 'EVOLUCIÓN COMPROMISO AGENDA 2030',
+    xKey: 'anio',
+    groupKey: 'serie',
+    yKey: 'porcentaje',
+    yMax: 105,
+    xAxisLabel: 'Año',
+    yAxisLabel: 'Porcentaje (%)',
+    showLegend: true,
+    showDataLabels: true,
+    valueFormat: 'percent',
+    colorMap: {
+      '% medibles': '#5dade2',
+      '% avances': '#ee6a5f'
+    },
+    zoomable: false
+  },
+  'o10-figure-9': {
+    chartType: 'bar',
+    csvPath: 'csvs/o10/_page_13_Figure_3.csv',
+    title: 'EVOLUCIÓN COMPROMISO AGENDA 2030',
+    xKey: 'anio',
+    groupKey: 'serie',
+    yKey: 'porcentaje',
+    yMax: 105,
+    xAxisLabel: 'Año',
+    yAxisLabel: 'Porcentaje (%)',
+    showLegend: true,
+    showDataLabels: true,
+    valueFormat: 'percent',
+    colorMap: {
+      Alianzas: '#5dade2',
+      'Formación': '#ee6a5f',
+      'Buenas prácticas': '#58d68d'
+    },
+    zoomable: false
+  },
+  'o10-figure-10': {
+    chartType: 'bar',
+    csvPath: 'csvs/o10/_page_13_Figure_5.csv',
+    title: 'Nombra ODS/Agenda 2030',
+    xKey: 'anio',
+    yKeys: ['si', 'no'],
+    yMax: 29,
+    xAxisLabel: 'Año',
+    yAxisLabel: 'Valores',
+    showLegend: true,
+    showDataLabels: true,
+    colorMap: {
+      si: '#3397c5',
+      no: '#f39a32'
+    },
+    zoomable: false
+  },
+  'o10-figure-11': {
+    chartType: 'bar',
+    csvPath: 'csvs/o10/_page_14_Figure_3.csv',
+    title: 'Universidades y memorias con un ODS específico',
+    xKey: 'anio',
+    groupKey: 'ods',
+    yKey: 'valor',
+    yMax: 22,
+    xAxisLabel: 'Año',
+    yAxisLabel: 'ODS mencionados',
+    showLegend: true,
+    colorMap: odsColorMap,
+    zoomable: false
+  },
+  'o10-figure-12': {
+    chartType: 'bar',
+    csvPath: 'csvs/o10/_page_15_Figure_2.csv',
+    title: 'Nº universidades/memorias que mencionan un ODS específico',
+    xKey: 'ods',
+    yKey: 'valor',
+    groupKey: 'ods',
+    yMax: 18,
+    xAxisLabel: 'Objetivos de Desarrollo Sostenible',
+    yAxisLabel: 'Nº universidades/memorias que mencionan un ODS específico',
+    datasetLabel: 'Nº universidades/memorias que mencionan un ODS específico',
+    showLegend: true,
+    showDataLabels: true,
+    colorMap: odsColorMap,
+    zoomable: false
+  },
+  'o10-figure-13': {
+    chartType: 'bar',
+    csvPath: 'csvs/o10/_page_16_Figure_3.csv',
+    title: 'Nº universidades/memorias que mencionan un ODS específico',
+    xKey: 'ods',
+    yKey: 'valor',
+    groupKey: 'ods',
+    yMax: 4.5,
+    xAxisLabel: 'Objetivos de Desarrollo Sostenible',
+    yAxisLabel: 'Nº universidades/memorias que mencionan un ODS específico',
+    datasetLabel: 'Nº universidades/memorias que mencionan un ODS específico',
+    showLegend: true,
+    showDataLabels: true,
+    colorMap: odsColorMap,
+    zoomable: false
+  },
+  'o10-figure-14': {
+    chartType: 'bar',
+    csvPath: 'csvs/o10/_page_16_Figure_5.csv',
+    title: 'Otros documentos de sostenibilidad',
+    xKey: 'anio',
+    yKeys: ['si', 'no'],
+    yMax: 95,
+    xAxisLabel: 'Año',
+    yAxisLabel: 'Valores',
+    showLegend: true,
+    showDataLabels: true,
+    colorMap: {
+      si: '#3397c5',
+      no: '#f39a32'
+    },
+    zoomable: false
+  },
+  // === O11: Transparencia informativa en páginas web ===
+  'o11-figure-3': {
+    chartType: 'bar',
+    csvPath: 'csvs/o11/_page_6_Figure_2.csv',
+    title: 'Información en universidades públicas y privadas',
+    xKey: 'tipo_universidad',
+    groupKey: 'serie',
+    yKey: 'valor',
+    yMax: 55,
+    xAxisLabel: '',
+    yAxisLabel: '',
+    showLegend: true,
+    showDataLabels: true,
+    colorMap: {
+      T: '#243f70',
+      C: '#8aa7d8'
+    },
+    zoomable: false
+  },
+  'o11-figure-4': {
+    chartType: 'bar',
+    csvPath: 'csvs/o11/_page_6_Figure_4.csv',
+    title: 'Relación entre tamaño e información publicada',
+    xKey: 'rango',
+    yKeys: ['total', 'publica', 'privada'],
+    yMax: 30,
+    xAxisLabel: 'Valores',
+    yAxisLabel: 'Valores',
+    showLegend: true,
+    showDataLabels: true,
+    colorMap: {
+      total: '#86d1dc',
+      publica: '#5b96e2',
+      privada: '#3f4aa8'
+    },
+    zoomable: false
+  },
+  'o11-figure-5': {
+    chartType: 'pie',
+    csvPath: 'csvs/o11/_page_8_Figure_3.csv',
+    title: 'Diferentes idiomas en la difusión de la sostenibilidad',
+    xKey: 'categoria',
+    yKey: 'valor',
+    percentageKey: 'porcentaje',
+    showLegend: true,
+    showDataLabels: true,
+    colorMap: {
+      '1 idioma': '#73c5d0',
+      '2 idiomas': '#4d8dde',
+      '> 2 idiomas': '#27339a'
+    },
+    zoomable: false
+  },
+  'o11-figure-6': {
+    chartType: 'bar',
+    csvPath: 'csvs/o11/_page_8_Figure_5.csv',
+    title: 'Idiomas de publicación',
+    xKey: 'idioma',
+    yKey: 'valor',
+    yMax: 105,
+    xAxisLabel: '',
+    yAxisLabel: '',
+    datasetLabel: 'Valores',
+    barColor: '#9cc2e5',
+    showLegend: false,
+    showDataLabels: true,
+    zoomable: false
+  },
+  'o11-figure-7': {
+    chartType: 'bar',
+    csvPath: 'csvs/o11/_page_10_Figure_3.csv',
+    title: 'Publicación en lenguaje accesible e inclusivo',
+    xKey: 'categoria',
+    yKey: 'valor',
+    yMax: 7.5,
+    xAxisLabel: '',
+    yAxisLabel: '',
+    datasetLabel: 'Valores',
+    barColor: '#bdd7ee',
+    showLegend: false,
+    showDataLabels: true,
+    zoomable: false
+  },
+  'o11-figure-8': {
+    chartType: 'bar',
+    csvPath: 'csvs/o11/_page_10_Figure_5.csv',
+    title: 'Memorias en web 2025',
+    xKey: 'respuesta',
+    yKey: 'valor',
+    yMax: 65,
+    xAxisLabel: '',
+    yAxisLabel: '',
+    datasetLabel: 'Valores',
+    barColor: '#bdd7ee',
+    showLegend: false,
+    showDataLabels: true,
+    zoomable: false
   }
 };
 
@@ -805,11 +1373,17 @@ marked.setOptions({ breaks: true });
 Chart.register(
   BarController,
   LineController,
+  PolarAreaController,
+  RadarController,
+  PieController,
+  DoughnutController,
   CategoryScale,
   LinearScale,
+  RadialLinearScale,
   BarElement,
   LineElement,
   PointElement,
+  ArcElement,
   Title,
   Tooltip,
   Legend,
@@ -1016,7 +1590,7 @@ async function buildInteractiveBarChart(
     } else if (config.yKeys && config.yKeys.length > 0) {
       labels = dataRows.map((row) => String(row[config.xKey] ?? ''));
       datasets = config.yKeys.map((key) => ({
-        label: key,
+        label: datasetLabelMap[key] ?? key,
         data: dataRows.map((row) => Number(row[key] ?? 0)),
         backgroundColor: config.colorMap?.[key] ?? config.barColor ?? '#7a7a7a',
         borderWidth: 0,
@@ -1049,6 +1623,28 @@ async function buildInteractiveBarChart(
 
       datasets = uniqueGroups.map((group) => ({
         label: group,
+        data: labels.map((label) => dataMap.get(`${label}|${group}`) ?? 0),
+        backgroundColor: config.colorMap?.[group] ?? config.barColor ?? '#7a7a7a',
+        borderWidth: 0,
+        borderRadius: 0
+      }));
+    } else if (config.groupKey && config.yKey) {
+      const categoryKey = config.xKey;
+      const groupKey = config.groupKey;
+      const valueKey = config.yKey;
+
+      labels = Array.from(new Set(dataRows.map((row) => String(row[categoryKey] ?? ''))));
+      const uniqueGroups = Array.from(new Set(dataRows.map((row) => String(row[groupKey] ?? ''))));
+
+      const dataMap = new Map<string, number>();
+      dataRows.forEach((row) => {
+        const cat = String(row[categoryKey] ?? '');
+        const grp = String(row[groupKey] ?? '');
+        dataMap.set(`${cat}|${grp}`, Number(row[valueKey] ?? 0));
+      });
+
+      datasets = uniqueGroups.map((group) => ({
+        label: datasetLabelMap[group] ?? group,
         data: labels.map((label) => dataMap.get(`${label}|${group}`) ?? 0),
         backgroundColor: config.colorMap?.[group] ?? config.barColor ?? '#7a7a7a',
         borderWidth: 0,
@@ -1114,8 +1710,9 @@ async function buildInteractiveBarChart(
           grid: { color: '#f0f0f0' },
           ticks: {
             precision: 0,
-            stepSize: 1,
+            stepSize: config.valueFormat === 'percent' ? 10 : 1,
             callback: function(value: any) {
+              if (config.valueFormat === 'percent') return `${value}%`;
               if (Math.floor(value) === value) return value;
             }
           }
@@ -1153,8 +1750,9 @@ async function buildInteractiveBarChart(
           grid: { color: '#f0f0f0' },
           ticks: {
             precision: 0,
-            stepSize: 1,
+            stepSize: config.valueFormat === 'percent' ? 10 : 1,
             callback: function(value: any) {
+              if (config.valueFormat === 'percent') return `${value}%`;
               if (Math.floor(value) === value) return value;
             }
           }
@@ -1193,7 +1791,17 @@ async function buildInteractiveBarChart(
     new Chart(canvas, {
       type: 'bar',
       data: { labels, datasets },
-      options: { ...options, indexAxis: config.indexAxis ?? 'x' } as any
+      options: {
+        ...options,
+        indexAxis: config.indexAxis ?? 'x',
+        plugins: {
+          ...options.plugins,
+          valueLabels: {
+            suffix: config.dataLabelSuffix ?? ''
+          }
+        }
+      } as any,
+      plugins: config.showDataLabels ? [barValueLabelPlugin] : []
     });
 
     if (statusEl) {
@@ -1298,6 +1906,504 @@ async function buildInteractiveLineChart(
   }
 }
 
+async function buildInteractiveRadialChart(
+  figureEl: HTMLElement,
+  config: InteractiveFigureConfig
+): Promise<void> {
+  const statusEl = figureEl.querySelector<HTMLElement>('.interactive-chart-status');
+  const canvas = figureEl.querySelector<HTMLCanvasElement>('canvas');
+  const wrapper = figureEl.querySelector<HTMLElement>('.interactive-chart-wrapper');
+
+  if (!canvas || !wrapper) return;
+
+  try {
+    const csvUrl = resolvePublicPath(config.csvPath);
+    const response = await fetch(csvUrl);
+    if (!response.ok) throw new Error(`No se pudo cargar ${csvUrl} (HTTP ${response.status})`);
+
+    const csvText = await response.text();
+    const parsed = Papa.parse<CsvRow>(csvText, {
+      header: true,
+      dynamicTyping: true,
+      skipEmptyLines: true
+    });
+
+    const dataRows = parsed.data.filter((row) => row && Object.keys(row).length > 0);
+    if (!dataRows.length) throw new Error('CSV sin filas válidas');
+
+    const valueKey = config.yKey || '';
+    const values = dataRows.map((row) => Number(row[valueKey] ?? 0));
+    const labels = dataRows.map((row) => {
+      const category = String(row[config.xKey] ?? '');
+      if (config.chartType !== 'radialStem') return category;
+
+      const percentage = Number(row[valueKey] ?? 0).toFixed(1);
+      const sampleSize = row.n !== undefined && row.n !== null ? ` (n=${row.n})` : '';
+      return `${category} ${percentage}%${sampleSize}`;
+    });
+    const colors = labels.map((label, index) => config.colorMap?.[label] ?? chartColorPalette[index % chartColorPalette.length]);
+
+    wrapper.style.height = config.chartType === 'radialStem' ? '780px' : config.chartType === 'radar' ? '780px' : '620px';
+    if (config.chartType === 'radialStem' || config.chartType === 'radar') {
+      wrapper.style.padding = '0';
+    }
+
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: {
+        padding: config.chartType === 'radialStem' ? 6 : config.chartType === 'radar' ? { top: 0, right: 72, bottom: 28, left: 72 } : 0
+      },
+      plugins: {
+        legend: {
+          display: config.showLegend ?? true,
+          position: 'bottom' as const,
+          labels: {
+            boxWidth: 14,
+            padding: 12
+          }
+        },
+        title: {
+          display: config.chartType !== 'radialStem',
+          text: config.title,
+          font: {
+            size: config.chartType === 'radar' ? 28 : 18,
+            weight: config.chartType === 'radar' ? 'normal' as const : 'bold' as const
+          },
+          padding: { bottom: config.chartType === 'radar' ? 8 : 20 }
+        },
+        tooltip: {
+          callbacks: {
+            label: (context: any) => `${context.label}: ${context.formattedValue}${config.chartType === 'polarArea' || config.chartType === 'radialStem' ? '%' : ''}`
+          }
+        }
+      },
+      scales: {
+        r: {
+          beginAtZero: true,
+          max: config.yMax,
+          ticks: {
+            precision: 0,
+            stepSize: config.chartType === 'radialStem' ? 20 : config.chartType === 'radar' ? 1 : undefined,
+            backdropColor: 'transparent',
+            color: '#222222',
+            font: { size: config.chartType === 'radialStem' ? 18 : config.chartType === 'radar' ? 18 : 12 },
+            showLabelBackdrop: false
+          },
+          pointLabels: {
+            display: config.chartType !== 'radialStem' && config.chartType !== 'radar',
+            color: '#222222',
+            font: { size: config.chartType === 'radialStem' ? 14 : config.chartType === 'radar' ? 20 : 11 }
+          },
+          grid: {
+            color: '#d9d9d9',
+            circular: config.chartType === 'radialStem' || config.chartType === 'radar',
+            borderDash: config.chartType === 'radialStem' ? [3, 3] : []
+          },
+          angleLines: {
+            display: true,
+            color: '#d9d9d9',
+            borderDash: config.chartType === 'radar' ? [2, 3] : []
+          }
+        }
+      }
+    };
+
+    const datasetBase = {
+      label: config.datasetLabel || valueKey,
+      data: values,
+      borderColor: config.barColor ?? '#2a9fd6',
+      borderWidth: 2
+    };
+
+    const dataset = config.chartType === 'radar'
+      ? {
+          ...datasetBase,
+          backgroundColor: `${config.barColor ?? '#2a9fd6'}26`,
+          borderColor: config.barColor ?? '#2a9fd6',
+          borderWidth: 2,
+          pointBackgroundColor: config.barColor ?? '#2a9fd6',
+          pointBorderColor: config.barColor ?? '#2a9fd6',
+          pointRadius: 0,
+          pointHoverRadius: 4,
+          tension: 0
+        }
+      : config.chartType === 'radialStem'
+      ? {
+          ...datasetBase,
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
+          pointBackgroundColor: colors,
+          pointBorderColor: colors,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          customLabels: labels
+        }
+      : {
+          ...datasetBase,
+          backgroundColor: colors.map((color) => `${color}cc`),
+          borderColor: '#ffffff',
+          borderWidth: 1
+        };
+
+    new Chart(canvas, {
+      type: config.chartType === 'radialStem' ? 'radar' : config.chartType,
+      data: { labels, datasets: [dataset] },
+      options: options as any,
+      plugins: config.chartType === 'radialStem' ? [radialStemPlugin] : config.chartType === 'radar' ? [largeRadarLabelPlugin] : []
+    });
+
+    if (statusEl) statusEl.remove();
+  } catch (error) {
+    console.error(error);
+    if (statusEl) statusEl.textContent = 'No se pudo cargar el gráfico interactivo.';
+  }
+}
+
+async function buildInteractiveFunnelBlocksChart(
+  figureEl: HTMLElement,
+  config: InteractiveFigureConfig
+): Promise<void> {
+  const statusEl = figureEl.querySelector<HTMLElement>('.interactive-chart-status');
+  const canvas = figureEl.querySelector<HTMLCanvasElement>('canvas');
+  const wrapper = figureEl.querySelector<HTMLElement>('.interactive-chart-wrapper');
+
+  if (!canvas || !wrapper) return;
+
+  try {
+    const csvUrl = resolvePublicPath(config.csvPath);
+    const response = await fetch(csvUrl);
+    if (!response.ok) throw new Error(`No se pudo cargar ${csvUrl} (HTTP ${response.status})`);
+
+    const csvText = await response.text();
+    const parsed = Papa.parse<CsvRow>(csvText, {
+      header: true,
+      dynamicTyping: true,
+      skipEmptyLines: true
+    });
+
+    const dataRows = parsed.data.filter((row) => row && Object.keys(row).length > 0);
+    if (!dataRows.length) throw new Error('CSV sin filas válidas');
+
+    wrapper.style.height = '720px';
+    wrapper.style.padding = '0';
+
+    const colors = ['#1399cf', '#449d35', '#ffbd17', '#ed183d'];
+    const draw = () => {
+      const rect = wrapper.getBoundingClientRect();
+      const pixelRatio = window.devicePixelRatio || 1;
+      const width = Math.max(720, rect.width);
+      const height = 720;
+
+      canvas.width = width * pixelRatio;
+      canvas.height = height * pixelRatio;
+      canvas.style.width = `${rect.width}px`;
+      canvas.style.height = `${height}px`;
+
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      ctx.clearRect(0, 0, width, height);
+
+      const maxBlockWidth = width - 64;
+      const topY = 36;
+      const blockHeight = 118;
+      const gap = 58;
+      const minBlockWidth = 82;
+      const textColorByIndex = ['#ffffff', '#111111', '#111111', '#111111'];
+
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      dataRows.forEach((row, index) => {
+        const percentage = Number(row[config.yKey || ''] ?? 0);
+        const sampleSize = row.n ?? '';
+        const label = String(row[config.xKey] ?? '');
+        const blockWidth = Math.max(minBlockWidth, maxBlockWidth * (percentage / 100));
+        const blockX = (width - blockWidth) / 2;
+        const blockY = topY + index * (blockHeight + gap);
+
+        ctx.fillStyle = colors[index % colors.length];
+        ctx.fillRect(blockX, blockY, blockWidth, blockHeight);
+
+        ctx.fillStyle = textColorByIndex[index] ?? '#111111';
+        ctx.font = '22px "Roboto Slab", serif';
+        const lines = [
+          label,
+          `${percentage.toFixed(1)}%${sampleSize !== '' ? ` (n=${sampleSize})` : ''}`
+        ];
+
+        lines.forEach((line, lineIndex) => {
+          ctx.fillText(line, width / 2, blockY + blockHeight / 2 - 14 + lineIndex * 28);
+        });
+
+        if (index < dataRows.length - 1) {
+          const arrowX = width / 2;
+          const arrowTop = blockY + blockHeight + 8;
+          const arrowBottom = blockY + blockHeight + gap - 12;
+
+          ctx.strokeStyle = '#111111';
+          ctx.fillStyle = '#111111';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(arrowX, arrowBottom);
+          ctx.lineTo(arrowX, arrowTop);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(arrowX, arrowTop);
+          ctx.lineTo(arrowX - 5, arrowTop + 12);
+          ctx.lineTo(arrowX + 5, arrowTop + 12);
+          ctx.closePath();
+          ctx.fill();
+        }
+      });
+    };
+
+    draw();
+    const resizeObserver = new ResizeObserver(draw);
+    resizeObserver.observe(wrapper);
+
+    if (statusEl) statusEl.remove();
+  } catch (error) {
+    console.error(error);
+    if (statusEl) statusEl.textContent = 'No se pudo cargar el gráfico interactivo.';
+  }
+}
+
+async function buildInteractivePhaseFlowChart(
+  figureEl: HTMLElement,
+  config: InteractiveFigureConfig
+): Promise<void> {
+  const statusEl = figureEl.querySelector<HTMLElement>('.interactive-chart-status');
+  const canvas = figureEl.querySelector<HTMLCanvasElement>('canvas');
+  const wrapper = figureEl.querySelector<HTMLElement>('.interactive-chart-wrapper');
+
+  if (!canvas || !wrapper) return;
+
+  try {
+    const csvUrl = resolvePublicPath(config.csvPath);
+    const response = await fetch(csvUrl);
+    if (!response.ok) throw new Error(`No se pudo cargar ${csvUrl} (HTTP ${response.status})`);
+
+    const csvText = await response.text();
+    const parsed = Papa.parse<CsvRow>(csvText, {
+      header: true,
+      dynamicTyping: true,
+      skipEmptyLines: true
+    });
+
+    const dataRows = parsed.data.filter((row) => row && Object.keys(row).length > 0);
+    if (!dataRows.length) throw new Error('CSV sin filas válidas');
+
+    const phases = Array.from(
+      dataRows.reduce((phaseMap, row) => {
+        const phase = String(row.fase ?? '');
+        if (!phaseMap.has(phase)) phaseMap.set(phase, []);
+        phaseMap.get(phase)?.push(row);
+        return phaseMap;
+      }, new Map<string, CsvRow[]>())
+    ).map(([phase, rows]) => ({ phase, rows }));
+
+    wrapper.style.height = '980px';
+    wrapper.style.padding = '0';
+
+    const drawArrow = (ctx: CanvasRenderingContext2D, x: number, fromY: number, toY: number) => {
+      ctx.strokeStyle = '#111111';
+      ctx.fillStyle = '#111111';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(x, fromY);
+      ctx.lineTo(x, toY);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x, toY);
+      ctx.lineTo(x - 5, toY - 12);
+      ctx.lineTo(x + 5, toY - 12);
+      ctx.closePath();
+      ctx.fill();
+    };
+
+    const draw = () => {
+      const rect = wrapper.getBoundingClientRect();
+      const pixelRatio = window.devicePixelRatio || 1;
+      const width = Math.max(760, rect.width);
+      const phaseGap = 42;
+      const outerX = 34;
+      const phaseTitleHeight = 88;
+      const stepHeight = 72;
+      const stepGap = 46;
+      const phasePaddingBottom = 30;
+      const topMargin = 26;
+      const bottomMargin = 36;
+      const phaseHeights = phases.map(({ rows }) =>
+        phaseTitleHeight + rows.length * stepHeight + Math.max(0, rows.length - 1) * stepGap + phasePaddingBottom
+      );
+      const height = topMargin + bottomMargin + phaseHeights.reduce((sum, h) => sum + h, 0) + phaseGap * Math.max(0, phases.length - 1);
+
+      canvas.width = width * pixelRatio;
+      canvas.height = height * pixelRatio;
+      canvas.style.width = `${rect.width}px`;
+      canvas.style.height = `${height}px`;
+      wrapper.style.height = `${height}px`;
+
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      ctx.clearRect(0, 0, width, height);
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      const phaseBg = '#cef6f6';
+      const phaseTitleColor = '#004a9b';
+      const stepBg = '#2fa7ee';
+      const stepText = '#ffffff';
+      const phaseWidth = width - outerX * 2;
+      const stepX = outerX + 38;
+      const stepWidth = phaseWidth - 76;
+      let y = topMargin;
+
+      phases.forEach(({ phase, rows }, phaseIndex) => {
+        const phaseHeight = phaseHeights[phaseIndex];
+        const phaseX = outerX;
+
+        ctx.fillStyle = phaseBg;
+        ctx.fillRect(phaseX, y, phaseWidth, phaseHeight);
+
+        ctx.fillStyle = phaseTitleColor;
+        ctx.font = '42px "Roboto Slab", serif';
+        ctx.fillText(phase, width / 2, y + 52);
+
+        rows.forEach((row, rowIndex) => {
+          const stepY = y + phaseTitleHeight + rowIndex * (stepHeight + stepGap);
+          const label = `${String(row.subfase ?? '')}.  ${String(row.descripcion ?? '')}`;
+
+          ctx.fillStyle = stepBg;
+          ctx.fillRect(stepX, stepY, stepWidth, stepHeight);
+
+          ctx.fillStyle = stepText;
+          ctx.font = rowIndex === 0 && phaseIndex === 0 ? '27px "Roboto Slab", serif' : '28px "Roboto Slab", serif';
+          const lines = wrapCanvasText(ctx, label, stepWidth - 42);
+          const lineHeight = 34;
+          const firstLineY = stepY + stepHeight / 2 - ((lines.length - 1) * lineHeight) / 2;
+          lines.forEach((line, lineIndex) => {
+            ctx.fillText(line, width / 2, firstLineY + lineIndex * lineHeight);
+          });
+
+          if (rowIndex < rows.length - 1) {
+            drawArrow(ctx, width / 2, stepY + stepHeight, stepY + stepHeight + stepGap - 4);
+          }
+        });
+
+        const phaseBottom = y + phaseHeight;
+        if (phaseIndex < phases.length - 1) {
+          drawArrow(ctx, width / 2, phaseBottom, phaseBottom + phaseGap - 4);
+        }
+
+        y += phaseHeight + phaseGap;
+      });
+    };
+
+    draw();
+    const resizeObserver = new ResizeObserver(draw);
+    resizeObserver.observe(wrapper);
+
+    if (statusEl) statusEl.remove();
+  } catch (error) {
+    console.error(error);
+    if (statusEl) statusEl.textContent = 'No se pudo cargar el gráfico interactivo.';
+  }
+}
+
+async function buildInteractivePieChart(
+  figureEl: HTMLElement,
+  config: InteractiveFigureConfig
+): Promise<void> {
+  const statusEl = figureEl.querySelector<HTMLElement>('.interactive-chart-status');
+  const canvas = figureEl.querySelector<HTMLCanvasElement>('canvas');
+  const wrapper = figureEl.querySelector<HTMLElement>('.interactive-chart-wrapper');
+
+  if (!canvas || !wrapper) return;
+
+  try {
+    const csvUrl = resolvePublicPath(config.csvPath);
+    const response = await fetch(csvUrl);
+    if (!response.ok) throw new Error(`No se pudo cargar ${csvUrl} (HTTP ${response.status})`);
+
+    const csvText = await response.text();
+    const parsed = Papa.parse<CsvRow>(csvText, {
+      header: true,
+      dynamicTyping: true,
+      skipEmptyLines: true
+    });
+
+    const dataRows = parsed.data.filter((row) => row && Object.keys(row).length > 0);
+    if (!dataRows.length) throw new Error('CSV sin filas válidas');
+
+    wrapper.style.height = '720px';
+    wrapper.style.padding = '0';
+
+    const labels = dataRows.map((row) => String(row[config.xKey] ?? ''));
+    const values = dataRows.map((row) => Number(row[config.yKey || ''] ?? 0));
+    const percentages = dataRows.map((row) => Number(row[config.percentageKey || ''] ?? 0));
+    const colors = labels.map((label, index) => config.colorMap?.[label] ?? chartColorPalette[index % chartColorPalette.length]);
+
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: { top: 16, right: 20, bottom: 40, left: 20 } },
+      plugins: {
+        legend: {
+          display: config.showLegend ?? true,
+          position: 'bottom' as const,
+          labels: {
+            boxWidth: 34,
+            padding: 34,
+            font: { size: 28 }
+          }
+        },
+        title: {
+          display: false,
+          text: config.title
+        },
+        tooltip: {
+          callbacks: {
+            label: (context: any) => {
+              const percentage = percentages[context.dataIndex];
+              return `${context.label}: ${context.formattedValue}${Number.isFinite(percentage) ? ` (${percentage.toFixed(1)}%)` : ''}`;
+            }
+          }
+        }
+      }
+    };
+
+    new Chart(canvas, {
+      type: config.chartType,
+      data: {
+        labels,
+        datasets: [{
+          label: config.datasetLabel || '',
+          data: values,
+          percentages,
+          backgroundColor: colors,
+          borderColor: '#ffffff',
+          borderWidth: 6,
+          hoverOffset: 8
+        }]
+      },
+      options: options as any,
+      plugins: config.showDataLabels ? [pieValueLabelPlugin] : []
+    });
+
+    if (statusEl) statusEl.remove();
+  } catch (error) {
+    console.error(error);
+    if (statusEl) statusEl.textContent = 'No se pudo cargar el gráfico interactivo.';
+  }
+}
+
 async function renderInteractiveFigures(container: Element): Promise<void> {
   const figures = Array.from(
     container.querySelectorAll<HTMLElement>('[data-interactive-figure-id]')
@@ -1310,6 +2416,22 @@ async function renderInteractiveFigures(container: Element): Promise<void> {
       if (!config) return;
       if (config.chartType === 'line') {
         await buildInteractiveLineChart(figureEl, config);
+        return;
+      }
+      if (config.chartType === 'polarArea' || config.chartType === 'radar' || config.chartType === 'radialStem') {
+        await buildInteractiveRadialChart(figureEl, config);
+        return;
+      }
+      if (config.chartType === 'funnelBlocks') {
+        await buildInteractiveFunnelBlocksChart(figureEl, config);
+        return;
+      }
+      if (config.chartType === 'phaseFlow') {
+        await buildInteractivePhaseFlowChart(figureEl, config);
+        return;
+      }
+      if (config.chartType === 'pie' || config.chartType === 'doughnut') {
+        await buildInteractivePieChart(figureEl, config);
         return;
       }
       await buildInteractiveBarChart(figureEl, config);
