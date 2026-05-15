@@ -547,6 +547,14 @@ async function initGeneroComplementarios() {
       title: 'Distribucion % mujeres en Consejos Rectorales 2025',
       xKey: 'Rango de mujeres en Consejo Rectoral', yKey: 'Porcentaje de universidades',
       yMax: 50, barColor: '#6EC1E4', datasetLabel: 'Porcentaje de universidades', showLegend: false
+    }),
+    buildChart('chart-gen-rectoras-evol', {
+      chartType: 'bar', csvPath: 'csvs/o1/mujeres_rectoras_evol.csv',
+      title: '% universidades con mujer rectora: 2015 vs 2025',
+      xKey: 'Año', yKey: 'Porcentaje', yMax: 30,
+      indexAxis: 'y', barColor: '#26bde2',
+      datasetLabel: '% universidades con mujer rectora', showLegend: false,
+      xAxisLabel: '%'
     })
   ]);
 }
@@ -623,6 +631,22 @@ async function initSostenibilidadCharts() {
       yMax: 35, xAxisLabel: 'Ano', yAxisLabel: '%', showLegend: true
     })
   ]);
+  await buildChart('chart-sost-funciones', {
+    chartType: 'bar', csvPath: 'csvs/o1/vicerrectorado_funciones.csv',
+    title: '% vicerrectorados que cubren cada ambito (ODS)',
+    xKey: 'Ambito', yKey: 'Porcentaje', yMax: 100,
+    indexAxis: 'y',
+    groupKey: 'Ambito',
+    colorMap: {
+      'Agenda 2030': '#26bde2',
+      'ODS 7 - Energia': '#fcc30b',
+      'ODS 11 - Ciudades': '#fd9d24',
+      'ODS 12 - Consumo': '#bf8b2e',
+      'ODS 13 - Clima': '#3f7e44'
+    },
+    datasetLabel: '% vicerrectorados', showLegend: false,
+    xAxisLabel: '%'
+  });
 }
 
 // ─── Conclusiones ──────────────────────────────────────────

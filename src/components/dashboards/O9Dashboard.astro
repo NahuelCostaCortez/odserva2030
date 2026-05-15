@@ -1,0 +1,974 @@
+---
+const { pkg } = Astro.props;
+---
+
+<div id="o9-dashboard">
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- HERO                                                  -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o9-hero" class="dash-section dash-hero">
+    <div class="doc-kicker">Investigación y Transferencia · 2024</div>
+    <h1 class="doc-title">{pkg.data.title}</h1>
+    <p class="dash-context">
+      Análisis de la alineación de la investigación universitaria española con la Agenda 2030,
+      a partir de proyectos financiados en convocatorias nacionales competitivas (2016–2023).
+      Identificación de buenas prácticas e iniciativas institucionales de referencia.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-value">2016–2023</div>
+        <div class="hero-stat-label">Periodo analizado</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">2</div>
+        <div class="hero-stat-label">Convocatorias: Retos + Generación del Conocimiento</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">17</div>
+        <div class="hero-stat-label">Buenas prácticas institucionales</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">ODS 9 y 3</div>
+        <div class="hero-stat-label">Lideran proyectos y financiación</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- CONTEXTO Y METODOLOGÍA                                -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o9-contexto" class="dash-section">
+    <h2 class="dash-title">Contexto y Metodología</h2>
+
+    <div class="ctx-grid">
+      <div class="ctx-block">
+        <h3 class="ctx-head">Actividad 3.3</h3>
+        <p>Identificación de buenas prácticas y propuestas de futuro en la implementación de la Agenda 2030
+        en el ámbito de la <strong>transferencia universitaria</strong>. Parte de los resultados de las
+        actividades A3.2 y A3.4.</p>
+      </div>
+      <div class="ctx-block">
+        <h3 class="ctx-head">Objetivos específicos</h3>
+        <ul class="ctx-list">
+          <li>Analizar nº de proyectos vinculados a cada ODS y la financiación recibida</li>
+          <li>Diagnosticar la relevancia de cada ODS en convocatorias públicas competitivas</li>
+          <li>Elaborar propuestas de futuro basadas en el análisis de proyectos financiados</li>
+        </ul>
+      </div>
+      <div class="ctx-block">
+        <h3 class="ctx-head">Fuente de datos</h3>
+        <p>Proyectos financiados en <strong>convocatorias nacionales de Retos y Generación del Conocimiento</strong>.
+        Periodo: 2016–2023. Enfoque en universidades españolas como generadoras de conocimiento alineado con los ODS.</p>
+      </div>
+      <div class="ctx-block">
+        <h3 class="ctx-head">Metodología</h3>
+        <p>Identificación, análisis y sistematización de <strong>experiencias exitosas</strong> en transferencia
+        universitaria alineada con los ODS. Evaluación de buenas prácticas aplicadas en instituciones españolas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- RESULTADOS                                            -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o9-resultados" class="dash-section">
+    <h2 class="dash-title">Resultados: Investigación universitaria y ODS</h2>
+    <p class="dash-context">
+      El análisis del periodo 2016–2023 revela un liderazgo claro de los ODS 9 y 3, que concentran
+      la mayor proporción de proyectos y recursos financieros. Se observa una tendencia progresiva
+      hacia la diversificación temática en los últimos años.
+    </p>
+
+    <div class="charts-row">
+      <div class="chart-col">
+        <div class="chart-box" style="height:320px"><canvas id="chart-proyectos-ods"></canvas></div>
+      </div>
+      <div class="chart-col">
+        <div class="chart-box" style="height:320px"><canvas id="chart-financiacion-ods"></canvas></div>
+      </div>
+    </div>
+
+    <p class="chart-note">
+      * Datos de financiación corresponden al pico máximo alcanzado durante el periodo analizado.
+      Los ODS sin datos explícitos en las convocatorias no se incluyen en el gráfico.
+    </p>
+
+    <h3 class="dash-subtitle">Análisis por ODS destacado</h3>
+    <p class="dash-context">Selecciona un ODS para ver el análisis detallado, situación actual y propuesta de futuro.</p>
+
+    <div class="ods-tabs-row">
+      <button class="ods-tab active" data-ods="9" style="--ods-color:#ff8c4a">ODS 9</button>
+      <button class="ods-tab" data-ods="3" style="--ods-color:#4c9f38">ODS 3</button>
+      <button class="ods-tab" data-ods="4" style="--ods-color:#c43c44">ODS 4</button>
+      <button class="ods-tab" data-ods="1" style="--ods-color:#e03e4c">ODS 1</button>
+      <button class="ods-tab" data-ods="13" style="--ods-color:#5c9a63">ODS 13</button>
+      <button class="ods-tab" data-ods="12" style="--ods-color:#bf8b2e">ODS 12</button>
+      <button class="ods-tab" data-ods="17" style="--ods-color:#1b4f72">ODS 17</button>
+      <button class="ods-tab" data-ods="6" style="--ods-color:#2a9fd6">ODS 6</button>
+      <button class="ods-tab" data-ods="14" style="--ods-color:#0a97d9">ODS 14</button>
+    </div>
+
+    <div class="ods-panels-container">
+
+      <div id="ods-panel-9" class="ods-panel" style="display:block">
+        <div class="ods-panel-inner" style="--ods-color:#ff8c4a">
+          <div class="ods-panel-header">
+            <span class="ods-badge" style="background:#ff8c4a">ODS 9</span>
+            <h4>Innovación, industria e infraestructura</h4>
+            <span class="ods-stat">3.752 proyectos · picos &gt;30% financiación anual</span>
+          </div>
+          <p>El ODS 9 presenta el mayor número de proyectos y alcanza picos de financiación superiores al 30% anual.
+          Esta consolidación evidencia su papel estratégico como <strong>eje vertebrador de la investigación universitaria</strong>.
+          Refleja la capacidad de las universidades como motor de la innovación tecnológica y la investigación aplicada.</p>
+          <div class="ods-propuesta">
+            <strong>Propuesta de futuro:</strong> Reforzar la transferencia al tejido productivo, promoviendo patentes,
+            creación de <em>spin-offs</em> y colaboración estrecha con pequeñas y medianas empresas.
+          </div>
+        </div>
+      </div>
+
+      <div id="ods-panel-3" class="ods-panel" style="display:none">
+        <div class="ods-panel-inner" style="--ods-color:#4c9f38">
+          <div class="ods-panel-header">
+            <span class="ods-badge" style="background:#4c9f38">ODS 3</span>
+            <h4>Salud y bienestar</h4>
+            <span class="ods-stat">2.503 proyectos · 33% financiación (2018) · &gt;20% (2021)</span>
+          </div>
+          <p>El ODS 3 ocupa una posición central, con financiación muy elevada que refleja la <strong>capacidad de
+          las universidades para responder a retos sociales y sanitarios</strong>, como quedó patente durante la pandemia.
+          Liderazgo en investigación biomédica y emergencias sanitarias.</p>
+          <div class="ods-propuesta">
+            <strong>Propuesta de futuro:</strong> Diversificar hacia ámbitos de salud pública, prevención y
+            determinantes sociales, ampliando el enfoque más allá del ámbito biomédico y tecnológico.
+          </div>
+        </div>
+      </div>
+
+      <div id="ods-panel-4" class="ods-panel" style="display:none">
+        <div class="ods-panel-inner" style="--ods-color:#c43c44">
+          <div class="ods-panel-header">
+            <span class="ods-badge" style="background:#c43c44">ODS 4</span>
+            <h4>Educación de calidad</h4>
+            <span class="ods-stat">2.638 proyectos · financiación &lt;5% (2019–2021)</span>
+          </div>
+          <p>Con 2.638 proyectos, el ODS 4 evidencia un alto interés investigador, pero existe una
+          <strong>discrepancia significativa entre número de proyectos y financiación</strong> recibida.
+          Su papel transversal en el logro de otros ODS no se refleja en los recursos asignados.</p>
+          <div class="ods-propuesta">
+            <strong>Propuesta de futuro:</strong> Reforzar los recursos destinados a la investigación educativa
+            y reconocer su papel transversal en el logro de la sostenibilidad.
+          </div>
+        </div>
+      </div>
+
+      <div id="ods-panel-1" class="ods-panel" style="display:none">
+        <div class="ods-panel-inner" style="--ods-color:#e03e4c">
+          <div class="ods-panel-header">
+            <span class="ods-badge" style="background:#e03e4c">ODS 1</span>
+            <h4>Fin de la pobreza</h4>
+            <span class="ods-stat">1.711 proyectos · financiación &lt;1% en la mayoría de ejercicios</span>
+          </div>
+          <p>El ODS 1 muestra un volumen notable de proyectos pero con una <strong>financiación testimonial
+          inferior al 1%</strong> en la mayoría de los ejercicios. Esta brecha refleja una infravaloración
+          presupuestaria de su relevancia estratégica dentro de la Agenda 2030.</p>
+          <div class="ods-propuesta">
+            <strong>Propuesta de futuro:</strong> Integrarlo como criterio transversal en la evaluación
+            de convocatorias, dada su relevancia estratégica y su vinculación con la cohesión social.
+          </div>
+        </div>
+      </div>
+
+      <div id="ods-panel-13" class="ods-panel" style="display:none">
+        <div class="ods-panel-inner" style="--ods-color:#5c9a63">
+          <div class="ods-panel-header">
+            <span class="ods-badge" style="background:#5c9a63">ODS 13</span>
+            <h4>Acción por el clima</h4>
+            <span class="ods-stat">1.514 proyectos · crecimiento a 13% financiación desde 2022</span>
+          </div>
+          <p>El ODS 13 registra un crecimiento muy significativo de la financiación a partir de 2022, alcanzando
+          el 13%. Esta evolución refleja una <strong>alineación creciente con las políticas europeas de
+          descarbonización</strong> y el Green Deal europeo.</p>
+          <div class="ods-propuesta">
+            <strong>Propuesta de futuro:</strong> Potenciar la interdisciplinariedad articulando proyectos
+            que integren también el ODS 7 (energía) y el ODS 11 (ciudades sostenibles).
+          </div>
+        </div>
+      </div>
+
+      <div id="ods-panel-12" class="ods-panel" style="display:none">
+        <div class="ods-panel-inner" style="--ods-color:#bf8b2e">
+          <div class="ods-panel-header">
+            <span class="ods-badge" style="background:#bf8b2e">ODS 12</span>
+            <h4>Producción y consumo responsables</h4>
+            <span class="ods-stat">1.330 proyectos · financiación media 8–13% últimos años</span>
+          </div>
+          <p>El ODS 12 refleja un <strong>compromiso firme con la economía circular y la sostenibilidad</strong>.
+          Con una financiación estable entre el 8% y el 13%, muestra una consolidación progresiva en la
+          agenda investigadora universitaria.</p>
+          <div class="ods-propuesta">
+            <strong>Propuesta de futuro:</strong> Impulsar la transferencia de resultados a empresas
+            y políticas públicas, maximizando el impacto de la investigación en la economía real.
+          </div>
+        </div>
+      </div>
+
+      <div id="ods-panel-17" class="ods-panel" style="display:none">
+        <div class="ods-panel-inner" style="--ods-color:#1b4f72">
+          <div class="ods-panel-header">
+            <span class="ods-badge" style="background:#1b4f72">ODS 17</span>
+            <h4>Alianzas para los objetivos</h4>
+            <span class="ods-stat">1.092 proyectos · 14,2% financiación (2022–2023)</span>
+          </div>
+          <p>El ODS 17 ha experimentado un notable crecimiento de la financiación en el bienio 2022–2023,
+          hasta alcanzar el 14,2%. Este aumento pone de manifiesto el <strong>fortalecimiento de la
+          cooperación internacional</strong> como eje estratégico.</p>
+          <div class="ods-propuesta">
+            <strong>Propuesta de futuro:</strong> Consolidarlo como eje transversal en todas las
+            convocatorias, al servir como catalizador de sinergias entre distintos ODS.
+          </div>
+        </div>
+      </div>
+
+      <div id="ods-panel-6" class="ods-panel" style="display:none">
+        <div class="ods-panel-inner" style="--ods-color:#2a9fd6">
+          <div class="ods-panel-header">
+            <span class="ods-badge" style="background:#2a9fd6">ODS 6</span>
+            <h4>Agua limpia y saneamiento</h4>
+            <span class="ods-stat">372 proyectos · financiación &lt;4%</span>
+          </div>
+          <p>El ODS 6 presenta una presencia muy baja, con 372 proyectos y financiación inferior al 4%.
+          Esta situación contrasta con la <strong>importancia estratégica del acceso al agua</strong>
+          como derecho fundamental y como elemento clave de la transición ecológica.</p>
+          <div class="ods-propuesta">
+            <strong>Propuesta de futuro:</strong> Promover convocatorias específicas y explorar sinergias
+            con los retos de transición ecológica, adaptación climática y ODS 13.
+          </div>
+        </div>
+      </div>
+
+      <div id="ods-panel-14" class="ods-panel" style="display:none">
+        <div class="ods-panel-inner" style="--ods-color:#0a97d9">
+          <div class="ods-panel-header">
+            <span class="ods-badge" style="background:#0a97d9">ODS 14</span>
+            <h4>Vida submarina</h4>
+            <span class="ods-stat">250 proyectos · financiación &lt;4%</span>
+          </div>
+          <p>El ODS 14 presenta el menor número de proyectos entre los analizados. Con solo 250 iniciativas
+          y financiación inferior al 4%, evidencia una <strong>infraatención significativa</strong> a los
+          ecosistemas marinos a pesar de su relevancia ecológica y estratégica.</p>
+          <div class="ods-propuesta">
+            <strong>Propuesta de futuro:</strong> Fomentar convocatorias específicas para ecosistemas
+            costeros y marinos, explorando sinergias con la agenda de adaptación climática.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- BUENAS PRÁCTICAS                                      -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o9-practicas" class="dash-section">
+    <h2 class="dash-title">Buenas Prácticas Institucionales</h2>
+    <p class="dash-context">
+      Iniciativas desarrolladas por universidades españolas como ejemplo de implementación
+      concreta de la Agenda 2030 en el ámbito universitario. Filtra por ODS para explorar áreas temáticas.
+    </p>
+
+    <div class="practica-filters">
+      <button class="practica-filter active" data-filter="all">Todas</button>
+      <button class="practica-filter" data-filter="ODS1" style="--f-color:#e03e4c">ODS 1</button>
+      <button class="practica-filter" data-filter="ODS2" style="--f-color:#d3a029">ODS 2</button>
+      <button class="practica-filter" data-filter="ODS3" style="--f-color:#4c9f38">ODS 3</button>
+      <button class="practica-filter" data-filter="ODS4" style="--f-color:#c43c44">ODS 4</button>
+      <button class="practica-filter" data-filter="ODS5" style="--f-color:#ff6b4a">ODS 5</button>
+      <button class="practica-filter" data-filter="ODS6" style="--f-color:#2a9fd6">ODS 6</button>
+      <button class="practica-filter" data-filter="ODS7" style="--f-color:#fcc30b">ODS 7</button>
+      <button class="practica-filter" data-filter="ODS8" style="--f-color:#b04364">ODS 8</button>
+      <button class="practica-filter" data-filter="ODS9" style="--f-color:#ff8c4a">ODS 9</button>
+      <button class="practica-filter" data-filter="ODS10" style="--f-color:#e3337e">ODS 10</button>
+      <button class="practica-filter" data-filter="ODS11" style="--f-color:#f6a53a">ODS 11</button>
+      <button class="practica-filter" data-filter="ODS12" style="--f-color:#bf8b2e">ODS 12</button>
+      <button class="practica-filter" data-filter="ODS13" style="--f-color:#5c9a63">ODS 13</button>
+      <button class="practica-filter" data-filter="ODS14" style="--f-color:#0a97d9">ODS 14</button>
+      <button class="practica-filter" data-filter="ODS15" style="--f-color:#56c02b">ODS 15</button>
+      <button class="practica-filter" data-filter="ODS16" style="--f-color:#2f7ea8">ODS 16</button>
+    </div>
+
+    <div class="practicas-grid">
+
+      <div class="practica-card" data-ods="ODS7 ODS13">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de Oviedo</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#fcc30b">ODS 7</span>
+            <span class="ods-tag" style="background:#5c9a63">ODS 13</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Estaciones de Carga para Vehículos Eléctricos</h4>
+        <p class="practica-desc">59 puntos de carga distribuidos en los campus de Oviedo, Gijón y Mieres,
+        disponibles 24/7. Colaboración con empresa Zunder para contribuir a la movilidad sostenible y la
+        reducción de emisiones de carbono.</p>
+        <div class="practica-category">Movilidad sostenible · Campus verde</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS5">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de Oviedo</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#ff6b4a">ODS 5</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Vigías de la Igualdad</h4>
+        <p class="practica-desc">Programa de la Unidad de Igualdad que designa «vigías» en cada centro
+        (estudiantado + PDI/PTGAS) para garantizar el acceso a mecanismos de tutela en materia de
+        igualdad de género en todos los campus.</p>
+        <div class="practica-category">Igualdad de género</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS12 ODS13">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de Cádiz</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#bf8b2e">ODS 12</span>
+            <span class="ods-tag" style="background:#5c9a63">ODS 13</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Ropero Circular</h4>
+        <p class="practica-desc">Espacio de intercambio de ropa en la comunidad universitaria que promueve
+        el cuestionamiento del consumo innecesario, la conciencia sobre la contaminación textil y
+        la responsabilidad colectiva hacia la sostenibilidad.</p>
+        <div class="practica-category">Economía circular · Reducción de residuos</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS3">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de Almería</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#4c9f38">ODS 3</span>
+          </div>
+        </div>
+        <h4 class="practica-title">ECOCONSEJOS</h4>
+        <p class="practica-desc">Campañas de sensibilización del Vicerrectorado de Deportes, Sostenibilidad
+        y Universidad Saludable. La campaña «¡Aparca el coche y suma pasos!» promueve hábitos de vida
+        saludables y actividad física entre el estudiantado.</p>
+        <div class="practica-category">Salud y hábitos saludables</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS5 ODS10">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de Granada</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#ff6b4a">ODS 5</span>
+            <span class="ods-tag" style="background:#e3337e">ODS 10</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Punto Violeta</h4>
+        <p class="practica-desc">Iniciativa de la Unidad de Igualdad y Conciliación para la prevención
+        de violencias machistas en el ámbito universitario. Red de apoyo y acompañamiento para víctimas,
+        con recursos, protocolos y acciones formativas.</p>
+        <div class="practica-category">Igualdad · Reducción de desigualdades</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS2">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de Jaén</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#d3a029">ODS 2</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Taller «El huerto como recurso educativo»</h4>
+        <p class="practica-desc">Ecohuerto universitario de agricultura ecológica con voluntariado social:
+        los alimentos producidos se ceden a comedores sociales. Combina conocimiento ambiental con
+        impacto social directo en la comunidad.</p>
+        <div class="practica-category">Seguridad alimentaria · Inclusión social</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS7 ODS11">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de Málaga</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#fcc30b">ODS 7</span>
+            <span class="ods-tag" style="background:#f6a53a">ODS 11</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Vigilantes de la Noche</h4>
+        <p class="practica-desc">Proyecto de ciencia ciudadana que toma medidas del brillo del cielo
+        nocturno para evaluar el impacto de la contaminación lumínica. Plan de actuaciones alineado
+        con los ODS a través del Vicerrectorado de Infraestructuras y Sostenibilidad.</p>
+        <div class="practica-category">Energía · Ciudades sostenibles</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS15">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de La Laguna</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#56c02b">ODS 15</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Proyecto Árboles por Papel</h4>
+        <p class="practica-desc">Por cada 500 folios consumidos, los miembros del Gabinete de Análisis
+        sufragan la compra de una especie vegetal donada a la universidad para ser plantada en zonas
+        verdes del campus. Compensación ambiental tangible y cuantificable.</p>
+        <div class="practica-category">Biodiversidad · Reforestación</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS6">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de La Laguna</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#2a9fd6">ODS 6</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Gestión eficiente del agua en campus</h4>
+        <p class="practica-desc">Plan integral de ahorro hídrico: sensores y pulsadores en aseos,
+        riego por goteo programado, sectorización de red, recogida de aguas pluviales para riego
+        y depósito de 1.000 m³ en Campus Guajara. Seguimiento continuo de consumos.</p>
+        <div class="practica-category">Agua y saneamiento · Campus sostenible</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS1">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de León</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#e03e4c">ODS 1</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Programas Antipobreza para la Comunidad Universitaria</h4>
+        <p class="practica-desc">Ayudas para estudiantes del 20% de menor renta familiar, convocatorias
+        específicas de grado y máster. Incluye el programa de becas LEARN AFRICA (Fundación Mujeres por
+        África) para estudiantes de países de ingresos bajos.</p>
+        <div class="practica-category">Inclusión social · Fin de la pobreza</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS8">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de León</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#b04364">ODS 8</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Reconocimiento de Derechos Laborales</h4>
+        <p class="practica-desc">Constitución de órganos de representación para PDI y PTGAS (comités,
+        juntas, secciones sindicales). Procedimientos formales para apelación de remuneración y derechos
+        laborales. Garantía de libertad de asociación y negociación colectiva.</p>
+        <div class="practica-category">Trabajo decente · Gobernanza</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS9">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad Pompeu Fabra</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#ff8c4a">ODS 9</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Programa UPF INNOValora</h4>
+        <p class="practica-desc">Apoyo a investigadores para superar el «valle de la muerte» en transferencia:
+        financiación para pruebas de concepto, prototipos y evaluación de potencial comercial. Identifica
+        estrategias de protección del conocimiento y rutas de comercialización.</p>
+        <div class="practica-category">Innovación y transferencia tecnológica</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS14">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de Murcia</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#0a97d9">ODS 14</span>
+          </div>
+        </div>
+        <h4 class="practica-title">ODSesiones: Limpieza de zonas costeras</h4>
+        <p class="practica-desc">Proyecto transversal ODSesiones (2019–2025) que dedica cada mes a un ODS
+        con acciones en facultades y centros. El reto ODS 14 consistió en la limpieza y protección
+        de zonas costeras con voluntariado universitario.</p>
+        <div class="practica-category">Biodiversidad marina · Ciencia ciudadana</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS4">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de Murcia</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#c43c44">ODS 4</span>
+          </div>
+        </div>
+        <h4 class="practica-title">ODSesiones: 200 libros para entidades sociales</h4>
+        <p class="practica-desc">En el reto ODS 4, la comunidad universitaria donó 200 libros entregados
+        a entidades sociales para colectivos vulnerables con bajo acceso a la educación. Combinación
+        de acción cultural y solidaridad comunitaria.</p>
+        <div class="practica-category">Educación · Inclusión social</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS7">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad Carlos III de Madrid</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#fcc30b">ODS 7</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Energías Renovables en Infraestructuras Universitarias</h4>
+        <p class="practica-desc">Instalación acelerada de paneles fotovoltaicos para autoconsumo,
+        instalación de energía geotérmica de profundidad (calefacción en invierno, refrigeración en verano)
+        y paneles termosolares para agua sanitaria y piscinas.</p>
+        <div class="practica-category">Energía renovable · Descarbonización</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS10">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad Complutense de Madrid</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#e3337e">ODS 10</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Programa de Atención a la Diversidad y No Discriminación</h4>
+        <p class="practica-desc">Programa UCM-RFG (desde 2015) de atención a solicitantes de Protección
+        Internacional y Protección Temporal matriculados en la universidad. Ofrece acceso a estudios
+        oficiales de grado y máster para personas en situación de vulnerabilidad.</p>
+        <div class="practica-category">Inclusión social · Reducción de desigualdades</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS16">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de Salamanca</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#2f7ea8">ODS 16</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Máster Universitario en Democracia y Buen Gobierno</h4>
+        <p class="practica-desc">Formación especializada sobre democracia, Estado de Derecho y Buen
+        Gobierno: organización estatal, instituciones democráticas, articulación multinivel de poder,
+        políticas públicas y justificación del ejercicio del poder.</p>
+        <div class="practica-category">Paz y justicia · Gobernanza institucional</div>
+      </div>
+
+      <div class="practica-card" data-ods="ODS4">
+        <div class="practica-header">
+          <span class="practica-uni">Universidad de Huelva · Red Internacional</span>
+          <div class="practica-ods-tags">
+            <span class="ods-tag" style="background:#c43c44">ODS 4</span>
+          </div>
+        </div>
+        <h4 class="practica-title">Red ALFAMED</h4>
+        <p class="practica-desc">Red internacional de más de 240 investigadores de 19 países euroamericanos
+        centrada en la alfabetización mediática para la ciudadanía. Integra Comunicación, Educación,
+        Psicología, Sociología y Antropología en proyectos de investigación transnacional.</p>
+        <div class="practica-category">Educación mediática · Cooperación internacional</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PROPUESTAS DE FUTURO                                  -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o9-propuestas" class="dash-section">
+    <h2 class="dash-title">Propuestas de Futuro</h2>
+    <p class="dash-context">
+      Líneas de actuación prioritarias para reforzar la alineación de la investigación y la
+      transferencia universitaria con la Agenda 2030.
+    </p>
+
+    <div class="propuestas-grid">
+      <div class="propuesta-card" style="--p-color:#e03e4c">
+        <div class="propuesta-icon">⚖️</div>
+        <h3 class="propuesta-title">Reequilibrio de la financiación</h3>
+        <p>Aumentar los recursos destinados a ODS con alta relevancia social o educativa pero baja
+        financiación actual: <strong>ODS 1, 4, 6, 14 y 16</strong>. Alinear los recursos con las
+        prioridades estratégicas de la Agenda 2030 para evitar sesgos hacia los ODS tecnológicos.</p>
+      </div>
+      <div class="propuesta-card" style="--p-color:#ff8c4a">
+        <div class="propuesta-icon">🔗</div>
+        <h3 class="propuesta-title">Fomento de la interdisciplinariedad</h3>
+        <p>Diseñar convocatorias que valoren proyectos que aborden <strong>varios ODS de manera integrada</strong>,
+        generando sinergias más efectivas. Articular el ODS 13 con ODS 7 y ODS 11; el ODS 9 con sectores
+        productivos locales.</p>
+      </div>
+      <div class="propuesta-card" style="--p-color:#4c9f38">
+        <div class="propuesta-icon">🏭</div>
+        <h3 class="propuesta-title">Refuerzo de la transferencia</h3>
+        <p>Garantizar un impacto tangible de la investigación en <strong>políticas públicas, innovación
+        social y desarrollo sostenible</strong>. Potenciar patentes, spin-offs, colaboración con PYMEs
+        y traslado de resultados a las administraciones.</p>
+      </div>
+      <div class="propuesta-card" style="--p-color:#1b4f72">
+        <div class="propuesta-icon">🌐</div>
+        <h3 class="propuesta-title">Internacionalización</h3>
+        <p>Consolidar el <strong>ODS 17 como motor de cooperación</strong> y eje transversal en todas
+        las convocatorias. Potenciar alianzas globales para aumentar la visibilidad y capacidad de
+        influencia del sistema universitario español.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- CONCLUSIONES                                          -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o9-conclusiones" class="dash-section">
+    <h2 class="dash-title">Conclusiones</h2>
+
+    <div class="concl-grid">
+      <div class="concl-block concl-main">
+        <h3>Balance del periodo 2016–2023</h3>
+        <p>El análisis confirma una <strong>alineación significativa</strong> de la investigación universitaria
+        española con la Agenda 2030, especialmente en los ámbitos de innovación (ODS 9), salud (ODS 3)
+        y acción climática (ODS 13). Las buenas prácticas identificadas demuestran la capacidad del
+        sistema universitario para trasladar los ODS al terreno de la acción concreta.</p>
+      </div>
+
+      <div class="concl-block">
+        <h3>Fortalezas identificadas</h3>
+        <ul class="concl-list">
+          <li>Liderazgo en innovación tecnológica e investigación aplicada (ODS 9)</li>
+          <li>Capacidad de respuesta ante emergencias sanitarias globales (ODS 3)</li>
+          <li>Creciente orientación hacia la cooperación internacional (ODS 17)</li>
+          <li>Avance en economía circular y sostenibilidad (ODS 12 y 13)</li>
+          <li>Cultura incipiente de interdisciplinariedad en proyectos integrados</li>
+        </ul>
+      </div>
+
+      <div class="concl-block">
+        <h3>Retos pendientes</h3>
+        <ul class="concl-list retos">
+          <li>Desequilibrio en la financiación: ODS sociales y educativos infrafnanciados</li>
+          <li>ODS 1, 4, 5, 6 y 14 con menor atención pese a su relevancia estratégica</li>
+          <li>Necesidad de enfoques más equitativos y estratégicamente integrados</li>
+          <li>Impulso a la transferencia de resultados hacia la sociedad y las empresas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="concl-cierre">
+      Para avanzar, es necesario un enfoque más <strong>equilibrado, interdisciplinar y orientado al impacto</strong>,
+      que sitúe a la universidad como actor protagonista en la transformación sostenible: líder en conocimiento,
+      cooperación y transferencia al servicio de la sociedad.
+    </div>
+  </section>
+
+</div>
+
+<script>
+  import '../../scripts/o9-dashboard.ts';
+</script>
+
+<style is:global>
+  #o9-dashboard {
+    padding: 0 2.5rem 4rem;
+    max-width: 1100px;
+  }
+
+  /* ── Sections ───────────────────────────────── */
+  #o9-dashboard .dash-section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  #o9-dashboard .dash-section:last-child { border-bottom: none; }
+
+  #o9-dashboard .dash-hero {
+    padding-top: 2.5rem;
+    border-bottom: 2px solid var(--brand);
+    position: relative;
+  }
+  #o9-dashboard .dash-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; left: 0;
+    width: 60px; height: 2px;
+    background: #c9973a;
+  }
+
+  #o9-dashboard .doc-kicker {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--brand);
+    margin-bottom: 0.8rem;
+  }
+  #o9-dashboard .doc-title {
+    font-size: 2rem; font-weight: 700; line-height: 1.25;
+    color: var(--ink); max-width: 750px; margin: 0 0 1rem;
+  }
+  #o9-dashboard .dash-title {
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--brand); margin: 0 0 0.6rem;
+    border-left: 3px solid var(--brand);
+    padding-left: 0.8rem;
+  }
+  #o9-dashboard .dash-subtitle {
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--ink); margin: 2rem 0 0.5rem;
+  }
+  #o9-dashboard .dash-context {
+    font-size: 0.95rem; color: var(--ink); opacity: 0.8;
+    max-width: 780px; margin-bottom: 1.5rem; line-height: 1.6;
+  }
+  #o9-dashboard .chart-note {
+    font-size: 0.78rem; color: var(--ink); opacity: 0.6;
+    margin-top: 0.5rem; font-style: italic;
+  }
+
+  /* ── Hero stats ─────────────────────────────── */
+  #o9-dashboard .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1.8rem;
+  }
+  #o9-dashboard .hero-stat {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    border-top: 3px solid var(--brand);
+  }
+  #o9-dashboard .hero-stat-value {
+    font-size: 1.5rem; font-weight: 700; color: var(--brand);
+  }
+  #o9-dashboard .hero-stat-label {
+    font-size: 0.78rem; color: var(--ink); opacity: 0.7;
+    margin-top: 0.2rem; line-height: 1.3;
+  }
+
+  /* ── Contexto grid ──────────────────────────── */
+  #o9-dashboard .ctx-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-top: 0.5rem;
+  }
+  #o9-dashboard .ctx-block {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.2rem 1.4rem;
+  }
+  #o9-dashboard .ctx-head {
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--brand); text-transform: uppercase;
+    letter-spacing: 0.06em; margin: 0 0 0.6rem;
+  }
+  #o9-dashboard .ctx-block p {
+    font-size: 0.9rem; line-height: 1.6; margin: 0;
+  }
+  #o9-dashboard .ctx-list {
+    font-size: 0.9rem; line-height: 1.8; padding-left: 1.2rem; margin: 0;
+  }
+
+  /* ── Charts row ─────────────────────────────── */
+  #o9-dashboard .charts-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  #o9-dashboard .chart-col { width: 100%; }
+  #o9-dashboard .chart-box {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem;
+    position: relative;
+  }
+
+  /* ── ODS tabs ────────────────────────────────── */
+  #o9-dashboard .ods-tabs-row {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin: 1.5rem 0 0;
+  }
+  #o9-dashboard .ods-tab {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.82rem; font-weight: 600;
+    border: 2px solid var(--ods-color, #ccc);
+    border-radius: 20px;
+    background: white; color: var(--ods-color, #555);
+    cursor: pointer; transition: all 0.15s;
+  }
+  #o9-dashboard .ods-tab.active,
+  #o9-dashboard .ods-tab:hover {
+    background: var(--ods-color, #555);
+    color: white;
+  }
+
+  #o9-dashboard .ods-panels-container { margin-top: 1rem; }
+  #o9-dashboard .ods-panel-inner {
+    background: color-mix(in srgb, var(--ods-color) 6%, white);
+    border: 1px solid color-mix(in srgb, var(--ods-color) 25%, white);
+    border-left: 4px solid var(--ods-color);
+    border-radius: 6px;
+    padding: 1.4rem 1.6rem;
+  }
+  #o9-dashboard .ods-panel-header {
+    display: flex; align-items: center; gap: 0.8rem;
+    flex-wrap: wrap; margin-bottom: 0.8rem;
+  }
+  #o9-dashboard .ods-badge {
+    display: inline-block;
+    color: white; font-size: 0.75rem; font-weight: 700;
+    padding: 0.2rem 0.6rem; border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+  #o9-dashboard .ods-panel-header h4 {
+    font-size: 1rem; font-weight: 600; color: var(--ink); margin: 0; flex: 1;
+  }
+  #o9-dashboard .ods-stat {
+    font-size: 0.78rem; font-weight: 500; color: var(--ods-color);
+    background: color-mix(in srgb, var(--ods-color) 10%, white);
+    padding: 0.2rem 0.6rem; border-radius: 3px;
+  }
+  #o9-dashboard .ods-panel-inner p {
+    font-size: 0.92rem; line-height: 1.65; margin: 0 0 0.8rem;
+  }
+  #o9-dashboard .ods-propuesta {
+    font-size: 0.88rem; line-height: 1.55;
+    background: white;
+    border: 1px solid color-mix(in srgb, var(--ods-color) 20%, white);
+    border-radius: 4px;
+    padding: 0.7rem 1rem;
+  }
+
+  /* ── Practicas ───────────────────────────────── */
+  #o9-dashboard .practica-filters {
+    display: flex; flex-wrap: wrap; gap: 0.35rem;
+    margin-bottom: 1.5rem;
+  }
+  #o9-dashboard .practica-filter {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.78rem; font-weight: 500;
+    border: 1.5px solid var(--border);
+    border-radius: 15px;
+    background: white; color: var(--ink);
+    cursor: pointer; transition: all 0.15s;
+  }
+  #o9-dashboard .practica-filter[data-filter="all"].active,
+  #o9-dashboard .practica-filter[data-filter="all"]:hover {
+    background: var(--brand); color: white; border-color: var(--brand);
+  }
+  #o9-dashboard .practica-filter[data-filter]:not([data-filter="all"]).active,
+  #o9-dashboard .practica-filter[data-filter]:not([data-filter="all"]):hover {
+    background: var(--f-color, #555); color: white;
+    border-color: var(--f-color, #555);
+  }
+
+  #o9-dashboard .practicas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  #o9-dashboard .practica-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.1rem 1.2rem;
+    transition: box-shadow 0.15s;
+  }
+  #o9-dashboard .practica-card:hover {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+  #o9-dashboard .practica-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 0.5rem; margin-bottom: 0.5rem;
+  }
+  #o9-dashboard .practica-uni {
+    font-size: 0.72rem; font-weight: 500; color: var(--brand);
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  #o9-dashboard .practica-ods-tags {
+    display: flex; gap: 0.25rem; flex-wrap: wrap; flex-shrink: 0;
+  }
+  #o9-dashboard .ods-tag {
+    display: inline-block;
+    color: white; font-size: 0.65rem; font-weight: 700;
+    padding: 0.1rem 0.4rem; border-radius: 2px;
+  }
+  #o9-dashboard .practica-title {
+    font-size: 0.9rem; font-weight: 600; color: var(--ink);
+    margin: 0 0 0.4rem; line-height: 1.35;
+  }
+  #o9-dashboard .practica-desc {
+    font-size: 0.83rem; color: var(--ink); opacity: 0.8;
+    line-height: 1.55; margin: 0 0 0.6rem;
+  }
+  #o9-dashboard .practica-category {
+    font-size: 0.72rem; color: var(--ink); opacity: 0.55;
+    font-style: italic;
+  }
+
+  /* ── Propuestas ──────────────────────────────── */
+  #o9-dashboard .propuestas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin-top: 0.5rem;
+  }
+  #o9-dashboard .propuesta-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--p-color, var(--brand));
+    border-radius: 6px;
+    padding: 1.3rem 1.4rem;
+  }
+  #o9-dashboard .propuesta-icon {
+    font-size: 1.6rem; margin-bottom: 0.5rem;
+  }
+  #o9-dashboard .propuesta-title {
+    font-size: 1rem; font-weight: 600;
+    color: var(--p-color, var(--brand));
+    margin: 0 0 0.6rem;
+  }
+  #o9-dashboard .propuesta-card p {
+    font-size: 0.9rem; line-height: 1.6; margin: 0;
+  }
+
+  /* ── Conclusiones ────────────────────────────── */
+  #o9-dashboard .concl-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  #o9-dashboard .concl-block {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.2rem 1.3rem;
+  }
+  #o9-dashboard .concl-main {
+    grid-column: 1 / -1;
+    border-left: 4px solid var(--brand);
+    grid-column: 1;
+    grid-column: span 1;
+  }
+  #o9-dashboard .concl-block h3 {
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--brand); text-transform: uppercase;
+    letter-spacing: 0.06em; margin: 0 0 0.6rem;
+  }
+  #o9-dashboard .concl-block p {
+    font-size: 0.9rem; line-height: 1.65; margin: 0;
+  }
+  #o9-dashboard .concl-list {
+    font-size: 0.88rem; line-height: 1.8;
+    padding-left: 1.1rem; margin: 0;
+  }
+  #o9-dashboard .retos li { color: #c0392b; }
+  #o9-dashboard .concl-cierre {
+    background: color-mix(in srgb, var(--brand) 6%, white);
+    border: 1px solid color-mix(in srgb, var(--brand) 20%, white);
+    border-left: 4px solid var(--brand);
+    border-radius: 4px;
+    padding: 1rem 1.4rem;
+    font-size: 0.92rem; line-height: 1.65;
+  }
+
+  /* ── Responsive ──────────────────────────────── */
+  @media (max-width: 900px) {
+    #o9-dashboard { padding: 0 1.2rem 3rem; }
+    #o9-dashboard .hero-stats { grid-template-columns: 1fr 1fr; }
+    #o9-dashboard .ctx-grid { grid-template-columns: 1fr; }
+    #o9-dashboard .charts-row { grid-template-columns: 1fr; }
+    #o9-dashboard .practicas-grid { grid-template-columns: 1fr 1fr; }
+    #o9-dashboard .propuestas-grid { grid-template-columns: 1fr; }
+    #o9-dashboard .concl-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    #o9-dashboard .practicas-grid { grid-template-columns: 1fr; }
+    #o9-dashboard .hero-stats { grid-template-columns: 1fr; }
+  }
+</style>

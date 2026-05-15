@@ -1,0 +1,682 @@
+---
+const { pkg } = Astro.props;
+---
+
+<div id="o5-dashboard">
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- HERO                                                  -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o5-hero" class="dash-section dash-hero">
+    <div class="doc-kicker">Inventario de Investigación · 2024</div>
+    <h1 class="doc-title">{pkg.data.title}</h1>
+    <p class="dash-context">
+      Inventario de proyectos de investigación financiados en convocatorias públicas competitivas
+      en universidades españolas, y su vinculación con la Agenda 2030. Periodo 2016–2023 para
+      convocatorias nacionales y 2016–2024 para convocatorias europeas.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-value">19.609</div>
+        <div class="hero-stat-label">Proyectos analizados (nacional + europeo)</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">14.256</div>
+        <div class="hero-stat-label">Proyectos nacionales (RI + PGC, 2016–2023)</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">5.353</div>
+        <div class="hero-stat-label">Proyectos europeos (H2020 + Horizonte Europa)</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">ODS 9</div>
+        <div class="hero-stat-label">Lidera en nacionales y europeos (innovación)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- METODOLOGÍA                                           -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o5-metodologia" class="dash-section">
+    <h2 class="dash-title">Metodología</h2>
+    <p class="dash-context">
+      La información se extrae de fuentes oficiales. Los ODS se asignan a cada proyecto
+      mediante herramientas de inteligencia artificial basadas en modelos de lenguaje generativo,
+      combinando el análisis del título, área y subárea científica con las metas específicas de cada ODS.
+    </p>
+
+    <div class="met-grid">
+      <div class="met-card">
+        <div class="met-icon">🏛️</div>
+        <h3 class="met-head">Fuentes nacionales</h3>
+        <p>MICIU, Agencia Estatal de Investigación (AEI) y CDTI. Convocatorias de
+        <strong>Retos de Investigación (RI)</strong> y <strong>Proyectos de Generación del
+        Conocimiento (PGC)</strong>. Periodo: 2016–2023.</p>
+      </div>
+      <div class="met-card">
+        <div class="met-icon">🇪🇺</div>
+        <h3 class="met-head">Fuentes europeas</h3>
+        <p>Portal <strong>CORDIS</strong> (EU Research Results). Programas <strong>Horizonte 2020</strong>
+        (2016–2021) y <strong>Horizonte Europa</strong> (2022–2024). Beneficiarios: universidades
+        españolas.</p>
+      </div>
+      <div class="met-card">
+        <div class="met-icon">🤖</div>
+        <h3 class="met-head">Asignación de ODS</h3>
+        <p>Análisis automático del <strong>título del proyecto + área + subárea científica</strong>,
+        contrastado con las metas de los 17 ODS. En convocatorias 2019–2020 (sin título disponible),
+        la asignación se basa únicamente en área y subárea.</p>
+      </div>
+      <div class="met-card">
+        <div class="met-icon">📊</div>
+        <h3 class="met-head">Datos incluidos</h3>
+        <p>Referencia, título, beneficiario, CCAA, área y subárea científica, duración, cuantía,
+        cofinanciación, predoctorales y alineación con cada uno de los 17 ODS.
+        <em>Nota: la disponibilidad varía por año de convocatoria.</em></p>
+      </div>
+    </div>
+
+    <h3 class="dash-subtitle">Clasificación temática de áreas científicas (Tabla 1)</h3>
+    <p class="dash-context" style="margin-bottom:1rem;">
+      Sistema de clasificación por áreas y subáreas utilizado en las convocatorias nacionales.
+    </p>
+
+    <div class="tabla1-tabs-row">
+      <button class="tabla1-tab active" data-panel="cmifq">CMIFQ — Ciencias matemáticas, físicas, químicas e ingenierías</button>
+      <button class="tabla1-tab" data-panel="csh">CSH — Ciencias sociales y humanidades</button>
+      <button class="tabla1-tab" data-panel="cv">CV — Ciencias de la vida</button>
+    </div>
+
+    <div id="tabla1-cmifq" class="tabla1-panel" style="display:grid">
+      <div class="area-card"><div class="area-code">CTQ</div><div class="area-name">Ciencias y tecnologías químicas</div><div class="area-subs"><span>IQM</span><span>QMC</span></div></div>
+      <div class="area-card"><div class="area-code">EYT</div><div class="area-name">Energía y transporte</div><div class="area-subs"><span>ENE</span><span>TRA</span></div></div>
+      <div class="area-card"><div class="area-code">FIS</div><div class="area-name">Ciencias físicas</div><div class="area-subs"><span>AYA</span><span>ESP</span><span>FPN</span><span>FYA</span></div></div>
+      <div class="area-card"><div class="area-code">MAT</div><div class="area-name">Ciencias y tecnologías de materiales</div><div class="area-subs"><span>MBM</span><span>MEN</span><span>MES</span><span>MFU</span></div></div>
+      <div class="area-card"><div class="area-code">MTM</div><div class="area-name">Ciencias matemáticas</div><div class="area-subs"><span>MTM</span></div></div>
+      <div class="area-card"><div class="area-code">PIN</div><div class="area-name">Producción industrial, ingeniería civil e ingenierías para la sociedad</div><div class="area-subs"><span>IBI</span><span>ICA</span><span>IEA</span><span>INA</span></div></div>
+      <div class="area-card"><div class="area-code">TIC</div><div class="area-name">Tecnologías de la información y de las comunicaciones</div><div class="area-subs"><span>INF</span><span>MNF</span><span>TCO</span></div></div>
+    </div>
+
+    <div id="tabla1-csh" class="tabla1-panel" style="display:none">
+      <div class="area-card"><div class="area-code">CSO</div><div class="area-name">Ciencias sociales</div><div class="area-subs"><span>COM</span><span>CPO</span><span>FEM</span><span>GEO</span><span>SOC</span></div></div>
+      <div class="area-card"><div class="area-code">DER</div><div class="area-name">Derecho</div><div class="area-subs"><span>DER</span></div></div>
+      <div class="area-card"><div class="area-code">ECO</div><div class="area-name">Economía</div><div class="area-subs"><span>EYA</span><span>EYF</span><span>MAE</span></div></div>
+      <div class="area-card"><div class="area-code">EDU</div><div class="area-name">Ciencias de la educación</div><div class="area-subs"><span>EDU</span></div></div>
+      <div class="area-card"><div class="area-code">FLA</div><div class="area-name">Cultura: filología, literatura y arte</div><div class="area-subs"><span>ART</span><span>LFL</span></div></div>
+      <div class="area-card"><div class="area-code">MLP</div><div class="area-name">Mente, lenguaje y pensamiento</div><div class="area-subs"><span>FIL</span><span>LYL</span></div></div>
+      <div class="area-card"><div class="area-code">PHA</div><div class="area-name">Estudios del pasado: historia y arqueología</div><div class="area-subs"><span>ARQ</span><span>HIS</span></div></div>
+      <div class="area-card"><div class="area-code">PSI</div><div class="area-name">Psicología</div><div class="area-subs"><span>PSI</span></div></div>
+    </div>
+
+    <div id="tabla1-cv" class="tabla1-panel" style="display:none">
+      <div class="area-card"><div class="area-code">BIO</div><div class="area-name">Biociencias y biotecnología</div><div class="area-subs"><span>BIF</span><span>BMC</span></div></div>
+      <div class="area-card"><div class="area-code">BME</div><div class="area-name">Biomedicina</div><div class="area-subs"><span>BTC</span><span>CAN</span><span>DPT</span><span>ESN</span><span>FOS</span><span>IIT</span></div></div>
+      <div class="area-card"><div class="area-code">CAA</div><div class="area-name">Ciencias agrarias y agroalimentarias</div><div class="area-subs"><span>ALI</span><span>AYF</span><span>GYA</span></div></div>
+      <div class="area-card"><div class="area-code">CTM</div><div class="area-name">Ciencias y tecnologías medioambientales</div><div class="area-subs"><span>BDV</span><span>CTA</span><span>CYA</span><span>MAR</span><span>POL</span><span>TMA</span></div></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- RESULTADOS: NACIONALES                                -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o5-nacional" class="dash-section">
+    <h2 class="dash-title">Convocatorias Nacionales</h2>
+    <p class="dash-context">
+      Proyectos financiados por la AEI en el marco del Plan Estatal (PEICTI), alineados
+      institucionalmente con la Estrategia Española de Ciencia, Tecnología e Innovación 2021–2027 (EECTI),
+      cuyo objetivo prioritario es la contribución a los ODS de la Agenda 2030.
+    </p>
+
+    <div class="tipo-pills">
+      <span class="tipo-pill tipo-ri">RI — Retos de Investigación</span>
+      <span class="tipo-pill tipo-pgc">PGC — Proyectos de Generación del Conocimiento</span>
+    </div>
+
+    <h3 class="dash-subtitle">Evolución anual</h3>
+    <div class="chart-box" style="height:280px">
+      <canvas id="chart-nat-anio"></canvas>
+    </div>
+
+    <h3 class="dash-subtitle">Distribución por ODS</h3>
+    <p class="dash-context" style="margin-bottom:0.8rem;">
+      El ODS 9 (Industria e innovación) concentra el mayor número de proyectos, seguido del ODS 4
+      (Educación) y el ODS 3 (Salud). Los ODS ambientales y de acción climática muestran un
+      crecimiento notable en los últimos años del periodo.
+    </p>
+    <div class="chart-box" style="height:430px">
+      <canvas id="chart-nat-ods"></canvas>
+    </div>
+
+    <h3 class="dash-subtitle">Distribución por Comunidad Autónoma</h3>
+    <p class="dash-context" style="margin-bottom:0.8rem;">
+      Cataluña, Madrid y Andalucía lideran el número de proyectos, coherente con su mayor peso
+      en el sistema universitario español.
+    </p>
+    <div class="chart-box" style="height:460px">
+      <canvas id="chart-nat-ccaa"></canvas>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- RESULTADOS: EUROPEOS                                  -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o5-europeo" class="dash-section">
+    <h2 class="dash-title">Convocatorias Europeas</h2>
+    <p class="dash-context">
+      Proyectos de universidades españolas en las convocatorias <strong>Horizonte 2020</strong> (2016–2021)
+      y <strong>Horizonte Europa</strong> (2022–2024), obtenidos del portal CORDIS.
+      El 84% de la inversión ejecutada en Horizonte 2020 fue tendente a alcanzar los ODS.
+      Horizonte Europa se alinea explícitamente con el Pacto Verde Europeo y los objetivos de
+      neutralidad climática 2050.
+    </p>
+
+    <div class="eur-legend">
+      <span class="eur-legend-item" style="--lc:#2B5E8E">Horizonte 2020</span>
+      <span class="eur-legend-item" style="--lc:#c9973a">Horizonte Europa</span>
+    </div>
+
+    <div class="eur-note">
+      <strong>Nota metodológica:</strong> en los proyectos europeos no se dispone de información sobre
+      área de conocimiento ni centro. La asignación de ODS se realiza únicamente a partir del título del proyecto.
+    </div>
+
+    <h3 class="dash-subtitle">Evolución anual</h3>
+    <div class="chart-box" style="height:280px">
+      <canvas id="chart-eur-anio"></canvas>
+    </div>
+
+    <h3 class="dash-subtitle">Distribución por ODS</h3>
+    <p class="dash-context" style="margin-bottom:0.8rem;">
+      El ODS 9 domina también en el ámbito europeo, pero con diferencias respecto al nacional:
+      el ODS 8 (Trabajo decente) y el ODS 14 (Vida submarina) tienen mayor peso relativo,
+      reflejo de las prioridades del programa Horizonte.
+    </p>
+    <div class="chart-box" style="height:430px">
+      <canvas id="chart-eur-ods"></canvas>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- INVENTARIO EUROPEO (TABLA INTERACTIVA)               -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o5-tabla-eur" class="dash-section">
+    <h2 class="dash-title">Inventario de Proyectos Europeos</h2>
+    <p class="dash-context">
+      Búsqueda y exploración de los 5.353 proyectos europeos. Filtra por programa, año, comunidad
+      autónoma u ODS, o busca por título o universidad.
+    </p>
+
+    <div class="eur-filters">
+      <input id="eur-f-search" type="text" placeholder="Buscar por título o universidad…" class="eur-f-input" />
+      <select id="eur-f-ccaa" class="eur-f-select"><option value="">Todas las CCAA</option></select>
+      <select id="eur-f-tipo" class="eur-f-select">
+        <option value="">Todos los programas</option>
+        <option value="Horizonte 2020">Horizonte 2020</option>
+        <option value="Horizonte Europa">Horizonte Europa</option>
+      </select>
+      <select id="eur-f-anio" class="eur-f-select">
+        <option value="">Todos los años</option>
+        {[2016,2017,2018,2019,2020,2021,2022,2023,2024].map(y => <option value={String(y)}>{y}</option>)}
+      </select>
+      <select id="eur-f-ods" class="eur-f-select">
+        <option value="">Todos los ODS</option>
+        <option value="ODS1">ODS 1 — Fin de la pobreza</option>
+        <option value="ODS2">ODS 2 — Hambre cero</option>
+        <option value="ODS3">ODS 3 — Salud y bienestar</option>
+        <option value="ODS4">ODS 4 — Educación de calidad</option>
+        <option value="ODS5">ODS 5 — Igualdad de género</option>
+        <option value="ODS6">ODS 6 — Agua limpia</option>
+        <option value="ODS7">ODS 7 — Energía asequible</option>
+        <option value="ODS8">ODS 8 — Trabajo decente</option>
+        <option value="ODS9">ODS 9 — Industria e innovación</option>
+        <option value="ODS10">ODS 10 — Reducción desigualdades</option>
+        <option value="ODS11">ODS 11 — Ciudades sostenibles</option>
+        <option value="ODS12">ODS 12 — Consumo responsable</option>
+        <option value="ODS13">ODS 13 — Acción por el clima</option>
+        <option value="ODS14">ODS 14 — Vida submarina</option>
+        <option value="ODS15">ODS 15 — Ecosistemas terrestres</option>
+        <option value="ODS16">ODS 16 — Paz y justicia</option>
+        <option value="ODS17">ODS 17 — Alianzas</option>
+      </select>
+      <button id="eur-reset" class="eur-f-reset">Limpiar</button>
+    </div>
+
+    <div class="eur-info-bar">
+      <span id="eur-info" class="eur-info-text">Cargando…</span>
+    </div>
+
+    <div class="eur-table-wrap">
+      <table class="eur-table">
+        <thead>
+          <tr>
+            <th class="th-anio">Año</th>
+            <th class="th-tipo">Prog.</th>
+            <th class="th-titulo">Título</th>
+            <th class="th-uni">Universidad</th>
+            <th class="th-ccaa">CCAA</th>
+            <th class="th-cuantia">Cuantía</th>
+            <th class="th-ods">ODS</th>
+          </tr>
+        </thead>
+        <tbody id="eur-tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="eur-pagination">
+      <button id="eur-prev" class="eur-page-btn" disabled>← Anterior</button>
+      <button id="eur-next" class="eur-page-btn">Siguiente →</button>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- CONCLUSIONES                                          -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o5-conclusiones" class="dash-section">
+    <h2 class="dash-title">Conclusiones</h2>
+
+    <div class="concl-grid">
+      <div class="concl-block concl-main">
+        <h3>Inventario 2016–2023/2024</h3>
+        <p>El análisis de casi <strong>20.000 proyectos</strong> de investigación en universidades españolas
+        evidencia una <strong>alineación estructural con la Agenda 2030</strong>: todos los Proyectos de
+        Generación del Conocimiento financiados por la AEI en el marco del PEICTI tienen como objetivo
+        explícito contribuir a los ODS. El patrón de distribución es consistente entre convocatorias
+        nacionales y europeas.</p>
+      </div>
+
+      <div class="concl-block">
+        <h3>Liderazgo ODS 9</h3>
+        <p>La <strong>innovación e industria (ODS 9)</strong> lidera en ambos ámbitos con diferencia:
+        3.764 proyectos nacionales y 3.132 europeos. Refleja el papel central de las universidades
+        como motor de innovación tecnológica y su alta captación de fondos competitivos en I+D aplicado.</p>
+      </div>
+
+      <div class="concl-block">
+        <h3>Brecha ODS sociales</h3>
+        <p>ODS con alta relevancia social pero menor financiación: <strong>ODS 1</strong> (Fin de la pobreza),
+        <strong>ODS 6</strong> (Agua), <strong>ODS 16</strong> (Paz y justicia). Esta brecha apunta a la
+        necesidad de convocatorias específicas que visibilicen su contribución estratégica.</p>
+      </div>
+
+      <div class="concl-block">
+        <h3>Concentración territorial</h3>
+        <p>Cataluña, Madrid y Andalucía concentran más del <strong>54% de los proyectos nacionales</strong>,
+        coherente con el tamaño de sus sistemas universitarios. La distribución territorial de la
+        investigación alineada con ODS replica la distribución general de la I+D universitaria española.</p>
+      </div>
+    </div>
+
+    <div class="concl-cierre">
+      El inventario confirma que el sistema universitario español genera investigación competitiva
+      alineada con la Agenda 2030. El reto futuro es <strong>equilibrar la distribución entre ODS</strong>,
+      potenciar la transferencia de resultados y reducir la brecha entre los ODS tecnológicos
+      (ampliamente financiados) y los sociales y ambientales.
+    </div>
+  </section>
+
+</div>
+
+<script>
+  import '../../scripts/o5-dashboard.ts';
+</script>
+
+<style is:global>
+  #o5-dashboard {
+    padding: 0 2.5rem 4rem;
+    max-width: 1100px;
+  }
+
+  /* ── Sections ─────────────────────────────── */
+  #o5-dashboard .dash-section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  #o5-dashboard .dash-section:last-child { border-bottom: none; }
+
+  #o5-dashboard .dash-hero {
+    padding-top: 2.5rem;
+    border-bottom: 2px solid var(--brand);
+    position: relative;
+  }
+  #o5-dashboard .dash-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; left: 0;
+    width: 60px; height: 2px;
+    background: #c9973a;
+  }
+
+  /* ── Typography ───────────────────────────── */
+  #o5-dashboard .doc-kicker {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--brand); margin-bottom: 0.8rem;
+  }
+  #o5-dashboard .doc-title {
+    font-size: 2rem; font-weight: 700; line-height: 1.25;
+    color: var(--ink); max-width: 750px; margin: 0 0 1rem;
+  }
+  #o5-dashboard .dash-title {
+    font-size: 1.4rem; font-weight: 700; color: var(--brand);
+    margin: 0 0 0.6rem;
+    border-left: 3px solid var(--brand); padding-left: 0.8rem;
+  }
+  #o5-dashboard .dash-subtitle {
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--ink); margin: 2rem 0 0.5rem;
+  }
+  #o5-dashboard .dash-context {
+    font-size: 0.95rem; color: var(--ink); opacity: 0.8;
+    max-width: 820px; margin-bottom: 1.5rem; line-height: 1.6;
+  }
+
+  /* ── Hero stats ───────────────────────────── */
+  #o5-dashboard .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem; margin-top: 1.8rem;
+  }
+  #o5-dashboard .hero-stat {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    border-top: 3px solid var(--brand);
+  }
+  #o5-dashboard .hero-stat-value {
+    font-size: 1.5rem; font-weight: 700; color: var(--brand);
+  }
+  #o5-dashboard .hero-stat-label {
+    font-size: 0.78rem; color: var(--ink); opacity: 0.7;
+    margin-top: 0.25rem; line-height: 1.3;
+  }
+
+  /* ── Metodología grid ─────────────────────── */
+  #o5-dashboard .met-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem; margin-bottom: 2rem;
+  }
+  #o5-dashboard .met-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.2rem 1.4rem;
+  }
+  #o5-dashboard .met-icon {
+    font-size: 1.5rem; margin-bottom: 0.5rem;
+  }
+  #o5-dashboard .met-head {
+    font-size: 0.85rem; font-weight: 600; color: var(--brand);
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin: 0 0 0.5rem;
+  }
+  #o5-dashboard .met-card p {
+    font-size: 0.9rem; line-height: 1.6; margin: 0;
+  }
+
+  /* ── Tabla 1 tabs ─────────────────────────── */
+  #o5-dashboard .tabla1-tabs-row {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  #o5-dashboard .tabla1-tab {
+    padding: 0.45rem 1rem;
+    font-size: 0.82rem; font-weight: 500;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    background: white; color: var(--ink);
+    cursor: pointer; transition: all 0.15s;
+  }
+  #o5-dashboard .tabla1-tab.active,
+  #o5-dashboard .tabla1-tab:hover {
+    background: var(--brand); color: white; border-color: var(--brand);
+  }
+
+  #o5-dashboard .tabla1-panel {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.8rem; margin-bottom: 0.5rem;
+  }
+  #o5-dashboard .area-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0.9rem 1rem;
+  }
+  #o5-dashboard .area-code {
+    font-size: 1rem; font-weight: 700; color: var(--brand);
+    letter-spacing: 0.04em; margin-bottom: 0.2rem;
+  }
+  #o5-dashboard .area-name {
+    font-size: 0.8rem; color: var(--ink); opacity: 0.8;
+    line-height: 1.4; margin-bottom: 0.55rem;
+  }
+  #o5-dashboard .area-subs {
+    display: flex; flex-wrap: wrap; gap: 0.3rem;
+  }
+  #o5-dashboard .area-subs span {
+    font-size: 0.68rem; font-weight: 600;
+    background: color-mix(in srgb, var(--brand) 10%, white);
+    color: var(--brand);
+    border: 1px solid color-mix(in srgb, var(--brand) 20%, white);
+    padding: 0.1rem 0.4rem; border-radius: 3px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Tipo pills ───────────────────────────── */
+  #o5-dashboard .tipo-pills {
+    display: flex; gap: 0.6rem; flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  #o5-dashboard .tipo-pill {
+    font-size: 0.8rem; font-weight: 500;
+    padding: 0.3rem 0.8rem; border-radius: 20px;
+  }
+  #o5-dashboard .tipo-ri {
+    background: color-mix(in srgb, var(--brand) 12%, white);
+    color: var(--brand);
+    border: 1.5px solid color-mix(in srgb, var(--brand) 30%, white);
+  }
+  #o5-dashboard .tipo-pgc {
+    background: color-mix(in srgb, #c9973a 12%, white);
+    color: #9a7020;
+    border: 1.5px solid color-mix(in srgb, #c9973a 30%, white);
+  }
+
+  /* ── Chart box ────────────────────────────── */
+  #o5-dashboard .chart-box {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── European legend & note ───────────────── */
+  #o5-dashboard .eur-legend {
+    display: flex; gap: 1.2rem; margin-bottom: 1rem; flex-wrap: wrap;
+  }
+  #o5-dashboard .eur-legend-item {
+    font-size: 0.82rem; font-weight: 500;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  #o5-dashboard .eur-legend-item::before {
+    content: '';
+    display: inline-block;
+    width: 14px; height: 14px;
+    border-radius: 3px;
+    background: var(--lc);
+    flex-shrink: 0;
+  }
+  #o5-dashboard .eur-note {
+    font-size: 0.83rem; line-height: 1.55;
+    background: color-mix(in srgb, var(--brand) 5%, white);
+    border: 1px solid color-mix(in srgb, var(--brand) 18%, white);
+    border-left: 3px solid var(--brand);
+    border-radius: 4px;
+    padding: 0.7rem 1rem;
+    margin-bottom: 1.8rem;
+    color: var(--ink); opacity: 0.85;
+  }
+
+  /* ── Conclusiones ─────────────────────────── */
+  #o5-dashboard .concl-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem; margin-bottom: 1.5rem;
+  }
+  #o5-dashboard .concl-block {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.2rem 1.4rem;
+  }
+  #o5-dashboard .concl-main {
+    grid-column: span 2;
+    border-left: 4px solid var(--brand);
+  }
+  #o5-dashboard .concl-block h3 {
+    font-size: 0.85rem; font-weight: 600; color: var(--brand);
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin: 0 0 0.6rem;
+  }
+  #o5-dashboard .concl-block p {
+    font-size: 0.9rem; line-height: 1.65; margin: 0;
+  }
+  #o5-dashboard .concl-cierre {
+    background: color-mix(in srgb, var(--brand) 6%, white);
+    border: 1px solid color-mix(in srgb, var(--brand) 20%, white);
+    border-left: 4px solid var(--brand);
+    border-radius: 4px;
+    padding: 1rem 1.4rem;
+    font-size: 0.92rem; line-height: 1.65;
+  }
+
+  /* ── European table ──────────────────────── */
+  #o5-dashboard .eur-filters {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 0.8rem; align-items: center;
+  }
+  #o5-dashboard .eur-f-input {
+    flex: 1; min-width: 200px;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.85rem; font-family: var(--font-base);
+    border: 1.5px solid var(--border); border-radius: 4px;
+    background: white; color: var(--ink);
+  }
+  #o5-dashboard .eur-f-input:focus { outline: none; border-color: var(--brand); }
+  #o5-dashboard .eur-f-select {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.82rem; font-family: var(--font-base);
+    border: 1.5px solid var(--border); border-radius: 4px;
+    background: white; color: var(--ink); cursor: pointer;
+  }
+  #o5-dashboard .eur-f-select:focus { outline: none; border-color: var(--brand); }
+  #o5-dashboard .eur-f-reset {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.82rem; font-family: var(--font-base);
+    border: 1.5px solid var(--border); border-radius: 4px;
+    background: white; color: var(--ink); cursor: pointer;
+    transition: all 0.15s; white-space: nowrap;
+  }
+  #o5-dashboard .eur-f-reset:hover {
+    border-color: var(--brand); color: var(--brand);
+  }
+
+  #o5-dashboard .eur-info-bar {
+    margin-bottom: 0.5rem;
+  }
+  #o5-dashboard .eur-info-text {
+    font-size: 0.8rem; color: var(--ink); opacity: 0.6;
+  }
+
+  #o5-dashboard .eur-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 0.8rem;
+  }
+  #o5-dashboard .eur-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.83rem;
+  }
+  #o5-dashboard .eur-table thead tr {
+    background: color-mix(in srgb, var(--brand) 8%, white);
+    border-bottom: 2px solid var(--border);
+  }
+  #o5-dashboard .eur-table th {
+    padding: 0.6rem 0.8rem;
+    text-align: left; font-weight: 600;
+    color: var(--brand); font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  #o5-dashboard .eur-table td {
+    padding: 0.55rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  #o5-dashboard .eur-table tbody tr:last-child td { border-bottom: none; }
+  #o5-dashboard .eur-table tbody tr:hover { background: color-mix(in srgb, var(--brand) 4%, white); }
+
+  #o5-dashboard .td-anio { white-space: nowrap; width: 52px; }
+  #o5-dashboard .td-tipo { width: 68px; }
+  #o5-dashboard .td-titulo { max-width: 320px; }
+  #o5-dashboard .td-titulo span,
+  #o5-dashboard .td-uni span {
+    display: block; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap;
+    cursor: default;
+  }
+  #o5-dashboard .td-uni { max-width: 200px; }
+  #o5-dashboard .td-ccaa { white-space: nowrap; }
+  #o5-dashboard .td-cuantia { white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }
+  #o5-dashboard .td-ods { min-width: 80px; }
+
+  #o5-dashboard .tipo-badge-mini {
+    display: inline-block; font-size: 0.68rem; font-weight: 700;
+    padding: 0.15rem 0.45rem; border-radius: 3px;
+    letter-spacing: 0.03em; white-space: nowrap;
+  }
+  #o5-dashboard .h2020 { background: #2B5E8E; color: white; }
+  #o5-dashboard .heur  { background: #c9973a; color: white; }
+
+  #o5-dashboard .ods-num-badge {
+    display: inline-block; color: white;
+    font-size: 0.65rem; font-weight: 700;
+    padding: 0.12rem 0.35rem; border-radius: 3px;
+    margin: 0.1rem 0.1rem 0.1rem 0;
+    line-height: 1.3; cursor: default;
+  }
+
+  #o5-dashboard .eur-pagination {
+    display: flex; gap: 0.5rem; justify-content: flex-end;
+  }
+  #o5-dashboard .eur-page-btn {
+    padding: 0.4rem 1rem; font-size: 0.82rem;
+    font-family: var(--font-base);
+    border: 1.5px solid var(--border); border-radius: 4px;
+    background: white; color: var(--ink); cursor: pointer;
+    transition: all 0.15s;
+  }
+  #o5-dashboard .eur-page-btn:hover:not(:disabled) {
+    border-color: var(--brand); color: var(--brand);
+  }
+  #o5-dashboard .eur-page-btn:disabled {
+    opacity: 0.4; cursor: default;
+  }
+
+  /* ── Responsive ───────────────────────────── */
+  @media (max-width: 900px) {
+    #o5-dashboard { padding: 0 1.2rem 3rem; }
+    #o5-dashboard .hero-stats { grid-template-columns: 1fr 1fr; }
+    #o5-dashboard .met-grid { grid-template-columns: 1fr; }
+    #o5-dashboard .concl-grid { grid-template-columns: 1fr; }
+    #o5-dashboard .concl-main { grid-column: span 1; }
+  }
+  @media (max-width: 600px) {
+    #o5-dashboard .hero-stats { grid-template-columns: 1fr; }
+    #o5-dashboard .tabla1-tab { font-size: 0.75rem; padding: 0.35rem 0.7rem; }
+  }
+</style>
