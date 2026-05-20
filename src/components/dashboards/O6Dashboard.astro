@@ -185,76 +185,6 @@ const { pkg } = Astro.props;
         </div>
       </div>
     </section>
-
-    <!-- Inventario PDC -->
-    <section id="o6-pdc-tabla" style="margin-top:2.5rem">
-      <h3 class="dash-subtitle">Inventario de proyectos PDC</h3>
-      <p class="dash-context" style="margin-bottom:1rem">
-        Listado completo de proyectos por año de convocatoria. Las columnas ODS reflejan la
-        alineación asignada por IA a partir de la subárea científica.
-      </p>
-
-      <div class="year-tabs-row">
-        <button class="pdc-year-tab active" data-year="2021">Convocatoria 2021 <span class="tab-count">266</span></button>
-        <button class="pdc-year-tab" data-year="2022">Convocatoria 2022 <span class="tab-count">242</span></button>
-        <button class="pdc-year-tab" data-year="2023">Convocatoria 2023 <span class="tab-count">73</span></button>
-      </div>
-
-      <div class="table-filters">
-        <input type="text" id="pdc-f-search" class="f-search" placeholder="Buscar por referencia o universidad…" />
-        <select id="pdc-f-ccaa" class="f-select">
-          <option value="">Todas las CCAA</option>
-        </select>
-        <select id="pdc-f-ods" class="f-select">
-          <option value="">Todos los ODS</option>
-          <option value="ODS1">ODS 1 — Fin de la pobreza</option>
-          <option value="ODS2">ODS 2 — Hambre cero</option>
-          <option value="ODS3">ODS 3 — Salud y bienestar</option>
-          <option value="ODS4">ODS 4 — Educación de calidad</option>
-          <option value="ODS5">ODS 5 — Igualdad de género</option>
-          <option value="ODS6">ODS 6 — Agua limpia</option>
-          <option value="ODS7">ODS 7 — Energía asequible</option>
-          <option value="ODS8">ODS 8 — Trabajo decente</option>
-          <option value="ODS9">ODS 9 — Industria e innovación</option>
-          <option value="ODS10">ODS 10 — Reducción desigualdades</option>
-          <option value="ODS11">ODS 11 — Ciudades sostenibles</option>
-          <option value="ODS12">ODS 12 — Producción responsable</option>
-          <option value="ODS13">ODS 13 — Acción por el clima</option>
-          <option value="ODS14">ODS 14 — Vida submarina</option>
-          <option value="ODS15">ODS 15 — Vida de ecosistemas</option>
-          <option value="ODS16">ODS 16 — Paz y justicia</option>
-          <option value="ODS17">ODS 17 — Alianzas</option>
-        </select>
-        <button id="pdc-reset" class="f-reset">Limpiar</button>
-      </div>
-
-      <div class="table-info-row">
-        <span id="pdc-info" class="table-info"></span>
-        <div class="pag-btns">
-          <button id="pdc-prev" class="pag-btn" disabled>← Anterior</button>
-          <button id="pdc-next" class="pag-btn">Siguiente →</button>
-        </div>
-      </div>
-
-      <div class="table-wrapper">
-        <table class="inv-table">
-          <thead>
-            <tr>
-              <th class="th-ref">Referencia</th>
-              <th class="th-sub">Subárea</th>
-              <th class="th-uni">Universidad beneficiaria</th>
-              <th class="th-ccaa">CCAA</th>
-              <th class="th-cuantia">Cuantía</th>
-              <th class="th-ods">ODS</th>
-            </tr>
-          </thead>
-          <tbody id="pdc-tbody">
-            <tr><td colspan="6" class="table-loading">Cargando datos…</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-    </section>
   </section>
 
   <!-- ══════════════════════════════════════════════════════ -->
@@ -333,83 +263,6 @@ const { pkg } = Astro.props;
       </div>
     </section>
 
-    <!-- Inventario LIFE -->
-    <section id="o6-life-tabla" style="margin-top:2.5rem">
-      <h3 class="dash-subtitle">Inventario de proyectos LIFE</h3>
-      <p class="dash-context" style="margin-bottom:1rem">
-        Listado de proyectos LIFE con participación de universidades españolas, 2016–2023.
-        El presupuesto indicado es la contribución de la UE al proyecto completo.
-        Los <strong>badges de categoría</strong> identifican el subprograma LIFE.
-      </p>
-
-      <div class="table-filters">
-        <input type="text" id="life-f-search" class="f-search" placeholder="Buscar por título, universidad o referencia…" />
-        <select id="life-f-year" class="f-select">
-          <option value="">Todos los años</option>
-          <option value="2016">2016</option>
-          <option value="2017">2017</option>
-          <option value="2018">2018</option>
-          <option value="2019">2019</option>
-          <option value="2020">2020</option>
-          <option value="2021">2021</option>
-          <option value="2022">2022</option>
-          <option value="2023">2023</option>
-        </select>
-        <select id="life-f-ccaa" class="f-select">
-          <option value="">Todas las CCAA</option>
-        </select>
-        <select id="life-f-ods" class="f-select">
-          <option value="">Todos los ODS</option>
-          <option value="ODS1">ODS 1 — Fin de la pobreza</option>
-          <option value="ODS2">ODS 2 — Hambre cero</option>
-          <option value="ODS3">ODS 3 — Salud y bienestar</option>
-          <option value="ODS4">ODS 4 — Educación de calidad</option>
-          <option value="ODS5">ODS 5 — Igualdad de género</option>
-          <option value="ODS6">ODS 6 — Agua limpia</option>
-          <option value="ODS7">ODS 7 — Energía asequible</option>
-          <option value="ODS8">ODS 8 — Trabajo decente</option>
-          <option value="ODS9">ODS 9 — Industria e innovación</option>
-          <option value="ODS10">ODS 10 — Reducción desigualdades</option>
-          <option value="ODS11">ODS 11 — Ciudades sostenibles</option>
-          <option value="ODS12">ODS 12 — Producción responsable</option>
-          <option value="ODS13">ODS 13 — Acción por el clima</option>
-          <option value="ODS14">ODS 14 — Vida submarina</option>
-          <option value="ODS15">ODS 15 — Vida de ecosistemas</option>
-          <option value="ODS16">ODS 16 — Paz y justicia</option>
-          <option value="ODS17">ODS 17 — Alianzas</option>
-        </select>
-        <button id="life-reset" class="f-reset">Limpiar</button>
-      </div>
-
-      <div class="table-info-row">
-        <span id="life-info" class="table-info"></span>
-        <div class="pag-btns">
-          <button id="life-prev" class="pag-btn" disabled>← Anterior</button>
-          <button id="life-next" class="pag-btn">Siguiente →</button>
-        </div>
-      </div>
-
-      <div class="table-wrapper">
-        <table class="inv-table inv-life">
-          <thead>
-            <tr>
-              <th class="th-year">Año</th>
-              <th class="th-cat">Cat.</th>
-              <th class="th-titulo">Título del proyecto</th>
-              <th class="th-uni">Universidad beneficiaria</th>
-              <th class="th-ccaa">CCAA</th>
-              <th class="th-periodo">Período</th>
-              <th class="th-ue">Contrib. UE</th>
-              <th class="th-ods">ODS</th>
-            </tr>
-          </thead>
-          <tbody id="life-tbody">
-            <tr><td colspan="8" class="table-loading">Cargando datos…</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-    </section>
   </section>
 
   <!-- ══════════════════════════════════════════════════════ -->
@@ -438,6 +291,156 @@ const { pkg } = Astro.props;
         las convocatorias de transferencia, como condición necesaria para el seguimiento riguroso
         del impacto de la universidad española en la Agenda 2030.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- ANEXO I — INVENTARIO PDC                              -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o6-anexo-pdc" class="dash-section">
+    <h2 class="dash-title">Anexo I — Inventario de proyectos PDC</h2>
+    <p class="dash-context">
+      Listado completo de proyectos por año de convocatoria. Las columnas ODS reflejan la
+      alineación asignada por IA a partir de la subárea científica.
+    </p>
+
+    <div class="year-tabs-row">
+      <button class="pdc-year-tab active" data-year="2021">Convocatoria 2021 <span class="tab-count">266</span></button>
+      <button class="pdc-year-tab" data-year="2022">Convocatoria 2022 <span class="tab-count">242</span></button>
+      <button class="pdc-year-tab" data-year="2023">Convocatoria 2023 <span class="tab-count">73</span></button>
+    </div>
+
+    <div class="table-filters">
+      <input type="text" id="pdc-f-search" class="f-search" placeholder="Buscar por referencia o universidad…" />
+      <select id="pdc-f-ccaa" class="f-select">
+        <option value="">Todas las CCAA</option>
+      </select>
+      <select id="pdc-f-ods" class="f-select">
+        <option value="">Todos los ODS</option>
+        <option value="ODS1">ODS 1 — Fin de la pobreza</option>
+        <option value="ODS2">ODS 2 — Hambre cero</option>
+        <option value="ODS3">ODS 3 — Salud y bienestar</option>
+        <option value="ODS4">ODS 4 — Educación de calidad</option>
+        <option value="ODS5">ODS 5 — Igualdad de género</option>
+        <option value="ODS6">ODS 6 — Agua limpia</option>
+        <option value="ODS7">ODS 7 — Energía asequible</option>
+        <option value="ODS8">ODS 8 — Trabajo decente</option>
+        <option value="ODS9">ODS 9 — Industria e innovación</option>
+        <option value="ODS10">ODS 10 — Reducción desigualdades</option>
+        <option value="ODS11">ODS 11 — Ciudades sostenibles</option>
+        <option value="ODS12">ODS 12 — Producción responsable</option>
+        <option value="ODS13">ODS 13 — Acción por el clima</option>
+        <option value="ODS14">ODS 14 — Vida submarina</option>
+        <option value="ODS15">ODS 15 — Vida de ecosistemas</option>
+        <option value="ODS16">ODS 16 — Paz y justicia</option>
+        <option value="ODS17">ODS 17 — Alianzas</option>
+      </select>
+      <button id="pdc-reset" class="f-reset">Limpiar</button>
+    </div>
+
+    <div class="table-info-row">
+      <span id="pdc-info" class="table-info"></span>
+      <div class="pag-btns">
+        <button id="pdc-prev" class="pag-btn" disabled>← Anterior</button>
+        <button id="pdc-next" class="pag-btn">Siguiente →</button>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="inv-table">
+        <thead>
+          <tr>
+            <th class="th-ref">Referencia</th>
+            <th class="th-sub">Subárea</th>
+            <th class="th-uni">Universidad beneficiaria</th>
+            <th class="th-ccaa">CCAA</th>
+            <th class="th-cuantia">Cuantía</th>
+            <th class="th-ods">ODS</th>
+          </tr>
+        </thead>
+        <tbody id="pdc-tbody">
+          <tr><td colspan="6" class="table-loading">Cargando datos…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- ANEXO II — INVENTARIO LIFE                            -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o6-anexo-life" class="dash-section">
+    <h2 class="dash-title">Anexo II — Inventario de proyectos LIFE</h2>
+    <p class="dash-context">
+      Listado de proyectos LIFE con participación de universidades españolas, 2016–2023.
+      El presupuesto indicado es la contribución de la UE al proyecto completo.
+      Los <strong>badges de categoría</strong> identifican el subprograma LIFE.
+    </p>
+
+    <div class="table-filters">
+      <input type="text" id="life-f-search" class="f-search" placeholder="Buscar por título, universidad o referencia…" />
+      <select id="life-f-year" class="f-select">
+        <option value="">Todos los años</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+      </select>
+      <select id="life-f-ccaa" class="f-select">
+        <option value="">Todas las CCAA</option>
+      </select>
+      <select id="life-f-ods" class="f-select">
+        <option value="">Todos los ODS</option>
+        <option value="ODS1">ODS 1 — Fin de la pobreza</option>
+        <option value="ODS2">ODS 2 — Hambre cero</option>
+        <option value="ODS3">ODS 3 — Salud y bienestar</option>
+        <option value="ODS4">ODS 4 — Educación de calidad</option>
+        <option value="ODS5">ODS 5 — Igualdad de género</option>
+        <option value="ODS6">ODS 6 — Agua limpia</option>
+        <option value="ODS7">ODS 7 — Energía asequible</option>
+        <option value="ODS8">ODS 8 — Trabajo decente</option>
+        <option value="ODS9">ODS 9 — Industria e innovación</option>
+        <option value="ODS10">ODS 10 — Reducción desigualdades</option>
+        <option value="ODS11">ODS 11 — Ciudades sostenibles</option>
+        <option value="ODS12">ODS 12 — Producción responsable</option>
+        <option value="ODS13">ODS 13 — Acción por el clima</option>
+        <option value="ODS14">ODS 14 — Vida submarina</option>
+        <option value="ODS15">ODS 15 — Vida de ecosistemas</option>
+        <option value="ODS16">ODS 16 — Paz y justicia</option>
+        <option value="ODS17">ODS 17 — Alianzas</option>
+      </select>
+      <button id="life-reset" class="f-reset">Limpiar</button>
+    </div>
+
+    <div class="table-info-row">
+      <span id="life-info" class="table-info"></span>
+      <div class="pag-btns">
+        <button id="life-prev" class="pag-btn" disabled>← Anterior</button>
+        <button id="life-next" class="pag-btn">Siguiente →</button>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="inv-table inv-life">
+        <thead>
+          <tr>
+            <th class="th-year">Año</th>
+            <th class="th-cat">Cat.</th>
+            <th class="th-titulo">Título del proyecto</th>
+            <th class="th-uni">Universidad beneficiaria</th>
+            <th class="th-ccaa">CCAA</th>
+            <th class="th-periodo">Período</th>
+            <th class="th-ue">Contrib. UE</th>
+            <th class="th-ods">ODS</th>
+          </tr>
+        </thead>
+        <tbody id="life-tbody">
+          <tr><td colspan="8" class="table-loading">Cargando datos…</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
