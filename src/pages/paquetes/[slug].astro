@@ -7,6 +7,7 @@ import O4Dashboard from '../../components/dashboards/O4Dashboard.astro';
 import O5Dashboard from '../../components/dashboards/O5Dashboard.astro';
 import O9Dashboard from '../../components/dashboards/O9Dashboard.astro';
 import O10Dashboard from '../../components/dashboards/O10Dashboard.astro';
+import O11Dashboard from '../../components/dashboards/O11Dashboard.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -70,6 +71,13 @@ const dashboardNavs: Record<string, { slug: string; title: string; level: number
     { slug: 'o10-otros',         title: 'Otros documentos',     level: 1 },
     { slug: 'o10-conclusion',    title: 'Conclusión',           level: 1 },
   ],
+  o11: [
+    { slug: 'o11-hero',          title: 'Resumen',              level: 1 },
+    { slug: 'o11-publicacion',   title: 'Info en web',          level: 1 },
+    { slug: 'o11-idiomas',       title: 'Idiomas',              level: 1 },
+    { slug: 'o11-accesibilidad', title: 'Accesibilidad',        level: 1 },
+    { slug: 'o11-conclusion',    title: 'Conclusión',           level: 1 },
+  ],
   o1: [
     { slug: 'o1-hero',          title: 'Resumen',                  level: 1 },
     { slug: 'o1-losu',          title: 'La LOSU y los ODS',        level: 1 },
@@ -128,7 +136,9 @@ const navSections = isDashboard ? dashboardNavs[slug] : null;
   </aside>
 
   <main class="main-content">
-    {slug === 'o10' ? (
+    {slug === 'o11' ? (
+      <O11Dashboard pkg={pkg} />
+    ) : slug === 'o10' ? (
       <O10Dashboard pkg={pkg} />
     ) : slug === 'o5' ? (
       <O5Dashboard pkg={pkg} />

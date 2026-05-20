@@ -1,0 +1,333 @@
+---
+const { pkg } = Astro.props;
+---
+
+<div id="o11-dashboard">
+
+  <!-- HERO -->
+  <section id="o11-hero" class="dash-section dash-hero">
+    <div class="doc-kicker">Transparencia en páginas web · 2025</div>
+    <h1 class="doc-title">{pkg.data.title}</h1>
+    <p class="hero-intro">Análisis de la información sobre sostenibilidad publicada en las páginas web de las universidades españolas: presencia, idiomas de difusión, accesibilidad y enlaces a memorias. Universo de estudio: 93 universidades del RUCT (2024), periodo 2016–2025.</p>
+    <div class="hero-stats">
+      <div class="stat-card accent-blue">
+        <span class="stat-value">87 <small>/ 93</small></span>
+        <span class="stat-label">Con alguna info de sostenibilidad en web en 2025 — 94%</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">49 <small>/ 50</small></span>
+        <span class="stat-label">Universidades públicas que publican info en web</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">38 <small>/ 43</small></span>
+        <span class="stat-label">Universidades privadas que publican info en web</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">35%</span>
+        <span class="stat-label">Enlazan sus memorias de sostenibilidad en la web</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">6</span>
+        <span class="stat-label">Ofrecen lenguaje accesible — todas públicas. Ninguna usa lenguaje inclusivo de género</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">26</span>
+        <span class="stat-label">Universidades publican en idioma cooficial (17 públicas · 9 privadas)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICACIÓN EN WEB -->
+  <section id="o11-publicacion" class="dash-section">
+    <h2 class="dash-title">Información de sostenibilidad en web</h2>
+    <p class="dash-context">La gran mayoría de las universidades españolas ofrecen algún tipo de información sobre sostenibilidad en su página web oficial — portales específicos, secciones, artículos o menciones concretas a su compromiso. Es suficiente con que la hayan publicado en algún año del periodo 2016–2025.</p>
+
+    <h3 class="dash-subtitle">Públicas vs privadas</h3>
+    <p class="dash-context">Comparativa entre el total de universidades de cada tipo y las que efectivamente publican información de sostenibilidad en web. Las públicas tienen una cobertura casi total (49 de 50); en las privadas hay mayor variabilidad (38 de 43).</p>
+    <div class="chart-box" style="height:220px">
+      <canvas id="chart-pub-priv"></canvas>
+    </div>
+
+    <h3 class="dash-subtitle">Relación entre tamaño y publicación</h3>
+    <p class="dash-context">Universidades agrupadas por número de estudiantes. El 100% de las más grandes publican información. A menor tamaño, la cobertura es algo menor, aunque sigue siendo mayoritaria en todos los rangos. Se excluyen 7 universidades sin datos de tamaño disponibles.</p>
+    <div class="chart-box" style="height:240px">
+      <canvas id="chart-tamano"></canvas>
+    </div>
+  </section>
+
+  <!-- IDIOMAS -->
+  <section id="o11-idiomas" class="dash-section">
+    <h2 class="dash-title">Idiomas de publicación</h2>
+    <p class="dash-context">La transparencia web también depende del alcance lingüístico. Lo más habitual es publicar en más de dos idiomas (castellano + inglés + idioma autonómico cooficial). El castellano está presente en el 100% de los casos; el inglés, en el 66%.</p>
+
+    <div class="idiomas-grid">
+      <div>
+        <h3 class="dash-subtitle">Nº de idiomas disponibles</h3>
+        <div class="chart-box" style="height:200px">
+          <canvas id="chart-nidiomas"></canvas>
+        </div>
+      </div>
+      <div>
+        <h3 class="dash-subtitle">Idiomas utilizados</h3>
+        <div class="chart-box" style="height:200px">
+          <canvas id="chart-idiomas"></canvas>
+        </div>
+      </div>
+    </div>
+    <p class="chart-footnote">*IANC: idioma autonómico no cooficial</p>
+
+    <h3 class="dash-subtitle">Idiomas cooficiales</h3>
+    <p class="dash-context">Las universidades de CCAA con lengua propia publican su información también en ese idioma. En total, <strong>26 universidades</strong> utilizan un idioma cooficial.</p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Idioma</th><th>Universidades Públicas</th><th>Universidades Privadas</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Catalán / Valenciano / Balear</strong></td>
+            <td>UAB, UB, UdG, UdL, UPF, URV, UPC, UV, UPV, UA, UJI, UMH, UIB</td>
+            <td>UOC, UIC, UAO CEU, URL, UVic</td>
+          </tr>
+          <tr>
+            <td><strong>Gallego</strong></td>
+            <td>UDC, UVigo, USC</td>
+            <td>Universidad Intercontinental de la Empresa</td>
+          </tr>
+          <tr>
+            <td><strong>Euskera</strong></td>
+            <td>UPV/EHU</td>
+            <td>Mondragón Unibertsitatea, Universidad de Deusto, Universidad Euneiz</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ACCESIBILIDAD Y MEMORIAS -->
+  <section id="o11-accesibilidad" class="dash-section">
+    <h2 class="dash-title">Accesibilidad y memorias en web</h2>
+
+    <div class="acc-grid">
+      <div>
+        <h3 class="dash-subtitle">Lenguaje accesible e inclusivo</h3>
+        <p class="dash-context">Solo <strong>6 universidades</strong> ofrecen lenguaje accesible en su web (adaptación para personas con discapacidad visual), todas ellas públicas. <strong>Ninguna</strong> utiliza lenguaje inclusivo de género en la publicación de su información.</p>
+      </div>
+      <div>
+        <h3 class="dash-subtitle">Enlace a memorias de sostenibilidad (2025)</h3>
+        <p class="dash-context">Solo el <strong>35%</strong> de las universidades estudiadas incluye un enlace directo a sus memorias de sostenibilidad en su página web. El 65% restante no facilita ese acceso directo.</p>
+      </div>
+    </div>
+    <div class="acc-grid">
+      <div class="chart-box" style="height:180px">
+        <canvas id="chart-accesible"></canvas>
+      </div>
+      <div class="chart-box" style="height:180px">
+        <canvas id="chart-memorias-web"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCLUSIÓN -->
+  <section id="o11-conclusion" class="dash-section" style="border-bottom:none">
+    <h2 class="dash-title">Conclusión</h2>
+    <div class="conclusion-box">
+      <p>La mayoría de las universidades españolas (94% en 2025) publican algún tipo de información sobre sostenibilidad en sus páginas web, siendo las públicas más activas que las privadas. La dimensión de la institución también influye: a mayor tamaño, mayor cobertura.</p>
+      <p>Sin embargo, aún queda recorrido en cuanto al acceso a memorias formales de sostenibilidad desde la web (solo el 35% las enlaza) y en materia de accesibilidad lingüística (solo 6 universidades con lenguaje accesible, ninguna con lenguaje inclusivo de género). La página web institucional es un canal de transparencia clave por su accesibilidad masiva, y merece una atención creciente por parte de las universidades comprometidas con la Agenda 2030.</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  import '../../scripts/o11-dashboard.ts';
+</script>
+
+<style is:global>
+#o11-dashboard {
+  padding: 0 2.5rem 4rem;
+  max-width: 1100px;
+}
+
+#o11-dashboard .dash-section {
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* HERO */
+#o11-dashboard .dash-hero { padding-top: 2rem; }
+
+#o11-dashboard .doc-kicker {
+  font-family: var(--font-base);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 0.8rem;
+}
+
+#o11-dashboard .doc-title {
+  font-family: var(--font-base);
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+
+#o11-dashboard .hero-intro {
+  font-family: var(--font-base);
+  font-size: 0.92rem;
+  color: var(--ink-mid);
+  max-width: 720px;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+#o11-dashboard .hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+#o11-dashboard .stat-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+#o11-dashboard .stat-card.accent-blue { border-top-color: var(--brand); }
+
+#o11-dashboard .stat-value {
+  font-family: var(--font-base);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--brand);
+  line-height: 1;
+}
+
+#o11-dashboard .stat-value small {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+#o11-dashboard .stat-label {
+  font-family: var(--font-base);
+  font-size: 0.78rem;
+  color: var(--ink-mid);
+  line-height: 1.4;
+}
+
+/* HEADINGS */
+#o11-dashboard .dash-title {
+  font-family: var(--font-base);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--brand);
+  display: inline-block;
+}
+
+#o11-dashboard .dash-subtitle {
+  font-family: var(--font-base);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 1.5rem 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#o11-dashboard .dash-context {
+  font-family: var(--font-base);
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  max-width: 820px;
+  margin-bottom: 1rem;
+}
+
+/* CHART */
+#o11-dashboard .chart-box {
+  position: relative;
+  width: 100%;
+  margin: 0.4rem 0 0.8rem;
+}
+
+/* 2-COL GRIDS */
+#o11-dashboard .idiomas-grid,
+#o11-dashboard .acc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+#o11-dashboard .chart-footnote {
+  font-family: var(--font-base);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  margin: 0.3rem 0 0;
+}
+
+/* TABLE */
+#o11-dashboard .table-wrap { overflow-x: auto; margin: 0.5rem 0; }
+
+#o11-dashboard .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-base);
+  font-size: 0.8rem;
+}
+
+#o11-dashboard .data-table th {
+  background: var(--brand);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.5rem 0.9rem;
+  text-align: left;
+  font-size: 0.76rem;
+}
+
+#o11-dashboard .data-table td {
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink-mid);
+  vertical-align: top;
+}
+
+#o11-dashboard .data-table td:first-child {
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+/* CONCLUSION */
+#o11-dashboard .conclusion-box {
+  background: color-mix(in srgb, var(--brand) 5%, white);
+  border-left: 4px solid var(--brand);
+  border-radius: 0 6px 6px 0;
+  padding: 1.4rem 1.8rem;
+  max-width: 820px;
+}
+
+#o11-dashboard .conclusion-box p {
+  font-family: var(--font-base);
+  font-size: 0.92rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+  margin: 0 0 0.8rem;
+}
+
+#o11-dashboard .conclusion-box p:last-child { margin-bottom: 0; }
+</style>
