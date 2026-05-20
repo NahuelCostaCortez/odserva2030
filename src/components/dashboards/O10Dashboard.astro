@@ -1,0 +1,670 @@
+---
+const { pkg } = Astro.props;
+---
+
+<div id="o10-dashboard">
+
+  <!-- HERO -->
+  <section id="o10-hero" class="dash-section dash-hero">
+    <div class="doc-kicker">Transparencia en Sostenibilidad · 2024–2025</div>
+    <h1 class="doc-title">{pkg.data.title}</h1>
+    <p class="hero-intro">Análisis de la transparencia informativa en memorias de sostenibilidad de las universidades españolas, con seguimiento del compromiso con la Agenda 2030 y los ODS entre 2015 y 2023.</p>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="stat-value">93</span>
+        <span class="stat-label">Universidades en el sistema (RUCT 2024)</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">84 <small>/ 93</small></span>
+        <span class="stat-label">Universidades analizadas — 90,3% de muestra</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">50 <small>públ.</small> · 43 <small>priv.</small></span>
+        <span class="stat-label">Distribución pública / privada</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">2015 – 2023</span>
+        <span class="stat-label">Periodo de análisis de memorias</span>
+      </div>
+      <div class="stat-card accent-warn">
+        <span class="stat-value">47</span>
+        <span class="stat-label">Universidades que nunca publicaron memoria (15 públ. · 32 priv.)</span>
+      </div>
+      <div class="stat-card accent-blue">
+        <span class="stat-value">~20</span>
+        <span class="stat-label">Universidades difunden memorias de media por año</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- METODOLOGÍA -->
+  <section id="o10-metodologia" class="dash-section">
+    <h2 class="dash-title">Metodología</h2>
+    <p class="dash-context">La recogida y análisis de datos se estructuró en tres fases secuenciales, combinando información secundaria pública con información primaria propia.</p>
+
+    <div class="method-flow">
+      <div class="phase phase-blue">
+        <div class="phase-badge">Fase 1</div>
+        <div class="phase-header">Información secundaria</div>
+        <ol class="phase-steps">
+          <li>
+            <strong>Observación directa</strong>
+            <span>Detección de memorias e informes de sostenibilidad publicados online por las universidades (2015–2025)</span>
+          </li>
+          <li>
+            <strong>Análisis de contenido</strong>
+            <span>Evaluación de las memorias detectadas según las 125 variables del estudio</span>
+          </li>
+          <li>
+            <strong>Confirmación vía email</strong>
+            <span>Contacto con universidades sin información pública completa para validar o completar datos</span>
+          </li>
+        </ol>
+      </div>
+
+      <div class="phase-arrow">↓</div>
+
+      <div class="phase phase-gold">
+        <div class="phase-badge">Fase 2</div>
+        <div class="phase-header">Información primaria</div>
+        <ol class="phase-steps">
+          <li>
+            <strong>Cuestionario vía Forms</strong>
+            <span>Enviado en 2 oleadas (23 abr–4 may y 6–13 may 2025). <strong>12 respuestas</strong> recibidas (11,1% de las universidades)</span>
+          </li>
+        </ol>
+      </div>
+
+      <div class="phase-arrow">↓</div>
+
+      <div class="phase phase-green">
+        <div class="phase-badge">Fase 3</div>
+        <div class="phase-header">Análisis</div>
+        <ol class="phase-steps">
+          <li>
+            <strong>Análisis descriptivo</strong>
+            <span>Tratamiento estadístico de <strong>125 variables</strong>: 37 numéricas, 14 nominales y 74 dicotómicas</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <h3 class="dash-subtitle">Ficha técnica de la investigación</h3>
+    <p class="dash-context">Resumen de los parámetros metodológicos que enmarcan el estudio: universo analizado, periodo, técnicas y alcance estadístico.</p>
+    <div class="ficha-grid">
+      <div class="ficha-row"><span class="ficha-key">Tipo de investigación</span><span class="ficha-val">Cuantitativa</span></div>
+      <div class="ficha-row"><span class="ficha-key">Población</span><span class="ficha-val">93 universidades del sistema español de educación superior (RUCT, nov. 2024)</span></div>
+      <div class="ficha-row"><span class="ficha-key">Periodo de recogida</span><span class="ficha-val">Noviembre 2024 – Septiembre 2025 (3 fases)</span></div>
+      <div class="ficha-row"><span class="ficha-key">Modo de recogida</span><span class="ficha-val">Observación directa · Encuesta (Forms) · Análisis de contenido</span></div>
+      <div class="ficha-row"><span class="ficha-key">Tamaño muestral</span><span class="ficha-val">84 / 93 universidades — 90,3%</span></div>
+      <div class="ficha-row"><span class="ficha-key">Nivel de confianza</span><span class="ficha-val">95%</span></div>
+      <div class="ficha-row"><span class="ficha-key">Error muestral</span><span class="ficha-val">3,3%</span></div>
+      <div class="ficha-row"><span class="ficha-key">Variables analizadas</span><span class="ficha-val">125 en total: 37 numéricas · 14 nominales · 74 dicotómicas</span></div>
+    </div>
+  </section>
+
+  <!-- DISTRIBUCIÓN GEOGRÁFICA -->
+  <section id="o10-universidades" class="dash-section">
+    <h2 class="dash-title">Distribución geográfica</h2>
+    <p class="dash-context">Las 93 universidades se distribuyen por todas las Comunidades Autónomas. <strong>Madrid</strong> concentra el mayor número (21 en total, 13 privadas). <strong>Andalucía</strong> lidera en públicas (10). Cataluña (12), Comunidad Valenciana (9) y Castilla y León (9) también destacan. Nueve CCAA tienen una única universidad pública —forman el <strong>Grupo G9</strong>.</p>
+    <div class="chart-box" style="height:530px">
+      <canvas id="chart-ccaa"></canvas>
+    </div>
+  </section>
+
+  <!-- MEMORIAS DE SOSTENIBILIDAD -->
+  <section id="o10-memorias" class="dash-section">
+    <h2 class="dash-title">Publicación de memorias de sostenibilidad</h2>
+    <p class="dash-context">Las memorias de sostenibilidad son documentos en los que las organizaciones detallan sus compromisos y avances con el desarrollo sostenible y los ODS. Aunque la tendencia es positiva, la mayoría de universidades españolas aún no las publican.</p>
+
+    <div class="insight-row">
+      <div class="insight-card insight-warn">
+        <strong>47</strong>
+        <span>universidades no publicaron <em>ninguna</em> memoria en todo el periodo 2015–2023</span>
+      </div>
+      <div class="insight-card insight-blue">
+        <strong>30</strong>
+        <span>universidades publicaron en <em>2022</em>, el máximo del periodo</span>
+      </div>
+      <div class="insight-card insight-neutral">
+        <strong>21</strong>
+        <span>en <em>2023</em>, bajando 9 respecto al máximo — posible efecto del cambio de periodicidad</span>
+      </div>
+    </div>
+
+    <div class="chart-box" style="height:280px">
+      <canvas id="chart-publicacion"></canvas>
+    </div>
+
+    <h3 class="dash-subtitle">Periodicidad de publicación</h3>
+    <p class="dash-context">Las memorias se publican con distintas periodicidades. El <strong>curso académico</strong> fue la modalidad dominante hasta 2022. En <strong>2023</strong> el año natural la supera por primera vez (12 vs 7), lo que podría explicar parcialmente la caída en publicaciones ese año.</p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Año</th>
+            <th colspan="2">Año natural</th>
+            <th colspan="2">Curso académico</th>
+            <th colspan="2">Bianual</th>
+            <th colspan="2">Otro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>2015</td><td>3</td><td class="pct">3,2%</td><td>6</td><td class="pct">6,5%</td><td>0</td><td class="pct">—</td><td>0</td><td class="pct">—</td></tr>
+          <tr><td>2016</td><td>4</td><td class="pct">4,3%</td><td>9</td><td class="pct">9,7%</td><td>1</td><td class="pct">1,1%</td><td>2</td><td class="pct">2,2%</td></tr>
+          <tr><td>2017</td><td>6</td><td class="pct">6,5%</td><td>8</td><td class="pct">8,6%</td><td>0</td><td class="pct">—</td><td>0</td><td class="pct">—</td></tr>
+          <tr><td>2018</td><td>5</td><td class="pct">5,4%</td><td>7</td><td class="pct">7,5%</td><td>2</td><td class="pct">2,2%</td><td>1</td><td class="pct">1,1%</td></tr>
+          <tr><td>2019</td><td>9</td><td class="pct">9,7%</td><td>13</td><td class="pct">14,0%</td><td>0</td><td class="pct">—</td><td>0</td><td class="pct">—</td></tr>
+          <tr><td>2020</td><td>8</td><td class="pct">8,6%</td><td>13</td><td class="pct">14,0%</td><td>1</td><td class="pct">1,1%</td><td>2</td><td class="pct">2,2%</td></tr>
+          <tr><td>2021</td><td>10</td><td class="pct">10,8%</td><td>14</td><td class="pct">15,1%</td><td>0</td><td class="pct">—</td><td>1</td><td class="pct">1,1%</td></tr>
+          <tr><td>2022</td><td>11</td><td class="pct">11,8%</td><td>12</td><td class="pct">12,9%</td><td>3</td><td class="pct">3,2%</td><td>3</td><td class="pct">3,2%</td></tr>
+          <tr class="row-highlight"><td>2023</td><td><strong>12</strong></td><td class="pct">12,9%</td><td>7</td><td class="pct">7,5%</td><td>0</td><td class="pct">—</td><td>1</td><td class="pct">1,1%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">% sobre el total de 93 universidades del sistema. En 2023 el año natural supera al curso académico por primera vez.</p>
+  </section>
+
+  <!-- COMPROMISO CON LA AGENDA 2030 -->
+  <section id="o10-compromiso" class="dash-section">
+    <h2 class="dash-title">Compromiso con la Agenda 2030</h2>
+    <p class="dash-context">El compromiso de las universidades con la Agenda 2030 se mide a través de distintos indicadores presentes en sus memorias de sostenibilidad. La evolución es claramente positiva en todos ellos.</p>
+
+    <h3 class="dash-subtitle">Compromiso global con la Agenda 2030</h3>
+    <p class="dash-context">Presencia general, compromiso explícito, mención en carta del rector y definición de ODS prioritarios. El <strong>compromiso explícito pasó del 0% en 2015 al 95,2% en 2023</strong>.</p>
+    <div class="chart-box" style="height:280px"><canvas id="chart-comp1"></canvas></div>
+
+    <h3 class="dash-subtitle">Compromisos medibles y avances</h3>
+    <p class="dash-context">Proporción de memorias que describen compromisos cuantificables y avances constatables. Ambos crecen con especial intensidad desde 2018.</p>
+    <div class="chart-box" style="height:280px"><canvas id="chart-comp2"></canvas></div>
+
+    <h3 class="dash-subtitle">Alianzas, formación y buenas prácticas</h3>
+    <p class="dash-context">Evolución de alianzas interinstitucionales, oferta de formación en ODS y buenas prácticas documentadas. La <strong>formación pasa del 0% en 2015 al 40% en 2023</strong>.</p>
+    <div class="chart-box" style="height:280px"><canvas id="chart-comp3"></canvas></div>
+  </section>
+
+  <!-- MENCIÓN DE ODS -->
+  <section id="o10-ods" class="dash-section">
+    <h2 class="dash-title">Mención de los ODS en las memorias</h2>
+    <p class="dash-context">No todas las universidades mencionan los ODS en sus memorias, ni con la misma frecuencia. En 2015 solo se citaban 6 ODS; a partir de 2016 ya aparecen los 17. El promedio en los últimos años es de <strong>12 ODS por universidad</strong>.</p>
+
+    <h3 class="dash-subtitle">¿Las universidades nombran los ODS en sus memorias?</h3>
+    <p class="dash-context">Sobre el total de universidades que publicaron memoria ese año. La tendencia es clara: en 2023 casi todas las que publican memoria mencionan algún ODS.</p>
+    <div class="chart-box" style="height:240px">
+      <canvas id="chart-ods-nombra"></canvas>
+    </div>
+
+    <h3 class="dash-subtitle">¿Qué ODS se mencionan más?</h3>
+    <p class="dash-context">Número de universidades que mencionan cada ODS. Comparativa entre 2023 y 2016, los dos extremos del periodo.</p>
+
+    <div class="tab-row">
+      <button class="ods-tab" data-ods="2016">Año 2016</button>
+      <button class="ods-tab" data-ods="2023">Año 2023</button>
+    </div>
+
+    <div data-ods-panel="2023" class="ods-panel">
+      <div class="ods-highlights">
+        <div class="ods-hi ods-hi-top">
+          <span class="ods-badge" style="background:#c43c44">ODS 4</span>
+          <span class="ods-badge" style="background:#5c9a63">ODS 13</span>
+          más mencionados — 18 universidades cada uno
+        </div>
+        <div class="ods-hi ods-hi-low">
+          <span class="ods-badge" style="background:#2a9fd6">ODS 6</span>
+          menos mencionado (Agua limpia y saneamiento)
+        </div>
+      </div>
+      <div class="chart-box" style="height:420px"><canvas id="chart-ods-2023"></canvas></div>
+    </div>
+
+    <div data-ods-panel="2016" class="ods-panel" style="display:none">
+      <div class="ods-highlights">
+        <div class="ods-hi ods-hi-top">
+          <span class="ods-badge" style="background:#ff6b4a">ODS 5</span>
+          más mencionado en 2016 — Igualdad de género
+        </div>
+        <div class="ods-hi ods-hi-low">
+          <span class="ods-badge" style="background:#d3a029">ODS 2</span>
+          <span class="ods-badge" style="background:#2a9fd6">ODS 6</span>
+          menos mencionados (Hambre cero · Agua)
+        </div>
+      </div>
+      <div class="chart-box" style="height:420px"><canvas id="chart-ods-2016"></canvas></div>
+    </div>
+  </section>
+
+  <!-- OTROS DOCUMENTOS -->
+  <section id="o10-otros" class="dash-section">
+    <h2 class="dash-title">Otros documentos de sostenibilidad</h2>
+    <p class="dash-context">Además de las memorias formales, algunas universidades publican documentos complementarios: pósteres de buenas prácticas, guías medioambientales u otros formatos. Su presencia es muy minoritaria — el máximo del periodo fue de <strong>9 universidades en 2022</strong>.</p>
+    <div class="chart-box" style="height:240px">
+      <canvas id="chart-otros"></canvas>
+    </div>
+  </section>
+
+  <!-- CONCLUSIÓN -->
+  <section id="o10-conclusion" class="dash-section" style="border-bottom:none">
+    <h2 class="dash-title">Conclusión</h2>
+    <div class="conclusion-box">
+      <p>Desde 2015, las universidades españolas han mejorado de manera sostenida la difusión de información de sostenibilidad a través de sus memorias. El compromiso con la Agenda 2030 ha crecido en todas las variables analizadas: menciones a ODS, compromisos explícitos, compromisos cuantificables, alianzas y formación.</p>
+      <p>No obstante, incluso en el mejor año del periodo (2022), solo el <strong>30% de las universidades</strong> publicaron memorias de sostenibilidad, y <strong>47 instituciones</strong> no lo han hecho en ningún momento del periodo analizado. El incremento puede estar relacionado con la canalización de fondos derivada del asentamiento de la Agenda 2030 en las estructuras de gobierno nacionales.</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  import '../../scripts/o10-dashboard.ts';
+</script>
+
+<style is:global>
+#o10-dashboard {
+  padding: 0 2.5rem 4rem;
+  max-width: 1100px;
+}
+
+#o10-dashboard .dash-section {
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* HERO */
+#o10-dashboard .dash-hero { padding-top: 2rem; }
+
+#o10-dashboard .doc-kicker {
+  font-family: var(--font-base);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 0.8rem;
+}
+
+#o10-dashboard .doc-title {
+  font-family: var(--font-base);
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+
+#o10-dashboard .hero-intro {
+  font-family: var(--font-base);
+  font-size: 0.95rem;
+  color: var(--ink-mid);
+  max-width: 720px;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+#o10-dashboard .hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+#o10-dashboard .stat-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.1rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  border-top: 3px solid var(--border);
+}
+
+#o10-dashboard .stat-card.accent-warn { border-top-color: #e07b00; }
+#o10-dashboard .stat-card.accent-blue { border-top-color: var(--brand); }
+
+#o10-dashboard .stat-value {
+  font-family: var(--font-base);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--brand);
+  line-height: 1;
+}
+
+#o10-dashboard .stat-value small {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+#o10-dashboard .stat-label {
+  font-family: var(--font-base);
+  font-size: 0.78rem;
+  color: var(--ink-mid);
+  line-height: 1.4;
+}
+
+/* SECTION HEADINGS */
+#o10-dashboard .dash-title {
+  font-family: var(--font-base);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--brand);
+  display: inline-block;
+}
+
+#o10-dashboard .dash-subtitle {
+  font-family: var(--font-base);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 2rem 0 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#o10-dashboard .dash-context {
+  font-family: var(--font-base);
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  max-width: 820px;
+  margin-bottom: 1.2rem;
+}
+
+/* METHODOLOGY FLOW */
+#o10-dashboard .method-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  margin: 1.5rem 0 2rem;
+  max-width: 680px;
+}
+
+#o10-dashboard .phase {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.2rem 1.4rem 1.4rem;
+  position: relative;
+}
+
+#o10-dashboard .phase-blue { border-top: 4px solid var(--brand); }
+#o10-dashboard .phase-gold { border-top: 4px solid var(--gold); }
+#o10-dashboard .phase-green { border-top: 4px solid #4c9f38; }
+
+#o10-dashboard .phase-badge {
+  font-family: var(--font-base);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.3rem;
+}
+
+#o10-dashboard .phase-header {
+  font-family: var(--font-base);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+#o10-dashboard .phase-steps {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+#o10-dashboard .phase-steps li {
+  font-family: var(--font-base);
+  font-size: 0.83rem;
+  line-height: 1.5;
+}
+
+#o10-dashboard .phase-steps li > strong {
+  display: block;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+
+#o10-dashboard .phase-steps li span {
+  color: var(--ink-mid);
+}
+
+#o10-dashboard .phase-arrow {
+  text-align: center;
+  padding: 0.3rem 0;
+  font-size: 1.4rem;
+  color: var(--ink-soft);
+  line-height: 1;
+}
+
+/* FICHA TÉCNICA */
+#o10-dashboard .ficha-grid {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 820px;
+}
+
+#o10-dashboard .ficha-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  border-bottom: 1px solid var(--border);
+}
+
+#o10-dashboard .ficha-row:last-child { border-bottom: none; }
+
+#o10-dashboard .ficha-key {
+  font-family: var(--font-base);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--paper);
+  padding: 0.65rem 1rem;
+  border-right: 1px solid var(--border);
+}
+
+#o10-dashboard .ficha-val {
+  font-family: var(--font-base);
+  font-size: 0.82rem;
+  color: var(--ink-mid);
+  padding: 0.65rem 1rem;
+  background: #fff;
+}
+
+/* CHART BOX */
+#o10-dashboard .chart-box {
+  position: relative;
+  width: 100%;
+  margin: 0.5rem 0 1rem;
+}
+
+/* INSIGHT CARDS */
+#o10-dashboard .insight-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+#o10-dashboard .insight-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+#o10-dashboard .insight-card.insight-warn { border-left: 3px solid #e07b00; }
+#o10-dashboard .insight-card.insight-blue { border-left: 3px solid var(--brand); }
+#o10-dashboard .insight-card.insight-neutral { border-left: 3px solid var(--border); }
+
+#o10-dashboard .insight-card strong {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--brand);
+  font-family: var(--font-base);
+  line-height: 1;
+}
+
+#o10-dashboard .insight-card span {
+  font-family: var(--font-base);
+  font-size: 0.8rem;
+  color: var(--ink-mid);
+  line-height: 1.5;
+}
+
+/* TABLE */
+#o10-dashboard .table-wrap {
+  overflow-x: auto;
+  margin: 0.5rem 0 0.8rem;
+}
+
+#o10-dashboard .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-base);
+  font-size: 0.82rem;
+}
+
+#o10-dashboard .data-table th {
+  background: var(--brand);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.55rem 0.8rem;
+  text-align: center;
+  font-size: 0.76rem;
+}
+
+#o10-dashboard .data-table td {
+  padding: 0.5rem 0.8rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink-mid);
+}
+
+#o10-dashboard .data-table td:first-child {
+  font-weight: 600;
+  color: var(--ink);
+  text-align: left;
+}
+
+#o10-dashboard .data-table .pct {
+  color: var(--ink-soft);
+  font-size: 0.76rem;
+}
+
+#o10-dashboard .data-table .row-highlight td {
+  background: color-mix(in srgb, var(--brand) 5%, white);
+  font-weight: 600;
+}
+
+#o10-dashboard .table-note {
+  font-family: var(--font-base);
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 0.3rem 0 0;
+}
+
+/* TABS */
+#o10-dashboard .tab-row {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+
+#o10-dashboard .comp-tab,
+#o10-dashboard .ods-tab {
+  font-family: var(--font-base);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink-mid);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+#o10-dashboard .comp-tab:hover,
+#o10-dashboard .ods-tab:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+#o10-dashboard .comp-tab.active,
+#o10-dashboard .ods-tab.active {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand);
+}
+
+#o10-dashboard .tab-panel { margin-top: 0; }
+
+/* ODS HIGHLIGHTS */
+#o10-dashboard .ods-highlights {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+#o10-dashboard .ods-hi {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-base);
+  font-size: 0.82rem;
+  color: var(--ink-mid);
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 0.8rem;
+}
+
+#o10-dashboard .ods-hi-top { border-left: 3px solid #4c9f38; }
+#o10-dashboard .ods-hi-low { border-left: 3px solid #f39a32; }
+
+#o10-dashboard .ods-badge {
+  color: #fff;
+  font-family: var(--font-base);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* CONCLUSION */
+#o10-dashboard .conclusion-box {
+  background: color-mix(in srgb, var(--brand) 5%, white);
+  border-left: 4px solid var(--brand);
+  border-radius: 0 6px 6px 0;
+  padding: 1.5rem 1.8rem;
+  max-width: 820px;
+}
+
+#o10-dashboard .conclusion-box p {
+  font-family: var(--font-base);
+  font-size: 0.92rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+  margin: 0 0 0.8rem;
+}
+
+#o10-dashboard .conclusion-box p:last-child { margin-bottom: 0; }
+</style>

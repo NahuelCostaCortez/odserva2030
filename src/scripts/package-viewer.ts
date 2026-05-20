@@ -69,6 +69,7 @@ type InteractiveFigureConfig = {
   showLegend?: boolean;
   showDataLabels?: boolean;
   dataLabelSuffix?: string;
+  dataLabelDecimals?: number;
   valueFormat?: 'number' | 'percent';
   percentageKey?: string;
   colorMap?: Record<string, string>;
@@ -309,7 +310,10 @@ const barValueLabelPlugin = {
         const value = dataset.data[index];
         if (value === null || value === undefined || Number.isNaN(Number(value))) return;
         const suffix = chart.options.plugins?.valueLabels?.suffix ?? '';
-        const formatted = suffix ? `${Number(value).toFixed(1)}${suffix}` : String(value);
+        const decimals = chart.options.plugins?.valueLabels?.decimals;
+        const formatted = decimals != null
+          ? `${Number(value).toFixed(decimals)}${suffix}`
+          : suffix ? `${Number(value).toFixed(1)}${suffix}` : String(value);
         ctx.fillText(formatted, bar.x, bar.y - 4);
       });
     });
@@ -1135,12 +1139,12 @@ const interactiveFigureConfigs: Record<string, InteractiveFigureConfig> = {
     xKey: 'anio',
     groupKey: 'serie',
     yKey: 'porcentaje',
-    yMax: 105,
+    yMax: 100,
+    dataLabelDecimals: 0,
     xAxisLabel: '',
     yAxisLabel: '',
     showLegend: true,
     showDataLabels: true,
-    dataLabelSuffix: '%',
     valueFormat: 'percent',
     colorMap: {
       '% compromiso Agenda 2030': '#0070c0',
@@ -1157,7 +1161,8 @@ const interactiveFigureConfigs: Record<string, InteractiveFigureConfig> = {
     xKey: 'anio',
     groupKey: 'serie',
     yKey: 'porcentaje',
-    yMax: 105,
+    yMax: 100,
+    dataLabelDecimals: 0,
     xAxisLabel: 'Año',
     yAxisLabel: 'Porcentaje (%)',
     showLegend: true,
@@ -1176,7 +1181,8 @@ const interactiveFigureConfigs: Record<string, InteractiveFigureConfig> = {
     xKey: 'anio',
     groupKey: 'serie',
     yKey: 'porcentaje',
-    yMax: 105,
+    yMax: 100,
+    dataLabelDecimals: 0,
     xAxisLabel: 'Año',
     yAxisLabel: 'Porcentaje (%)',
     showLegend: true,
@@ -1231,7 +1237,7 @@ const interactiveFigureConfigs: Record<string, InteractiveFigureConfig> = {
     xAxisLabel: 'Objetivos de Desarrollo Sostenible',
     yAxisLabel: 'Nº universidades/memorias que mencionan un ODS específico',
     datasetLabel: 'Nº universidades/memorias que mencionan un ODS específico',
-    showLegend: true,
+    showLegend: false,
     showDataLabels: true,
     colorMap: odsColorMap,
     zoomable: false
@@ -1247,7 +1253,7 @@ const interactiveFigureConfigs: Record<string, InteractiveFigureConfig> = {
     xAxisLabel: 'Objetivos de Desarrollo Sostenible',
     yAxisLabel: 'Nº universidades/memorias que mencionan un ODS específico',
     datasetLabel: 'Nº universidades/memorias que mencionan un ODS específico',
-    showLegend: true,
+    showLegend: false,
     showDataLabels: true,
     colorMap: odsColorMap,
     zoomable: false
@@ -1628,7 +1634,7 @@ async function buildInteractiveBarChart(
         borderWidth: 0,
         borderRadius: 0
       }));
-    } else if (config.groupKey && config.yKey) {
+    } else if (config.groupKey && config.yKey && config.groupKey !== config.xKey) {
       const categoryKey = config.xKey;
       const groupKey = config.groupKey;
       const valueKey = config.yKey;
@@ -1797,7 +1803,8 @@ async function buildInteractiveBarChart(
         plugins: {
           ...options.plugins,
           valueLabels: {
-            suffix: config.dataLabelSuffix ?? ''
+            suffix: config.dataLabelSuffix ?? '',
+            decimals: config.dataLabelDecimals ?? null
           }
         }
       } as any,
