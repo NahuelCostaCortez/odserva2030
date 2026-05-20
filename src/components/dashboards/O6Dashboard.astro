@@ -1,0 +1,968 @@
+---
+const { pkg } = Astro.props;
+---
+
+<div id="o6-dashboard">
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- HERO                                                  -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o6-hero" class="dash-section dash-hero">
+    <div class="doc-kicker">Transferencia de Conocimiento · 2016–2023</div>
+    <h1 class="doc-title">{pkg.data.title}</h1>
+    <p class="dash-context">
+      Inventario de proyectos de transferencia de conocimiento financiados en convocatorias públicas
+      competitivas en universidades españolas, y su alineación con los Objetivos de Desarrollo Sostenible.
+      Se analizan la convocatoria nacional de <strong>Pruebas de Concepto</strong> (AEI, 2021–2023)
+      y la convocatoria europea <strong>LIFE</strong> (2016–2023).
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-value">581</div>
+        <div class="hero-stat-label">Proyectos PDC nacionales (2021–2023)</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">109</div>
+        <div class="hero-stat-label">Proyectos LIFE únicos (2016–2023)</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">66,8 M€</div>
+        <div class="hero-stat-label">Financiación PDC total acumulada</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">216 M€</div>
+        <div class="hero-stat-label">Contribución UE en proyectos LIFE</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- METODOLOGÍA                                           -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o6-metodologia" class="dash-section">
+    <h2 class="dash-title">Metodología</h2>
+    <p class="dash-context">
+      El inventario se elabora a partir de dos fuentes oficiales: las resoluciones de la Agencia
+      Estatal de Investigación (AEI) para proyectos nacionales, y la base de datos pública del
+      programa LIFE para proyectos europeos. La asignación de ODS se realiza mediante herramientas
+      de inteligencia artificial basadas en modelos de lenguaje generativo.
+    </p>
+
+    <div class="met-grid">
+      <div class="met-card">
+        <div class="met-icon-wrap" style="background:color-mix(in srgb, #2B5E8E 10%, white)">
+          <span class="met-icon">🏛️</span>
+        </div>
+        <h3 class="met-head">Pruebas de Concepto (AEI)</h3>
+        <p>Convocatoria nacional gestionada por la <strong>Agencia Estatal de Investigación</strong>.
+        Se analizan los años <strong>2021, 2022 y 2023</strong> (únicos con resoluciones disponibles).
+        La información incluye: referencia, subárea científica, beneficiario, CCAA, duración y cuantía.
+        La asignación de ODS se basa en la subárea, ya que no se dispone de título del proyecto.</p>
+      </div>
+      <div class="met-card">
+        <div class="met-icon-wrap" style="background:color-mix(in srgb, #4c9f38 10%, white)">
+          <span class="met-icon">🇪🇺</span>
+        </div>
+        <h3 class="met-head">Programa LIFE (Unión Europea)</h3>
+        <p>Convocatoria europea de financiación para proyectos de medioambiente y acción climática.
+        Se analizan los años <strong>2016 a 2023</strong> con participación de universidades españolas.
+        La información incluye: título, beneficiario, CCAA, fechas, presupuesto y contribución UE.
+        La asignación de ODS se basa en el título del proyecto.</p>
+      </div>
+      <div class="met-card">
+        <div class="met-icon-wrap" style="background:color-mix(in srgb, #c9973a 10%, white)">
+          <span class="met-icon">⚠️</span>
+        </div>
+        <h3 class="met-head">Limitaciones de los datos</h3>
+        <p>Las resoluciones de la AEI <strong>no incluyen títulos de proyecto</strong>, lo que
+        limita la precisión en la asignación de ODS a nivel individual. En LIFE, la
+        falta de homogeneidad en los datos publicados dificulta la comparación entre años.
+        Los resultados deben interpretarse como indicativos de tendencias, no como
+        inventario exhaustivo.</p>
+      </div>
+    </div>
+
+    <h3 class="dash-subtitle">Tabla 1 — Clasificación temática de áreas y subáreas científicas</h3>
+    <p class="dash-context" style="margin-bottom:1rem">
+      Sistema de clasificación utilizado en las convocatorias de Pruebas de Concepto de la AEI,
+      organizado en tres grandes grupos temáticos.
+    </p>
+
+    <div class="tabla1-tabs-row">
+      <button class="tabla1-tab active" data-panel="cmifq">CMIFQ — Ciencias matemáticas, físicas, químicas e ingenierías</button>
+      <button class="tabla1-tab" data-panel="csh">CSH — Ciencias sociales y humanidades</button>
+      <button class="tabla1-tab" data-panel="cv">CV — Ciencias de la vida</button>
+    </div>
+
+    <div id="o6-tabla1-cmifq" class="tabla1-panel" style="display:grid">
+      <div class="area-card"><div class="area-code">CTQ</div><div class="area-name">Ciencias y tecnologías químicas</div><div class="area-subs"><span>IQM</span><span>QMC</span></div></div>
+      <div class="area-card"><div class="area-code">EYT</div><div class="area-name">Energía y transporte</div><div class="area-subs"><span>ENE</span><span>TRA</span></div></div>
+      <div class="area-card"><div class="area-code">FIS</div><div class="area-name">Ciencias físicas</div><div class="area-subs"><span>AYA</span><span>ESP</span><span>FPN</span><span>FYA</span></div></div>
+      <div class="area-card"><div class="area-code">MAT</div><div class="area-name">Ciencias y tecnologías de materiales</div><div class="area-subs"><span>MBM</span><span>MEN</span><span>MES</span><span>MFU</span></div></div>
+      <div class="area-card"><div class="area-code">MTM</div><div class="area-name">Ciencias matemáticas</div><div class="area-subs"><span>MTM</span></div></div>
+      <div class="area-card"><div class="area-code">PIN</div><div class="area-name">Producción industrial, ingeniería civil e ingenierías para la sociedad</div><div class="area-subs"><span>IBI</span><span>ICA</span><span>IEA</span><span>INA</span></div></div>
+      <div class="area-card"><div class="area-code">TIC</div><div class="area-name">Tecnologías de la información y las comunicaciones</div><div class="area-subs"><span>INF</span><span>MNF</span><span>TCO</span></div></div>
+    </div>
+
+    <div id="o6-tabla1-csh" class="tabla1-panel" style="display:none">
+      <div class="area-card"><div class="area-code">CSO</div><div class="area-name">Ciencias sociales</div><div class="area-subs"><span>COM</span><span>CPO</span><span>FEM</span><span>GEO</span><span>SOC</span></div></div>
+      <div class="area-card"><div class="area-code">DER</div><div class="area-name">Derecho</div><div class="area-subs"><span>DER</span></div></div>
+      <div class="area-card"><div class="area-code">ECO</div><div class="area-name">Economía</div><div class="area-subs"><span>EYA</span><span>EYF</span><span>MAE</span></div></div>
+      <div class="area-card"><div class="area-code">EDU</div><div class="area-name">Ciencias de la educación</div><div class="area-subs"><span>EDU</span></div></div>
+      <div class="area-card"><div class="area-code">FLA</div><div class="area-name">Cultura: filología, literatura y arte</div><div class="area-subs"><span>ART</span><span>LFL</span></div></div>
+      <div class="area-card"><div class="area-code">MLP</div><div class="area-name">Mente, lenguaje y pensamiento</div><div class="area-subs"><span>FIL</span><span>LYL</span></div></div>
+      <div class="area-card"><div class="area-code">PHA</div><div class="area-name">Estudios del pasado: historia y arqueología</div><div class="area-subs"><span>ARQ</span><span>HIS</span></div></div>
+      <div class="area-card"><div class="area-code">PSI</div><div class="area-name">Psicología</div><div class="area-subs"><span>PSI</span></div></div>
+    </div>
+
+    <div id="o6-tabla1-cv" class="tabla1-panel" style="display:none">
+      <div class="area-card"><div class="area-code">BIO</div><div class="area-name">Biociencias y biotecnología</div><div class="area-subs"><span>BIF</span><span>BMC</span><span>BTC</span></div></div>
+      <div class="area-card"><div class="area-code">BME</div><div class="area-name">Biomedicina</div><div class="area-subs"><span>CAN</span><span>DPT</span><span>ESN</span><span>FOS</span><span>IIT</span></div></div>
+      <div class="area-card"><div class="area-code">CAA</div><div class="area-name">Ciencias agrarias y agroalimentarias</div><div class="area-subs"><span>ALI</span><span>AYF</span><span>GYA</span></div></div>
+      <div class="area-card"><div class="area-code">CTM</div><div class="area-name">Ciencias y tecnologías medioambientales</div><div class="area-subs"><span>BDV</span><span>CTA</span><span>CYA</span><span>MAR</span><span>POL</span><span>TMA</span></div></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PRUEBAS DE CONCEPTO                                   -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o6-pdc" class="dash-section">
+    <h2 class="dash-title">Proyectos Pruebas de Concepto</h2>
+    <p class="dash-context">
+      La convocatoria de <strong>Pruebas de Concepto</strong> de la AEI financia proyectos orientados
+      a validar la viabilidad de resultados de investigación con potencial de transferencia tecnológica.
+      Se analiza el periodo 2021–2023, con un total de <strong>581 proyectos</strong> financiados
+      en universidades españolas.
+    </p>
+
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-value">581</div>
+        <div class="kpi-label">Proyectos totales</div>
+        <div class="kpi-sub">2021 · 2022 · 2023</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">66,8 M€</div>
+        <div class="kpi-label">Financiación acumulada</div>
+        <div class="kpi-sub">Cuantía total concedida</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">~135 K€</div>
+        <div class="kpi-label">Cuantía media</div>
+        <div class="kpi-sub">Media ponderada 2021–2023</div>
+      </div>
+      <div class="kpi-card" style="border-top-color: var(--gold)">
+        <div class="kpi-value">ODS 9</div>
+        <div class="kpi-label">ODS más frecuente</div>
+        <div class="kpi-sub">Industria e innovación (261 proyectos)</div>
+      </div>
+    </div>
+
+    <!-- Análisis estadístico -->
+    <section id="o6-pdc-analisis">
+      <h3 class="dash-subtitle">Análisis estadístico</h3>
+      <p class="dash-context">
+        En 2023 se observa una reducción en el número de proyectos financiados
+        (–70 % respecto a 2021) acompañada de un aumento significativo en la cuantía media
+        (de ~100 K€ a ~199 K€), reflejo de cambios en la estructura de la convocatoria.
+        El dominio del <strong>ODS 9</strong> (Industria, Innovación e Infraestructura) se explica
+        porque la mayoría de subáreas tecnológicas se asignan a este objetivo.
+      </p>
+      <div class="chart-grid-2">
+        <div class="chart-box" style="height:220px">
+          <canvas id="chart-pdc-proyectos"></canvas>
+        </div>
+        <div class="chart-box" style="height:220px">
+          <canvas id="chart-pdc-cuantia"></canvas>
+        </div>
+      </div>
+      <div class="chart-grid-2" style="margin-top:1.5rem">
+        <div class="chart-box" style="height:340px">
+          <canvas id="chart-pdc-ods"></canvas>
+        </div>
+        <div class="chart-box" style="height:340px">
+          <canvas id="chart-pdc-ccaa"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inventario PDC -->
+    <section id="o6-pdc-tabla" style="margin-top:2.5rem">
+      <h3 class="dash-subtitle">Inventario de proyectos PDC</h3>
+      <p class="dash-context" style="margin-bottom:1rem">
+        Listado completo de proyectos por año de convocatoria. Las columnas ODS reflejan la
+        alineación asignada por IA a partir de la subárea científica.
+      </p>
+
+      <div class="year-tabs-row">
+        <button class="pdc-year-tab active" data-year="2021">Convocatoria 2021 <span class="tab-count">266</span></button>
+        <button class="pdc-year-tab" data-year="2022">Convocatoria 2022 <span class="tab-count">242</span></button>
+        <button class="pdc-year-tab" data-year="2023">Convocatoria 2023 <span class="tab-count">73</span></button>
+      </div>
+
+      <div class="table-filters">
+        <input type="text" id="pdc-f-search" class="f-search" placeholder="Buscar por referencia o universidad…" />
+        <select id="pdc-f-ccaa" class="f-select">
+          <option value="">Todas las CCAA</option>
+        </select>
+        <select id="pdc-f-ods" class="f-select">
+          <option value="">Todos los ODS</option>
+          <option value="ODS1">ODS 1 — Fin de la pobreza</option>
+          <option value="ODS2">ODS 2 — Hambre cero</option>
+          <option value="ODS3">ODS 3 — Salud y bienestar</option>
+          <option value="ODS4">ODS 4 — Educación de calidad</option>
+          <option value="ODS5">ODS 5 — Igualdad de género</option>
+          <option value="ODS6">ODS 6 — Agua limpia</option>
+          <option value="ODS7">ODS 7 — Energía asequible</option>
+          <option value="ODS8">ODS 8 — Trabajo decente</option>
+          <option value="ODS9">ODS 9 — Industria e innovación</option>
+          <option value="ODS10">ODS 10 — Reducción desigualdades</option>
+          <option value="ODS11">ODS 11 — Ciudades sostenibles</option>
+          <option value="ODS12">ODS 12 — Producción responsable</option>
+          <option value="ODS13">ODS 13 — Acción por el clima</option>
+          <option value="ODS14">ODS 14 — Vida submarina</option>
+          <option value="ODS15">ODS 15 — Vida de ecosistemas</option>
+          <option value="ODS16">ODS 16 — Paz y justicia</option>
+          <option value="ODS17">ODS 17 — Alianzas</option>
+        </select>
+        <button id="pdc-reset" class="f-reset">Limpiar</button>
+      </div>
+
+      <div class="table-info-row">
+        <span id="pdc-info" class="table-info"></span>
+        <div class="pag-btns">
+          <button id="pdc-prev" class="pag-btn" disabled>← Anterior</button>
+          <button id="pdc-next" class="pag-btn">Siguiente →</button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="inv-table">
+          <thead>
+            <tr>
+              <th class="th-ref">Referencia</th>
+              <th class="th-sub">Subárea</th>
+              <th class="th-uni">Universidad beneficiaria</th>
+              <th class="th-ccaa">CCAA</th>
+              <th class="th-cuantia">Cuantía</th>
+              <th class="th-ods">ODS</th>
+            </tr>
+          </thead>
+          <tbody id="pdc-tbody">
+            <tr><td colspan="6" class="table-loading">Cargando datos…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PROYECTOS LIFE                                        -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o6-life" class="dash-section">
+    <h2 class="dash-title">Proyectos LIFE</h2>
+    <p class="dash-context">
+      El programa <strong>LIFE</strong> es el instrumento de financiación de la Unión Europea
+      para el medioambiente y la acción climática. Se analizan los proyectos con participación
+      de universidades españolas durante el periodo <strong>2016–2023</strong>, correspondientes
+      a <strong>109 proyectos únicos</strong> con <strong>141 participaciones universitarias</strong>.
+      Un mismo proyecto puede contar con múltiples universidades beneficiarias.
+    </p>
+
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-value">109</div>
+        <div class="kpi-label">Proyectos únicos</div>
+        <div class="kpi-sub">Con participación española</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">141</div>
+        <div class="kpi-label">Participaciones universitarias</div>
+        <div class="kpi-sub">Relaciones proyecto–universidad</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">216 M€</div>
+        <div class="kpi-label">Contribución UE acumulada</div>
+        <div class="kpi-sub">A proyectos con participación española</div>
+      </div>
+      <div class="kpi-card" style="border-top-color: var(--green-deep)">
+        <div class="kpi-value">ODS 6</div>
+        <div class="kpi-label">ODS más frecuente</div>
+        <div class="kpi-sub">Agua limpia y saneamiento (33 proyectos)</div>
+      </div>
+    </div>
+
+    <!-- Leyenda categorías LIFE -->
+    <div class="life-cat-legend">
+      <span class="life-cat-badge" style="background:#2a9fd6">ENV</span> Medio Ambiente &nbsp;
+      <span class="life-cat-badge" style="background:#4c9f38">NAT</span> Naturaleza &nbsp;
+      <span class="life-cat-badge" style="background:#5c9a63">CCM</span> Mitigación Climática &nbsp;
+      <span class="life-cat-badge" style="background:#f6a53a">CCA</span> Adaptación Climática &nbsp;
+      <span class="life-cat-badge" style="background:#2B5E8E">IPC</span> Proyecto Integrado &nbsp;
+      <span class="life-cat-badge" style="background:#fcc30b; color:#222">CET</span> Energía Limpia &nbsp;
+      <span class="life-cat-badge" style="background:#e3337e">GIE/GIC</span> Gobernanza
+    </div>
+
+    <!-- Análisis estadístico -->
+    <section id="o6-life-analisis">
+      <h3 class="dash-subtitle">Análisis estadístico</h3>
+      <p class="dash-context">
+        Los proyectos LIFE con participación española se concentran principalmente en
+        <strong>medioambiente</strong> y <strong>acción climática</strong>. El perfil temático
+        contrasta claramente con los proyectos PDC: mientras estos dominan en tecnología
+        e innovación (ODS 9), los proyectos LIFE se focalizan en agua (ODS 6), clima (ODS 13)
+        y ecosistemas terrestres (ODS 15). Los <strong>Proyectos Integrados de Clima</strong> (IPC)
+        son los de mayor presupuesto, con financiaciones que superan los 10 M€ por proyecto.
+      </p>
+      <div class="chart-grid-2">
+        <div class="chart-box" style="height:240px">
+          <canvas id="chart-life-proyectos"></canvas>
+        </div>
+        <div class="chart-box" style="height:240px">
+          <canvas id="chart-life-ue"></canvas>
+        </div>
+      </div>
+      <div class="chart-grid-2" style="margin-top:1.5rem">
+        <div class="chart-box" style="height:320px">
+          <canvas id="chart-life-ods"></canvas>
+        </div>
+        <div class="chart-box" style="height:320px">
+          <canvas id="chart-life-ccaa"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inventario LIFE -->
+    <section id="o6-life-tabla" style="margin-top:2.5rem">
+      <h3 class="dash-subtitle">Inventario de proyectos LIFE</h3>
+      <p class="dash-context" style="margin-bottom:1rem">
+        Listado de proyectos LIFE con participación de universidades españolas, 2016–2023.
+        El presupuesto indicado es la contribución de la UE al proyecto completo.
+        Los <strong>badges de categoría</strong> identifican el subprograma LIFE.
+      </p>
+
+      <div class="table-filters">
+        <input type="text" id="life-f-search" class="f-search" placeholder="Buscar por título, universidad o referencia…" />
+        <select id="life-f-year" class="f-select">
+          <option value="">Todos los años</option>
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+        </select>
+        <select id="life-f-ccaa" class="f-select">
+          <option value="">Todas las CCAA</option>
+        </select>
+        <select id="life-f-ods" class="f-select">
+          <option value="">Todos los ODS</option>
+          <option value="ODS1">ODS 1 — Fin de la pobreza</option>
+          <option value="ODS2">ODS 2 — Hambre cero</option>
+          <option value="ODS3">ODS 3 — Salud y bienestar</option>
+          <option value="ODS4">ODS 4 — Educación de calidad</option>
+          <option value="ODS5">ODS 5 — Igualdad de género</option>
+          <option value="ODS6">ODS 6 — Agua limpia</option>
+          <option value="ODS7">ODS 7 — Energía asequible</option>
+          <option value="ODS8">ODS 8 — Trabajo decente</option>
+          <option value="ODS9">ODS 9 — Industria e innovación</option>
+          <option value="ODS10">ODS 10 — Reducción desigualdades</option>
+          <option value="ODS11">ODS 11 — Ciudades sostenibles</option>
+          <option value="ODS12">ODS 12 — Producción responsable</option>
+          <option value="ODS13">ODS 13 — Acción por el clima</option>
+          <option value="ODS14">ODS 14 — Vida submarina</option>
+          <option value="ODS15">ODS 15 — Vida de ecosistemas</option>
+          <option value="ODS16">ODS 16 — Paz y justicia</option>
+          <option value="ODS17">ODS 17 — Alianzas</option>
+        </select>
+        <button id="life-reset" class="f-reset">Limpiar</button>
+      </div>
+
+      <div class="table-info-row">
+        <span id="life-info" class="table-info"></span>
+        <div class="pag-btns">
+          <button id="life-prev" class="pag-btn" disabled>← Anterior</button>
+          <button id="life-next" class="pag-btn">Siguiente →</button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="inv-table inv-life">
+          <thead>
+            <tr>
+              <th class="th-year">Año</th>
+              <th class="th-cat">Cat.</th>
+              <th class="th-titulo">Título del proyecto</th>
+              <th class="th-uni">Universidad beneficiaria</th>
+              <th class="th-ccaa">CCAA</th>
+              <th class="th-periodo">Período</th>
+              <th class="th-ue">Contrib. UE</th>
+              <th class="th-ods">ODS</th>
+            </tr>
+          </thead>
+          <tbody id="life-tbody">
+            <tr><td colspan="8" class="table-loading">Cargando datos…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- CONCLUSIONES                                          -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o6-conclusiones" class="dash-section">
+    <h2 class="dash-title">Conclusiones</h2>
+    <div class="conclusiones-grid">
+      <div class="concl-card">
+        <div class="concl-num">01</div>
+        <p>Se ha elaborado un <strong>inventario detallado</strong> de los proyectos de transferencia
+        de las universidades españolas financiados en las convocatorias de Pruebas de Concepto y LIFE
+        durante el periodo 2016–2023, con un total de más de 700 proyectos y participaciones analizados.</p>
+      </div>
+      <div class="concl-card">
+        <div class="concl-num">02</div>
+        <p>El análisis ha puesto de manifiesto una <strong>falta significativa de transparencia,
+        accesibilidad y homogeneidad</strong> en los datos disponibles. En las convocatorias PDC, la
+        ausencia de títulos de proyecto impide una asignación precisa de ODS. En las convocatorias
+        LIFE, la falta de sistematización dificulta la comparación interanual.</p>
+      </div>
+      <div class="concl-card">
+        <div class="concl-num">03</div>
+        <p>Resulta esencial promover <strong>mecanismos institucionales de transparencia</strong>
+        que garanticen la publicación estandarizada, accesible y completa de los datos relativos a
+        las convocatorias de transferencia, como condición necesaria para el seguimiento riguroso
+        del impacto de la universidad española en la Agenda 2030.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  import '../../scripts/o6-dashboard.ts';
+</script>
+
+<style is:global>
+#o6-dashboard {
+  padding: 0 2.5rem 4rem;
+  max-width: 1100px;
+}
+
+#o6-dashboard .dash-section {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+#o6-dashboard .dash-hero {
+  padding-top: 2rem;
+}
+
+#o6-dashboard .dash-title {
+  font-family: var(--font-base);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--brand);
+  margin: 0 0 .8rem;
+  padding-bottom: .5rem;
+  border-bottom: 2px solid var(--border);
+}
+
+#o6-dashboard .dash-subtitle {
+  font-family: var(--font-base);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 1.8rem 0 .6rem;
+}
+
+#o6-dashboard .dash-context {
+  font-family: var(--font-base);
+  font-size: .93rem;
+  line-height: 1.7;
+  color: var(--ink);
+  max-width: 780px;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Hero ── */
+#o6-dashboard .doc-kicker {
+  font-family: var(--font-base);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--green-accent);
+  margin-bottom: .8rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+#o6-dashboard .doc-kicker::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--green-accent);
+}
+#o6-dashboard .doc-title {
+  font-family: var(--font-base);
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  max-width: 700px;
+  margin: 0 0 1rem;
+}
+
+/* ── KPI / Hero stats ── */
+#o6-dashboard .hero-stats,
+#o6-dashboard .kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+#o6-dashboard .hero-stat,
+#o6-dashboard .kpi-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--brand);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+}
+#o6-dashboard .hero-stat-value,
+#o6-dashboard .kpi-value {
+  font-family: var(--font-base);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--brand);
+  line-height: 1;
+  margin-bottom: .3rem;
+}
+#o6-dashboard .hero-stat-label,
+#o6-dashboard .kpi-label {
+  font-family: var(--font-base);
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+#o6-dashboard .kpi-sub {
+  font-family: var(--font-base);
+  font-size: .75rem;
+  color: #666;
+  margin-top: .25rem;
+}
+
+/* ── Metodología cards ── */
+#o6-dashboard .met-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.2rem 0 2rem;
+}
+#o6-dashboard .met-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.2rem 1.2rem 1rem;
+}
+#o6-dashboard .met-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: .7rem;
+}
+#o6-dashboard .met-icon { font-size: 1.2rem; }
+#o6-dashboard .met-head {
+  font-family: var(--font-base);
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--brand);
+  margin: 0 0 .5rem;
+}
+#o6-dashboard .met-card p {
+  font-family: var(--font-base);
+  font-size: .83rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ── Tabla 1 ── */
+#o6-dashboard .tabla1-tabs-row {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+#o6-dashboard .tabla1-tab {
+  font-family: var(--font-base);
+  font-size: .78rem;
+  font-weight: 500;
+  padding: .45rem .9rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition: all .15s;
+}
+#o6-dashboard .tabla1-tab.active,
+#o6-dashboard .tabla1-tab:hover {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand);
+}
+#o6-dashboard .tabla1-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: .7rem;
+  margin-bottom: .5rem;
+}
+#o6-dashboard .area-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--brand);
+  border-radius: 4px;
+  padding: .7rem .8rem;
+}
+#o6-dashboard .area-code {
+  font-family: var(--font-base);
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--brand);
+  margin-bottom: .2rem;
+}
+#o6-dashboard .area-name {
+  font-family: var(--font-base);
+  font-size: .78rem;
+  color: var(--ink);
+  margin-bottom: .4rem;
+  line-height: 1.4;
+}
+#o6-dashboard .area-subs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem;
+}
+#o6-dashboard .area-subs span {
+  font-family: var(--font-base);
+  font-size: .7rem;
+  background: color-mix(in srgb, var(--brand) 10%, white);
+  color: var(--brand);
+  border-radius: 3px;
+  padding: .1rem .35rem;
+  font-weight: 600;
+}
+
+/* ── Charts ── */
+#o6-dashboard .chart-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+#o6-dashboard .chart-box {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ── Year tabs (PDC) ── */
+#o6-dashboard .year-tabs-row {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+#o6-dashboard .pdc-year-tab {
+  font-family: var(--font-base);
+  font-size: .82rem;
+  font-weight: 500;
+  padding: .5rem 1.2rem;
+  border: 1px solid var(--border);
+  border-bottom: 3px solid transparent;
+  border-radius: 4px 4px 0 0;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition: all .15s;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+#o6-dashboard .pdc-year-tab.active {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand);
+}
+#o6-dashboard .pdc-year-tab:hover:not(.active) {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+#o6-dashboard .tab-count {
+  font-size: .72rem;
+  opacity: .8;
+  background: rgba(255,255,255,.2);
+  border-radius: 10px;
+  padding: .05rem .4rem;
+}
+#o6-dashboard .pdc-year-tab:not(.active) .tab-count {
+  background: color-mix(in srgb, var(--brand) 12%, white);
+  color: var(--brand);
+}
+
+/* ── LIFE category badge & legend ── */
+#o6-dashboard .life-cat-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-base);
+  font-size: .68rem;
+  font-weight: 700;
+  color: #fff;
+  padding: .15rem .4rem;
+  border-radius: 3px;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+#o6-dashboard .life-cat-legend {
+  font-family: var(--font-base);
+  font-size: .8rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: .8rem 1rem;
+  margin: 1rem 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem .4rem;
+  align-items: center;
+}
+
+/* ── Table filters ── */
+#o6-dashboard .table-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin-bottom: .8rem;
+}
+#o6-dashboard .f-search {
+  font-family: var(--font-base);
+  font-size: .83rem;
+  padding: .4rem .7rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  min-width: 240px;
+  flex: 1 1 240px;
+  background: var(--paper);
+  color: var(--ink);
+}
+#o6-dashboard .f-select {
+  font-family: var(--font-base);
+  font-size: .83rem;
+  padding: .4rem .7rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  min-width: 160px;
+}
+#o6-dashboard .f-reset {
+  font-family: var(--font-base);
+  font-size: .8rem;
+  padding: .4rem .9rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--brand);
+  cursor: pointer;
+  transition: all .15s;
+}
+#o6-dashboard .f-reset:hover {
+  background: var(--brand);
+  color: #fff;
+}
+
+/* ── Table info row ── */
+#o6-dashboard .table-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .5rem;
+}
+#o6-dashboard .table-info {
+  font-family: var(--font-base);
+  font-size: .8rem;
+  color: #666;
+}
+#o6-dashboard .pag-btns {
+  display: flex;
+  gap: .4rem;
+}
+#o6-dashboard .pag-btn {
+  font-family: var(--font-base);
+  font-size: .78rem;
+  padding: .3rem .75rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--brand);
+  cursor: pointer;
+  transition: all .15s;
+}
+#o6-dashboard .pag-btn:hover:not(:disabled) {
+  background: var(--brand);
+  color: #fff;
+}
+#o6-dashboard .pag-btn:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+/* ── Tables ── */
+#o6-dashboard .table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+#o6-dashboard .inv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-base);
+  font-size: .8rem;
+}
+#o6-dashboard .inv-table thead tr {
+  background: color-mix(in srgb, var(--brand) 8%, white);
+  border-bottom: 2px solid var(--brand);
+}
+#o6-dashboard .inv-table th {
+  padding: .55rem .7rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: .74rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--brand);
+  white-space: nowrap;
+}
+#o6-dashboard .inv-table td {
+  padding: .45rem .7rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+#o6-dashboard .inv-table tbody tr:last-child td { border-bottom: none; }
+#o6-dashboard .inv-table tbody tr:hover { background: color-mix(in srgb, var(--brand) 4%, white); }
+
+#o6-dashboard .table-loading {
+  text-align: center;
+  color: #888;
+  padding: 2rem;
+  font-style: italic;
+}
+
+/* Column widths — PDC */
+#o6-dashboard .td-ref {
+  font-family: monospace;
+  font-size: .75rem;
+  color: #555;
+  white-space: nowrap;
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#o6-dashboard .td-sub abbr {
+  font-weight: 700;
+  color: var(--brand);
+  cursor: help;
+  text-decoration: underline dotted;
+}
+#o6-dashboard .td-uni {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#o6-dashboard .td-ccaa { white-space: nowrap; font-size: .77rem; }
+#o6-dashboard .td-cuantia { white-space: nowrap; text-align: right; font-size: .8rem; }
+#o6-dashboard .td-ods { white-space: nowrap; }
+
+/* Column widths — LIFE */
+#o6-dashboard .td-year { white-space: nowrap; font-weight: 600; font-size: .8rem; }
+#o6-dashboard .td-cat { white-space: nowrap; }
+#o6-dashboard .td-titulo {
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: .8rem;
+}
+#o6-dashboard .td-periodo { white-space: nowrap; font-size: .77rem; color: #555; }
+#o6-dashboard .td-ue { white-space: nowrap; text-align: right; font-size: .8rem; font-weight: 600; }
+
+/* ODS badges */
+#o6-dashboard .ods-num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  font-family: var(--font-base);
+  font-size: .65rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 1px;
+  cursor: default;
+}
+#o6-dashboard .no-ods { color: #aaa; font-size: .8rem; }
+
+/* ── Conclusiones ── */
+#o6-dashboard .conclusiones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+#o6-dashboard .concl-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.2rem 1.2rem 1rem;
+  position: relative;
+}
+#o6-dashboard .concl-num {
+  font-family: var(--font-base);
+  font-size: 2rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--brand) 20%, white);
+  line-height: 1;
+  margin-bottom: .5rem;
+}
+#o6-dashboard .concl-card p {
+  font-family: var(--font-base);
+  font-size: .85rem;
+  line-height: 1.65;
+  color: var(--ink);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  #o6-dashboard .hero-stats,
+  #o6-dashboard .kpi-row { grid-template-columns: 1fr 1fr; }
+  #o6-dashboard .met-grid { grid-template-columns: 1fr; }
+  #o6-dashboard .chart-grid-2 { grid-template-columns: 1fr; }
+  #o6-dashboard .conclusiones-grid { grid-template-columns: 1fr; }
+}
+</style>

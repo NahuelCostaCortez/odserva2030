@@ -7,6 +7,7 @@ import O4Dashboard from '../../components/dashboards/O4Dashboard.astro';
 import O5Dashboard from '../../components/dashboards/O5Dashboard.astro';
 import O9Dashboard from '../../components/dashboards/O9Dashboard.astro';
 import O10Dashboard from '../../components/dashboards/O10Dashboard.astro';
+import O6Dashboard from '../../components/dashboards/O6Dashboard.astro';
 import O11Dashboard from '../../components/dashboards/O11Dashboard.astro';
 import { getCollection } from 'astro:content';
 
@@ -70,6 +71,17 @@ const dashboardNavs: Record<string, { slug: string; title: string; level: number
     { slug: 'o10-ods',           title: 'Mención de ODS',       level: 1 },
     { slug: 'o10-otros',         title: 'Otros documentos',     level: 1 },
     { slug: 'o10-conclusion',    title: 'Conclusión',           level: 1 },
+  ],
+  o6: [
+    { slug: 'o6-hero',           title: 'Resumen',              level: 1 },
+    { slug: 'o6-metodologia',    title: 'Metodología',          level: 1 },
+    { slug: 'o6-pdc',            title: 'Pruebas de Concepto',  level: 1 },
+    { slug: 'o6-pdc-analisis',   title: 'Análisis PDC',         level: 2 },
+    { slug: 'o6-pdc-tabla',      title: 'Inventario PDC',       level: 2 },
+    { slug: 'o6-life',           title: 'Proyectos LIFE',       level: 1 },
+    { slug: 'o6-life-analisis',  title: 'Análisis LIFE',        level: 2 },
+    { slug: 'o6-life-tabla',     title: 'Inventario LIFE',      level: 2 },
+    { slug: 'o6-conclusiones',   title: 'Conclusiones',         level: 1 },
   ],
   o11: [
     { slug: 'o11-hero',          title: 'Resumen',              level: 1 },
@@ -136,7 +148,9 @@ const navSections = isDashboard ? dashboardNavs[slug] : null;
   </aside>
 
   <main class="main-content">
-    {slug === 'o11' ? (
+    {slug === 'o6' ? (
+      <O6Dashboard pkg={pkg} />
+    ) : slug === 'o11' ? (
       <O11Dashboard pkg={pkg} />
     ) : slug === 'o10' ? (
       <O10Dashboard pkg={pkg} />
