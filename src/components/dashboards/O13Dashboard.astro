@@ -1,0 +1,826 @@
+---
+const { pkg } = Astro.props;
+---
+
+<div id="o13-dashboard">
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- HERO                                                  -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o13-hero" class="dash-section dash-hero">
+    <div class="doc-kicker">Stakeholders · Agenda 2030 · Guía estratégica</div>
+    <h1 class="doc-title">Guía para potenciar la implicación de los <em>stakeholders</em> universitarios en la Agenda 2030</h1>
+    <p class="dash-context">
+      Síntesis estratégica del análisis participativo desarrollado en el marco del proyecto ODServa2030,
+      orientada a identificar y consolidar el papel de los actores clave del sistema universitario
+      español en la implementación de los Objetivos de Desarrollo Sostenible.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-value">+100</div>
+        <div class="hero-stat-label">Artículos académicos revisados en el análisis DAFO</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">6</div>
+        <div class="hero-stat-label">Tipos de <em>stakeholders</em> participantes</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">4</div>
+        <div class="hero-stat-label">Fases metodológicas (DAFO + AHP + CAME)</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">9</div>
+        <div class="hero-stat-label">Estrategias CAME de acción institucional</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- INTRODUCCIÓN                                          -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o13-introduccion" class="dash-section">
+    <h2 class="dash-title">Introducción</h2>
+    <p class="intro-text">
+      Esta guía se elabora en el marco del proyecto <strong>ODServa2030</strong>, impulsado por la
+      Red de Cátedras Universitarias de Sostenibilidad. Su propósito es ofrecer una síntesis
+      práctica de los resultados obtenidos en el Paquete de Trabajo 5 (PT5), centrado en el
+      análisis y potenciación de la implicación y el interés de los <em>stakeholders</em> del
+      sistema universitario español en la implementación de la Agenda 2030.
+    </p>
+    <p class="intro-text">
+      El sistema universitario español desempeña un papel estratégico en la consecución de los
+      ODS. Los distintos actores universitarios son clave para transformar la cultura institucional
+      hacia una sostenibilidad real y transversal. Esta guía pretende servir como referencia
+      estratégica para fortalecer esa implicación colectiva.
+    </p>
+    <div class="stakeholder-box">
+      <div class="stakeholder-box-title">Actores del sistema universitario</div>
+      <div class="stakeholder-chips">
+        <span class="sh-chip sh-pdi">PDI</span>
+        <span class="sh-chip sh-ptgas">PTGAS</span>
+        <span class="sh-chip sh-est">Estudiantado</span>
+        <span class="sh-chip sh-gov">Equipos de gobierno</span>
+        <span class="sh-chip sh-cs">Consejos Sociales</span>
+        <span class="sh-chip sh-soc">Sociedad civil</span>
+      </div>
+      <p class="stakeholder-note">
+        Panel representativo de agentes del sistema universitario español implicados en el proceso participativo.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- METODOLOGÍA                                           -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o13-metodologia" class="dash-section">
+    <h2 class="dash-title">Metodología empleada</h2>
+    <p class="dash-context">
+      El trabajo se fundamentó en un enfoque <strong>participativo y basado en evidencia</strong>,
+      estructurado en cuatro fases secuenciales que combinan revisión bibliográfica, participación
+      de expertos y priorización multicriterio.
+    </p>
+    <div class="method-steps">
+      <div class="method-step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <div class="step-title">Selección del panel de <em>stakeholders</em></div>
+          <p>Conformación de un grupo representativo de agentes del sistema universitario español: PDI, PTGAS, estudiantes, representantes institucionales, empresariales y de la sociedad civil.</p>
+        </div>
+      </div>
+      <div class="method-connector"></div>
+      <div class="method-step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <div class="step-title">Análisis DAFO</div>
+          <p>A partir de una revisión bibliográfica de <strong>más de 100 artículos académicos</strong>, se identificaron Debilidades, Amenazas, Fortalezas y Oportunidades en la implementación de la Agenda 2030.</p>
+        </div>
+      </div>
+      <div class="method-connector"></div>
+      <div class="method-step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <div class="step-title">Priorización AHP</div>
+          <p>Los <em>stakeholders</em> valoraron comparativamente los factores mediante el método <strong>Analytic Hierarchy Process (AHP)</strong> para determinar su relevancia relativa de forma consensuada.</p>
+        </div>
+      </div>
+      <div class="method-connector"></div>
+      <div class="method-step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <div class="step-title">Análisis CAME</div>
+          <p>Sobre la base de los factores priorizados, se formularon estrategias para <strong>Corregir, Afrontar, Mantener y Explotar</strong> cada dimensión del DAFO.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- DAFO                                                  -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o13-dafo" class="dash-section">
+    <h2 class="dash-title">Principales hallazgos del análisis DAFO</h2>
+    <p class="dash-context">
+      El análisis permitió sintetizar los principales factores que inciden en el grado de implementación
+      de la Agenda 2030 en el sistema universitario español, priorizados por los panelistas mediante el método AHP.
+    </p>
+
+    <div class="dafo-grid">
+      <!-- fila 0: etiquetas de columna -->
+      <div class="dafo-corner"></div>
+      <div class="dafo-col-label">INTERNO</div>
+      <div class="dafo-col-label">EXTERNO</div>
+      <!-- fila 1: POSITIVO -->
+      <div class="dafo-row-label">POSITIVO</div>
+      <div class="dafo-cell dafo-f">
+        <div class="dafo-cell-header">
+          <span class="dafo-icon dafo-f-icon">✦</span>
+          <span class="dafo-label dafo-f-lbl">Fortalezas</span>
+        </div>
+        <ul class="dafo-list">
+          <li>Compromiso individual de muchos docentes e investigadores</li>
+          <li>Uso de herramientas de integración ODS en formación y prácticas</li>
+          <li>Inclusión de los ODS en estrategias institucionales</li>
+        </ul>
+      </div>
+      <div class="dafo-cell dafo-o">
+        <div class="dafo-cell-header">
+          <span class="dafo-icon dafo-o-icon">◆</span>
+          <span class="dafo-label dafo-o-lbl">Oportunidades</span>
+        </div>
+        <ul class="dafo-list">
+          <li>Potenciar el enfoque comunitario y la proyección social de la universidad</li>
+          <li>Diseño e integración de formación específica y transversal en sostenibilidad</li>
+        </ul>
+      </div>
+      <!-- fila 2: NEGATIVO -->
+      <div class="dafo-row-label">NEGATIVO</div>
+      <div class="dafo-cell dafo-d">
+        <div class="dafo-cell-header">
+          <span class="dafo-icon dafo-d-icon">▼</span>
+          <span class="dafo-label dafo-d-lbl">Debilidades</span>
+        </div>
+        <ul class="dafo-list">
+          <li>Desconexión entre formación y aplicación práctica</li>
+          <li>Resistencia al cambio cultural y académico</li>
+        </ul>
+      </div>
+      <div class="dafo-cell dafo-a">
+        <div class="dafo-cell-header">
+          <span class="dafo-icon dafo-a-icon">▲</span>
+          <span class="dafo-label dafo-a-lbl">Amenazas</span>
+        </div>
+        <ul class="dafo-list">
+          <li>Burocracia y rigidez administrativa como freno al cambio</li>
+          <li>Escasa financiación y desigualdad estructural entre universidades</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- CAME                                                  -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o13-came" class="dash-section">
+    <h2 class="dash-title">Estrategias derivadas del análisis CAME</h2>
+    <p class="dash-context">
+      Las estrategias CAME se diseñaron a partir de los factores DAFO priorizados por el método AHP.
+      Cada estrategia responde a uno de los cuatro cuadrantes del DAFO y combina acción institucional
+      con cooperación interuniversitaria.
+    </p>
+
+    <div class="came-grid">
+      <div class="came-card came-c">
+        <div class="came-header">
+          <div class="came-letter">C</div>
+          <div class="came-info">
+            <div class="came-title">Corregir</div>
+            <div class="came-sub">Actúa sobre las <strong>Debilidades</strong></div>
+          </div>
+        </div>
+        <ul class="came-list">
+          <li>Incentivar prácticas curriculares aplicadas en ODS</li>
+          <li>Coordinar iniciativas mediante oficina o observatorio central</li>
+        </ul>
+      </div>
+
+      <div class="came-card came-a">
+        <div class="came-header">
+          <div class="came-letter">A</div>
+          <div class="came-info">
+            <div class="came-title">Afrontar</div>
+            <div class="came-sub">Actúa sobre las <strong>Amenazas</strong></div>
+          </div>
+        </div>
+        <ul class="came-list">
+          <li>Pacto social-universidad para respaldar la Agenda 2030</li>
+          <li>Redes interuniversitarias para compartir recursos</li>
+        </ul>
+      </div>
+
+      <div class="came-card came-m">
+        <div class="came-header">
+          <div class="came-letter">M</div>
+          <div class="came-info">
+            <div class="came-title">Mantener</div>
+            <div class="came-sub">Refuerza las <strong>Fortalezas</strong></div>
+          </div>
+        </div>
+        <ul class="came-list">
+          <li>Reforzar la formación transversal en sostenibilidad</li>
+          <li>Integrar los ODS en acreditaciones de titulaciones</li>
+          <li>Garantizar continuidad de cátedras y observatorios</li>
+        </ul>
+      </div>
+
+      <div class="came-card came-e">
+        <div class="came-header">
+          <div class="came-letter">E</div>
+          <div class="came-info">
+            <div class="came-title">Explotar</div>
+            <div class="came-sub">Aprovecha las <strong>Oportunidades</strong></div>
+          </div>
+        </div>
+        <ul class="came-list">
+          <li>Crear programas de cooperación universidad-empresa</li>
+          <li>Colaborar con gobiernos regionales y locales en programas formativos</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Tabla de correspondencia DAFO ↔ CAME -->
+    <div class="came-map">
+      <div class="came-map-title">Correspondencia DAFO — CAME</div>
+      <div class="came-map-row">
+        <div class="came-map-dafo dafo-f-tag">Fortalezas</div>
+        <div class="came-map-arrow">→</div>
+        <div class="came-map-came came-m-tag">Mantener</div>
+        <div class="came-map-desc">Consolidar y escalar lo que ya funciona</div>
+      </div>
+      <div class="came-map-row">
+        <div class="came-map-dafo dafo-o-tag">Oportunidades</div>
+        <div class="came-map-arrow">→</div>
+        <div class="came-map-came came-e-tag">Explotar</div>
+        <div class="came-map-desc">Aprovechar el contexto favorable para crecer</div>
+      </div>
+      <div class="came-map-row">
+        <div class="came-map-dafo dafo-d-tag">Debilidades</div>
+        <div class="came-map-arrow">→</div>
+        <div class="came-map-came came-c-tag">Corregir</div>
+        <div class="came-map-desc">Reducir brechas estructurales internas</div>
+      </div>
+      <div class="came-map-row">
+        <div class="came-map-dafo dafo-a-tag">Amenazas</div>
+        <div class="came-map-arrow">→</div>
+        <div class="came-map-came came-a-tag">Afrontar</div>
+        <div class="came-map-desc">Mitigar riesgos externos mediante alianzas</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- CONCLUSIONES                                          -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o13-conclusiones" class="dash-section">
+    <h2 class="dash-title">Conclusiones</h2>
+    <blockquote class="highlight-quote">
+      La sostenibilidad no se logra únicamente con políticas, sino con <strong>personas comprometidas</strong>.
+      Los <em>stakeholders</em> universitarios son los agentes que pueden convertir los ODS en una práctica
+      cotidiana, no solo en un marco teórico.
+    </blockquote>
+
+    <div class="conclusiones-grid">
+      <div class="concl-card">
+        <div class="concl-icon">🤝</div>
+        <div class="concl-title">Compromiso → Política institucional</div>
+        <p>Consolidar el compromiso individual existente y transformarlo en políticas estables e institucionales que garanticen su continuidad más allá de las personas.</p>
+      </div>
+      <div class="concl-card">
+        <div class="concl-icon">🔗</div>
+        <div class="concl-title">Cooperación multiactor</div>
+        <p>Fomentar la cooperación entre universidades, administraciones y sociedad, compartiendo recursos, aprendizajes y buenas prácticas en red.</p>
+      </div>
+      <div class="concl-card">
+        <div class="concl-icon">📚</div>
+        <div class="concl-title">Formación e innovación</div>
+        <p>Impulsar la presencia de la sostenibilidad en la docencia, la investigación y la gestión, haciendo que los ODS sean transversales a todas las titulaciones.</p>
+      </div>
+      <div class="concl-card">
+        <div class="concl-icon">🔄</div>
+        <div class="concl-title">Cambio como oportunidad</div>
+        <p>Superar las resistencias culturales y organizativas, apostando por el cambio continuo como oportunidad de mejora y no como amenaza a la identidad institucional.</p>
+      </div>
+    </div>
+
+    <div class="closing-note">
+      Esta guía es un <strong>instrumento de transformación compartida</strong>. Está pensada para que los
+      distintos actores del sistema universitario encuentren en ella ideas, ejemplos y argumentos que
+      impulsen su propia acción. La sostenibilidad universitaria no es un destino, sino un proceso
+      continuo de aprendizaje y mejora en el que cada decisión cuenta.
+    </div>
+  </section>
+
+</div>
+
+<style is:global>
+#o13-dashboard {
+  padding: 0 2.5rem 4rem;
+  max-width: 1050px;
+}
+
+#o13-dashboard .dash-section {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+#o13-dashboard .dash-hero { padding-top: 2rem; }
+
+#o13-dashboard .dash-title {
+  font-family: var(--font-base);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--brand);
+  margin: 0 0 .8rem;
+  padding-bottom: .5rem;
+  border-bottom: 2px solid var(--border);
+}
+
+#o13-dashboard .dash-context {
+  font-family: var(--font-base);
+  font-size: .93rem;
+  line-height: 1.7;
+  color: var(--ink);
+  max-width: 780px;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Hero ── */
+#o13-dashboard .doc-kicker {
+  font-family: var(--font-base);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--green-accent);
+  margin-bottom: .8rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+#o13-dashboard .doc-kicker::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--green-accent);
+}
+#o13-dashboard .doc-title {
+  font-family: var(--font-base);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+  max-width: 720px;
+  margin: 0 0 1rem;
+}
+#o13-dashboard .doc-title em {
+  font-style: italic;
+  color: var(--brand);
+}
+
+#o13-dashboard .hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+#o13-dashboard .hero-stat {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--brand);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+}
+#o13-dashboard .hero-stat-value {
+  font-family: var(--font-base);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--brand);
+  line-height: 1;
+  margin-bottom: .35rem;
+}
+#o13-dashboard .hero-stat-label {
+  font-family: var(--font-base);
+  font-size: .76rem;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+/* ── Introducción ── */
+#o13-dashboard .intro-text {
+  font-family: var(--font-base);
+  font-size: .93rem;
+  line-height: 1.75;
+  color: var(--ink);
+  max-width: 780px;
+  margin: 0 0 1rem;
+}
+#o13-dashboard .stakeholder-box {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.2rem 1.2rem 1rem;
+  margin-top: .5rem;
+}
+#o13-dashboard .stakeholder-box-title {
+  font-family: var(--font-base);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: .8rem;
+}
+#o13-dashboard .stakeholder-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-bottom: .9rem;
+}
+#o13-dashboard .sh-chip {
+  font-family: var(--font-base);
+  font-size: .75rem;
+  font-weight: 600;
+  padding: .3rem .7rem;
+  border-radius: 20px;
+  color: #fff;
+  white-space: nowrap;
+}
+#o13-dashboard .sh-pdi   { background: #2B5E8E; }
+#o13-dashboard .sh-ptgas { background: #4c9f38; }
+#o13-dashboard .sh-est   { background: #c9973a; }
+#o13-dashboard .sh-gov   { background: #7b5ea7; }
+#o13-dashboard .sh-cs    { background: #e3337e; }
+#o13-dashboard .sh-soc   { background: #2a9fd6; }
+#o13-dashboard .stakeholder-note {
+  font-family: var(--font-base);
+  font-size: .78rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+  border-top: 1px solid var(--border);
+  padding-top: .7rem;
+}
+
+/* ── Metodología ── */
+#o13-dashboard .method-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+#o13-dashboard .method-step {
+  display: flex;
+  gap: 1.4rem;
+  align-items: flex-start;
+}
+#o13-dashboard .method-connector {
+  width: 2px;
+  height: 28px;
+  background: color-mix(in srgb, var(--brand) 25%, white);
+  margin-left: 23px;
+}
+#o13-dashboard .step-num {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-family: var(--font-base);
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#o13-dashboard .step-body {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--brand);
+  border-radius: 0 6px 6px 0;
+  padding: .9rem 1.1rem;
+  flex: 1;
+}
+#o13-dashboard .step-title {
+  font-family: var(--font-base);
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--brand);
+  margin-bottom: .35rem;
+}
+#o13-dashboard .step-body p {
+  font-family: var(--font-base);
+  font-size: .86rem;
+  line-height: 1.65;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ── DAFO matrix ── */
+#o13-dashboard .dafo-grid {
+  display: grid;
+  grid-template-columns: 28px 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr;
+  gap: .7rem;
+}
+#o13-dashboard .dafo-corner { /* empty top-left cell */ }
+#o13-dashboard .dafo-col-label {
+  font-family: var(--font-base);
+  font-size: .68rem;
+  font-weight: 500;
+  color: #999;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: .1rem;
+}
+#o13-dashboard .dafo-row-label {
+  font-family: var(--font-base);
+  font-size: .68rem;
+  font-weight: 500;
+  color: #999;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#o13-dashboard .dafo-cell {
+  border-radius: 8px;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid transparent;
+}
+#o13-dashboard .dafo-f {
+  background: color-mix(in srgb, #4c9f38 8%, white);
+  border-color: color-mix(in srgb, #4c9f38 30%, white);
+}
+#o13-dashboard .dafo-o {
+  background: color-mix(in srgb, #2B5E8E 8%, white);
+  border-color: color-mix(in srgb, #2B5E8E 30%, white);
+}
+#o13-dashboard .dafo-d {
+  background: color-mix(in srgb, #c9973a 8%, white);
+  border-color: color-mix(in srgb, #c9973a 30%, white);
+}
+#o13-dashboard .dafo-a {
+  background: color-mix(in srgb, #c0392b 8%, white);
+  border-color: color-mix(in srgb, #c0392b 30%, white);
+}
+#o13-dashboard .dafo-cell-header {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  margin-bottom: .7rem;
+}
+#o13-dashboard .dafo-icon { font-size: .85rem; }
+#o13-dashboard .dafo-f-icon { color: #4c9f38; }
+#o13-dashboard .dafo-o-icon { color: #2B5E8E; }
+#o13-dashboard .dafo-d-icon { color: #c9973a; }
+#o13-dashboard .dafo-a-icon { color: #c0392b; }
+#o13-dashboard .dafo-label {
+  font-family: var(--font-base);
+  font-size: .88rem;
+  font-weight: 700;
+}
+#o13-dashboard .dafo-f-lbl { color: #4c9f38; }
+#o13-dashboard .dafo-o-lbl { color: #2B5E8E; }
+#o13-dashboard .dafo-d-lbl { color: #c9973a; }
+#o13-dashboard .dafo-a-lbl { color: #c0392b; }
+#o13-dashboard .dafo-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+#o13-dashboard .dafo-list li {
+  font-family: var(--font-base);
+  font-size: .83rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* ── CAME ── */
+#o13-dashboard .came-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+#o13-dashboard .came-card {
+  border-radius: 8px;
+  padding: 1.2rem 1.3rem;
+  border: 1px solid transparent;
+}
+#o13-dashboard .came-c {
+  background: color-mix(in srgb, #c9973a 8%, white);
+  border-color: color-mix(in srgb, #c9973a 30%, white);
+}
+#o13-dashboard .came-a {
+  background: color-mix(in srgb, #c0392b 8%, white);
+  border-color: color-mix(in srgb, #c0392b 30%, white);
+}
+#o13-dashboard .came-m {
+  background: color-mix(in srgb, #4c9f38 8%, white);
+  border-color: color-mix(in srgb, #4c9f38 30%, white);
+}
+#o13-dashboard .came-e {
+  background: color-mix(in srgb, #2B5E8E 8%, white);
+  border-color: color-mix(in srgb, #2B5E8E 30%, white);
+}
+#o13-dashboard .came-header {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  margin-bottom: .9rem;
+}
+#o13-dashboard .came-letter {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-family: var(--font-base);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+#o13-dashboard .came-c .came-letter { background: #c9973a; }
+#o13-dashboard .came-a .came-letter { background: #c0392b; }
+#o13-dashboard .came-m .came-letter { background: #4c9f38; }
+#o13-dashboard .came-e .came-letter { background: #2B5E8E; }
+#o13-dashboard .came-title {
+  font-family: var(--font-base);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+#o13-dashboard .came-sub {
+  font-family: var(--font-base);
+  font-size: .78rem;
+  color: #666;
+  margin-top: .1rem;
+}
+#o13-dashboard .came-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+#o13-dashboard .came-list li {
+  font-family: var(--font-base);
+  font-size: .85rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* ── CAME mapping table ── */
+#o13-dashboard .came-map {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.2rem 1.4rem;
+  margin-top: .5rem;
+}
+#o13-dashboard .came-map-title {
+  font-family: var(--font-base);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: .9rem;
+}
+#o13-dashboard .came-map-row {
+  display: grid;
+  grid-template-columns: 130px 28px 120px 1fr;
+  align-items: center;
+  gap: .6rem;
+  padding: .4rem 0;
+  border-bottom: 1px solid var(--border);
+}
+#o13-dashboard .came-map-row:last-child { border-bottom: none; }
+#o13-dashboard .came-map-arrow {
+  font-size: 1rem;
+  color: #aaa;
+  text-align: center;
+}
+#o13-dashboard .came-map-desc {
+  font-family: var(--font-base);
+  font-size: .8rem;
+  color: #666;
+}
+
+/* shared tag styles for the mapping table */
+#o13-dashboard .dafo-f-tag,
+#o13-dashboard .dafo-o-tag,
+#o13-dashboard .dafo-d-tag,
+#o13-dashboard .dafo-a-tag,
+#o13-dashboard .came-c-tag,
+#o13-dashboard .came-a-tag,
+#o13-dashboard .came-m-tag,
+#o13-dashboard .came-e-tag {
+  font-family: var(--font-base);
+  font-size: .78rem;
+  font-weight: 600;
+  padding: .25rem .65rem;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+#o13-dashboard .dafo-f-tag { background: color-mix(in srgb, #4c9f38 15%, white); color: #4c9f38; }
+#o13-dashboard .dafo-o-tag { background: color-mix(in srgb, #2B5E8E 15%, white); color: #2B5E8E; }
+#o13-dashboard .dafo-d-tag { background: color-mix(in srgb, #c9973a 15%, white); color: #c9973a; }
+#o13-dashboard .dafo-a-tag { background: color-mix(in srgb, #c0392b 15%, white); color: #c0392b; }
+#o13-dashboard .came-c-tag { background: color-mix(in srgb, #c9973a 15%, white); color: #c9973a; }
+#o13-dashboard .came-a-tag { background: color-mix(in srgb, #c0392b 15%, white); color: #c0392b; }
+#o13-dashboard .came-m-tag { background: color-mix(in srgb, #4c9f38 15%, white); color: #4c9f38; }
+#o13-dashboard .came-e-tag { background: color-mix(in srgb, #2B5E8E 15%, white); color: #2B5E8E; }
+
+/* ── Conclusiones ── */
+#o13-dashboard .highlight-quote {
+  border-left: 4px solid var(--brand);
+  background: color-mix(in srgb, var(--brand) 5%, white);
+  margin: 0 0 2rem;
+  padding: 1rem 1.4rem;
+  border-radius: 0 6px 6px 0;
+  font-family: var(--font-base);
+  font-size: .95rem;
+  line-height: 1.7;
+  color: var(--ink);
+  font-style: italic;
+}
+#o13-dashboard .highlight-quote strong { font-style: normal; color: var(--brand); }
+#o13-dashboard .highlight-quote em { color: var(--brand); }
+
+#o13-dashboard .conclusiones-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+#o13-dashboard .concl-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.2rem 1.3rem;
+}
+#o13-dashboard .concl-icon {
+  font-size: 1.5rem;
+  margin-bottom: .5rem;
+}
+#o13-dashboard .concl-title {
+  font-family: var(--font-base);
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--brand);
+  margin-bottom: .5rem;
+}
+#o13-dashboard .concl-card p {
+  font-family: var(--font-base);
+  font-size: .84rem;
+  line-height: 1.65;
+  color: var(--ink);
+  margin: 0;
+}
+#o13-dashboard .closing-note {
+  background: color-mix(in srgb, var(--green-deep) 6%, white);
+  border: 1px solid color-mix(in srgb, var(--green-deep) 25%, white);
+  border-radius: 8px;
+  padding: 1.1rem 1.4rem;
+  font-family: var(--font-base);
+  font-size: .88rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  #o13-dashboard .hero-stats { grid-template-columns: 1fr 1fr; }
+  #o13-dashboard .dafo-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  #o13-dashboard .dafo-corner,
+  #o13-dashboard .dafo-col-label,
+  #o13-dashboard .dafo-row-label { display: none; }
+  #o13-dashboard .came-grid { grid-template-columns: 1fr; }
+  #o13-dashboard .conclusiones-grid { grid-template-columns: 1fr; }
+  #o13-dashboard .came-map-row { grid-template-columns: 1fr; gap: .3rem; }
+  #o13-dashboard .came-map-arrow { display: none; }
+}
+</style>

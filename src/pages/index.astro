@@ -34,7 +34,6 @@ const packageCopy: Record<string, {
 
 const totalTables = packages.reduce((sum, pkg) => sum + pkg.data.counts.tables, 0);
 const totalFigures = packages.reduce((sum, pkg) => sum + pkg.data.counts.figures, 0);
-const featured = packages.find((pkg) => pkg.data.slug === 'o1') ?? packages[0];
 ---
 <Layout title="ODServa2030 · Observatorio Agenda 2030">
   <main class="home-main">
@@ -63,29 +62,6 @@ const featured = packages.find((pkg) => pkg.data.slug === 'o1') ?? packages[0];
         </dl>
       </div>
     </section>
-
-    {featured && (
-      <section class="featured-package" aria-labelledby="featured-title">
-        <div class="featured-copy">
-          <p class="section-label">Entrada recomendada</p>
-          <h2 id="featured-title">{featured.data.title}</h2>
-          <p>
-            {packageCopy[featured.data.slug]?.description}
-          </p>
-          <div class="featured-actions">
-            <a class="primary-link" href={`/paquetes/${featured.data.slug}/`}>
-              Abrir dashboard
-            </a>
-            <a class="secondary-link" href="#catalogo">
-              Ver catálogo
-            </a>
-          </div>
-        </div>
-        <a class="featured-visual" href={`/paquetes/${featured.data.slug}/`} aria-label={`Abrir ${featured.data.title}`}>
-          <img src={packageCopy[featured.data.slug]?.image} alt="" loading="eager" />
-        </a>
-      </section>
-    )}
 
     <section class="catalogue" id="catalogo" aria-labelledby="catalogue-title">
       <div class="catalogue-header">
@@ -281,83 +257,9 @@ const featured = packages.find((pkg) => pkg.data.slug === 'o1') ?? packages[0];
     margin: 0.45rem 0 0;
   }
 
-  .featured-package {
-    display: grid;
-    grid-template-columns: minmax(320px, 0.82fr) minmax(360px, 1fr);
-    gap: 0;
-    max-width: 1180px;
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 3rem;
-  }
-
-  .featured-copy {
-    padding: clamp(1.5rem, 4vw, 2.25rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 360px;
-  }
-
-  .featured-copy h2,
   .catalogue-header h2 {
     font-size: clamp(1.65rem, 3vw, 2.4rem);
     line-height: 1.15;
-  }
-
-  .featured-copy p:not(.section-label) {
-    color: var(--ink);
-    line-height: 1.7;
-    margin: 1rem 0 0;
-    max-width: 560px;
-  }
-
-  .featured-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
-    margin-top: 1.5rem;
-    font-family: var(--font-base);
-    font-size: 0.85rem;
-    font-weight: 500;
-  }
-
-  .primary-link {
-    color: #ffffff;
-    background: var(--brand);
-    border: 1px solid var(--brand);
-    border-radius: 6px;
-    padding: 0.75rem 1rem;
-  }
-
-  .primary-link:hover {
-    color: #ffffff;
-    background: var(--brand-hover);
-    border-color: var(--brand-hover);
-  }
-
-  .secondary-link {
-    color: var(--brand);
-  }
-
-  .featured-visual {
-    display: block;
-    min-height: 360px;
-    background: var(--paper);
-    border-left: 1px solid var(--border);
-    overflow: hidden;
-  }
-
-  .featured-visual img {
-    width: 100%;
-    height: 100%;
-    min-height: 360px;
-    object-fit: cover;
-    display: block;
-    transform: scale(1.02);
   }
 
   .catalogue {
@@ -518,14 +420,8 @@ const featured = packages.find((pkg) => pkg.data.slug === 'o1') ?? packages[0];
       padding: 2.5rem;
     }
 
-    .home-hero-grid,
-    .featured-package {
+    .home-hero-grid {
       grid-template-columns: 1fr;
-    }
-
-    .featured-visual {
-      border-left: 0;
-      border-top: 1px solid var(--border);
     }
 
     .package-grid {
@@ -561,12 +457,6 @@ const featured = packages.find((pkg) => pkg.data.slug === 'o1') ?? packages[0];
 
     .home-stats div:last-child {
       border-bottom: 0;
-    }
-
-    .featured-copy,
-    .featured-visual,
-    .featured-visual img {
-      min-height: 0;
     }
 
     .package-grid {

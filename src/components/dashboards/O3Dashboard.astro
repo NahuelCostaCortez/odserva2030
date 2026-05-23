@@ -1,0 +1,1558 @@
+---
+const { pkg } = Astro.props;
+---
+
+<div id="o3-dashboard">
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- HERO                                                  -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o3-hero" class="dash-section dash-hero">
+    <div class="doc-kicker">Oferta Formativa · Agenda 2030 · 2024</div>
+    <h1 class="doc-title">{pkg.data.title}</h1>
+    <p class="dash-context">
+      Análisis de la incorporación de la Agenda 2030 y los ODS en la oferta formativa del sistema
+      universitario español, a partir de cuestionarios a 26 universidades y entrevistas a 9 instituciones.
+      Identifica avances, brechas y buenas prácticas en la capacitación de estudiantes y personal docente.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-value">26</div>
+        <div class="hero-stat-label">Universidades encuestadas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">9</div>
+        <div class="hero-stat-label">Universidades entrevistadas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">80,8%</div>
+        <div class="hero-stat-label">Con estrategia formal Agenda 2030</div>
+      </div>
+      <div class="hero-stat hero-stat--alert">
+        <div class="hero-stat-value">7,7%</div>
+        <div class="hero-stat-label">Con formación obligatoria para el PDI</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- METODOLOGÍA                                           -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o3-metodologia" class="dash-section">
+    <h2 class="dash-title">Metodología y muestra</h2>
+    <p class="dash-context">
+      El análisis combina datos cuantitativos (cuestionarios) y cualitativos (entrevistas) recogidos
+      directamente de los vicerrectorados y organismos responsables de formación. Los instrumentos fueron
+      validados interna y externamente antes de su aplicación.
+    </p>
+
+    <h3 class="dash-subtitle">Objetivos de la investigación</h3>
+    <div class="o3-obj-grid">
+      <div class="o3-obj-card">
+        <div class="obj-num">1</div>
+        <div class="obj-text">Identificar criterios de evaluación Agenda 2030 en agencias universitarias españolas</div>
+      </div>
+      <div class="o3-obj-card">
+        <div class="obj-num">2</div>
+        <div class="obj-text">Recopilar acciones formativas Agenda 2030 mediante encuestas y entrevistas a vicerrectorados</div>
+      </div>
+      <div class="o3-obj-card">
+        <div class="obj-num">3</div>
+        <div class="obj-text">Identificar convocatorias públicas universitarias que impulsen la Agenda 2030</div>
+      </div>
+      <div class="o3-obj-card">
+        <div class="obj-num">4</div>
+        <div class="obj-text">Analizar resultados para detectar buenas prácticas en evaluación, formación y convocatorias</div>
+      </div>
+      <div class="o3-obj-card">
+        <div class="obj-num">5</div>
+        <div class="obj-text">Desarrollar guías y propuestas para fomentar la Agenda 2030 universitaria</div>
+      </div>
+    </div>
+
+    <div class="o3-muestra-grid">
+      <div class="o3-muestra-block">
+        <h3 class="ctx-head">Perfil de las personas encuestadas</h3>
+        <p class="o3-muestra-note">26 universidades · Vicerrectorados y organismos responsables de formación</p>
+        <table class="o3-small-table">
+          <thead>
+            <tr><th>Cargo</th><th>Total</th><th>Hombres</th><th>Mujeres</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Vicerrectorado</td><td>11</td><td>5</td><td>6</td></tr>
+            <tr><td>Directores/as</td><td>8</td><td>2</td><td>6</td></tr>
+            <tr><td>Delegados/as rectorado</td><td>2</td><td>0</td><td>2</td></tr>
+            <tr><td>Adjuntos/as Vicerrectorado</td><td>1</td><td>1</td><td>0</td></tr>
+            <tr><td>Técnicos/as</td><td>1</td><td>0</td><td>1</td></tr>
+            <tr><td>Responsable de oficina</td><td>1</td><td>1</td><td>0</td></tr>
+            <tr><td>Coordinador/a</td><td>1</td><td>0</td><td>1</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="o3-muestra-block">
+        <h3 class="ctx-head">Universidades entrevistadas</h3>
+        <p class="o3-muestra-note">9 instituciones · 7 comunidades autónomas · 14 participantes</p>
+        <ul class="o3-univ-list">
+          <li>Universidad Alfonso X</li>
+          <li>Universidad de Alicante</li>
+          <li>Universidad Autónoma de Madrid</li>
+          <li>Universitat de Barcelona</li>
+          <li>Universidad de Cádiz</li>
+          <li>Universidad de La Laguna</li>
+          <li>Universidade de Vigo</li>
+          <li>Universidad Ramon Llull</li>
+          <li>Universitat Politècnica de València</li>
+        </ul>
+        <div class="o3-aggregate-stats">
+          <div class="agg-stat">
+            <span class="agg-val">~243.000</span>
+            <span class="agg-lbl">estudiantes</span>
+          </div>
+          <div class="agg-stat">
+            <span class="agg-val">+22.500</span>
+            <span class="agg-lbl">PDI</span>
+          </div>
+          <div class="agg-stat">
+            <span class="agg-val">11 mujeres</span>
+            <span class="agg-lbl">de 14 participantes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- RESULTADOS DE LOS CUESTIONARIOS                       -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o3-cuestionarios" class="dash-section">
+    <h2 class="dash-title">Resultados de los cuestionarios</h2>
+    <p class="dash-context">
+      El análisis inicial revela una institucionalización formal avanzada pero una implementación aún parcial.
+      Destaca la brecha entre la presencia de estrategias formales y la integración completa en los programas
+      de grado, así como la baja obligatoriedad de la formación docente específica.
+    </p>
+
+    <div class="o3-key-stats">
+      <div class="ks-card">
+        <div class="ks-value">80,8%</div>
+        <div class="ks-label">de universidades con estrategias formales de Agenda 2030</div>
+        <div class="ks-note">Institucionalización formal avanzada</div>
+      </div>
+      <div class="ks-card ks-card--warning">
+        <div class="ks-value">34,6%</div>
+        <div class="ks-label">con integración completa en programas de grado</div>
+        <div class="ks-note">Brecha entre formalidad e implementación</div>
+      </div>
+      <div class="ks-card">
+        <div class="ks-value">ρ = 0,434</div>
+        <div class="ks-label">correlación prioridad institucional → integración en grado</div>
+        <div class="ks-note">Significativo (p = 0,027)</div>
+      </div>
+      <div class="ks-card ks-card--alert">
+        <div class="ks-value">M = 1,76</div>
+        <div class="ks-label">integración en doctorado vs. 2,35 en grado</div>
+        <div class="ks-note">Diferencia significativa (p = 0,003)</div>
+      </div>
+    </div>
+
+    <div class="o3-disciplines">
+      <h3 class="dash-subtitle">Áreas disciplinares con mayor integración ODS</h3>
+      <div class="disc-grid">
+        <div class="disc-card">
+          <div class="disc-pct">48,7%</div>
+          <div class="disc-label">CC. de la Educación / CC. Sociales</div>
+        </div>
+        <div class="disc-card">
+          <div class="disc-pct">38,5%</div>
+          <div class="disc-label">Ingeniería</div>
+        </div>
+        <div class="disc-card">
+          <div class="disc-pct">15,4%</div>
+          <div class="disc-label">Ciencias de la Salud</div>
+        </div>
+        <div class="disc-card disc-card--accent">
+          <div class="disc-pct">50%</div>
+          <div class="disc-label">Titulaciones específicas en sostenibilidad</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="o3-cuestionarios-tabs">
+      <div class="o3-tab-bar">
+        <button class="o3-tab-btn active" data-tab="ods">ODS prioritarios</button>
+        <button class="o3-tab-btn" data-tab="integracion">Modos de integración curricular</button>
+      </div>
+
+      <div data-panel="ods">
+        <p class="dash-context" style="margin-bottom: 1rem;">
+          Se solicitó a las universidades identificar qué ODS están más presentes en su oferta formativa.
+          El ODS 3 (Salud y bienestar) lidera con diferencia, vinculado a la presencia de titulaciones en
+          Ciencias de la Salud. Cabe destacar que 4 universidades (15,4%) afirman trabajar todos los ODS
+          de manera equilibrada.
+        </p>
+        <div class="chart-box" style="height: 260px;">
+          <canvas id="chart-ods-menciones"></canvas>
+        </div>
+        <p class="o3-chart-note">Una universidad (3,8%) indica que no realiza diferenciación por ODS, sugiriendo una integración más holística.</p>
+      </div>
+
+      <div data-panel="integracion" style="display:none;">
+        <div class="integ-grid">
+          <div class="integ-card">
+            <div class="integ-icon">📚</div>
+            <h4>Asignaturas específicas</h4>
+            <p>Materias dedicadas a sostenibilidad, responsabilidad social o Agenda 2030. Incluyen asignaturas transversales abiertas a todo el alumnado.</p>
+          </div>
+          <div class="integ-card">
+            <div class="integ-icon">🔗</div>
+            <h4>Módulos transversales</h4>
+            <p>Incorporación de competencias ODS en asignaturas ya existentes, en lugar de crear nuevas. Tendencia mayoritaria entre las universidades participantes.</p>
+          </div>
+          <div class="integ-card">
+            <div class="integ-icon">🎓</div>
+            <h4>TFG / TFM orientados a ODS</h4>
+            <p>Las acciones formativas más exitosas requieren vincular los trabajos finales con los ODS, generando reflexión madura sobre sostenibilidad y responsabilidad.</p>
+          </div>
+          <div class="integ-card">
+            <div class="integ-icon">🤝</div>
+            <h4>Aprendizaje-servicio</h4>
+            <p>Metodologías activas con proyectos reales en colaboración con empresas, ONGs y administraciones. Clave para la transferibilidad entre disciplinas.</p>
+          </div>
+          <div class="integ-card">
+            <div class="integ-icon">🌐</div>
+            <h4>Competencias transversales</h4>
+            <p>Integración del compromiso social y medioambiental en la matriz de competencias de cada grado, con adaptación gradual de los planes de estudio.</p>
+          </div>
+          <div class="integ-card integ-card--note">
+            <div class="integ-icon">⚠️</div>
+            <h4>Doctorado: área de mejora</h4>
+            <p>Los programas de doctorado muestran una integración significativamente menor (M=1,76) que los programas de grado (M=2,35). Diferencia estadísticamente significativa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- CONTEXTOS FORMATIVOS                                  -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o3-contextos" class="dash-section">
+    <h2 class="dash-title">Contextos formativos sobre ODS</h2>
+    <p class="dash-context">
+      Más allá de la formación reglada, las universidades desarrollan múltiples entornos de aprendizaje
+      vinculados a la Agenda 2030. Las jornadas y encuentros formativos son la vía más extendida (76,9%),
+      seguidas de la formación continua. Los MOOC representan la gran oportunidad desaprovechada: solo
+      el 15,4% los utiliza para difusión masiva de contenidos sobre ODS.
+    </p>
+    <div class="chart-box" style="height: 320px;">
+      <canvas id="chart-contextos"></canvas>
+    </div>
+    <div class="o3-contextos-insights">
+      <div class="ci-item ci-item--green">
+        <strong>Sensibilización amplia:</strong> jornadas y formación continua superan el 65% — alto alcance en la comunidad universitaria.
+      </div>
+      <div class="ci-item ci-item--amber">
+        <strong>Formación inicial PDI baja (38,5%):</strong> los programas de iniciación del profesorado universitario son los menos extendidos.
+      </div>
+      <div class="ci-item ci-item--red">
+        <strong>MOOC infrautilizados (15,4%):</strong> oportunidad desaprovechada para la difusión masiva e internacional de contenidos ODS.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- FORMACIÓN DEL PROFESORADO Y PERSONAL                  -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o3-formacion-docente" class="dash-section">
+    <h2 class="dash-title">Formación del profesorado y personal</h2>
+    <p class="dash-context">
+      La capacitación del PDI y el PTGAS en Agenda 2030 es un factor habilitador esencial para la
+      integración efectiva en las aulas. Los datos revelan un reconocimiento generalizado de la necesidad,
+      pero con un modelo de voluntariedad que limita el alcance real de la formación.
+    </p>
+
+    <h3 class="dash-subtitle">Embudo de formación docente (n=26 universidades)</h3>
+    <div class="o3-funnel">
+      <div class="funnel-row">
+        <div class="fr-label">Universo total</div>
+        <div class="fr-track">
+          <div class="fr-bar" style="width:100%; background: color-mix(in srgb, var(--brand) 28%, white);"></div>
+        </div>
+        <div class="fr-meta">
+          <strong>100%</strong>
+          <span>26 univ.</span>
+        </div>
+      </div>
+      <div class="funnel-row">
+        <div class="fr-label">Con formación específica (obl. + opc.)</div>
+        <div class="fr-track">
+          <div class="fr-bar" style="width:73.1%; background: color-mix(in srgb, var(--brand) 55%, white);"></div>
+        </div>
+        <div class="fr-meta">
+          <strong>73,1%</strong>
+          <span>19 univ.</span>
+        </div>
+      </div>
+      <div class="funnel-row">
+        <div class="fr-label">Solo opcional (sin obligatoriedad)</div>
+        <div class="fr-track">
+          <div class="fr-bar" style="width:65.4%; background: var(--brand); opacity:0.85;"></div>
+        </div>
+        <div class="fr-meta">
+          <strong>65,4%</strong>
+          <span>17 univ.</span>
+        </div>
+      </div>
+      <div class="funnel-row funnel-row--critical">
+        <div class="fr-label">Formación obligatoria</div>
+        <div class="fr-track">
+          <div class="fr-bar" style="width:7.7%; background: var(--gold);"></div>
+        </div>
+        <div class="fr-meta fr-meta--critical">
+          <strong>7,7%</strong>
+          <span>2 univ.</span>
+        </div>
+      </div>
+    </div>
+    <p class="o3-funnel-note">
+      Ninguna universidad declara que no está previsto implementar formación, lo que sugiere reconocimiento
+      universal de su relevancia — pero sin obligatoriedad, el alcance y la homogeneidad son limitados.
+    </p>
+
+    <h3 class="dash-subtitle" style="margin-top: 2.5rem;">Frecuencia de las modalidades formativas</h3>
+    <p class="dash-context">
+      Para las universidades que ofrecen formación (n≈22–24 según modalidad), la frecuencia predominante
+      es <em>ocasional</em> en todas las modalidades. Los cursos online y seminarios presentan las mayores
+      tasas de provisión regular.
+    </p>
+    <div class="o3-freq-table">
+      <div class="freq-legend">
+        <span class="leg-dot" style="background:#e9a0a0;"></span> Nunca
+        <span class="leg-dot" style="background:#2B5E8E; opacity:0.8;"></span> A veces
+        <span class="leg-dot" style="background:#4c9f38; opacity:0.9;"></span> Siempre
+        <span class="leg-dot" style="background:#e8e8e8;"></span> N/A
+      </div>
+      <div class="freq-row">
+        <div class="fr-mod-label">Cursos online</div>
+        <div class="freq-stacked">
+          <div style="width:4.2%; background:#e9a0a0;" title="Nunca 4,2%"></div>
+          <div style="width:58.3%; background:#2B5E8E; opacity:0.8;" title="A veces 58,3%"></div>
+          <div style="width:25%; background:#4c9f38; opacity:0.9;" title="Siempre 25%"></div>
+        </div>
+        <div class="freq-pcts"><span class="fp-n">4,2%</span><span class="fp-av">58,3%</span><span class="fp-si">25,0%</span></div>
+      </div>
+      <div class="freq-row">
+        <div class="fr-mod-label">Seminarios y talleres</div>
+        <div class="freq-stacked">
+          <div style="width:4.2%; background:#e9a0a0;" title="Nunca 4,2%"></div>
+          <div style="width:62.5%; background:#2B5E8E; opacity:0.8;" title="A veces 62,5%"></div>
+          <div style="width:25%; background:#4c9f38; opacity:0.9;" title="Siempre 25%"></div>
+        </div>
+        <div class="freq-pcts"><span class="fp-n">4,2%</span><span class="fp-av">62,5%</span><span class="fp-si">25,0%</span></div>
+      </div>
+      <div class="freq-row">
+        <div class="fr-mod-label">Cursos presenciales</div>
+        <div class="freq-stacked">
+          <div style="width:4.2%; background:#e9a0a0;" title="Nunca 4,2%"></div>
+          <div style="width:66.7%; background:#2B5E8E; opacity:0.8;" title="A veces 66,7%"></div>
+          <div style="width:20.8%; background:#4c9f38; opacity:0.9;" title="Siempre 20,8%"></div>
+        </div>
+        <div class="freq-pcts"><span class="fp-n">4,2%</span><span class="fp-av">66,7%</span><span class="fp-si">20,8%</span></div>
+      </div>
+      <div class="freq-row">
+        <div class="fr-mod-label">Materiales de autoformación</div>
+        <div class="freq-stacked">
+          <div style="width:27.3%; background:#e9a0a0;" title="Nunca 27,3%"></div>
+          <div style="width:31.8%; background:#2B5E8E; opacity:0.8;" title="A veces 31,8%"></div>
+          <div style="width:18.2%; background:#4c9f38; opacity:0.9;" title="Siempre 18,2%"></div>
+        </div>
+        <div class="freq-pcts"><span class="fp-n">27,3%</span><span class="fp-av">31,8%</span><span class="fp-si">18,2%</span></div>
+      </div>
+      <div class="freq-row">
+        <div class="fr-mod-label">Sesiones de coordinación formativas</div>
+        <div class="freq-stacked">
+          <div style="width:31.8%; background:#e9a0a0;" title="Nunca 31,8%"></div>
+          <div style="width:22.7%; background:#2B5E8E; opacity:0.8;" title="A veces 22,7%"></div>
+          <div style="width:4.5%; background:#4c9f38; opacity:0.9;" title="Siempre 4,5%"></div>
+        </div>
+        <div class="freq-pcts"><span class="fp-n">31,8%</span><span class="fp-av">22,7%</span><span class="fp-si">4,5%</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- ANÁLISIS DE ENTREVISTAS                               -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o3-entrevistas" class="dash-section">
+    <h2 class="dash-title">Análisis de entrevistas — patrones comunes</h2>
+    <p class="dash-context">
+      Las respuestas de las 9 universidades entrevistadas se analizan mediante criterios genéricos y
+      específicos para detectar los elementos constitutivos de las iniciativas de formación en ODS.
+      Se identifican patrones comunes en tres dimensiones transversales.
+    </p>
+
+    <div class="o3-patterns-grid">
+      <div class="pattern-block">
+        <h3 class="pattern-head pattern-head--blue">Estructura, organización y recursos</h3>
+        <ul class="pattern-list">
+          <li>Implantación transversal de ODS con roles de coordinación en vicerrectorados o comités específicos</li>
+          <li>Financiación a través de presupuestos generales con incentivos adicionales para propuestas alineadas con ODS</li>
+          <li>Integración curricular apoyada en mecanismos de control de calidad y auditorías externas</li>
+        </ul>
+      </div>
+      <div class="pattern-block">
+        <h3 class="pattern-head pattern-head--green">Impacto</h3>
+        <ul class="pattern-list">
+          <li>Las acciones más exitosas vinculan el TFG/TFM con los ODS, generando reflexión madura sobre sostenibilidad</li>
+          <li>Ambientalización curricular especialmente significativa en ciencias ambientales, agronómicas y salud</li>
+          <li>MOOC y microcredenciales expanden el impacto y facilitan el acceso a competencias en sostenibilidad</li>
+        </ul>
+      </div>
+      <div class="pattern-block">
+        <h3 class="pattern-head pattern-head--gold">Transferibilidad</h3>
+        <ul class="pattern-list">
+          <li>Repositorios de buenas prácticas docentes para inspirar a otros docentes en la integración de ODS</li>
+          <li>Metodologías activas (proyectos, retos, aprendizaje-servicio) son clave para la transferibilidad</li>
+          <li>Los incentivos en evaluación y financiación multiplican las experiencias positivas</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="dash-subtitle" style="margin-top: 2.5rem;">Buenas prácticas por universidad</h3>
+    <p class="dash-context">Para preservar el anonimato institucional, las universidades se presentan numeradas de manera aleatoria.</p>
+
+    <div class="o3-univ-accordion">
+
+      <div class="o3-univ-card">
+        <button class="o3-univ-toggle">
+          <span class="univ-badge">U1</span>
+          <span class="univ-summary">Unidad de Medio Ambiente + ICE · Portal ODS · ISO 14001 / EMAS</span>
+          <span class="univ-arrow">›</span>
+        </button>
+        <div class="o3-univ-body">
+          <div class="univ-body-grid">
+            <div class="ub-block">
+              <h4>Estructura y recursos</h4>
+              <p>Unidad de Medio Ambiente e Instituto de Ciencias de la Educación (ICE) coordinan acciones formativas y de sensibilización. Portal público sobre sostenibilidad con indicadores y datos anuales vinculados a los ODS. Sistema de gestión ambiental certificado ISO 14001 y EMAS.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Transferibilidad</h4>
+              <p>El portal ODS junto con la metodología de indicadores ambientales constituye una práctica replicable para universidades que buscan sistematizar el seguimiento de la Agenda 2030. El banco de buenas prácticas docentes y el trabajo interdepartamental son herramientas de alto valor transferible.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="o3-univ-card">
+        <button class="o3-univ-toggle">
+          <span class="univ-badge">U2</span>
+          <span class="univ-summary">Vicerrectorado Sostenibilidad · Centro Formación Permanente · ODS 4 transversal</span>
+          <span class="univ-arrow">›</span>
+        </button>
+        <div class="o3-univ-body">
+          <div class="univ-body-grid">
+            <div class="ub-block">
+              <h4>Estructura y recursos</h4>
+              <p>El Vicerrectorado de Sostenibilidad e Infraestructuras coordina las acciones. El Centro de Formación Permanente y la Escuela de Verano ofrecen cursos relacionados con los ODS, categorizados por temática. La estructura se apoya en comisiones de sostenibilidad a nivel de facultad.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Impacto</h4>
+              <p>Las actividades formativas han fomentado la sensibilización ambiental y la igualdad de género con alta participación constante.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Transferibilidad</h4>
+              <p>El sistema de clasificación de actividades por ODS puede replicarse en otras universidades para facilitar la gestión de la oferta formativa. Se recomienda su integración en un observatorio institucional.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Currículo</h4>
+              <p>Incorpora los ODS mediante asignaturas específicas y proyectos fin de grado orientados a sostenibilidad. El <strong>ODS 4 (Educación de calidad)</strong> actúa como eje transversal.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="o3-univ-card">
+        <button class="o3-univ-toggle">
+          <span class="univ-badge">U3</span>
+          <span class="univ-summary">Comisión Agenda 2030 multicampus · Diagnóstico previo · Responsable ODS por centro</span>
+          <span class="univ-arrow">›</span>
+        </button>
+        <div class="o3-univ-body">
+          <div class="univ-body-grid">
+            <div class="ub-block">
+              <h4>Estructura y recursos</h4>
+              <p>Comisión Agenda 2030 que coordina 8 centros y un centro adscrito. El proceso comenzó con un diagnóstico institucional mediante instrumentos internacionales de sostenibilidad. Cada centro cuenta con un responsable ODS como enlace.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Impacto</h4>
+              <p>El diagnóstico permitió identificar áreas de mejora y promover proyectos interdisciplinares entre facultades, fomentando la cohesión institucional y la alineación estratégica con la Agenda 2030.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Transferibilidad</h4>
+              <p>El modelo de diagnóstico previo seguido de una comisión transversal es de alta replicabilidad para universidades multicéntricas. El sistema de responsables ODS por centro garantiza continuidad y seguimiento.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Currículo</h4>
+              <p>ODS abordados mediante asignaturas interdisciplinares, proyectos integrados y aprendizaje-servicio. Cada centro adapta los contenidos respetando su autonomía académica.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="o3-univ-card">
+        <button class="o3-univ-toggle">
+          <span class="univ-badge">U5</span>
+          <span class="univ-summary">Oficina de Sostenibilidad · Microcredenciales CIVIS · Portal ODS</span>
+          <span class="univ-arrow">›</span>
+        </button>
+        <div class="o3-univ-body">
+          <div class="univ-body-grid">
+            <div class="ub-block">
+              <h4>Estructura y recursos</h4>
+              <p>La Oficina de Sostenibilidad y el Vicerrectorado de Compromiso Social coordinan las acciones formativas. Dispone de un portal ODS y una red de microcredenciales europeas vinculadas a la red universitaria CIVIS.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Currículo</h4>
+              <p>Competencias de sostenibilidad incorporadas en todos los grados. Uso de aprendizaje-servicio y metodologías participativas que refuerzan la vinculación con la comunidad.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="o3-univ-card">
+        <button class="o3-univ-toggle">
+          <span class="univ-badge">U6</span>
+          <span class="univ-summary">Vicerrectorado de Responsabilidad Social · Unidades de sostenibilidad por campus</span>
+          <span class="univ-arrow">›</span>
+        </button>
+        <div class="o3-univ-body">
+          <div class="univ-body-grid">
+            <div class="ub-block">
+              <h4>Estructura y recursos</h4>
+              <p>Vicerrectorado de Responsabilidad Social, Calidad e Igualdad que coordina acciones formativas y de sensibilización. Unidades de sostenibilidad en cada campus.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Impacto</h4>
+              <p>Ha promovido la inclusión de la Agenda 2030 en su plan estratégico y la realización de talleres y seminarios de formación docente. Alta participación del PDI en programas de innovación educativa.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Transferibilidad</h4>
+              <p>El modelo de formación docente en sostenibilidad es fácilmente adaptable. Su integración en el sistema de garantía interna de calidad ofrece una referencia sólida.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Currículo</h4>
+              <p>Competencias de sostenibilidad incorporadas en todos los grados mediante aprendizaje-servicio y metodologías participativas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="o3-univ-card">
+        <button class="o3-univ-toggle">
+          <span class="univ-badge">U7</span>
+          <span class="univ-summary">Plan Estratégico ODS · Oficina Verde · Reconocimiento nacional</span>
+          <span class="univ-arrow">›</span>
+        </button>
+        <div class="o3-univ-body">
+          <div class="univ-body-grid">
+            <div class="ub-block">
+              <h4>Estructura y recursos</h4>
+              <p>El Vicerrectorado responsable lidera las iniciativas, apoyado por una Oficina Verde. Dispone de un Plan Estratégico ODS que articula formación, investigación y gestión.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Impacto</h4>
+              <p>Ha impulsado la incorporación de la perspectiva de sostenibilidad en todas las titulaciones y ha logrado reconocimiento nacional por su labor en igualdad y medio ambiente.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Transferibilidad</h4>
+              <p>El Plan ODS y la Oficina Verde son modelos replicables que facilitan la coordinación interdepartamental. El sistema de evaluación de impacto en sostenibilidad curricular puede servir como referencia.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Currículo</h4>
+              <p>Integración mediante competencias específicas y transversales. Asignaturas comunes sobre sostenibilidad e innovación social.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="o3-univ-card">
+        <button class="o3-univ-toggle">
+          <span class="univ-badge">U9</span>
+          <span class="univ-summary">Vicerrectorado Política Académica · Liderazgo docente · Cooperación internacional</span>
+          <span class="univ-arrow">›</span>
+        </button>
+        <div class="o3-univ-body">
+          <div class="univ-body-grid">
+            <div class="ub-block">
+              <h4>Estructura y recursos</h4>
+              <p>El Vicerrectorado de Política Académica y la Oficina Verde coordinan los programas formativos ODS. Iniciativas lideradas especialmente por docentes de ciencia política y administración pública.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Impacto</h4>
+              <p>La inclusión de materias sobre cooperación y desarrollo sostenible ha fortalecido la sensibilización estudiantil. Las actividades anuales de voluntariado complementan el impacto académico.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Transferibilidad</h4>
+              <p>El liderazgo individual del profesorado comprometido ha demostrado ser un catalizador para la innovación curricular, modelo replicable en facultades de perfil teórico.</p>
+            </div>
+            <div class="ub-block">
+              <h4>Currículo</h4>
+              <p>ODS integrados en grados y másteres mediante asignaturas, prácticas externas y trabajos de investigación. La cooperación universitaria y el aprendizaje-servicio son ejes pedagógicos esenciales.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- BUENAS PRÁCTICAS Y RECOMENDACIONES                    -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <section id="o3-buenas-practicas" class="dash-section">
+    <h2 class="dash-title">Buenas prácticas recomendadas</h2>
+    <p class="dash-context">
+      A partir del análisis de las entrevistas a las 9 universidades se sintetizan las recomendaciones
+      con mayor potencial de replicabilidad e impacto en el sistema universitario español.
+    </p>
+
+    <div class="o3-bp-grid">
+      <div class="o3-bp-card">
+        <div class="bp-num">1</div>
+        <div class="bp-content">
+          <h4>Estructuras transversales coordinadas</h4>
+          <p>Crear comités, vicerrectorados u oficinas de sostenibilidad con rol explícito en la coordinación de la implementación de los ODS en la oferta formativa.</p>
+        </div>
+      </div>
+      <div class="o3-bp-card">
+        <div class="bp-num">2</div>
+        <div class="bp-content">
+          <h4>TFG / TFM vinculados a ODS</h4>
+          <p>Incentivar los trabajos finales orientados a la Agenda 2030: maximizan la madurez reflexiva del estudiante y su aproximación directa a la sostenibilidad.</p>
+        </div>
+      </div>
+      <div class="o3-bp-card">
+        <div class="bp-num">3</div>
+        <div class="bp-content">
+          <h4>Metodologías activas con colaboración externa</h4>
+          <p>Proyectos, retos reales y aprendizaje-servicio conectados con empresas, ONGs y administraciones. Aseguran relevancia social y son transferibles entre disciplinas.</p>
+        </div>
+      </div>
+      <div class="o3-bp-card">
+        <div class="bp-num">4</div>
+        <div class="bp-content">
+          <h4>Formación continua flexible: MOOC y microcredenciales</h4>
+          <p>Promover cursos abiertos y microcredenciales alineados con temas ODS actuales. Expanden el impacto, facilitan el acceso y proyectan la oferta universitaria internacionalmente.</p>
+        </div>
+      </div>
+      <div class="o3-bp-card">
+        <div class="bp-num">5</div>
+        <div class="bp-content">
+          <h4>Repositorios de buenas prácticas + reconocimiento</h4>
+          <p>Compartir bancos de prácticas docentes e impulsar el reconocimiento y la financiación de proyectos alineados con la Agenda 2030, para multiplicar experiencias transferibles.</p>
+        </div>
+      </div>
+    </div>
+
+    <blockquote class="o3-quote">
+      <p>«Esta asignatura transversal no busca sólo aproximar conocimientos teóricos, sino fomentar la participación activa, el diálogo y la aplicación práctica de los contenidos aprendidos. Se explora la importancia de la ética y el impacto y contribución positiva de cada uno de nosotros al desarrollo sostenible.»</p>
+      <cite>Respuesta cuestionario — acción formativa destacada sobre ODS</cite>
+    </blockquote>
+
+    <h3 class="dash-subtitle" style="margin-top: 2.5rem;">Medidas sistémicas prioritarias</h3>
+    <div class="o3-systemic-grid">
+      <div class="sys-card">
+        <h4>Competencia transversal obligatoria</h4>
+        <p>Incorporar los ODS como competencia transversal obligatoria en todos los planes de estudio. Solo la obligación mediante norma favorecerá su adopción generalizada.</p>
+      </div>
+      <div class="sys-card">
+        <h4>Formación obligatoria del profesorado</h4>
+        <p>Establecer formación específica obligatoria en sostenibilidad y Agenda 2030 para el PDI: requisito previo para una integración efectiva en las aulas.</p>
+      </div>
+      <div class="sys-card">
+        <h4>Indicadores ODS en evaluación de calidad</h4>
+        <p>Incorporar criterios e indicadores relacionados con los ODS en los sistemas de evaluación de la calidad universitaria para promover transparencia y rendición de cuentas.</p>
+      </div>
+      <div class="sys-card">
+        <h4>Regulación con mayor coercitividad</h4>
+        <p>Medidas legislativas y reglamentarias más exigentes para garantizar el cumplimiento real de los ODS en las organizaciones, especialmente en el sector privado.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  import '../../scripts/o3-dashboard.ts';
+</script>
+
+<style is:global>
+#o3-dashboard {
+  padding: 0 2.5rem 4rem;
+  max-width: 1100px;
+}
+
+#o3-dashboard .dash-section {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+#o3-dashboard .dash-hero {
+  padding-bottom: 3rem;
+  border-bottom: 2px solid var(--brand);
+  position: relative;
+}
+
+#o3-dashboard .dash-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 80px;
+  height: 2px;
+  background: var(--gold);
+}
+
+#o3-dashboard .doc-kicker {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-accent);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#o3-dashboard .doc-kicker::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--green-accent);
+}
+
+#o3-dashboard .doc-title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  max-width: 700px;
+  margin: 0 0 1.2rem;
+}
+
+#o3-dashboard .dash-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--brand);
+  margin: 0 0 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--brand-soft);
+}
+
+#o3-dashboard .dash-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 1.8rem 0 0.8rem;
+}
+
+#o3-dashboard .dash-context {
+  color: var(--ink);
+  opacity: 0.8;
+  line-height: 1.7;
+  max-width: 780px;
+  margin: 0 0 1.5rem;
+}
+
+/* HERO STATS */
+#o3-dashboard .hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+#o3-dashboard .hero-stat {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--brand);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+}
+
+#o3-dashboard .hero-stat--alert {
+  border-top-color: var(--gold);
+}
+
+#o3-dashboard .hero-stat-value {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--brand);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+#o3-dashboard .hero-stat--alert .hero-stat-value {
+  color: var(--gold);
+}
+
+#o3-dashboard .hero-stat-label {
+  font-size: 0.82rem;
+  color: var(--ink);
+  opacity: 0.75;
+  line-height: 1.4;
+}
+
+/* OBJECTIVES */
+#o3-dashboard .o3-obj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+#o3-dashboard .o3-obj-card {
+  display: flex;
+  gap: 0.8rem;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+  align-items: flex-start;
+}
+
+#o3-dashboard .obj-num {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: var(--brand);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#o3-dashboard .obj-text {
+  font-size: 0.87rem;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+/* MUESTRA GRID */
+#o3-dashboard .o3-muestra-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+#o3-dashboard .o3-muestra-block {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.2rem 1.4rem;
+}
+
+#o3-dashboard .ctx-head {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand);
+  margin: 0 0 0.5rem;
+}
+
+#o3-dashboard .o3-muestra-note {
+  font-size: 0.8rem;
+  color: var(--ink);
+  opacity: 0.65;
+  margin: 0 0 0.9rem;
+  font-style: italic;
+}
+
+#o3-dashboard .o3-small-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+}
+
+#o3-dashboard .o3-small-table th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--brand);
+  border-bottom: 2px solid var(--brand-soft);
+  padding: 0.35rem 0.5rem;
+}
+
+#o3-dashboard .o3-small-table td {
+  padding: 0.3rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+}
+
+#o3-dashboard .o3-univ-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+#o3-dashboard .o3-univ-list li {
+  font-size: 0.86rem;
+  color: var(--ink);
+  padding-left: 1rem;
+  position: relative;
+}
+
+#o3-dashboard .o3-univ-list li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--brand);
+  font-weight: 700;
+}
+
+#o3-dashboard .o3-aggregate-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--border);
+}
+
+#o3-dashboard .agg-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+#o3-dashboard .agg-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+#o3-dashboard .agg-lbl {
+  font-size: 0.75rem;
+  color: var(--ink);
+  opacity: 0.65;
+}
+
+/* KEY STATS CARDS */
+#o3-dashboard .o3-key-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+#o3-dashboard .ks-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--brand);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+}
+
+#o3-dashboard .ks-card--warning {
+  border-left-color: #d3a029;
+}
+
+#o3-dashboard .ks-card--alert {
+  border-left-color: #e03e4c;
+}
+
+#o3-dashboard .ks-value {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--brand);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+#o3-dashboard .ks-card--warning .ks-value { color: #d3a029; }
+#o3-dashboard .ks-card--alert .ks-value { color: #e03e4c; }
+
+#o3-dashboard .ks-label {
+  font-size: 0.84rem;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 0.3rem;
+}
+
+#o3-dashboard .ks-note {
+  font-size: 0.75rem;
+  color: var(--ink);
+  opacity: 0.55;
+  font-style: italic;
+}
+
+/* DISCIPLINES */
+#o3-dashboard .disc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+#o3-dashboard .disc-card {
+  background: color-mix(in srgb, var(--brand) 6%, white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+  text-align: center;
+}
+
+#o3-dashboard .disc-card--accent {
+  border-color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 8%, white);
+}
+
+#o3-dashboard .disc-pct {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--brand);
+  line-height: 1;
+}
+
+#o3-dashboard .disc-card--accent .disc-pct { color: #a07020; }
+
+#o3-dashboard .disc-label {
+  font-size: 0.8rem;
+  color: var(--ink);
+  opacity: 0.8;
+  margin-top: 0.3rem;
+  line-height: 1.35;
+}
+
+/* TABS */
+#o3-dashboard .o3-tab-bar {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+
+#o3-dashboard .o3-tab-btn {
+  background: none;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-family: var(--font-base);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.15s;
+}
+
+#o3-dashboard .o3-tab-btn.active {
+  color: var(--brand);
+  border-bottom-color: var(--brand);
+}
+
+#o3-dashboard .o3-tab-btn:hover:not(.active) {
+  color: var(--brand);
+  background: var(--brand-soft);
+}
+
+/* INTEGRATION GRID */
+#o3-dashboard .integ-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+#o3-dashboard .integ-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+}
+
+#o3-dashboard .integ-card--note {
+  border-color: #e03e4c;
+  background: color-mix(in srgb, #e03e4c 5%, white);
+}
+
+#o3-dashboard .integ-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+}
+
+#o3-dashboard .integ-card h4 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--brand);
+  margin: 0 0 0.4rem;
+}
+
+#o3-dashboard .integ-card--note h4 { color: #b03030; }
+
+#o3-dashboard .integ-card p {
+  font-size: 0.84rem;
+  color: var(--ink);
+  opacity: 0.85;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* CHART */
+#o3-dashboard .chart-box {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+#o3-dashboard .o3-chart-note {
+  font-size: 0.8rem;
+  color: var(--ink);
+  opacity: 0.6;
+  font-style: italic;
+  margin: 0;
+}
+
+/* CONTEXTOS INSIGHTS */
+#o3-dashboard .o3-contextos-insights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+#o3-dashboard .ci-item {
+  font-size: 0.87rem;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  line-height: 1.5;
+  border-left: 3px solid transparent;
+}
+
+#o3-dashboard .ci-item--green {
+  background: color-mix(in srgb, #4c9f38 8%, white);
+  border-left-color: #4c9f38;
+}
+
+#o3-dashboard .ci-item--amber {
+  background: color-mix(in srgb, #d3a029 8%, white);
+  border-left-color: #d3a029;
+}
+
+#o3-dashboard .ci-item--red {
+  background: color-mix(in srgb, #e03e4c 8%, white);
+  border-left-color: #e03e4c;
+}
+
+/* FUNNEL */
+#o3-dashboard .o3-funnel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1.2rem 0;
+}
+
+#o3-dashboard .funnel-row {
+  display: grid;
+  grid-template-columns: 240px 1fr 90px;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+#o3-dashboard .fr-label {
+  font-size: 0.87rem;
+  color: var(--ink);
+  text-align: right;
+  line-height: 1.35;
+}
+
+#o3-dashboard .fr-track {
+  height: 28px;
+  background: #e8ecf0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#o3-dashboard .fr-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+#o3-dashboard .fr-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#o3-dashboard .fr-meta strong {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+#o3-dashboard .fr-meta span {
+  font-size: 0.75rem;
+  color: var(--ink);
+  opacity: 0.6;
+}
+
+#o3-dashboard .funnel-row--critical .fr-label {
+  font-weight: 600;
+  color: #b03030;
+}
+
+#o3-dashboard .fr-meta--critical strong {
+  color: var(--gold);
+  font-size: 1.1rem;
+}
+
+#o3-dashboard .o3-funnel-note {
+  font-size: 0.82rem;
+  color: var(--ink);
+  opacity: 0.65;
+  font-style: italic;
+  margin: 0.5rem 0 0;
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--border);
+}
+
+/* FREQUENCY TABLE */
+#o3-dashboard .o3-freq-table {
+  margin: 0.5rem 0;
+}
+
+#o3-dashboard .freq-legend {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--ink);
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+
+#o3-dashboard .leg-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+#o3-dashboard .freq-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 180px;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+#o3-dashboard .fr-mod-label {
+  font-size: 0.84rem;
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+#o3-dashboard .freq-stacked {
+  display: flex;
+  height: 22px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #e8e8e8;
+  gap: 1px;
+}
+
+#o3-dashboard .freq-stacked div {
+  height: 100%;
+  transition: width 0.3s;
+}
+
+#o3-dashboard .freq-pcts {
+  display: flex;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  flex-wrap: wrap;
+}
+
+#o3-dashboard .fp-n { color: #a03030; font-weight: 500; }
+#o3-dashboard .fp-av { color: var(--brand); font-weight: 500; }
+#o3-dashboard .fp-si { color: #4c9f38; font-weight: 600; }
+
+/* PATTERNS GRID */
+#o3-dashboard .o3-patterns-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+#o3-dashboard .pattern-block {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.2rem 1.3rem;
+}
+
+#o3-dashboard .pattern-head {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--border);
+}
+
+#o3-dashboard .pattern-head--blue { color: var(--brand); border-bottom-color: var(--brand); }
+#o3-dashboard .pattern-head--green { color: var(--green-deep); border-bottom-color: var(--green-deep); }
+#o3-dashboard .pattern-head--gold { color: #a07020; border-bottom-color: var(--gold); }
+
+#o3-dashboard .pattern-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#o3-dashboard .pattern-list li {
+  font-size: 0.85rem;
+  color: var(--ink);
+  line-height: 1.55;
+  padding-left: 1rem;
+  position: relative;
+}
+
+#o3-dashboard .pattern-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0.2rem;
+  color: var(--brand);
+  font-size: 1.1rem;
+  line-height: 1.35;
+}
+
+/* ACCORDION */
+#o3-dashboard .o3-univ-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+#o3-dashboard .o3-univ-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+#o3-dashboard .o3-univ-card.open {
+  border-color: var(--brand);
+}
+
+#o3-dashboard .o3-univ-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-base);
+  transition: background 0.15s;
+}
+
+#o3-dashboard .o3-univ-toggle:hover,
+#o3-dashboard .o3-univ-card.open .o3-univ-toggle {
+  background: var(--brand-soft);
+}
+
+#o3-dashboard .univ-badge {
+  flex-shrink: 0;
+  background: var(--brand);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+}
+
+#o3-dashboard .univ-summary {
+  flex: 1;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+#o3-dashboard .univ-arrow {
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  color: var(--brand);
+  font-weight: 700;
+  transition: transform 0.25s;
+}
+
+#o3-dashboard .o3-univ-card.open .univ-arrow {
+  transform: rotate(90deg);
+}
+
+#o3-dashboard .o3-univ-body {
+  display: none;
+  padding: 1rem 1.4rem 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+#o3-dashboard .o3-univ-card.open .o3-univ-body {
+  display: block;
+}
+
+#o3-dashboard .univ-body-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+#o3-dashboard .ub-block h4 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--brand);
+  margin: 0 0 0.4rem;
+}
+
+#o3-dashboard .ub-block p {
+  font-size: 0.85rem;
+  color: var(--ink);
+  opacity: 0.85;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* BEST PRACTICES */
+#o3-dashboard .o3-bp-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 2rem;
+}
+
+#o3-dashboard .o3-bp-card {
+  display: flex;
+  gap: 1rem;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  align-items: flex-start;
+}
+
+#o3-dashboard .bp-num {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  background: var(--brand);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#o3-dashboard .bp-content h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.3rem;
+}
+
+#o3-dashboard .bp-content p {
+  font-size: 0.85rem;
+  color: var(--ink);
+  opacity: 0.8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* QUOTE */
+#o3-dashboard .o3-quote {
+  background: color-mix(in srgb, var(--brand) 6%, white);
+  border-left: 4px solid var(--brand);
+  border-radius: 0 6px 6px 0;
+  padding: 1.2rem 1.5rem;
+  margin: 0 0 1.5rem;
+}
+
+#o3-dashboard .o3-quote p {
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.7;
+  font-style: italic;
+  margin: 0 0 0.5rem;
+}
+
+#o3-dashboard .o3-quote cite {
+  font-size: 0.78rem;
+  color: var(--ink);
+  opacity: 0.55;
+  font-style: normal;
+}
+
+/* SYSTEMIC MEASURES */
+#o3-dashboard .o3-systemic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+#o3-dashboard .sys-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--green-deep);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+}
+
+#o3-dashboard .sys-card h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  margin: 0 0 0.4rem;
+}
+
+#o3-dashboard .sys-card p {
+  font-size: 0.84rem;
+  color: var(--ink);
+  opacity: 0.8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  #o3-dashboard { padding: 0 1rem 3rem; }
+  #o3-dashboard .o3-muestra-grid { grid-template-columns: 1fr; }
+  #o3-dashboard .funnel-row { grid-template-columns: 1fr; gap: 0.3rem; }
+  #o3-dashboard .fr-label { text-align: left; }
+  #o3-dashboard .freq-row { grid-template-columns: 1fr; }
+}
+</style>
